@@ -1,0 +1,29 @@
+# Repository map: qualcomm-linux/kgsl
+
+**You are here:** `qualcomm-linux/kgsl`. This view shows recorded nearby repositories, including
+both incoming and outgoing relationships. Dashed lines mean optional or indirect
+relationships; the table states when each connection applies.
+
+![Nearby repositories for qualcomm-linux/kgsl](qualcomm-linux--kgsl.svg)
+
+| From | Relationship | To | When it applies | Evidence |
+| --- | --- | --- | --- | --- |
+| qualcomm-linux/pkg-kgsl | packages | qualcomm-linux/kgsl | Package metadata and source ownership are separate; choose the package branch before editing packaging. | [1](https://github.com/qualcomm-linux/pkg-kgsl/blob/e86b135670ce1464db9035193492ddf08ad7f5ed/README.md) |
+
+## Nearby repositories
+
+- [qualcomm-linux/kgsl](https://github.com/qualcomm-linux/kgsl) — Repository purpose needs review; open the repository for its maintained documentation.
+- [qualcomm-linux/pkg-kgsl](https://github.com/qualcomm-linux/pkg-kgsl) — Packaging repo for kgsl
+
+## Full ecosystem map
+
+Return to the [Qualcomm repository map](https://github.com/devdocsorg/qualcomm-repository-map) for the wider ecosystem,
+other nearby views, and the locally browsable site. Relationship claims apply to
+the linked evidence revisions; use release-compatible revisions for a build.
+
+Generated from `data/repositories.json` (SHA-256 `602a68056238817dccee9f98db5c06ea20d0bb165a53a0c23ff2d0423240dfca`).
+Edit the shared dataset and regenerate this view to change relationships.
+
+[Back to the ecosystem overview](OVERVIEW.md).
+
+[Explore qualcomm-linux/pkg-kgsl](qualcomm-linux--pkg-kgsl.md).

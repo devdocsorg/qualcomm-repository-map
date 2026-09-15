@@ -1,0 +1,87 @@
+# Repository map: qualcomm-linux/meta-qcom
+
+**You are here:** `qualcomm-linux/meta-qcom`. This view shows recorded nearby repositories, including
+both incoming and outgoing relationships. Dashed lines mean optional or indirect
+relationships; the table states when each connection applies.
+
+![Nearby repositories for qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.svg)
+
+| From | Relationship | To | When it applies | Evidence |
+| --- | --- | --- | --- | --- |
+| qualcomm-linux/meta-qcom | selects for distro | AudioReach/meta-audioreach | Optional qcom-distro kas composition; not required by every BSP-only build. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml) |
+| qualcomm-linux/meta-qcom | builds with | openembedded/bitbake | Development kas configuration on master; release locks can select other revisions. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/base.yml) |
+| qualcomm-linux/meta-qcom | selects for distro | openembedded/meta-openembedded | Optional qcom-distro kas composition; not required by every BSP-only build. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml) |
+| qualcomm-linux/meta-qcom | builds with | openembedded/openembedded-core | Development kas configuration on master; release locks can select other revisions. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/base.yml) |
+| qualcomm-linux/meta-qcom | uses automation from | qualcomm-linux/github-action-matrix-outputs-read | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/.github/workflows/test-distro.yml) |
+| qualcomm-linux/meta-qcom | uses automation from | qualcomm-linux/github-action-matrix-outputs-write | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/.github/workflows/test-distro.yml) |
+| qualcomm-linux/meta-qcom | fetches source from | qualcomm-linux/kernel | linux-qcom-next recipe; kernel provider and source revision are configuration-dependent. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-kernel/linux/linux-qcom-next_git.bb) |
+| qualcomm-linux/meta-qcom | selects for distro | qualcomm-linux/meta-ai | Optional qcom-distro kas composition; not required by every BSP-only build. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml) |
+| qualcomm-linux/meta-qcom | selects for distro | qualcomm-linux/meta-qcom-distro | Optional qcom-distro kas composition; not required by every BSP-only build. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml) |
+| qualcomm-linux/meta-qcom | fetches source from | qualcomm-linux/qcom-ptool | Partition recipe source; pinned by qcom-ptool.inc. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc) |
+| qualcomm-linux/meta-qcom | uses automation from | qualcomm-linux/upload-private-artifact-action | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/.github/workflows/compile.yml) |
+| qualcomm-linux/meta-qcom | uses automation from | qualcomm/qcom-reusable-workflows | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/.github/workflows/pr.yml) |
+| qualcomm-linux/meta-qcom-3rdparty | depends on | qualcomm-linux/meta-qcom | wrynose-compatible main snapshot 8927b428bcae; required layer collection. | [1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf) |
+| qualcomm-linux/meta-qcom-3rdparty | uses automation from | qualcomm-linux/meta-qcom | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml) · [2](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml) · [3](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml) · [4](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml) · [5](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml) |
+| qualcomm-linux/meta-qcom-arduino | uses automation from | qualcomm-linux/meta-qcom | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/build-yocto.yml) · [2](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/build-yocto.yml) · [3](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/test-distro.yml) · [4](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/test-distro.yml) · [5](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/test-distro.yml) |
+| qualcomm-linux/meta-qcom-distro | uses automation from | qualcomm-linux/meta-qcom | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/build-yocto.yml) · [2](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/test-distro.yml) · [3](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/test-distro.yml) · [4](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/test-distro.yml) |
+| qualcomm-linux/meta-qcom-releases | pins release of | qualcomm-linux/meta-qcom | Milestone tags and kas lock files; select the desired release tag. | [1](https://github.com/qualcomm-linux/meta-qcom-releases/blob/4129a6850c070bb57da122b2ebceff3de9951a1a/README.md) |
+
+## Nearby repositories
+
+- [AudioReach/meta-audioreach](https://github.com/AudioReach/meta-audioreach) — AudioReach recipes selected by the distro configuration.
+- [openembedded/bitbake](https://github.com/openembedded/bitbake) — Build engine used by the kas configuration.
+- [openembedded/meta-openembedded](https://github.com/openembedded/meta-openembedded) — Additional OpenEmbedded layers selected by the distro configuration.
+- [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core) — Base OpenEmbedded recipes and classes.
+- [qualcomm-linux/github-action-matrix-outputs-read](https://github.com/qualcomm-linux/github-action-matrix-outputs-read) — Workaround implementation - Read matrix jobs outputs
+- [qualcomm-linux/github-action-matrix-outputs-write](https://github.com/qualcomm-linux/github-action-matrix-outputs-write) — Workaround implementation - Write matrix jobs outputs
+- [qualcomm-linux/kernel](https://github.com/qualcomm-linux/kernel) — Linux Kernel for QLI mainline
+- [qualcomm-linux/meta-ai](https://github.com/qualcomm-linux/meta-ai) — OpenEmbedded layer for AI/ML related recipes
+- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) — OpenEmbedded/Yocto Project BSP layer for Qualcomm based platforms
+- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) — OpenEmbedded/Yocto Project BSP layer for Third-Party Maintained Qualcomm based platforms
+- [qualcomm-linux/meta-qcom-arduino](https://github.com/qualcomm-linux/meta-qcom-arduino) — OpenEmbedded/Yocto Project BSP layer for Qualcomm based Arduino platforms
+- [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro) — OpenEmbedded/Yocto Project Reference Distribution layer for Qualcomm based platforms
+- [qualcomm-linux/meta-qcom-releases](https://github.com/qualcomm-linux/meta-qcom-releases) — This repo will be used to store kas-lock files for milestone releases of meta-qcom
+- [qualcomm-linux/qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool) — qcom-ptool contains various device partitioning utilities like ptool.py, gen_partitions.py and various sample partition configuration files needed for Qualcomm SoCs.
+- [qualcomm-linux/upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action) — An action for use in qualcomm-linux projects that need to publish CI artifacts that aren't cleared for public distribution.
+- [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) — Qualcomm reusable workflows
+
+## Full ecosystem map
+
+Return to the [Qualcomm repository map](https://github.com/devdocsorg/qualcomm-repository-map) for the wider ecosystem,
+other nearby views, and the locally browsable site. Relationship claims apply to
+the linked evidence revisions; use release-compatible revisions for a build.
+
+Generated from `data/repositories.json` (SHA-256 `602a68056238817dccee9f98db5c06ea20d0bb165a53a0c23ff2d0423240dfca`).
+Edit the shared dataset and regenerate this view to change relationships.
+
+[Back to the ecosystem overview](OVERVIEW.md).
+
+[Explore AudioReach/meta-audioreach](AudioReach--meta-audioreach.md).
+
+[Explore openembedded/bitbake](openembedded--bitbake.md).
+
+[Explore openembedded/meta-openembedded](openembedded--meta-openembedded.md).
+
+[Explore openembedded/openembedded-core](openembedded--openembedded-core.md).
+
+[Explore qualcomm-linux/github-action-matrix-outputs-read](qualcomm-linux--github-action-matrix-outputs-read.md).
+
+[Explore qualcomm-linux/github-action-matrix-outputs-write](qualcomm-linux--github-action-matrix-outputs-write.md).
+
+[Explore qualcomm-linux/kernel](qualcomm-linux--kernel.md).
+
+[Explore qualcomm-linux/meta-ai](qualcomm-linux--meta-ai.md).
+
+[Explore qualcomm-linux/meta-qcom-3rdparty](qualcomm-linux--meta-qcom-3rdparty.md).
+
+[Explore qualcomm-linux/meta-qcom-arduino](qualcomm-linux--meta-qcom-arduino.md).
+
+[Explore qualcomm-linux/meta-qcom-distro](qualcomm-linux--meta-qcom-distro.md).
+
+[Explore qualcomm-linux/meta-qcom-releases](qualcomm-linux--meta-qcom-releases.md).
+
+[Explore qualcomm-linux/qcom-ptool](qualcomm-linux--qcom-ptool.md).
+
+[Explore qualcomm-linux/upload-private-artifact-action](qualcomm-linux--upload-private-artifact-action.md).
+
+[Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md).

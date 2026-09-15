@@ -1,0 +1,24 @@
+# Repository map: qualcomm-linux/edk2
+
+**You are here:** `qualcomm-linux/edk2`. This view shows recorded nearby repositories, including
+both incoming and outgoing relationships. Dashed lines mean optional or indirect
+relationships; the table states when each connection applies.
+
+![Nearby repositories for qualcomm-linux/edk2](qualcomm-linux--edk2.svg)
+
+No reviewed relationships are recorded yet. This does not establish independence.
+
+## Nearby repositories
+
+- [qualcomm-linux/edk2](https://github.com/qualcomm-linux/edk2) — Qualcomm upstream staging repo for edk2
+
+## Full ecosystem map
+
+Return to the [Qualcomm repository map](https://github.com/devdocsorg/qualcomm-repository-map) for the wider ecosystem,
+other nearby views, and the locally browsable site. Relationship claims apply to
+the linked evidence revisions; use release-compatible revisions for a build.
+
+Generated from `data/repositories.json` (SHA-256 `602a68056238817dccee9f98db5c06ea20d0bb165a53a0c23ff2d0423240dfca`).
+Edit the shared dataset and regenerate this view to change relationships.
+
+[Back to the ecosystem overview](OVERVIEW.md).

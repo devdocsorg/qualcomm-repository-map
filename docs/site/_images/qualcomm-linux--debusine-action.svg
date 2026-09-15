@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 5650" role="img" aria-labelledby="title desc">
+<title id="title">Repository neighbourhood: qualcomm-linux/debusine-action</title>
+<desc id="desc">The highlighted repository is your current location. Arrows follow the direction of each labelled relationship. The accompanying table provides applicability and evidence.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#48617a"/></marker></defs>
+<rect width="1080" height="100%" rx="14" fill="#f6f8fc"/>
+<g font-family="sans-serif" font-size="15" fill="#182c43">
+<rect x="20" y="2773.0" width="370" height="104" rx="12" fill="#dbeafe" stroke="#1554ae" stroke-width="3"/>
+<text x="40" y="2807.0" font-weight="bold" fill="#1554ae">YOU ARE HERE</text>
+<text x="40" y="2835.0">qualcomm-linux/debusine-action</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 95.0, 680 95.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="68.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="84.0" font-size="13">uses automation from</text>
+<rect x="680" y="60" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="89">qualcomm-linux/pkg-adreno</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 225.0, 680 225.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="198.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="214.0" font-size="13">uses automation from</text>
+<rect x="680" y="190" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="219">qualcomm-linux/pkg-alsa-ucm-conf</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 355.0, 680 355.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="328.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="344.0" font-size="13">uses automation from</text>
+<rect x="680" y="320" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="349">qualcomm-linux/pkg-android-platform-</text>
+<text x="698" y="369">tools</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 485.0, 680 485.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="458.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="474.0" font-size="13">uses automation from</text>
+<rect x="680" y="450" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="479">qualcomm-linux/pkg-audioreach-audio-</text>
+<text x="698" y="499">utils</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 615.0, 680 615.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="588.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="604.0" font-size="13">uses automation from</text>
+<rect x="680" y="580" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="609">qualcomm-linux/pkg-audioreach-conf</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 745.0, 680 745.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="718.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="734.0" font-size="13">uses automation from</text>
+<rect x="680" y="710" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="739">qualcomm-linux/pkg-audioreach-dkms</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 875.0, 680 875.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="848.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="864.0" font-size="13">uses automation from</text>
+<rect x="680" y="840" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="869">qualcomm-linux/pkg-audioreach-graphmgr</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 1005.0, 680 1005.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="978.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="994.0" font-size="13">uses automation from</text>
+<rect x="680" y="970" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="999">qualcomm-linux/pkg-audioreach-</text>
+<text x="698" y="1019">graphservices</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 1135.0, 680 1135.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1108.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1124.0" font-size="13">uses automation from</text>
+<rect x="680" y="1100" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1129">qualcomm-linux/pkg-audioreach-pal</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 1265.0, 680 1265.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1238.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1254.0" font-size="13">uses automation from</text>
+<rect x="680" y="1230" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1259">qualcomm-linux/pkg-audioreach-</text>
+<text x="698" y="1279">pipewire-plugin</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 1395.0, 680 1395.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1368.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1384.0" font-size="13">uses automation from</text>
+<rect x="680" y="1360" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1389">qualcomm-linux/pkg-camx-dev</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 1525.0, 680 1525.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1498.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1514.0" font-size="13">uses automation from</text>
+<rect x="680" y="1490" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1519">qualcomm-linux/pkg-camx-dkms</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 1655.0, 680 1655.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1628.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1644.0" font-size="13">uses automation from</text>
+<rect x="680" y="1620" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1649">qualcomm-linux/pkg-camx-firmware-</text>
+<text x="698" y="1669">glymur</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 1785.0, 680 1785.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1758.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1774.0" font-size="13">uses automation from</text>
+<rect x="680" y="1750" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1779">qualcomm-linux/pkg-camx-firmware-hamoa</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 1915.0, 680 1915.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1888.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1904.0" font-size="13">uses automation from</text>
+<rect x="680" y="1880" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1909">qualcomm-linux/pkg-camx-glymur</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 2045.0, 680 2045.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="2018.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="2034.0" font-size="13">uses automation from</text>
+<rect x="680" y="2010" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="2039">qualcomm-linux/pkg-camx-hamoa</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 2175.0, 680 2175.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="2148.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="2164.0" font-size="13">uses automation from</text>
+<rect x="680" y="2140" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="2169">qualcomm-linux/pkg-camx-nhx</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 2305.0, 680 2305.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="2278.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="2294.0" font-size="13">uses automation from</text>
+<rect x="680" y="2270" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="2299">qualcomm-linux/pkg-diag-router</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 2435.0, 680 2435.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="2408.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="2424.0" font-size="13">uses automation from</text>
+<rect x="680" y="2400" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="2429">qualcomm-linux/pkg-eva-dkms</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 2565.0, 680 2565.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="2538.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="2554.0" font-size="13">uses automation from</text>
+<rect x="680" y="2530" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="2559">qualcomm-linux/pkg-fastrpc</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 2695.0, 680 2695.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="2668.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="2684.0" font-size="13">uses automation from</text>
+<rect x="680" y="2660" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="2689">qualcomm-linux/pkg-gbm-msm-backend</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 2825.0, 680 2825.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="2798.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="2814.0" font-size="13">uses automation from</text>
+<rect x="680" y="2790" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="2819">qualcomm-linux/pkg-kgsl</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 2955.0, 680 2955.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="2928.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="2944.0" font-size="13">uses automation from</text>
+<rect x="680" y="2920" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="2949">qualcomm-linux/pkg-libdiag</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 3085.0, 680 3085.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="3058.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="3074.0" font-size="13">uses automation from</text>
+<rect x="680" y="3050" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="3079">qualcomm-linux/pkg-mink-idl-compiler</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 3215.0, 680 3215.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="3188.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="3204.0" font-size="13">uses automation from</text>
+<rect x="680" y="3180" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="3209">qualcomm-linux/pkg-minkipc</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 3345.0, 680 3345.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="3318.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="3334.0" font-size="13">uses automation from</text>
+<rect x="680" y="3310" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="3339">qualcomm-linux/pkg-optee-client</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 3475.0, 680 3475.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="3448.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="3464.0" font-size="13">uses automation from</text>
+<rect x="680" y="3440" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="3469">qualcomm-linux/pkg-optee-test</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 3605.0, 680 3605.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="3578.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="3594.0" font-size="13">uses automation from</text>
+<rect x="680" y="3570" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="3599">qualcomm-linux/pkg-qcom-fastcv-</text>
+<text x="698" y="3619">binaries</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 3735.0, 680 3735.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="3708.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="3724.0" font-size="13">uses automation from</text>
+<rect x="680" y="3700" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="3729">qualcomm-linux/pkg-qcom-sensors</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 3865.0, 680 3865.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="3838.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="3854.0" font-size="13">uses automation from</text>
+<rect x="680" y="3830" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="3859">qualcomm-linux/pkg-qcom-sv-binaries</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 3995.0, 680 3995.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="3968.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="3984.0" font-size="13">uses automation from</text>
+<rect x="680" y="3960" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="3989">qualcomm-linux/pkg-qimsdk-smartvenc</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 4125.0, 680 4125.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="4098.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="4114.0" font-size="13">uses automation from</text>
+<rect x="680" y="4090" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="4119">qualcomm-linux/pkg-qmi-framework</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 4255.0, 680 4255.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="4228.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="4244.0" font-size="13">uses automation from</text>
+<rect x="680" y="4220" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="4249">qualcomm-linux/pkg-qti-camera-service</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 4385.0, 680 4385.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="4358.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="4374.0" font-size="13">uses automation from</text>
+<rect x="680" y="4350" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="4379">qualcomm-linux/pkg-quic-teec</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 4515.0, 680 4515.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="4488.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="4504.0" font-size="13">uses automation from</text>
+<rect x="680" y="4480" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="4509">qualcomm-linux/pkg-sensinghub</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 4645.0, 680 4645.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="4618.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="4634.0" font-size="13">uses automation from</text>
+<rect x="680" y="4610" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="4639">qualcomm-linux/pkg-thermald</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 4775.0, 680 4775.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="4748.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="4764.0" font-size="13">uses automation from</text>
+<rect x="680" y="4740" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="4769">qualcomm-linux/pkg-time-services</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 4905.0, 680 4905.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="4878.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="4894.0" font-size="13">uses automation from</text>
+<rect x="680" y="4870" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="4899">qualcomm-linux/pkg-tinyalsa</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 5035.0, 680 5035.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="5008.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="5024.0" font-size="13">uses automation from</text>
+<rect x="680" y="5000" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="5029">qualcomm-linux/pkg-tinycompress</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 5165.0, 680 5165.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="5138.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="5154.0" font-size="13">uses automation from</text>
+<rect x="680" y="5130" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="5159">qualcomm-linux/pkg-urm</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 5295.0, 680 5295.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="5268.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="5284.0" font-size="13">uses automation from</text>
+<rect x="680" y="5260" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="5289">qualcomm-linux/pkg-urm-ext</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 5425.0, 680 5425.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="5398.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="5414.0" font-size="13">uses automation from</text>
+<rect x="680" y="5390" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="5419">qualcomm-linux/pkg-video-driver</text>
+<path d="M 390 2825.0 C 480 2825.0, 500 5555.0, 680 5555.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="443" y="5528.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="5544.0" font-size="13">uses automation from</text>
+<rect x="680" y="5520" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="5549">qualcomm/qcom-reusable-workflows</text>
+</g></svg>

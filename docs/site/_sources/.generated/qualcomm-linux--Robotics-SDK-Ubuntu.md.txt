@@ -1,0 +1,29 @@
+# Repository map: qualcomm-linux/Robotics-SDK-Ubuntu
+
+**You are here:** `qualcomm-linux/Robotics-SDK-Ubuntu`. This view shows recorded nearby repositories, including
+both incoming and outgoing relationships. Dashed lines mean optional or indirect
+relationships; the table states when each connection applies.
+
+![Nearby repositories for qualcomm-linux/Robotics-SDK-Ubuntu](qualcomm-linux--Robotics-SDK-Ubuntu.svg)
+
+| From | Relationship | To | When it applies | Evidence |
+| --- | --- | --- | --- | --- |
+| qualcomm-linux/Robotics-SDK-Ubuntu | uses automation from | qualcomm/qcom-reusable-workflows | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/Robotics-SDK-Ubuntu/blob/adb07ba557a9ea72e631f2093ada213a037b5707/.github/workflows/qcom-preflight-checks.yml) |
+
+## Nearby repositories
+
+- [qualcomm-linux/Robotics-SDK-Ubuntu](https://github.com/qualcomm-linux/Robotics-SDK-Ubuntu) — Qualcomm Intelligent Robotics SDK (QIR SDK) for ubuntu
+- [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) — Qualcomm reusable workflows
+
+## Full ecosystem map
+
+Return to the [Qualcomm repository map](https://github.com/devdocsorg/qualcomm-repository-map) for the wider ecosystem,
+other nearby views, and the locally browsable site. Relationship claims apply to
+the linked evidence revisions; use release-compatible revisions for a build.
+
+Generated from `data/repositories.json` (SHA-256 `602a68056238817dccee9f98db5c06ea20d0bb165a53a0c23ff2d0423240dfca`).
+Edit the shared dataset and regenerate this view to change relationships.
+
+[Back to the ecosystem overview](OVERVIEW.md).
+
+[Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md).

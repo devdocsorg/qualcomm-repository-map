@@ -1,0 +1,24 @@
+# Repository map: qualcomm-linux/trusted-firmware-a
+
+**You are here:** `qualcomm-linux/trusted-firmware-a`. This view shows recorded nearby repositories, including
+both incoming and outgoing relationships. Dashed lines mean optional or indirect
+relationships; the table states when each connection applies.
+
+![Nearby repositories for qualcomm-linux/trusted-firmware-a](qualcomm-linux--trusted-firmware-a.svg)
+
+No reviewed relationships are recorded yet. This does not establish independence.
+
+## Nearby repositories
+
+- [qualcomm-linux/trusted-firmware-a](https://github.com/qualcomm-linux/trusted-firmware-a) — Qualcomm upstream staging repo for Trusted Firmware-A
+
+## Full ecosystem map
+
+Return to the [Qualcomm repository map](https://github.com/devdocsorg/qualcomm-repository-map) for the wider ecosystem,
+other nearby views, and the locally browsable site. Relationship claims apply to
+the linked evidence revisions; use release-compatible revisions for a build.
+
+Generated from `data/repositories.json` (SHA-256 `602a68056238817dccee9f98db5c06ea20d0bb165a53a0c23ff2d0423240dfca`).
+Edit the shared dataset and regenerate this view to change relationships.
+
+[Back to the ecosystem overview](OVERVIEW.md).

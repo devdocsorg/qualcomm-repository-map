@@ -1,0 +1,33 @@
+# Repository map: qualcomm-linux/qcom-deb-images
+
+**You are here:** `qualcomm-linux/qcom-deb-images`. This view shows recorded nearby repositories, including
+both incoming and outgoing relationships. Dashed lines mean optional or indirect
+relationships; the table states when each connection applies.
+
+![Nearby repositories for qualcomm-linux/qcom-deb-images](qualcomm-linux--qcom-deb-images.svg)
+
+| From | Relationship | To | When it applies | Evidence |
+| --- | --- | --- | --- | --- |
+| qualcomm-linux/qcom-deb-images | uses automation from | qualcomm-linux/upload-private-artifact-action | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/build-overlay-deb.yml) · [2](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/debos.yml) · [3](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/debos.yml) · [4](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/linux.yml) · [5](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/u-boot.yml) |
+| qualcomm-linux/qcom-deb-images | uses automation from | qualcomm/qcom-reusable-workflows | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/qcom-preflight-checks.yml) |
+
+## Nearby repositories
+
+- [qualcomm-linux/qcom-deb-images](https://github.com/qualcomm-linux/qcom-deb-images) — Qualcomm Linux Debian build scripts
+- [qualcomm-linux/upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action) — An action for use in qualcomm-linux projects that need to publish CI artifacts that aren't cleared for public distribution.
+- [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) — Qualcomm reusable workflows
+
+## Full ecosystem map
+
+Return to the [Qualcomm repository map](https://github.com/devdocsorg/qualcomm-repository-map) for the wider ecosystem,
+other nearby views, and the locally browsable site. Relationship claims apply to
+the linked evidence revisions; use release-compatible revisions for a build.
+
+Generated from `data/repositories.json` (SHA-256 `602a68056238817dccee9f98db5c06ea20d0bb165a53a0c23ff2d0423240dfca`).
+Edit the shared dataset and regenerate this view to change relationships.
+
+[Back to the ecosystem overview](OVERVIEW.md).
+
+[Explore qualcomm-linux/upload-private-artifact-action](qualcomm-linux--upload-private-artifact-action.md).
+
+[Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md).

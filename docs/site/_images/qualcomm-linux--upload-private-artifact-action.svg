@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1620" role="img" aria-labelledby="title desc">
+<title id="title">Repository neighbourhood: qualcomm-linux/upload-private-artifact-action</title>
+<desc id="desc">The highlighted repository is your current location. Arrows follow the direction of each labelled relationship. The accompanying table provides applicability and evidence.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#48617a"/></marker></defs>
+<rect width="1080" height="100%" rx="14" fill="#f6f8fc"/>
+<g font-family="sans-serif" font-size="15" fill="#182c43">
+<rect x="20" y="758.0" width="370" height="104" rx="12" fill="#dbeafe" stroke="#1554ae" stroke-width="3"/>
+<text x="40" y="792.0" font-weight="bold" fill="#1554ae">YOU ARE HERE</text>
+<text x="40" y="820.0">qualcomm-linux/upload-private-</text>
+<text x="40" y="840.0">artifact-action</text>
+<path d="M 390 810.0 C 480 810.0, 500 95.0, 680 95.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="68.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="84.0" font-size="13">uses automation from</text>
+<rect x="680" y="60" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="89">qualcomm-linux/aiml-container-test</text>
+<path d="M 390 810.0 C 480 810.0, 500 225.0, 680 225.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="198.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="214.0" font-size="13">uses automation from</text>
+<rect x="680" y="190" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="219">qualcomm-linux/awstest-meta-qcom</text>
+<path d="M 390 810.0 C 480 810.0, 500 355.0, 680 355.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="328.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="344.0" font-size="13">uses automation from</text>
+<rect x="680" y="320" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="349">qualcomm-linux/meta-qcom</text>
+<path d="M 390 810.0 C 480 810.0, 500 485.0, 680 485.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="458.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="474.0" font-size="13">uses automation from</text>
+<rect x="680" y="450" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="479">qualcomm-linux/meta-qcom-distro</text>
+<path d="M 390 810.0 C 480 810.0, 500 615.0, 680 615.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="588.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="604.0" font-size="13">uses automation from</text>
+<rect x="680" y="580" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="609">qualcomm-linux/meta-qcom-robotics-sdk</text>
+<path d="M 390 810.0 C 480 810.0, 500 745.0, 680 745.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="718.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="734.0" font-size="13">uses automation from</text>
+<rect x="680" y="710" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="739">qualcomm-linux/pkg-linux-qcom</text>
+<path d="M 390 810.0 C 480 810.0, 500 875.0, 680 875.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="848.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="864.0" font-size="13">uses automation from</text>
+<rect x="680" y="840" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="869">qualcomm-linux/qcom-deb-images</text>
+<path d="M 390 810.0 C 480 810.0, 500 1005.0, 680 1005.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="978.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="994.0" font-size="13">uses automation from</text>
+<rect x="680" y="970" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="999">qualcomm-linux/qcom-rpm-utils</text>
+<path d="M 390 810.0 C 480 810.0, 500 1135.0, 680 1135.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1108.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1124.0" font-size="13">uses automation from</text>
+<rect x="680" y="1100" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1129">qualcomm-linux/qli-ci</text>
+<path d="M 390 810.0 C 480 810.0, 500 1265.0, 680 1265.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1238.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1254.0" font-size="13">uses automation from</text>
+<rect x="680" y="1230" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1259">qualcomm-linux/rpm-images</text>
+<path d="M 390 810.0 C 480 810.0, 500 1395.0, 680 1395.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1368.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1384.0" font-size="13">uses automation from</text>
+<rect x="680" y="1360" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1389">qualcomm-linux/ubuntu-qcom-kernel</text>
+<path d="M 390 810.0 C 480 810.0, 500 1525.0, 680 1525.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="443" y="1498.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1514.0" font-size="13">uses automation from</text>
+<rect x="680" y="1490" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
+<text x="698" y="1519">qualcomm/qcom-reusable-workflows</text>
+</g></svg>

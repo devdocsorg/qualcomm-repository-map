@@ -1,0 +1,50 @@
+# Repository map: qualcomm-linux/kernel-config
+
+**You are here:** `qualcomm-linux/kernel-config`. This view shows recorded nearby repositories, including
+both incoming and outgoing relationships. Dashed lines mean optional or indirect
+relationships; the table states when each connection applies.
+
+![Nearby repositories for qualcomm-linux/kernel-config](qualcomm-linux--kernel-config.svg)
+
+| From | Relationship | To | When it applies | Evidence |
+| --- | --- | --- | --- | --- |
+| qualcomm-linux/kernel-checkers | uses automation from | qualcomm-linux/kernel-config | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/kernel-checkers/blob/23c35b0e159903b2f69ec5d11f5b6e5dcd493319/.github/workflows/checker.yml) |
+| qualcomm-linux/kernel-config | configures | qualcomm-linux/automerge | qcom-next integration configuration. | [1](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/README) |
+| qualcomm-linux/kernel-config | selects branches from | qualcomm-linux/kernel | qcom-next.conf names baseline and topic branches. | [1](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/qcom-next.conf) |
+| qualcomm-linux/kernel-config | uses automation from | qualcomm-linux/kernel-checkers | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/.github/workflows/kernel_checker.yml) |
+| qualcomm-linux/kernel-config | selects branches from | qualcomm-linux/kernel-topics | qcom-next.conf names baseline and topic branches. | [1](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/qcom-next.conf) |
+| qualcomm-linux/kernel-config | uses automation from | qualcomm/commit-emails-check-action | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/.github/workflows/email_checker.yml) |
+| qualcomm-linux/video-driver | uses automation from | qualcomm-linux/kernel-config | GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency. | [1](https://github.com/qualcomm-linux/video-driver/blob/269addefac0f3378a152cd2cfca18b83103e9300/.github/workflows/owl_build.yml) · [2](https://github.com/qualcomm-linux/video-driver/blob/269addefac0f3378a152cd2cfca18b83103e9300/.github/workflows/sync-and-build.yml) · [3](https://github.com/qualcomm-linux/video-driver/blob/269addefac0f3378a152cd2cfca18b83103e9300/.github/workflows/test.yml) |
+
+## Nearby repositories
+
+- [qualcomm-linux/automerge](https://github.com/qualcomm-linux/automerge) — Tools to manage creation of qcom-next from the topic branches
+- [qualcomm-linux/kernel](https://github.com/qualcomm-linux/kernel) — Linux Kernel for QLI mainline
+- [qualcomm-linux/kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers) — Checker tests kernel patches for correctness by running a suite of tests.
+- [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) — Configuration data to create qcom-next from the tech topic branches
+- [qualcomm-linux/kernel-topics](https://github.com/qualcomm-linux/kernel-topics) — Tech Topic Branches for QLI mainline
+- [qualcomm-linux/video-driver](https://github.com/qualcomm-linux/video-driver) — Repository purpose needs review; open the repository for its maintained documentation.
+- [qualcomm/commit-emails-check-action](https://github.com/qualcomm/commit-emails-check-action) — GitHub action for checking email addresses in PR/Push commits
+
+## Full ecosystem map
+
+Return to the [Qualcomm repository map](https://github.com/devdocsorg/qualcomm-repository-map) for the wider ecosystem,
+other nearby views, and the locally browsable site. Relationship claims apply to
+the linked evidence revisions; use release-compatible revisions for a build.
+
+Generated from `data/repositories.json` (SHA-256 `602a68056238817dccee9f98db5c06ea20d0bb165a53a0c23ff2d0423240dfca`).
+Edit the shared dataset and regenerate this view to change relationships.
+
+[Back to the ecosystem overview](OVERVIEW.md).
+
+[Explore qualcomm-linux/automerge](qualcomm-linux--automerge.md).
+
+[Explore qualcomm-linux/kernel](qualcomm-linux--kernel.md).
+
+[Explore qualcomm-linux/kernel-checkers](qualcomm-linux--kernel-checkers.md).
+
+[Explore qualcomm-linux/kernel-topics](qualcomm-linux--kernel-topics.md).
+
+[Explore qualcomm-linux/video-driver](qualcomm-linux--video-driver.md).
+
+[Explore qualcomm/commit-emails-check-action](qualcomm--commit-emails-check-action.md).
