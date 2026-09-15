@@ -15,6 +15,18 @@ The initial inventory covers public `qualcomm-linux` repositories and reviewed
 neighbouring upstreams. The map reports which repositories have reviewed
 connections. An absent connection does not prove independence.
 
+## Map pathways
+
+The site provides the full inventory, connection evidence, and nearby views.
+These generated diagrams give entry points into software and build relationships;
+shared automation connections are also recorded in the site tables.
+
+![Qualcomm layer and source relationships](docs/site/_images/qualcomm-linux--meta-qcom.svg)
+
+![Kernel integration relationships](docs/site/_images/qualcomm-linux--kernel-config.svg)
+
+![Package source relationship](docs/site/_images/qualcomm-linux--pkg-kgsl.svg)
+
 ## Contribute
 
 [Contributor setup](docs/source/contributing/DEVELOPMENT.md) explains editing the

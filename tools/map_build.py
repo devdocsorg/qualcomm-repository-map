@@ -95,6 +95,21 @@ def nearby(data: dict, focus: str) -> tuple[list[dict], list[dict]]:
     return [nodes[key] for key in sorted(selected)], sorted(edges, key=str)
 
 
+def diagram_selection(data: dict, focus: str) -> tuple[list[dict], list[dict]]:
+    """Choose software relationships for a diagram, or automation when those are all recorded.
+
+    :param data: Validated dataset containing every relationship type.
+    :param focus: Current repository identifier.
+    :returns: Diagram nodes and edges; the accompanying table still lists all types.
+
+    Example: ``diagram_selection(load_data(DATA), 'qualcomm-linux/meta-qcom-3rdparty')`` highlights layers and firmware.
+    """
+    software = dict(data, relationships=[edge for edge in data['relationships']
+                                        if edge['kind'] != 'uses automation from'])
+    selected = nearby(software, focus)
+    return selected if selected[1] else nearby(data, focus)
+
+
 def diagram(nodes: list[dict], edges: list[dict], focus: str) -> str:
     """Render an accessible SVG showing directed relationships around one repo.
 
@@ -168,7 +183,7 @@ def render_view(data: dict, focus: str, image_name: str, digest: str, revision: 
     """
     nodes, edges = nearby(data, focus)
     central = 'https://github.com/devdocsorg/qualcomm-repository-map'
-    text = f'# Repository map: {focus}\n\n**You are here:** `{focus}`. This view shows recorded nearby repositories, including\nboth incoming and outgoing relationships. Dashed lines mean optional or indirect\nrelationships; the table states when each connection applies.\n\n![Nearby repositories for {focus}]({image_name})\n\n'
+    text = f'# Repository map: {focus}\n\n**You are here:** `{focus}`. This view shows recorded nearby repositories, including\nboth incoming and outgoing relationships. The diagram prioritises software/build\nconnections when present; the table also records shared automation. Dashed lines mean optional or indirect\nrelationships; the table states when each connection applies.\n\n![Nearby repositories for {focus}]({image_name})\n\n'
     text += relation_table(edges) if edges else 'No reviewed relationships are recorded yet. This does not establish independence.\n'
     text += '\n## Nearby repositories\n\n'
     for node in nodes:
@@ -222,7 +237,7 @@ def build(data: dict, digest: str) -> None:
     (OUTPUT/'OVERVIEW.md').write_text(re.sub(r'\n{3,}', '\n\n', overview))
     for node in nodes:
         focus=node['id']; name=slug(focus)
-        (OUTPUT/f'{name}.svg').write_text(diagram(*nearby(data,focus),focus))
+        (OUTPUT/f'{name}.svg').write_text(diagram(*diagram_selection(data,focus),focus))
         page=render_view(data,focus,f'{name}.svg',digest)
         page+='\n[Back to the ecosystem overview](OVERVIEW.md).\n'
         neighbours,_=nearby(data,focus)
@@ -254,7 +269,7 @@ def main() -> None:
         subprocess.run(["git", "diff", "--exit-code", args.revision, "--", "data", "tools"], cwd=ROOT, check=True)
         nodes,edges=nearby(data,args.export)
         args.destination.mkdir(parents=True,exist_ok=True)
-        (args.destination/'repository-map.svg').write_text(diagram(nodes,edges,args.export))
+        (args.destination/'repository-map.svg').write_text(diagram(*diagram_selection(data,args.export),args.export))
         (args.destination/'REPOSITORY_MAP.md').write_text(render_view(data,args.export,'repository-map.svg',digest,args.revision))
         print(f'Exported {args.export}: {len(nodes)} repositories, {len(edges)} relationships')
     else:

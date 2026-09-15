@@ -1,7 +1,8 @@
 # Repository map: qualcomm-linux/meta-qcom
 
 **You are here:** `qualcomm-linux/meta-qcom`. This view shows recorded nearby repositories, including
-both incoming and outgoing relationships. Dashed lines mean optional or indirect
+both incoming and outgoing relationships. The diagram prioritises software/build
+connections when present; the table also records shared automation. Dashed lines mean optional or indirect
 relationships; the table states when each connection applies.
 
 ![Nearby repositories for qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.svg)

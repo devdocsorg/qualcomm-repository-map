@@ -1,94 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 2010" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1360" role="img" aria-labelledby="title desc">
 <title id="title">Repository neighbourhood: qualcomm-linux/meta-qcom</title>
 <desc id="desc">The highlighted repository is your current location. Arrows follow the direction of each labelled relationship. The accompanying table provides applicability and evidence.</desc>
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#48617a"/></marker></defs>
 <rect width="1080" height="100%" rx="14" fill="#f6f8fc"/>
 <g font-family="sans-serif" font-size="15" fill="#182c43">
-<rect x="20" y="953.0" width="370" height="104" rx="12" fill="#dbeafe" stroke="#1554ae" stroke-width="3"/>
-<text x="40" y="987.0" font-weight="bold" fill="#1554ae">YOU ARE HERE</text>
-<text x="40" y="1015.0">qualcomm-linux/meta-qcom</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 95.0, 680 95.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<rect x="20" y="628.0" width="370" height="104" rx="12" fill="#dbeafe" stroke="#1554ae" stroke-width="3"/>
+<text x="40" y="662.0" font-weight="bold" fill="#1554ae">YOU ARE HERE</text>
+<text x="40" y="690.0">qualcomm-linux/meta-qcom</text>
+<path d="M 390 680.0 C 480 680.0, 500 95.0, 680 95.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
 <rect x="443" y="68.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
 <text x="450" y="84.0" font-size="13">selects for distro</text>
 <rect x="680" y="60" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
 <text x="698" y="89">AudioReach/meta-audioreach</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 225.0, 680 225.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 390 680.0 C 480 680.0, 500 225.0, 680 225.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
 <rect x="443" y="198.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
 <text x="450" y="214.0" font-size="13">builds with</text>
 <rect x="680" y="190" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
 <text x="698" y="219">openembedded/bitbake</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 355.0, 680 355.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<path d="M 390 680.0 C 480 680.0, 500 355.0, 680 355.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
 <rect x="443" y="328.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
 <text x="450" y="344.0" font-size="13">selects for distro</text>
 <rect x="680" y="320" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
 <text x="698" y="349">openembedded/meta-openembedded</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 485.0, 680 485.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 390 680.0 C 480 680.0, 500 485.0, 680 485.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
 <rect x="443" y="458.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
 <text x="450" y="474.0" font-size="13">builds with</text>
 <rect x="680" y="450" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
 <text x="698" y="479">openembedded/openembedded-core</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 615.0, 680 615.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 390 680.0 C 480 680.0, 500 615.0, 680 615.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
 <rect x="443" y="588.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="604.0" font-size="13">uses automation from</text>
+<text x="450" y="604.0" font-size="13">fetches source from</text>
 <rect x="680" y="580" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="609">qualcomm-linux/github-action-matrix-</text>
-<text x="698" y="629">outputs-read</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 745.0, 680 745.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="698" y="609">qualcomm-linux/kernel</text>
+<path d="M 390 680.0 C 480 680.0, 500 745.0, 680 745.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
 <rect x="443" y="718.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="734.0" font-size="13">uses automation from</text>
+<text x="450" y="734.0" font-size="13">selects for distro</text>
 <rect x="680" y="710" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="739">qualcomm-linux/github-action-matrix-</text>
-<text x="698" y="759">outputs-write</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 875.0, 680 875.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="698" y="739">qualcomm-linux/meta-ai</text>
+<path d="M 390 680.0 C 480 680.0, 500 875.0, 680 875.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
 <rect x="443" y="848.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="864.0" font-size="13">fetches source from</text>
+<text x="450" y="864.0" font-size="13">depends on</text>
 <rect x="680" y="840" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="869">qualcomm-linux/kernel</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 1005.0, 680 1005.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
+<text x="698" y="869">qualcomm-linux/meta-qcom-3rdparty</text>
+<path d="M 390 680.0 C 480 680.0, 500 1005.0, 680 1005.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
 <rect x="443" y="978.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
 <text x="450" y="994.0" font-size="13">selects for distro</text>
 <rect x="680" y="970" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="999">qualcomm-linux/meta-ai</text>
-<path d="M 390 994.0 C 480 994.0, 500 1124.0, 680 1124.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
-<rect x="443" y="1097.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="1113.0" font-size="13">depends on</text>
-<path d="M 390 1016.0 C 480 1016.0, 500 1146.0, 680 1146.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
-<rect x="443" y="1119.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="1135.0" font-size="13">uses automation from</text>
+<text x="698" y="999">qualcomm-linux/meta-qcom-distro</text>
+<path d="M 390 680.0 C 480 680.0, 500 1135.0, 680 1135.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<rect x="443" y="1108.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
+<text x="450" y="1124.0" font-size="13">pins release of</text>
 <rect x="680" y="1100" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="1129">qualcomm-linux/meta-qcom-3rdparty</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 1265.0, 680 1265.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
+<text x="698" y="1129">qualcomm-linux/meta-qcom-releases</text>
+<path d="M 390 680.0 C 480 680.0, 500 1265.0, 680 1265.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
 <rect x="443" y="1238.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="1254.0" font-size="13">uses automation from</text>
+<text x="450" y="1254.0" font-size="13">fetches source from</text>
 <rect x="680" y="1230" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="1259">qualcomm-linux/meta-qcom-arduino</text>
-<path d="M 390 994.0 C 480 994.0, 500 1384.0, 680 1384.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 4"/>
-<rect x="443" y="1357.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="1373.0" font-size="13">selects for distro</text>
-<path d="M 390 1016.0 C 480 1016.0, 500 1406.0, 680 1406.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
-<rect x="443" y="1379.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="1395.0" font-size="13">uses automation from</text>
-<rect x="680" y="1360" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="1389">qualcomm-linux/meta-qcom-distro</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 1525.0, 680 1525.0" fill="none" stroke="#48617a" stroke-width="2" marker-start="url(#arrow)"/>
-<rect x="443" y="1498.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="1514.0" font-size="13">pins release of</text>
-<rect x="680" y="1490" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="1519">qualcomm-linux/meta-qcom-releases</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 1655.0, 680 1655.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="443" y="1628.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="1644.0" font-size="13">fetches source from</text>
-<rect x="680" y="1620" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="1649">qualcomm-linux/qcom-ptool</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 1785.0, 680 1785.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="443" y="1758.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="1774.0" font-size="13">uses automation from</text>
-<rect x="680" y="1750" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="1779">qualcomm-linux/upload-private-</text>
-<text x="698" y="1799">artifact-action</text>
-<path d="M 390 1005.0 C 480 1005.0, 500 1915.0, 680 1915.0" fill="none" stroke="#48617a" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="443" y="1888.0" width="218" height="22" rx="4" fill="#f6f8fc"/>
-<text x="450" y="1904.0" font-size="13">uses automation from</text>
-<rect x="680" y="1880" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>
-<text x="698" y="1909">qualcomm/qcom-reusable-workflows</text>
+<text x="698" y="1259">qualcomm-linux/qcom-ptool</text>
 </g></svg>
