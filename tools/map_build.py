@@ -1,6 +1,6 @@
 """Generate the Qualcomm ecosystem overview and nearby repository views.
 
-The JSON dataset owns repository facts. Markdown, SVG, and exported nearby views
+The JSON dataset owns repository facts. Linked Markdown, HTML, and exported nearby views
 are derived outputs. The generator runs without network access.
 """
 from __future__ import annotations
@@ -11,12 +11,13 @@ import html
 import json
 import re
 import subprocess
-import textwrap
+from markdown_it import MarkdownIt
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/repositories.json"
-OUTPUT = ROOT / "docs/source/.generated"
+OUTPUT = ROOT / "maps"
+CENTRAL = "https://github.com/devdocsorg/qualcomm-repository-map"
 KINDS = {"depends on", "integrates with", "fetches source from", "uses indirectly",
          "builds with", "selects for distro", "pins release of", "configures",
          "selects branches from", "packages", "runs workflow from", "uses automation from"}
@@ -95,187 +96,138 @@ def nearby(data: dict, focus: str) -> tuple[list[dict], list[dict]]:
     return [nodes[key] for key in sorted(selected)], sorted(edges, key=str)
 
 
-def diagram_selection(data: dict, focus: str) -> tuple[list[dict], list[dict]]:
-    """Choose software relationships for a diagram, or automation when those are all recorded.
 
-    :param data: Validated dataset containing every relationship type.
-    :param focus: Current repository identifier.
-    :returns: Diagram nodes and edges; the accompanying table still lists all types.
+def repo_link(node: dict) -> str:
+    """Return a Markdown link to the canonical repository URL."""
+    return f"[{node['id']}]({node['url']})"
 
-    Example: ``diagram_selection(load_data(DATA), 'qualcomm-linux/meta-qcom-3rdparty')`` highlights layers and firmware.
+
+def connections(data: dict, focus: str, explore_prefix: str) -> str:
+    """Render incoming and outgoing connections as linked, labelled lists.
+
+    Every repository name links to its source repository. Adjacent neighbourhood
+    links let readers move through the map; evidence retains each applicability.
     """
-    software = dict(data, relationships=[edge for edge in data['relationships']
-                                        if edge['kind'] != 'uses automation from'])
-    selected = nearby(software, focus)
-    return selected if selected[1] else nearby(data, focus)
+    nodes = {node['id']: node for node in data['repositories']}
+    _, edges = nearby(data, focus)
+    if not edges:
+        return 'No reviewed connections recorded. This does not establish independence.\n'
+    result = ''
+    for direction in ('Outgoing', 'Incoming'):
+        selected = [e for e in edges if e['from' if direction == 'Outgoing' else 'to'] == focus]
+        if not selected:
+            continue
+        result += f'### {direction} connections\n\n'
+        for kind in sorted({e['kind'] for e in selected}):
+            result += f'**{kind.capitalize()}**' + (' (repositories using this one)' if direction == 'Incoming' else '') + '\n\n'
+            for edge in selected:
+                other = edge['to' if direction == 'Outgoing' else 'from']
+                proofs = ' · '.join(f"[evidence {i+1}]({proof['url']})" for i, proof in enumerate(edge['evidence']))
+                result += f"- {repo_link(nodes[edge['from']])} → **{kind}** → {repo_link(nodes[edge['to']])}\n"
+                result += f"  - {edge['condition']}\n"
+                result += f"  - [Explore {other}]({explore_prefix}{slug(other)}.md) · {proofs}\n"
+            result += '\n'
+    return result
 
 
-def diagram(nodes: list[dict], edges: list[dict], focus: str) -> str:
-    """Render an accessible SVG showing directed relationships around one repo.
-
-    :param nodes: Selected repository records.
-    :param edges: Incident relationship records.
-    :param focus: Identifier to highlight as the reader's current repository.
-    :returns: Self-contained SVG text with labels and no external assets.
-
-    Example: ``diagram(*nearby(load_data(DATA), 'qualcomm-linux/meta-qcom'), 'qualcomm-linux/meta-qcom')``.
-    """
-    neighbours = [n for n in nodes if n["id"] != focus]
-    height = max(240, len(neighbours) * 130 + 60)
-    centre = height / 2
-    out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 {height}" role="img" aria-labelledby="title desc">',
-           f'<title id="title">Repository neighbourhood: {html.escape(focus)}</title>',
-           '<desc id="desc">The highlighted repository is your current location. Arrows follow the direction of each labelled relationship. The accompanying table provides applicability and evidence.</desc>',
-           '<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#48617a"/></marker></defs>',
-           '<rect width="1080" height="100%" rx="14" fill="#f6f8fc"/>',
-           '<g font-family="sans-serif" font-size="15" fill="#182c43">',
-           f'<rect x="20" y="{centre-52}" width="370" height="104" rx="12" fill="#dbeafe" stroke="#1554ae" stroke-width="3"/>',
-           f'<text x="40" y="{centre-18}" font-weight="bold" fill="#1554ae">YOU ARE HERE</text>']
-    for i, line in enumerate(textwrap.wrap(focus, 36, break_long_words=False)):
-        out.append(f'<text x="40" y="{centre+10+i*20}">{html.escape(line)}</text>')
-    for i, node in enumerate(neighbours):
-        y = 60 + i * 130
-        incident = [e for e in edges if node["id"] in (e["from"], e["to"])]
-        for j, edge in enumerate(incident):
-            offset = (j - (len(incident)-1)/2) * 22
-            optional = edge["kind"] in {"integrates with", "selects for distro", "uses indirectly"}
-            dash = ' stroke-dasharray="6 4"' if optional else ''
-            marker = 'marker-end' if edge['from'] == focus else 'marker-start'
-            out.append(f'<path d="M 390 {centre+offset} C 480 {centre+offset}, 500 {y+35+offset}, 680 {y+35+offset}" fill="none" stroke="#48617a" stroke-width="2" {marker}="url(#arrow)"{dash}/>')
-            out.append(f'<rect x="443" y="{y+8+offset}" width="218" height="22" rx="4" fill="#f6f8fc"/>')
-            out.append(f'<text x="450" y="{y+24+offset}" font-size="13">{html.escape(edge["kind"])}</text>')
-        out.append(f'<rect x="680" y="{y}" width="380" height="76" rx="10" fill="white" stroke="#a3b3c5"/>')
-        for j, line in enumerate(textwrap.wrap(node['id'], 38, break_long_words=False)):
-            out.append(f'<text x="698" y="{y+29+j*20}">{html.escape(line)}</text>')
-    if not neighbours:
-        out.append('<text x="450" y="130">No reviewed relationships recorded.</text>')
-    out.append('</g></svg>')
-    return '\n'.join(out)+'\n'
-
-
-def relation_table(edges: list[dict]) -> str:
-    """Format direction, applicability, and source evidence for relationships.
-
-    :param edges: Validated relationship records.
-    :returns: Markdown table with one row per relationship.
-
-    Example: ``relation_table([])`` returns a table header with no data rows.
-    """
-    lines = ['| From | Relationship | To | When it applies | Evidence |', '| --- | --- | --- | --- | --- |']
-    for edge in edges:
-        proofs = ' · '.join(f"[{index+1}]({proof['url']})" for index, proof in enumerate(edge['evidence']))
-        values = [edge['from'], edge['kind'], edge['to'], edge['condition'], proofs]
-        lines.append('| ' + ' | '.join(v.replace('|','\\|').replace('\n',' ') for v in values) + ' |')
-    return '\n'.join(lines)+'\n'
-
-
-def render_view(data: dict, focus: str, image_name: str, digest: str, revision: str | None = None) -> str:
-    """Generate a nearby view from the shared data, including revision provenance.
-
-    :param data: Validated dataset.
-    :param focus: Current repository identifier.
-    :param image_name: Relative SVG filename beside this Markdown page.
-    :param digest: SHA-256 of the source dataset.
-    :param revision: Optional central repository commit used by an exported view.
-    :returns: Markdown guide with a map, relationship evidence, and navigation.
-
-    Example: ``render_view(load_data(DATA), 'qualcomm-linux/meta-qcom-3rdparty', 'map.svg', 'digest')``.
-    """
-    nodes, edges = nearby(data, focus)
-    central = 'https://github.com/devdocsorg/qualcomm-repository-map'
-    text = f'# Repository map: {focus}\n\n**You are here:** `{focus}`. This view shows recorded nearby repositories, including\nboth incoming and outgoing relationships. The diagram prioritises software/build\nconnections when present; the table also records shared automation. Dashed lines mean optional or indirect\nrelationships; the table states when each connection applies.\n\n![Nearby repositories for {focus}]({image_name})\n\n'
-    text += relation_table(edges) if edges else 'No reviewed relationships are recorded yet. This does not establish independence.\n'
-    text += '\n## Nearby repositories\n\n'
-    for node in nodes:
-        description = re.sub(r"(https?://[^\s)]+)", r"<\1>", node['description'].strip())
-        text += f"- [{node['id']}]({node['url']}) — {description}\n"
-    text += f'\n## Full ecosystem map\n\nReturn to the [Qualcomm repository map]({central}) for the wider ecosystem,\nother nearby views, and the locally browsable site. Relationship claims apply to\nthe linked evidence revisions; use release-compatible revisions for a build.\n'
-    text += f'\nGenerated from `data/repositories.json` (SHA-256 `{digest}`).\n'
+def render_view(data: dict, focus: str, digest: str, revision: str | None = None) -> str:
+    """Generate a linked nearby view, with provenance for exported snapshots."""
+    nodes, _ = nearby(data, focus)
+    node = next(node for node in nodes if node['id'] == focus)
+    prefix = f'{CENTRAL}/blob/{revision}/maps/' if revision else ''
+    result = f'# Repository map: {focus}\n\n**You are here: {repo_link(node)}**\n\n'
+    result += node['description'] + '\n\n'
+    result += connections(data, focus, prefix)
+    overview = CENTRAL if revision else '../README.md'
+    result += f'## Full ecosystem map\n\n[Explore the Qualcomm repository map]({overview}).\n\n'
     if revision:
-        text += f'Source: [central map revision `{revision[:12]}`]({central}/tree/{revision}).\n'
-    text += 'Edit the shared dataset and regenerate this view to change relationships.\n'
-    return text
+        result += 'The shared map is private and requires repository access. The repository and evidence links above point directly to their public sources.\n\n'
+    result += 'Connections apply to the linked evidence revisions; use release-compatible revisions for a build.\n\n'
+    result += f'Dataset SHA-256: `{digest}`.\n'
+    if revision:
+        result += f'Generated from [central map revision `{revision[:12]}`]({CENTRAL}/tree/{revision}). Edit the shared dataset and regenerate to change connections.\n'
+    return result
+
+
+def html_page(markdown: str, title: str) -> str:
+    """Render the same linked map as standalone HTML for direct file browsing."""
+    body = MarkdownIt('commonmark').render(markdown)
+    body = re.sub(r'href="(?!https?://)([^"#]+)\.md"',
+                  lambda match: 'href="' + ('../index' if match[1] == '../README' else match[1]) + '.html"', body)
+    return ('<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
+            '<meta name="viewport" content="width=device-width,initial-scale=1">'
+            f'<title>{html.escape(title)}</title><style>'
+            'body{font:17px/1.6 system-ui,sans-serif;max-width:1000px;margin:2rem auto;padding:0 1.5rem;color:#182c43;background:#fff}'
+            'a{color:#0752a0;text-underline-offset:.18em}a:hover{color:#733cab}a:focus-visible{outline:3px solid #b87b00}'
+            'h1{font-size:1.8rem;overflow-wrap:anywhere}h2{margin-top:2.5rem;border-bottom:1px solid #cbd5e1}'
+            'li{margin:.5rem 0}li li{font-size:.9rem;color:#43546a}code{overflow-wrap:anywhere}'
+            '</style></head><body><main>' + body + '</main></body></html>\n')
 
 
 def build(data: dict, digest: str) -> None:
-    """Generate the overview and every repository's nearby Markdown/SVG pair.
-
-    :param data: Validated dataset.
-    :param digest: SHA-256 identifying the dataset used for generated views.
-    :returns: None; writes deterministic output under ``docs/source/.generated``.
-    :raises OSError: If generated files cannot be written.
-
-    Example: ``build(load_data(DATA), hashlib.sha256(DATA.read_bytes()).hexdigest())``.
-    """
+    """Generate the root map and linked nearby pages from the sole dataset."""
     OUTPUT.mkdir(exist_ok=True)
     for old in OUTPUT.iterdir():
-        if old.suffix in {'.md', '.svg'}:
+        if old.suffix in {'.md', '.html'}:
             old.unlink()
-    nodes = sorted(data['repositories'], key=lambda n: n['id'])
-    edges = data['relationships']
-    connected = {e[end] for e in edges for end in ('from','to')}
-    overview = '# Qualcomm repository ecosystem\n\n' + data['scope'] + '\n\n'
-    overview += f"**Coverage:** {len(nodes)} repositories in the inventory, {len(connected)} with reviewed relationships, and {len(edges)} evidenced connections.\n\n{data['coverage']}\n\n"
-    overview += 'Start with a view below, then follow repository links to explore its neighbours.\n\n'
-    for focus in ['qualcomm-linux/meta-qcom','qualcomm-linux/meta-qcom-3rdparty','qualcomm-linux/kernel-config','qualcomm-linux/pkg-kgsl','qualcomm-linux/pkg-gbm-msm-backend']:
-        overview += f'- [{focus}]({slug(focus)}.md)\n'
-    overview += '\n## Connected pathways\n\nEach diagram highlights one starting repository. The nearby pages supply branch\nconditions and evidence for every arrow.\n\n'
-    for focus in ['qualcomm-linux/meta-qcom','qualcomm-linux/kernel-config','qualcomm-linux/pkg-kgsl']:
-        overview += f'### {focus}\n\n[Explore this area]({slug(focus)}.md)\n\n![{focus} relationships]({slug(focus)}.svg)\n\n'
-    overview += '\n## Repository inventory\n\nGroups organise browsing; they are not dependency claims. Repository names link\nto nearby views, which link to the original repository and evidence.\n\n'
-    for group in sorted({n['group'] for n in nodes}):
-        overview += f'### {group}\n\n| Repository | Relationship coverage |\n| --- | --- |\n'
+    nodes = sorted(data['repositories'], key=lambda node: node['id'])
+    connected = {edge[end] for edge in data['relationships'] for end in ('from', 'to')}
+    overview = '# Qualcomm repository map\n\n' + data['scope'] + '\n\n'
+    overview += f"**Coverage:** {len(nodes)} repositories, {len(connected)} with reviewed connections, {len(data['relationships'])} evidenced relationships.\n\n{data['coverage']}\n\n"
+    overview += 'Repository names open the repository. **Explore** links move through its neighbourhood. Open `index.html` for local browsing without a server; external repository and evidence links need network access.\n\n'
+    overview += '## Connected repositories\n\n'
+    for focus in ('qualcomm-linux/meta-qcom', 'qualcomm-linux/meta-qcom-3rdparty', 'qualcomm-linux/kernel-config', 'qualcomm-linux/pkg-kgsl'):
+        overview += f'### [{focus}](https://github.com/{focus})\n\n'
+        _, edges = nearby(data, focus)
+        for edge in edges:
+            if edge['kind'] in {'uses automation from', 'runs workflow from'}:
+                continue
+            overview += f"- [{edge['from']}](https://github.com/{edge['from']}) → **{edge['kind']}** → [{edge['to']}](https://github.com/{edge['to']})\n"
+        overview += f'\n[Explore all connections, applicability, and evidence](maps/{slug(focus)}.md).\n\n'
+    overview += '## All repositories\n\nGroups organise browsing; they do not assert dependencies.\n\n'
+    for group in sorted({node['group'] for node in nodes}):
+        overview += f'### {group}\n\n'
         for node in nodes:
-            if node['group']==group:
-                state='Reviewed connections' if node['id'] in connected else 'Connections not yet reviewed'
-                if node['archived']:state+='; archived'
-                overview+=f"| [{node['id']}]({slug(node['id'])}.md) | {state} |\n"
-        overview+='\n'
-    overview += '## Relationship evidence\n\n'+relation_table(edges)
-    overview += '\n```{toctree}\n:hidden:\n\n'
-    overview += '\n'.join(slug(n['id']) for n in nodes)+'\n```\n'
-    (OUTPUT/'OVERVIEW.md').write_text(re.sub(r'\n{3,}', '\n\n', overview))
+            if node['group'] != group:
+                continue
+            state = '' if node['id'] in connected else ' · connections not yet reviewed'
+            if node['archived']:
+                state += ' · archived'
+            overview += f"- {repo_link(node)} · [Explore](maps/{slug(node['id'])}.md){state}\n"
+        overview += '\n'
+    overview += '[Map data and updates](data/README.md) · [Licence](LICENSE)\n'
+    (ROOT/'README.md').write_text(overview)
+    (ROOT/'index.html').write_text(html_page(overview, 'Qualcomm repository map'))
+    # Include the small maintenance note in the offline copy so every local link resolves.
+    (ROOT/'data/README.html').write_text(html_page((ROOT/'data/README.md').read_text(), 'Map data and updates'))
     for node in nodes:
-        focus=node['id']; name=slug(focus)
-        (OUTPUT/f'{name}.svg').write_text(diagram(*diagram_selection(data,focus),focus))
-        page=render_view(data,focus,f'{name}.svg',digest)
-        page+='\n[Back to the ecosystem overview](OVERVIEW.md).\n'
-        neighbours,_=nearby(data,focus)
-        for neighbour in neighbours:
-            if neighbour['id'] != focus:
-                page+=f"\n[Explore {neighbour['id']}]({slug(neighbour['id'])}.md).\n"
+        name = slug(node['id'])
+        page = render_view(data, node['id'], digest)
         (OUTPUT/f'{name}.md').write_text(page)
+        (OUTPUT/f'{name}.html').write_text(html_page(page, node['id']))
 
 
 def main() -> None:
-    """Build all views or export one nearby view into a repository's docs.
-
-    :returns: None; writes generated files and prints a coverage summary.
-    :raises SystemExit: For invalid command-line arguments.
-    :raises ValueError: For invalid source data or export revisions.
-
-    Example: ``python tools/map_build.py --export qualcomm-linux/meta-qcom-3rdparty --destination /tmp/nearby --revision <commit>``.
-    """
-    parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--export',help='Exact repository identifier to export')
-    parser.add_argument('--destination',type=Path,help='Directory receiving REPOSITORY_MAP.md and repository-map.svg')
-    parser.add_argument('--revision',help='Central map commit identifying the export source')
-    args=parser.parse_args()
-    data=load_data(DATA); digest=hashlib.sha256(DATA.read_bytes()).hexdigest()
+    """Build the map or export a nearby Markdown snapshot at a recorded commit."""
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--export', help='Exact repository identifier to export')
+    parser.add_argument('--destination', type=Path, help='Directory receiving REPOSITORY_MAP.md')
+    parser.add_argument('--revision', help='Central map commit identifying the export source')
+    args = parser.parse_args()
+    data = load_data(DATA)
+    digest = hashlib.sha256(DATA.read_bytes()).hexdigest()
     if args.export:
-        if args.destination is None or not args.revision or not re.fullmatch('[0-9a-f]{40}',args.revision):
+        if args.destination is None or not args.revision or not re.fullmatch('[0-9a-f]{40}', args.revision):
             parser.error('Export requires --destination and --revision with a full commit SHA')
-        subprocess.run(["git", "cat-file", "-e", args.revision + "^{commit}"], cwd=ROOT, check=True)
-        subprocess.run(["git", "diff", "--exit-code", args.revision, "--", "data", "tools"], cwd=ROOT, check=True)
-        nodes,edges=nearby(data,args.export)
-        args.destination.mkdir(parents=True,exist_ok=True)
-        (args.destination/'repository-map.svg').write_text(diagram(*diagram_selection(data,args.export),args.export))
-        (args.destination/'REPOSITORY_MAP.md').write_text(render_view(data,args.export,'repository-map.svg',digest,args.revision))
-        print(f'Exported {args.export}: {len(nodes)} repositories, {len(edges)} relationships')
+        subprocess.run(['git', 'cat-file', '-e', args.revision + '^{commit}'], cwd=ROOT, check=True)
+        subprocess.run(['git', 'diff', '--exit-code', args.revision, '--', 'data', 'tools'], cwd=ROOT, check=True)
+        args.destination.mkdir(parents=True, exist_ok=True)
+        (args.destination/'REPOSITORY_MAP.md').write_text(render_view(data, args.export, digest, args.revision))
+        print(f'Exported linked nearby map for {args.export}')
     else:
-        build(data,digest)
-        print(f"Generated {len(data['repositories'])} nearby views and {len(data['relationships'])} relationships")
+        build(data, digest)
+        print(f"Generated {len(data['repositories'])} linked nearby maps")
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()

@@ -3,7 +3,9 @@ import ast
 import copy
 import json
 import tempfile
-import sys
+import pydoc
+import re
+from urllib.parse import unquote, urlsplit
 from pathlib import Path
 
 import map_build
@@ -17,9 +19,16 @@ expected_neighbours = {'qualcomm-linux/meta-qcom', 'openembedded/openembedded-co
 assert expected_neighbours <= {node['id'] for node in nodes}
 assert len(edges) >= 5
 assert all(focus in (edge['from'], edge['to']) for edge in edges)
-assert map_build.diagram(nodes, edges, focus) == map_build.diagram(nodes, edges, focus)
-assert 'YOU ARE HERE' in map_build.diagram(nodes, edges, focus)
-assert 'stroke-dasharray' in map_build.diagram(nodes, edges, focus)
+view = map_build.render_view(data, focus, 'test-digest')
+assert '**You are here: [' in view
+assert '![' not in view and '<svg' not in view
+for edge in edges:
+    for endpoint in ('from', 'to'):
+        identifier = edge[endpoint]
+        assert f'[{identifier}](https://github.com/{identifier})' in view
+    assert edge['condition'] in view
+    for proof in edge['evidence']:
+        assert proof['url'] in view
 # Incoming edges must also appear when the user starts at a provider repository.
 provider_nodes, provider_edges = map_build.nearby(data, 'rubikpi-ai/boot-assets')
 assert len(provider_nodes) == 2 and provider_edges[0]['from'] == focus
@@ -44,13 +53,23 @@ for mutation in ('unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned'
         else:
             raise AssertionError(f'Invalid data accepted: {mutation}')
 
-reference = Path(sys.argv[1]).read_text() if len(sys.argv) > 1 else None
+reference = pydoc.plain(pydoc.render_doc(map_build))
 count = 0
 for source in sorted((map_build.ROOT/'tools').glob('*.py')):
     for node in ast.walk(ast.parse(source.read_text())):
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
             assert ast.get_docstring(node), f'Missing native docstring: {source.name}:{node.name}'
-            if reference is not None and source.name == 'map_build.py':
-                assert f'id="map_build.{node.name}"' in reference, f'Missing generated entry: {node.name}'
+            if source.name == 'map_build.py':
+                assert f'{node.name}(' in reference, f'Missing native pydoc entry: {node.name}'
             count += 1
 print(f'Map invariants and negative tests passed; {count} functions have native documentation')
+
+# Every generated local link must survive a checkout opened with file://.
+for page in [map_build.ROOT/'index.html', map_build.ROOT/'data/README.html', *map_build.OUTPUT.glob('*.html')]:
+    content = page.read_text()
+    assert not re.search(r'<(?:img|svg|script|iframe)\b', content), f'Unexpected picture or runtime: {page}'
+    for href in re.findall(r'href="([^"]+)"', content):
+        target = urlsplit(href)
+        if not target.scheme and target.path:
+            assert (page.parent/unquote(target.path)).is_file(), f'Broken local link: {page}: {href}'
+print('All map names are linked; local navigation and evidence preservation passed')

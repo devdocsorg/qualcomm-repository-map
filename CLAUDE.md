@@ -1,12 +1,9 @@
-# Qualcomm repository map
+# Map maintenance
 
-Read README.md and the contributor guides before changing the map. Keep verified
-repository facts and relationships in data/repositories.json. Every relationship
-needs a source URL pinned to a revision, its direction, type, and applicability.
-Do not infer dependencies from names, shared organisations, or a similar purpose.
+This private repository contains the Qualcomm repository map, its source data, and
+its generation tools. Keep the reader-facing content focused on repository links
+and verified relationships. Do not add a generic documentation-site scaffold.
 
-Generate the overview and nearby views with tools/map_build.py. Do not edit the
-generated Markdown, SVGs, or site by hand. Preserve one source for each fact.
-Run the shared Makefile build and validation before committing generated output.
-Keep this resource scoped to the Qualcomm ecosystem, independent of an engagement
-or release. Keep evidence dates in dataset metadata rather than living guidance.
+Read data/README.md before editing. Generate README.md, index.html, and maps/ from
+data/repositories.json with tools/map_build.py. Never substitute pictures for
+linked repository names. Run tools/check_map.py before committing generated output.

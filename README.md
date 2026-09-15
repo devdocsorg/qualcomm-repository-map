@@ -1,65 +1,207 @@
 # Qualcomm repository map
 
-Explore Qualcomm repositories and how they relate: build layers, kernel
-integration, package sources, release locks, and shared tooling. This resource
-covers the Qualcomm ecosystem independently of any engagement or release.
+Qualcomm repository ecosystem. Initial inventory covers public qualcomm-linux repositories and verified neighbouring upstreams; it is not limited to a release or engagement. Other Qualcomm organisations can be added using the same schema.
 
-## Open the map
+**Coverage:** 130 repositories, 110 with reviewed connections, 189 evidenced relationships.
 
-Clone this repository and open `docs/site/index.html` directly in a browser.
-The full inventory and nearby views work without an HTTP server or network access.
-Start with a connected pathway, choose a repository, and follow its nearby views.
-Each arrow has a relationship type, applicability, and revision-pinned evidence.
+Repository inventory is broader than reviewed relationships. An absent edge means no relationship has been recorded, not proof of independence.
 
-The initial inventory covers public `qualcomm-linux` repositories and reviewed
-neighbouring upstreams. The map reports which repositories have reviewed
-connections. An absent connection does not prove independence.
+Repository names open the repository. **Explore** links move through its neighbourhood. Open `index.html` for local browsing without a server; external repository and evidence links need network access.
 
-## Map pathways
+## Connected repositories
 
-The site provides the full inventory, connection evidence, and nearby views.
-These generated diagrams give entry points into software and build relationships;
-shared automation connections are also recorded in the site tables.
+### [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
 
-![Qualcomm layer and source relationships](docs/site/_images/qualcomm-linux--meta-qcom.svg)
+- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [AudioReach/meta-audioreach](https://github.com/AudioReach/meta-audioreach)
+- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **builds with** → [openembedded/bitbake](https://github.com/openembedded/bitbake)
+- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [openembedded/meta-openembedded](https://github.com/openembedded/meta-openembedded)
+- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **builds with** → [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core)
+- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **fetches source from** → [qualcomm-linux/kernel](https://github.com/qualcomm-linux/kernel)
+- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [qualcomm-linux/meta-ai](https://github.com/qualcomm-linux/meta-ai)
+- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
+- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **fetches source from** → [qualcomm-linux/qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **depends on** → [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
+- [qualcomm-linux/meta-qcom-releases](https://github.com/qualcomm-linux/meta-qcom-releases) → **pins release of** → [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
 
-![Kernel integration relationships](docs/site/_images/qualcomm-linux--kernel-config.svg)
+[Explore all connections, applicability, and evidence](maps/qualcomm-linux--meta-qcom.md).
 
-![Package source relationship](docs/site/_images/qualcomm-linux--pkg-kgsl.svg)
+### [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty)
 
-## Contribute
+- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **depends on** → [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core)
+- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **depends on** → [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
+- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **integrates with** → [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
+- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **uses indirectly** → [qualcomm-linux/qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **fetches source from** → [rubikpi-ai/boot-assets](https://github.com/rubikpi-ai/boot-assets)
 
-[Contributor setup](docs/source/contributing/DEVELOPMENT.md) explains editing the
-dataset, checking evidence, regenerating views, and exporting a nearby view.
-The [contributor guide](docs/source/contributing/CONTRIBUTING.md) defines review.
-Repository facts live in the [dataset](data/repositories.json). Generated diagrams,
-nearby pages, and sites are not separately maintained copies of those facts.
+[Explore all connections, applicability, and evidence](maps/qualcomm-linux--meta-qcom-3rdparty.md).
 
-## Branches
+### [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config)
 
-`main` owns the map and accepts contributions. See [BRANCHES.md](BRANCHES.md).
+- [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **configures** → [qualcomm-linux/automerge](https://github.com/qualcomm-linux/automerge)
+- [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **selects branches from** → [qualcomm-linux/kernel](https://github.com/qualcomm-linux/kernel)
+- [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **selects branches from** → [qualcomm-linux/kernel-topics](https://github.com/qualcomm-linux/kernel-topics)
 
-## Folders
+[Explore all connections, applicability, and evidence](maps/qualcomm-linux--kernel-config.md).
 
-- [data/](data/README.md) — Owns repository records, relationship evidence, and the dataset schema.
-- [tools/](tools/README.md) — Generates and validates the map and nearby exports.
-- [docs/](docs/README.md) — Contains documentation source and the generated offline site.
-- [.github/](.github/) — Supplies review ownership, issue/PR forms, and documentation CI.
+### [qualcomm-linux/pkg-kgsl](https://github.com/qualcomm-linux/pkg-kgsl)
 
-## Files
+- [qualcomm-linux/pkg-kgsl](https://github.com/qualcomm-linux/pkg-kgsl) → **packages** → [qualcomm-linux/kgsl](https://github.com/qualcomm-linux/kgsl)
 
-- [README.md](README.md) — Introduces the ecosystem map and repository contents.
-- [CLAUDE.md](CLAUDE.md) — Guides automated changes and evidence handling.
-- [BRANCHES.md](BRANCHES.md) — Defines the maintained branch and contribution destination.
-- [CONTRIBUTING.md](CONTRIBUTING.md) — Links to the full contributor guide.
-- [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) — Defines conduct and the reporting route.
-- [SECURITY.md](SECURITY.md) — Defines private vulnerability reporting.
-- [LICENSE](LICENSE) — Retains the template licence and notices.
-- [.env.example](.env.example) — States that no environment settings are required.
-- [.gitignore](.gitignore) — Excludes the local environment, caches, and intermediate generated source.
+[Explore all connections, applicability, and evidence](maps/qualcomm-linux--pkg-kgsl.md).
 
-## Support and licence
+## All repositories
 
-Use the repository issue tracker for map corrections and evidence gaps. Follow
-[SECURITY.md](SECURITY.md) for private vulnerability reports. The repository uses
-the [BSD 3-Clause licence](LICENSE), retaining notices from the adopted skeleton.
+Groups organise browsing; they do not assert dependencies.
+
+### Boot and firmware
+
+- [qualcomm-linux/boot-firmware-ci](https://github.com/qualcomm-linux/boot-firmware-ci) · [Explore](maps/qualcomm-linux--boot-firmware-ci.md) · connections not yet reviewed
+- [qualcomm-linux/edk2](https://github.com/qualcomm-linux/edk2) · [Explore](maps/qualcomm-linux--edk2.md) · connections not yet reviewed
+- [qualcomm-linux/edk2-platforms](https://github.com/qualcomm-linux/edk2-platforms) · [Explore](maps/qualcomm-linux--edk2-platforms.md) · connections not yet reviewed
+- [qualcomm-linux/optee_os](https://github.com/qualcomm-linux/optee_os) · [Explore](maps/qualcomm-linux--optee_os.md) · connections not yet reviewed
+- [qualcomm-linux/qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool) · [Explore](maps/qualcomm-linux--qcom-ptool.md)
+- [qualcomm-linux/qcom-sec-tools-wrapper](https://github.com/qualcomm-linux/qcom-sec-tools-wrapper) · [Explore](maps/qualcomm-linux--qcom-sec-tools-wrapper.md)
+- [qualcomm-linux/snagboot](https://github.com/qualcomm-linux/snagboot) · [Explore](maps/qualcomm-linux--snagboot.md) · connections not yet reviewed
+- [qualcomm-linux/trusted-firmware-a](https://github.com/qualcomm-linux/trusted-firmware-a) · [Explore](maps/qualcomm-linux--trusted-firmware-a.md) · connections not yet reviewed
+- [qualcomm-linux/u-boot](https://github.com/qualcomm-linux/u-boot) · [Explore](maps/qualcomm-linux--u-boot.md) · connections not yet reviewed
+- [rubikpi-ai/boot-assets](https://github.com/rubikpi-ai/boot-assets) · [Explore](maps/rubikpi-ai--boot-assets.md)
+
+### Images and build tooling
+
+- [openembedded/bitbake](https://github.com/openembedded/bitbake) · [Explore](maps/openembedded--bitbake.md)
+- [qualcomm-linux/docker-pkg-build](https://github.com/qualcomm-linux/docker-pkg-build) · [Explore](maps/qualcomm-linux--docker-pkg-build.md) · connections not yet reviewed
+- [qualcomm-linux/qcom-build-utils](https://github.com/qualcomm-linux/qcom-build-utils) · [Explore](maps/qualcomm-linux--qcom-build-utils.md)
+- [qualcomm-linux/qcom-deb-images](https://github.com/qualcomm-linux/qcom-deb-images) · [Explore](maps/qualcomm-linux--qcom-deb-images.md)
+- [qualcomm-linux/qcom-rpm-utils](https://github.com/qualcomm-linux/qcom-rpm-utils) · [Explore](maps/qualcomm-linux--qcom-rpm-utils.md)
+- [qualcomm-linux/qli-ci](https://github.com/qualcomm-linux/qli-ci) · [Explore](maps/qualcomm-linux--qli-ci.md)
+- [qualcomm-linux/rpm-images](https://github.com/qualcomm-linux/rpm-images) · [Explore](maps/qualcomm-linux--rpm-images.md)
+- [qualcomm/commit-emails-check-action](https://github.com/qualcomm/commit-emails-check-action) · [Explore](maps/qualcomm--commit-emails-check-action.md)
+- [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) · [Explore](maps/qualcomm--qcom-reusable-workflows.md)
+
+### Kernel integration
+
+- [qualcomm-linux/automerge](https://github.com/qualcomm-linux/automerge) · [Explore](maps/qualcomm-linux--automerge.md)
+- [qualcomm-linux/kernel](https://github.com/qualcomm-linux/kernel) · [Explore](maps/qualcomm-linux--kernel.md)
+- [qualcomm-linux/kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers) · [Explore](maps/qualcomm-linux--kernel-checkers.md)
+- [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) · [Explore](maps/qualcomm-linux--kernel-config.md)
+- [qualcomm-linux/kernel-topics](https://github.com/qualcomm-linux/kernel-topics) · [Explore](maps/qualcomm-linux--kernel-topics.md)
+- [qualcomm-linux/kmake-image](https://github.com/qualcomm-linux/kmake-image) · [Explore](maps/qualcomm-linux--kmake-image.md) · connections not yet reviewed
+- [qualcomm-linux/ubuntu-qcom-kernel](https://github.com/qualcomm-linux/ubuntu-qcom-kernel) · [Explore](maps/qualcomm-linux--ubuntu-qcom-kernel.md)
+
+### Layers and releases
+
+- [AudioReach/meta-audioreach](https://github.com/AudioReach/meta-audioreach) · [Explore](maps/AudioReach--meta-audioreach.md)
+- [openembedded/meta-openembedded](https://github.com/openembedded/meta-openembedded) · [Explore](maps/openembedded--meta-openembedded.md)
+- [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core) · [Explore](maps/openembedded--openembedded-core.md)
+- [qualcomm-linux/meta-ai](https://github.com/qualcomm-linux/meta-ai) · [Explore](maps/qualcomm-linux--meta-ai.md)
+- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) · [Explore](maps/qualcomm-linux--meta-qcom.md)
+- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) · [Explore](maps/qualcomm-linux--meta-qcom-3rdparty.md)
+- [qualcomm-linux/meta-qcom-arduino](https://github.com/qualcomm-linux/meta-qcom-arduino) · [Explore](maps/qualcomm-linux--meta-qcom-arduino.md)
+- [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro) · [Explore](maps/qualcomm-linux--meta-qcom-distro.md)
+- [qualcomm-linux/meta-qcom-extras-releases](https://github.com/qualcomm-linux/meta-qcom-extras-releases) · [Explore](maps/qualcomm-linux--meta-qcom-extras-releases.md)
+- [qualcomm-linux/meta-qcom-hwe](https://github.com/qualcomm-linux/meta-qcom-hwe) · [Explore](maps/qualcomm-linux--meta-qcom-hwe.md) · connections not yet reviewed
+- [qualcomm-linux/meta-qcom-qim-product-sdk](https://github.com/qualcomm-linux/meta-qcom-qim-product-sdk) · [Explore](maps/qualcomm-linux--meta-qcom-qim-product-sdk.md) · connections not yet reviewed
+- [qualcomm-linux/meta-qcom-realtime](https://github.com/qualcomm-linux/meta-qcom-realtime) · [Explore](maps/qualcomm-linux--meta-qcom-realtime.md) · connections not yet reviewed
+- [qualcomm-linux/meta-qcom-releases](https://github.com/qualcomm-linux/meta-qcom-releases) · [Explore](maps/qualcomm-linux--meta-qcom-releases.md)
+- [qualcomm-linux/meta-qcom-robotics](https://github.com/qualcomm-linux/meta-qcom-robotics) · [Explore](maps/qualcomm-linux--meta-qcom-robotics.md) · connections not yet reviewed
+- [qualcomm-linux/meta-qcom-robotics-distro](https://github.com/qualcomm-linux/meta-qcom-robotics-distro) · [Explore](maps/qualcomm-linux--meta-qcom-robotics-distro.md) · connections not yet reviewed
+- [qualcomm-linux/meta-qcom-robotics-releases](https://github.com/qualcomm-linux/meta-qcom-robotics-releases) · [Explore](maps/qualcomm-linux--meta-qcom-robotics-releases.md)
+- [qualcomm-linux/meta-qcom-robotics-sdk](https://github.com/qualcomm-linux/meta-qcom-robotics-sdk) · [Explore](maps/qualcomm-linux--meta-qcom-robotics-sdk.md)
+- [qualcomm-linux/qcom-manifest](https://github.com/qualcomm-linux/qcom-manifest) · [Explore](maps/qualcomm-linux--qcom-manifest.md) · connections not yet reviewed
+
+### Other repositories
+
+- [qualcomm-linux/.github](https://github.com/qualcomm-linux/.github) · [Explore](maps/qualcomm-linux--.github.md) · connections not yet reviewed
+- [qualcomm-linux/Robotics-SDK-Ubuntu](https://github.com/qualcomm-linux/Robotics-SDK-Ubuntu) · [Explore](maps/qualcomm-linux--Robotics-SDK-Ubuntu.md)
+- [qualcomm-linux/TC9564_Host_Driver](https://github.com/qualcomm-linux/TC9564_Host_Driver) · [Explore](maps/qualcomm-linux--TC9564_Host_Driver.md) · connections not yet reviewed
+- [qualcomm-linux/abctl](https://github.com/qualcomm-linux/abctl) · [Explore](maps/qualcomm-linux--abctl.md)
+- [qualcomm-linux/apt-artifactory-action](https://github.com/qualcomm-linux/apt-artifactory-action) · [Explore](maps/qualcomm-linux--apt-artifactory-action.md)
+- [qualcomm-linux/bitbake-lint-action](https://github.com/qualcomm-linux/bitbake-lint-action) · [Explore](maps/qualcomm-linux--bitbake-lint-action.md)
+- [qualcomm-linux/camera-driver](https://github.com/qualcomm-linux/camera-driver) · [Explore](maps/qualcomm-linux--camera-driver.md)
+- [qualcomm-linux/clk-debug-tools-for-qualcomm-linux](https://github.com/qualcomm-linux/clk-debug-tools-for-qualcomm-linux) · [Explore](maps/qualcomm-linux--clk-debug-tools-for-qualcomm-linux.md)
+- [qualcomm-linux/debusine-action](https://github.com/qualcomm-linux/debusine-action) · [Explore](maps/qualcomm-linux--debusine-action.md)
+- [qualcomm-linux/display-driver](https://github.com/qualcomm-linux/display-driver) · [Explore](maps/qualcomm-linux--display-driver.md)
+- [qualcomm-linux/eva-driver](https://github.com/qualcomm-linux/eva-driver) · [Explore](maps/qualcomm-linux--eva-driver.md)
+- [qualcomm-linux/gbm-msm-backend](https://github.com/qualcomm-linux/gbm-msm-backend) · [Explore](maps/qualcomm-linux--gbm-msm-backend.md)
+- [qualcomm-linux/github-action-matrix-outputs-read](https://github.com/qualcomm-linux/github-action-matrix-outputs-read) · [Explore](maps/qualcomm-linux--github-action-matrix-outputs-read.md)
+- [qualcomm-linux/github-action-matrix-outputs-write](https://github.com/qualcomm-linux/github-action-matrix-outputs-write) · [Explore](maps/qualcomm-linux--github-action-matrix-outputs-write.md)
+- [qualcomm-linux/kgsl](https://github.com/qualcomm-linux/kgsl) · [Explore](maps/qualcomm-linux--kgsl.md)
+- [qualcomm-linux/location-apis-qcom](https://github.com/qualcomm-linux/location-apis-qcom) · [Explore](maps/qualcomm-linux--location-apis-qcom.md)
+- [qualcomm-linux/location-hal-qcom](https://github.com/qualcomm-linux/location-hal-qcom) · [Explore](maps/qualcomm-linux--location-hal-qcom.md)
+- [qualcomm-linux/qcom-dtb-metadata](https://github.com/qualcomm-linux/qcom-dtb-metadata) · [Explore](maps/qualcomm-linux--qcom-dtb-metadata.md)
+- [qualcomm-linux/qcom-linux-skills](https://github.com/qualcomm-linux/qcom-linux-skills) · [Explore](maps/qualcomm-linux--qcom-linux-skills.md)
+- [qualcomm-linux/qualcomm-CDI-generator](https://github.com/qualcomm-linux/qualcomm-CDI-generator) · [Explore](maps/qualcomm-linux--qualcomm-CDI-generator.md)
+- [qualcomm-linux/rtss-mailbox-kmd](https://github.com/qualcomm-linux/rtss-mailbox-kmd) · [Explore](maps/qualcomm-linux--rtss-mailbox-kmd.md)
+- [qualcomm-linux/rtss-mailbox-umd](https://github.com/qualcomm-linux/rtss-mailbox-umd) · [Explore](maps/qualcomm-linux--rtss-mailbox-umd.md)
+- [qualcomm-linux/upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action) · [Explore](maps/qualcomm-linux--upload-private-artifact-action.md)
+- [qualcomm-linux/video-driver](https://github.com/qualcomm-linux/video-driver) · [Explore](maps/qualcomm-linux--video-driver.md)
+- [qualcomm-linux/weston-sdm-backend](https://github.com/qualcomm-linux/weston-sdm-backend) · [Explore](maps/qualcomm-linux--weston-sdm-backend.md)
+- [qualcomm/userspace-resource-manager](https://github.com/qualcomm/userspace-resource-manager) · [Explore](maps/qualcomm--userspace-resource-manager.md)
+
+### Packaging
+
+- [qualcomm-linux/pkg-adreno](https://github.com/qualcomm-linux/pkg-adreno) · [Explore](maps/qualcomm-linux--pkg-adreno.md)
+- [qualcomm-linux/pkg-alsa-ucm-conf](https://github.com/qualcomm-linux/pkg-alsa-ucm-conf) · [Explore](maps/qualcomm-linux--pkg-alsa-ucm-conf.md)
+- [qualcomm-linux/pkg-android-platform-tools](https://github.com/qualcomm-linux/pkg-android-platform-tools) · [Explore](maps/qualcomm-linux--pkg-android-platform-tools.md)
+- [qualcomm-linux/pkg-audioreach-audio-utils](https://github.com/qualcomm-linux/pkg-audioreach-audio-utils) · [Explore](maps/qualcomm-linux--pkg-audioreach-audio-utils.md)
+- [qualcomm-linux/pkg-audioreach-conf](https://github.com/qualcomm-linux/pkg-audioreach-conf) · [Explore](maps/qualcomm-linux--pkg-audioreach-conf.md)
+- [qualcomm-linux/pkg-audioreach-dkms](https://github.com/qualcomm-linux/pkg-audioreach-dkms) · [Explore](maps/qualcomm-linux--pkg-audioreach-dkms.md)
+- [qualcomm-linux/pkg-audioreach-graphmgr](https://github.com/qualcomm-linux/pkg-audioreach-graphmgr) · [Explore](maps/qualcomm-linux--pkg-audioreach-graphmgr.md)
+- [qualcomm-linux/pkg-audioreach-graphservices](https://github.com/qualcomm-linux/pkg-audioreach-graphservices) · [Explore](maps/qualcomm-linux--pkg-audioreach-graphservices.md)
+- [qualcomm-linux/pkg-audioreach-pal](https://github.com/qualcomm-linux/pkg-audioreach-pal) · [Explore](maps/qualcomm-linux--pkg-audioreach-pal.md)
+- [qualcomm-linux/pkg-audioreach-pipewire-plugin](https://github.com/qualcomm-linux/pkg-audioreach-pipewire-plugin) · [Explore](maps/qualcomm-linux--pkg-audioreach-pipewire-plugin.md)
+- [qualcomm-linux/pkg-btftm](https://github.com/qualcomm-linux/pkg-btftm) · [Explore](maps/qualcomm-linux--pkg-btftm.md)
+- [qualcomm-linux/pkg-camx-dev](https://github.com/qualcomm-linux/pkg-camx-dev) · [Explore](maps/qualcomm-linux--pkg-camx-dev.md)
+- [qualcomm-linux/pkg-camx-dkms](https://github.com/qualcomm-linux/pkg-camx-dkms) · [Explore](maps/qualcomm-linux--pkg-camx-dkms.md)
+- [qualcomm-linux/pkg-camx-firmware-glymur](https://github.com/qualcomm-linux/pkg-camx-firmware-glymur) · [Explore](maps/qualcomm-linux--pkg-camx-firmware-glymur.md)
+- [qualcomm-linux/pkg-camx-firmware-hamoa](https://github.com/qualcomm-linux/pkg-camx-firmware-hamoa) · [Explore](maps/qualcomm-linux--pkg-camx-firmware-hamoa.md)
+- [qualcomm-linux/pkg-camx-firmware-kodiak](https://github.com/qualcomm-linux/pkg-camx-firmware-kodiak) · [Explore](maps/qualcomm-linux--pkg-camx-firmware-kodiak.md)
+- [qualcomm-linux/pkg-camx-firmware-lemans](https://github.com/qualcomm-linux/pkg-camx-firmware-lemans) · [Explore](maps/qualcomm-linux--pkg-camx-firmware-lemans.md)
+- [qualcomm-linux/pkg-camx-firmware-talos](https://github.com/qualcomm-linux/pkg-camx-firmware-talos) · [Explore](maps/qualcomm-linux--pkg-camx-firmware-talos.md)
+- [qualcomm-linux/pkg-camx-glymur](https://github.com/qualcomm-linux/pkg-camx-glymur) · [Explore](maps/qualcomm-linux--pkg-camx-glymur.md)
+- [qualcomm-linux/pkg-camx-hamoa](https://github.com/qualcomm-linux/pkg-camx-hamoa) · [Explore](maps/qualcomm-linux--pkg-camx-hamoa.md)
+- [qualcomm-linux/pkg-camx-kodiak](https://github.com/qualcomm-linux/pkg-camx-kodiak) · [Explore](maps/qualcomm-linux--pkg-camx-kodiak.md)
+- [qualcomm-linux/pkg-camx-lemans](https://github.com/qualcomm-linux/pkg-camx-lemans) · [Explore](maps/qualcomm-linux--pkg-camx-lemans.md)
+- [qualcomm-linux/pkg-camx-nhx](https://github.com/qualcomm-linux/pkg-camx-nhx) · [Explore](maps/qualcomm-linux--pkg-camx-nhx.md)
+- [qualcomm-linux/pkg-camx-talos](https://github.com/qualcomm-linux/pkg-camx-talos) · [Explore](maps/qualcomm-linux--pkg-camx-talos.md)
+- [qualcomm-linux/pkg-diag-router](https://github.com/qualcomm-linux/pkg-diag-router) · [Explore](maps/qualcomm-linux--pkg-diag-router.md)
+- [qualcomm-linux/pkg-eva-dkms](https://github.com/qualcomm-linux/pkg-eva-dkms) · [Explore](maps/qualcomm-linux--pkg-eva-dkms.md)
+- [qualcomm-linux/pkg-fastrpc](https://github.com/qualcomm-linux/pkg-fastrpc) · [Explore](maps/qualcomm-linux--pkg-fastrpc.md)
+- [qualcomm-linux/pkg-gbm-msm-backend](https://github.com/qualcomm-linux/pkg-gbm-msm-backend) · [Explore](maps/qualcomm-linux--pkg-gbm-msm-backend.md)
+- [qualcomm-linux/pkg-gst-plugins-imsdk](https://github.com/qualcomm-linux/pkg-gst-plugins-imsdk) · [Explore](maps/qualcomm-linux--pkg-gst-plugins-imsdk.md)
+- [qualcomm-linux/pkg-kgsl](https://github.com/qualcomm-linux/pkg-kgsl) · [Explore](maps/qualcomm-linux--pkg-kgsl.md)
+- [qualcomm-linux/pkg-libdiag](https://github.com/qualcomm-linux/pkg-libdiag) · [Explore](maps/qualcomm-linux--pkg-libdiag.md)
+- [qualcomm-linux/pkg-linux-qcom](https://github.com/qualcomm-linux/pkg-linux-qcom) · [Explore](maps/qualcomm-linux--pkg-linux-qcom.md)
+- [qualcomm-linux/pkg-mink-idl-compiler](https://github.com/qualcomm-linux/pkg-mink-idl-compiler) · [Explore](maps/qualcomm-linux--pkg-mink-idl-compiler.md)
+- [qualcomm-linux/pkg-minkipc](https://github.com/qualcomm-linux/pkg-minkipc) · [Explore](maps/qualcomm-linux--pkg-minkipc.md)
+- [qualcomm-linux/pkg-optee-client](https://github.com/qualcomm-linux/pkg-optee-client) · [Explore](maps/qualcomm-linux--pkg-optee-client.md)
+- [qualcomm-linux/pkg-optee-test](https://github.com/qualcomm-linux/pkg-optee-test) · [Explore](maps/qualcomm-linux--pkg-optee-test.md)
+- [qualcomm-linux/pkg-qcom-fastcv-binaries](https://github.com/qualcomm-linux/pkg-qcom-fastcv-binaries) · [Explore](maps/qualcomm-linux--pkg-qcom-fastcv-binaries.md)
+- [qualcomm-linux/pkg-qcom-sensors](https://github.com/qualcomm-linux/pkg-qcom-sensors) · [Explore](maps/qualcomm-linux--pkg-qcom-sensors.md)
+- [qualcomm-linux/pkg-qcom-sv-binaries](https://github.com/qualcomm-linux/pkg-qcom-sv-binaries) · [Explore](maps/qualcomm-linux--pkg-qcom-sv-binaries.md)
+- [qualcomm-linux/pkg-qimsdk-smartvenc](https://github.com/qualcomm-linux/pkg-qimsdk-smartvenc) · [Explore](maps/qualcomm-linux--pkg-qimsdk-smartvenc.md)
+- [qualcomm-linux/pkg-qmi-framework](https://github.com/qualcomm-linux/pkg-qmi-framework) · [Explore](maps/qualcomm-linux--pkg-qmi-framework.md)
+- [qualcomm-linux/pkg-qti-camera-service](https://github.com/qualcomm-linux/pkg-qti-camera-service) · [Explore](maps/qualcomm-linux--pkg-qti-camera-service.md)
+- [qualcomm-linux/pkg-quic-teec](https://github.com/qualcomm-linux/pkg-quic-teec) · [Explore](maps/qualcomm-linux--pkg-quic-teec.md)
+- [qualcomm-linux/pkg-ros-jazzy-xsens-mti-ros2-driver](https://github.com/qualcomm-linux/pkg-ros-jazzy-xsens-mti-ros2-driver) · [Explore](maps/qualcomm-linux--pkg-ros-jazzy-xsens-mti-ros2-driver.md)
+- [qualcomm-linux/pkg-rpm-qcom-fastcv-binaries](https://github.com/qualcomm-linux/pkg-rpm-qcom-fastcv-binaries) · [Explore](maps/qualcomm-linux--pkg-rpm-qcom-fastcv-binaries.md)
+- [qualcomm-linux/pkg-rpm-video-driver](https://github.com/qualcomm-linux/pkg-rpm-video-driver) · [Explore](maps/qualcomm-linux--pkg-rpm-video-driver.md)
+- [qualcomm-linux/pkg-sensinghub](https://github.com/qualcomm-linux/pkg-sensinghub) · [Explore](maps/qualcomm-linux--pkg-sensinghub.md)
+- [qualcomm-linux/pkg-thermald](https://github.com/qualcomm-linux/pkg-thermald) · [Explore](maps/qualcomm-linux--pkg-thermald.md)
+- [qualcomm-linux/pkg-time-services](https://github.com/qualcomm-linux/pkg-time-services) · [Explore](maps/qualcomm-linux--pkg-time-services.md)
+- [qualcomm-linux/pkg-tinyalsa](https://github.com/qualcomm-linux/pkg-tinyalsa) · [Explore](maps/qualcomm-linux--pkg-tinyalsa.md)
+- [qualcomm-linux/pkg-tinycompress](https://github.com/qualcomm-linux/pkg-tinycompress) · [Explore](maps/qualcomm-linux--pkg-tinycompress.md)
+- [qualcomm-linux/pkg-urm](https://github.com/qualcomm-linux/pkg-urm) · [Explore](maps/qualcomm-linux--pkg-urm.md)
+- [qualcomm-linux/pkg-urm-ext](https://github.com/qualcomm-linux/pkg-urm-ext) · [Explore](maps/qualcomm-linux--pkg-urm-ext.md)
+- [qualcomm-linux/pkg-video-driver](https://github.com/qualcomm-linux/pkg-video-driver) · [Explore](maps/qualcomm-linux--pkg-video-driver.md)
+
+### Validation
+
+- [qualcomm-linux/aiml-container-test](https://github.com/qualcomm-linux/aiml-container-test) · [Explore](maps/qualcomm-linux--aiml-container-test.md)
+- [qualcomm-linux/awstest-meta-qcom](https://github.com/qualcomm-linux/awstest-meta-qcom) · [Explore](maps/qualcomm-linux--awstest-meta-qcom.md)
+- [qualcomm-linux/job_render](https://github.com/qualcomm-linux/job_render) · [Explore](maps/qualcomm-linux--job_render.md) · connections not yet reviewed
+- [qualcomm-linux/lava-test-plans](https://github.com/qualcomm-linux/lava-test-plans) · [Explore](maps/qualcomm-linux--lava-test-plans.md) · connections not yet reviewed
+- [qualcomm-linux/mark-test](https://github.com/qualcomm-linux/mark-test) · [Explore](maps/qualcomm-linux--mark-test.md) · connections not yet reviewed
+- [qualcomm-linux/qcom-linux-testkit](https://github.com/qualcomm-linux/qcom-linux-testkit) · [Explore](maps/qualcomm-linux--qcom-linux-testkit.md)
+
+[Map data and updates](data/README.md) · [Licence](LICENSE)

@@ -1,11 +1,7 @@
-# Map tools
+# Map generation tools
 
-Run the shared documentation Makefile from the repository root. The generator
-reads the dataset and writes derived map pages; validation rejects malformed
-relationships and missing Python function documentation.
+[Map maintenance and export commands](../data/README.md).
 
-## Files
-
-- [README.md](README.md) — Introduces the generator and validation tools.
-- [map_build.py](map_build.py) — Generates the ecosystem overview, nearby diagrams, and revisioned exports.
-- [check_map.py](check_map.py) — Checks relationship validation, neighbour selection, deterministic rendering, and native documentation coverage.
+- `map_build.py` generates linked Markdown and standalone HTML from the dataset.
+- `check_map.py` validates evidence, neighbourhoods, links, and native docstrings.
+- `requirements.txt` pins the Markdown renderer and its sole dependency.
