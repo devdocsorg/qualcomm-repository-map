@@ -4,7 +4,7 @@
 
 This repo will be used to store kas-lock files for milestone releases of meta-qcom-extras
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

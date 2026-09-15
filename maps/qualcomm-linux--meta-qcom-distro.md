@@ -4,7 +4,7 @@
 
 OpenEmbedded/Yocto Project Reference Distribution layer for Qualcomm based platforms
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 
@@ -24,13 +24,10 @@ OpenEmbedded/Yocto Project Reference Distribution layer for Qualcomm based platf
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
   - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/pr.yml)
 
-### Incoming connections
+## Incoming connections
 
 **Integrates with** (repositories using this one)
 
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **integrates with** → [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
-  - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [Explore qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
 - [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **integrates with** → [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
   - Optional: the dynamic layer applies only when qcom-distro is present.
   - [Explore qualcomm-linux/meta-qcom-3rdparty](qualcomm-linux--meta-qcom-3rdparty.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
@@ -40,9 +37,6 @@ OpenEmbedded/Yocto Project Reference Distribution layer for Qualcomm based platf
 - [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
   - Optional qcom-distro kas composition; not required by every BSP-only build.
   - [Explore qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **selects for distro** → [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
-  - Optional: the dynamic layer applies only when qcom-distro is present.
-  - [Explore qualcomm-linux/meta-qcom-3rdparty](qualcomm-linux--meta-qcom-3rdparty.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
 
 ## Full ecosystem map
 

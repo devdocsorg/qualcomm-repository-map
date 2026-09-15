@@ -4,7 +4,7 @@
 
 RTSS Mailbox Kernel Mode Driver (KMD) for IPC-based inter-processor communication on Qualcomm Automotive, IE-IoT, Robotics SoCs.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

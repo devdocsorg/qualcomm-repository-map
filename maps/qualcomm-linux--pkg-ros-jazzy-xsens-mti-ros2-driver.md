@@ -4,7 +4,7 @@
 
 ROS 2 driver for Xsens MTi IMU sensors
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

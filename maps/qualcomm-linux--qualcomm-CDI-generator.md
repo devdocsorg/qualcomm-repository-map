@@ -4,7 +4,7 @@
 
 Tooling to generate CDI config files to pass devices through to containers
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

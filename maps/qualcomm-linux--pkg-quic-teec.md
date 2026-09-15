@@ -4,7 +4,7 @@
 
 Debian packaging meta-data for quic-teec project.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

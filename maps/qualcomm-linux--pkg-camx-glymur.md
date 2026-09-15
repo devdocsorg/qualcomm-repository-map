@@ -4,7 +4,7 @@
 
 repo for glymur target
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

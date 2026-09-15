@@ -4,7 +4,7 @@
 
 Mirror and CI build pipeline for Canonical kernel 
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

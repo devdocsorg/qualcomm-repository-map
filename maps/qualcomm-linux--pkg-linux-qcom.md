@@ -4,7 +4,7 @@
 
 QCOM Linux Kernel Debian Package repository
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

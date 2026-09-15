@@ -4,7 +4,7 @@
 
 This project handles Debian packaging for the URM extension project i.e https://github.com/qualcomm/userspace-resource-manager-extensions 
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

@@ -4,7 +4,7 @@
 
 Location Client API layer for Qualcomm based platforms
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

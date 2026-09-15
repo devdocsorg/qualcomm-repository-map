@@ -4,7 +4,7 @@
 
 RTSS Mailbox User Space package of libraries, demo applications, utils for Qualcomm Automotive, IE-IoT, Robotics SoCs.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

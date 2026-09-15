@@ -4,7 +4,7 @@
 
 pkg-bin-smart-venc-ctrl
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

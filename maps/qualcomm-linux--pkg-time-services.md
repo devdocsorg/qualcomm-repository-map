@@ -4,7 +4,7 @@
 
 Time-services package repo
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

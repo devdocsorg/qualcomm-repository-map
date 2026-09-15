@@ -4,7 +4,7 @@
 
 An action for use in qualcomm-linux projects that need to publish CI artifacts that aren't cleared for public distribution.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 
@@ -12,7 +12,7 @@ An action for use in qualcomm-linux projects that need to publish CI artifacts t
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
   - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/upload-private-artifact-action/blob/35784966733744f890eca16b3670da4f22df1e76/.github/workflows/qcom-preflight-checks.yml)
 
-### Incoming connections
+## Incoming connections
 
 **Uses automation from** (repositories using this one)
 

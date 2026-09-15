@@ -4,7 +4,7 @@
 
 Container targeted at testing AI and ML workloads for Qualcomm platforms
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

@@ -4,7 +4,7 @@
 
 This repository contains the source code of eva-kernel driver for the downstream eva-kernel
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

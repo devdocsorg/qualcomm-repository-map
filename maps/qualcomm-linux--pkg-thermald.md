@@ -4,7 +4,7 @@
 
 Debian overlay package for thermald: backports upstream patches 
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

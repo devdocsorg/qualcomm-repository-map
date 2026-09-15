@@ -4,7 +4,7 @@
 
 Vendor-hosted RUBIK Pi boot firmware consumed by the board recipe.
 
-### Incoming connections
+## Incoming connections
 
 **Fetches source from** (repositories using this one)
 

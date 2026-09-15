@@ -4,7 +4,7 @@
 
 GitHub Action for linting bitbake recipes using oelint-adv linter 
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 
@@ -12,7 +12,7 @@ GitHub Action for linting bitbake recipes using oelint-adv linter
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
   - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/bitbake-lint-action/blob/f547834091c805556133db1b1dc0869dc8d3490c/.github/workflows/qcom-preflight-checks.yml)
 
-### Incoming connections
+## Incoming connections
 
 **Uses automation from** (repositories using this one)
 

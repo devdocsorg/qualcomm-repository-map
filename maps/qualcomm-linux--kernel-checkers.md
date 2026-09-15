@@ -4,7 +4,7 @@
 
 Checker tests kernel patches for correctness by running a suite of tests.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 
@@ -12,7 +12,7 @@ Checker tests kernel patches for correctness by running a suite of tests.
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
   - [Explore qualcomm-linux/kernel-config](qualcomm-linux--kernel-config.md) · [evidence 1](https://github.com/qualcomm-linux/kernel-checkers/blob/23c35b0e159903b2f69ec5d11f5b6e5dcd493319/.github/workflows/checker.yml)
 
-### Incoming connections
+## Incoming connections
 
 **Uses automation from** (repositories using this one)
 

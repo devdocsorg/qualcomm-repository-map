@@ -4,7 +4,7 @@
 
 OpenEmbedded layer for AI/ML related recipes
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 
@@ -12,7 +12,7 @@ OpenEmbedded layer for AI/ML related recipes
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
   - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/meta-ai/blob/21e7b36b0d259a9cf5d2226160b227962f762585/.github/workflows/pr.yml) · [evidence 2](https://github.com/qualcomm-linux/meta-ai/blob/21e7b36b0d259a9cf5d2226160b227962f762585/.github/workflows/qcom-preflight-checks.yml)
 
-### Incoming connections
+## Incoming connections
 
 **Selects for distro** (repositories using this one)
 

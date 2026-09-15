@@ -4,7 +4,7 @@
 
 Repository purpose needs review; open the repository for its maintained documentation.
 
-### Incoming connections
+## Incoming connections
 
 **Packages** (repositories using this one)
 

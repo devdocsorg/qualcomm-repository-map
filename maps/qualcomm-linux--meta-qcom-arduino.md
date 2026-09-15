@@ -4,7 +4,7 @@
 
 OpenEmbedded/Yocto Project BSP layer for Qualcomm based Arduino platforms
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

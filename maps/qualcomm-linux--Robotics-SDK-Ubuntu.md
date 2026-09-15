@@ -4,7 +4,7 @@
 
  Qualcomm Intelligent Robotics SDK (QIR SDK) for ubuntu
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

@@ -4,7 +4,7 @@
 
 GitHub action for checking email addresses in PR/Push commits
 
-### Incoming connections
+## Incoming connections
 
 **Uses automation from** (repositories using this one)
 

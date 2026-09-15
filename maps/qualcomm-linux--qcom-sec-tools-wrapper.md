@@ -4,7 +4,7 @@
 
 Shell tooling around Qualcomm's secure boot flow - generate OEM keys, sign images, provision fuses, and build UEFI update capsules.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

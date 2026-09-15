@@ -4,22 +4,16 @@
 
 Base OpenEmbedded recipes and classes.
 
-### Incoming connections
+## Incoming connections
 
 **Builds with** (repositories using this one)
 
 - [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **builds with** → [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core)
   - Development kas configuration on master; release locks can select other revisions.
   - [Explore qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/base.yml)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **builds with** → [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core)
-  - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
-  - [Explore qualcomm-linux/meta-qcom-3rdparty](qualcomm-linux--meta-qcom-3rdparty.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
 
 **Depends on** (repositories using this one)
 
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **depends on** → [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core)
-  - Development kas configuration on master; release locks can select other revisions.
-  - [Explore qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/base.yml)
 - [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **depends on** → [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core)
   - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
   - [Explore qualcomm-linux/meta-qcom-3rdparty](qualcomm-linux--meta-qcom-3rdparty.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)

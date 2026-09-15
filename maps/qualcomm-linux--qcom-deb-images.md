@@ -4,7 +4,7 @@
 
 Qualcomm Linux Debian build scripts
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

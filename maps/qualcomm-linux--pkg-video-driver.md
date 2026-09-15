@@ -4,7 +4,7 @@
 
 Repository purpose needs review; open the repository for its maintained documentation.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

@@ -22,7 +22,9 @@ assert all(focus in (edge['from'], edge['to']) for edge in edges)
 view = map_build.render_view(data, focus, 'test-digest')
 assert '**You are here: [' in view
 assert '![' not in view and '<svg' not in view
+assert view.count(' → **') == len(edges), 'Every edge must appear once with its own type'
 for edge in edges:
+    assert f"[{edge['from']}](https://github.com/{edge['from']}) → **{edge['kind']}** → [{edge['to']}](https://github.com/{edge['to']})" in view
     for endpoint in ('from', 'to'):
         identifier = edge[endpoint]
         assert f'[{identifier}](https://github.com/{identifier})' in view

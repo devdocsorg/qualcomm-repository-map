@@ -4,7 +4,7 @@
 
 Workaround implementation - Write matrix jobs outputs
 
-### Incoming connections
+## Incoming connections
 
 **Uses automation from** (repositories using this one)
 

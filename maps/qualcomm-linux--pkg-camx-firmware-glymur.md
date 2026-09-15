@@ -4,7 +4,7 @@
 
 add repo for glymur target firmware
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

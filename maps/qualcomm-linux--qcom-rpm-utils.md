@@ -4,7 +4,7 @@
 
 This repo will hold build scripts and reusable workflows for pkg rpm builds.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 
@@ -15,7 +15,7 @@ This repo will hold build scripts and reusable workflows for pkg rpm builds.
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
   - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/qcom-rpm-utils/blob/2ce52035e30d194fc7402fe49fed45582236604d/.github/workflows/qcom-preflight-checks.yml)
 
-### Incoming connections
+## Incoming connections
 
 **Uses automation from** (repositories using this one)
 

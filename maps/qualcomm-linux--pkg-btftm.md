@@ -4,7 +4,7 @@
 
 this is for bt-performant.qclinux.0.0  Btdiag debian generate and upload to apt
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

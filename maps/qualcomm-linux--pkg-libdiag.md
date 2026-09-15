@@ -4,7 +4,7 @@
 
 Deb file distribution repo for libdiag and diagnostics utils 
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

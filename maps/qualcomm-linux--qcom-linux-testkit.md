@@ -4,7 +4,7 @@
 
 This repository provides standalone validation scripts designed to test and verify various Linux features, particularly for Qualcomm RB3Gen2 and platforms based on meta-qcom and meta-qcom-distros.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

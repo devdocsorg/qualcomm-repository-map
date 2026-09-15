@@ -4,7 +4,7 @@
 
 Debian package meta-data to package Qualcomm vendored mink optee-client library
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

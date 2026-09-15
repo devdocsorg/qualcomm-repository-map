@@ -4,7 +4,7 @@
 
 Upstream userspace resource manager source packaged by pkg-urm.
 
-### Incoming connections
+## Incoming connections
 
 **Packages** (repositories using this one)
 

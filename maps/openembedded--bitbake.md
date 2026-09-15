@@ -4,7 +4,7 @@
 
 Build engine used by the kas configuration.
 
-### Incoming connections
+## Incoming connections
 
 **Builds with** (repositories using this one)
 

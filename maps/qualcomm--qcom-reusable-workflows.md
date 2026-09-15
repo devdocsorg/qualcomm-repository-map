@@ -4,7 +4,7 @@
 
 Qualcomm reusable workflows
 
-### Incoming connections
+## Incoming connections
 
 **Uses automation from** (repositories using this one)
 

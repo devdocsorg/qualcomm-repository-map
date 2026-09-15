@@ -4,7 +4,7 @@
 
 MSM Backend repository to overlay on top of upstream MESA GBM.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 
@@ -15,7 +15,7 @@ MSM Backend repository to overlay on top of upstream MESA GBM.
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
   - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/gbm-msm-backend/blob/8c5776e3ef62cfb4a4cfb5763cb84f4b58640379/.github/workflows/qcom-preflight-checks.yml)
 
-### Incoming connections
+## Incoming connections
 
 **Packages** (repositories using this one)
 

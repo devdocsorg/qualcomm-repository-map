@@ -4,7 +4,7 @@
 
 AudioReach recipes selected by the distro configuration.
 
-### Incoming connections
+## Incoming connections
 
 **Selects for distro** (repositories using this one)
 

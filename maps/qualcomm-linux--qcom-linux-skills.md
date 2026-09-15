@@ -4,7 +4,7 @@
 
 Agent Skills for Qualcomm Linux
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

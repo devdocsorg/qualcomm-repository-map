@@ -4,7 +4,7 @@
 
 Debian packaging meta-data for mink-idl-compiler project.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

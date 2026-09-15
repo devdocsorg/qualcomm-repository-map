@@ -4,7 +4,7 @@
 
 Camera hamoa
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

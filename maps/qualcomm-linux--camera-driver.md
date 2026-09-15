@@ -4,7 +4,7 @@
 
 This repository contains the source code of camera-kernel driver for the downstream camera-kernel
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

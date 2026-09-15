@@ -4,7 +4,7 @@
 
 Out-of-tree clk debug patches for linux-next and scripts for clock-measurement based debugging on Qualcomm SoCs.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

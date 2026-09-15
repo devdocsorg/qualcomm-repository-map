@@ -4,7 +4,7 @@
 
 Qcom Linux repo to generate the EVA dlkm debian packages
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

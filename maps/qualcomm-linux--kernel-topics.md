@@ -4,7 +4,7 @@
 
 Tech Topic Branches for QLI mainline
 
-### Incoming connections
+## Incoming connections
 
 **Selects branches from** (repositories using this one)
 

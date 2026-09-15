@@ -4,7 +4,7 @@
 
 A GitHub Actions composite action that automates uploading Debian source packages and triggering Debusine workflows.
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 
@@ -12,7 +12,7 @@ A GitHub Actions composite action that automates uploading Debian source package
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
   - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/debusine-action/blob/69bf7bacca357ef0aa8c8a30bfa40bbe1cba4602/.github/workflows/qcom-preflight-checks.yml)
 
-### Incoming connections
+## Incoming connections
 
 **Uses automation from** (repositories using this one)
 

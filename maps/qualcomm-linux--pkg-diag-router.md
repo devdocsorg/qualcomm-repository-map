@@ -4,7 +4,7 @@
 
 Debain package repo for qcom-diag-router
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 

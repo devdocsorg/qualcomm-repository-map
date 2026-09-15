@@ -4,7 +4,7 @@
 
 Central location for pkg reusable workflows
 
-### Outgoing connections
+## Outgoing connections
 
 **Uses automation from**
 
@@ -18,7 +18,7 @@ Central location for pkg reusable workflows
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
   - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/qli-ci/blob/a9eb55efa7405bea5b8b9a251f87bfcce570be80/.github/workflows/qcom-preflight-checks.yml)
 
-### Incoming connections
+## Incoming connections
 
 **Uses automation from** (repositories using this one)
 

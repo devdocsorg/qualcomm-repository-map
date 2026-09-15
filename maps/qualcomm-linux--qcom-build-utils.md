@@ -4,7 +4,7 @@
 
 Qualcomm utilities for Linux builds
 
-### Incoming connections
+## Incoming connections
 
 **Uses automation from** (repositories using this one)
 

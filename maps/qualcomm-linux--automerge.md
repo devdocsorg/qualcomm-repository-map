@@ -4,7 +4,7 @@
 
 Tools to manage creation of qcom-next from the topic branches
 
-### Incoming connections
+## Incoming connections
 
 **Configures** (repositories using this one)
 
