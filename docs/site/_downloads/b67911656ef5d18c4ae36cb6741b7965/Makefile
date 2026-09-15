@@ -5,7 +5,7 @@
 .PHONY: setup html check browser
 
 setup:
-	uv venv --python 3.12 .venv
+	uv venv --python 3.12 --clear .venv
 	uv pip install --python .venv/bin/python -r docs/source/requirements.lock
 
 html:
@@ -13,6 +13,7 @@ html:
 	.venv/bin/python tools/check_map.py
 	rm -rf docs/site
 	.venv/bin/sphinx-build -W --keep-going -E -a -b html -d docs/.doctrees docs/source docs/site
+	.venv/bin/python .github/finalise_site.py
 	.venv/bin/python tools/check_map.py docs/site/contributing/REFERENCE.html
 
 # Install a user-local browser only when system Chromium is unavailable.
