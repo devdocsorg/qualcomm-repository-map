@@ -31,6 +31,27 @@ for edge in edges:
     assert edge['condition'] in view
     for proof in edge['evidence']:
         assert proof['url'] in view
+# Local readers see only build relationships and one occurrence of the current name.
+local = map_build.render_local_view(data, focus, 'test-digest', 'a' * 40)
+assert local.count('[meta-qcom-3rdparty]') == 1
+assert local.count('| [') == 5
+assert 'Required: base OpenEmbedded layer.' in local
+assert 'Optional: Qualcomm reference distro.' in local
+assert 'RUBIK Pi 3 firmware, fetched by the build.' in local
+assert 'Partition tools, supplied through meta-qcom.' in local
+assert 'bitbake-lint-action' not in local and 'evidence 1' not in local
+assert 'dataset SHA-256' not in re.sub(r'<!--.*?-->', '', local, flags=re.S)
+assert 'Full map and relationship details' in local
+missing_summary = copy.deepcopy(data)
+for edge in missing_summary['relationships']:
+    edge.pop('local_summary', None)
+try:
+    map_build.render_local_view(missing_summary, focus, 'test-digest', 'a' * 40)
+except ValueError:
+    pass
+else:
+    raise AssertionError('Local export accepted missing summaries')
+
 # Incoming edges must also appear when the user starts at a provider repository.
 provider_nodes, provider_edges = map_build.nearby(data, 'rubikpi-ai/boot-assets')
 assert len(provider_nodes) == 2 and provider_edges[0]['from'] == focus

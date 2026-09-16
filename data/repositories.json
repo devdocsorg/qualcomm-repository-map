@@ -1523,7 +1523,8 @@
           "claim": "LAYERDEPENDS_qcom-3rdparty declares core and qcom.",
           "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
         }
-      ]
+      ],
+      "local_summary": "Required: base OpenEmbedded layer."
     },
     {
       "from": "qualcomm-linux/meta-qcom-3rdparty",
@@ -1575,7 +1576,8 @@
           "claim": "LAYERDEPENDS_qcom-3rdparty declares core and qcom.",
           "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
         }
-      ]
+      ],
+      "local_summary": "Required: Qualcomm BSP layer."
     },
     {
       "from": "qualcomm-linux/meta-qcom-3rdparty",
@@ -1621,7 +1623,8 @@
           "claim": "BBFILES_DYNAMIC selects qcom-distro-specific appends.",
           "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
         }
-      ]
+      ],
+      "local_summary": "Optional: Qualcomm reference distro."
     },
     {
       "from": "qualcomm-linux/meta-qcom-3rdparty",
@@ -1639,7 +1642,8 @@
           "claim": "The board selects partition assets through QCOM_PARTITION_FILES_SUBDIR.",
           "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
         }
-      ]
+      ],
+      "local_summary": "Partition tools, supplied through meta-qcom."
     },
     {
       "from": "qualcomm-linux/meta-qcom-3rdparty",
@@ -1665,7 +1669,8 @@
           "claim": "SRC_URI names the vendor boot-assets repository.",
           "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
         }
-      ]
+      ],
+      "local_summary": "RUBIK Pi 3 firmware, fetched by the build."
     },
     {
       "from": "qualcomm-linux/meta-qcom-arduino",

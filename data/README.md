@@ -18,6 +18,7 @@ The generator validates it before producing any output.
 | Repository `archived` | Required boolean for inventory status. |
 | `relationships` | Required list of directed relationships. |
 | Relationship `from`, `to`, `kind` | Required repository IDs and a supported type declared in the generator. Both endpoints must exist. |
+| Relationship `local_summary` | Optional short reader-facing purpose, required for relationships included in a local export. |
 | Relationship `condition` | Required string describing branch/release applicability, optionality, and indirect paths where relevant. |
 | Relationship `evidence` | Non-empty list of records with a `url`, 40-character commit `revision`, and `claim` supported by that source. |
 
@@ -54,8 +55,12 @@ To export a nearby view from a committed dataset and generator:
   --revision "$(git rev-parse HEAD)"
 ```
 
-The export writes REPOSITORY_MAP.md with linked repositories, applicability,
-evidence, the source revision, and the dataset digest. Rebuild the recipient's
+The export writes a compact REPOSITORY_MAP.md: the current repository once,
+a linked table of build dependencies and inputs, and one link to the full details.
+Set `local_summary` on each exported relationship to explain its role briefly,
+including required, optional, board-specific, or indirect applicability. CI
+automation and incoming users stay in the full map. The source revision and dataset
+digest are recorded in an HTML comment rather than reader-facing prose. Rebuild the recipient's
 documentation site after replacing the snapshot. Access to this private repository
 is required to update the map; exported public repository links work independently.
 

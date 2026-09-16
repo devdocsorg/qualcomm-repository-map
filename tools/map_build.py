@@ -151,6 +151,39 @@ def render_view(data: dict, focus: str, digest: str, revision: str | None = None
     return result
 
 
+
+def render_local_view(data: dict, focus: str, digest: str, revision: str) -> str:
+    """Export a short dependency table; keep full evidence in the central map.
+
+    Each included relationship needs a local_summary in the shared dataset.
+    CI automation and incoming users remain available through the details link.
+    """
+    nodes = {node['id']: node for node in data['repositories']}
+    order = {'depends on': 0, 'integrates with': 1, 'fetches source from': 2,
+             'uses indirectly': 3}
+    edges = [edge for edge in data['relationships'] if edge['from'] == focus
+             and edge['kind'] not in {'uses automation from', 'runs workflow from'}]
+    edges.sort(key=lambda edge: (order.get(edge['kind'], 4), edge['to']))
+    result = f"# Repository map\n\nYou are here: **[{focus.split('/')[-1]}]({nodes[focus]['url']})**.\n\n"
+    if edges:
+        result += '| Repository | Used for |\n| --- | --- |\n'
+    else:
+        result += 'Build dependencies have not been reviewed for this repository.\n'
+    for edge in edges:
+        summary = edge.get('local_summary')
+        if not isinstance(summary, str) or not summary.strip():
+            raise ValueError(f"Add a concise local_summary for {edge['from']} -> {edge['to']}")
+        node = nodes[edge['to']]
+        label = node['id'].split('/')[-1]
+        if sum(other['to'].split('/')[-1] == label for other in edges) > 1:
+            label = node['id']
+        summary = summary.replace('|', '\\|').replace('\n', ' ')
+        result += f"| [{label}]({node['url']}) | {summary} |\n"
+    result += f'\n[Full map and relationship details]({CENTRAL}/blob/{revision}/maps/{slug(focus)}.md) (private).\n'
+    result += f'\n<!-- Generated from {CENTRAL} at {revision}; dataset SHA-256: {digest}. -->\n'
+    return result
+
+
 def html_page(markdown: str, title: str) -> str:
     """Render the same linked map as standalone HTML for direct file browsing."""
     body = MarkdownIt('commonmark').render(markdown)
@@ -224,7 +257,7 @@ def main() -> None:
         subprocess.run(['git', 'cat-file', '-e', args.revision + '^{commit}'], cwd=ROOT, check=True)
         subprocess.run(['git', 'diff', '--exit-code', args.revision, '--', 'data', 'tools'], cwd=ROOT, check=True)
         args.destination.mkdir(parents=True, exist_ok=True)
-        (args.destination/'REPOSITORY_MAP.md').write_text(render_view(data, args.export, digest, args.revision))
+        (args.destination/'REPOSITORY_MAP.md').write_text(render_local_view(data, args.export, digest, args.revision))
         print(f'Exported linked nearby map for {args.export}')
     else:
         build(data, digest)

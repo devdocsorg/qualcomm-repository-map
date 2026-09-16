@@ -16,6 +16,7 @@ The generator validates it before producing any output.</p>
 | Repository <code>archived</code> | Required boolean for inventory status. |
 | <code>relationships</code> | Required list of directed relationships. |
 | Relationship <code>from</code>, <code>to</code>, <code>kind</code> | Required repository IDs and a supported type declared in the generator. Both endpoints must exist. |
+| Relationship <code>local_summary</code> | Optional short reader-facing purpose, required for relationships included in a local export. |
 | Relationship <code>condition</code> | Required string describing branch/release applicability, optionality, and indirect paths where relevant. |
 | Relationship <code>evidence</code> | Non-empty list of records with a <code>url</code>, 40-character commit <code>revision</code>, and <code>claim</code> supported by that source. |</p>
 <p>No implicit environment settings, URL rewrites, or network requests change the data
@@ -42,8 +43,12 @@ map. All evidence and branch conditions belong in this dataset.</p>
   --destination ../meta-qcom-3rdparty/docs/source/user \
   --revision &quot;$(git rev-parse HEAD)&quot;
 </code></pre>
-<p>The export writes REPOSITORY_MAP.md with linked repositories, applicability,
-evidence, the source revision, and the dataset digest. Rebuild the recipient's
+<p>The export writes a compact REPOSITORY_MAP.md: the current repository once,
+a linked table of build dependencies and inputs, and one link to the full details.
+Set <code>local_summary</code> on each exported relationship to explain its role briefly,
+including required, optional, board-specific, or indirect applicability. CI
+automation and incoming users stay in the full map. The source revision and dataset
+digest are recorded in an HTML comment rather than reader-facing prose. Rebuild the recipient's
 documentation site after replacing the snapshot. Access to this private repository
 is required to update the map; exported public repository links work independently.</p>
 <p>Python's native <code>pydoc</code> reads the generator's function documentation:</p>
