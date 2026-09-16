@@ -1,7 +1,8 @@
 # Map generation tools
 
-[Map maintenance and export commands](../data/README.md).
+[Map maintenance and README export commands](../data/README.md).
 
-- `map_build.py` generates linked Markdown and standalone HTML from the dataset.
-- `check_map.py` validates evidence, neighbourhoods, links, and native docstrings.
-- `requirements.txt` pins the Markdown renderer and its sole dependency.
+- [map_build.py](map_build.py) generates the full Mermaid README map and updates nearby maps directly in recipient READMEs.
+- [check_map.py](check_map.py) validates evidence, relationship coverage, README exports, and native docstrings.
+
+The tools use Python's standard library and generate no HTML or documentation pages.
