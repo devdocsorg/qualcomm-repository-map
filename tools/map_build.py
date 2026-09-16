@@ -23,6 +23,12 @@ KINDS = {"depends on", "integrates with", "fetches source from", "uses indirectl
          "selects branches from", "packages", "runs workflow from", "uses automation from"}
 AUTOMATION = {'uses automation from', 'runs workflow from'}
 MAX_MAP_NODES = 24
+LABELS = {'depends on': 'builds on', 'integrates with': 'can combine with',
+          'fetches source from': 'fetches sources from', 'builds with': 'builds with',
+          'selects for distro': 'includes in Linux images', 'pins release of': 'pins a release of',
+          'configures': 'configures', 'selects branches from': 'selects branches from',
+          'packages': 'packages sources from', 'runs workflow from': 'runs workflows from',
+          'uses automation from': 'runs automation from'}
 
 
 def slug(identifier: str) -> str:
@@ -75,7 +81,42 @@ def load_data(path: Path) -> dict:
             if not proof["url"].startswith("https://github.com/") or f"/blob/{proof['revision']}/" not in proof["url"] or not proof["claim"]:
                 raise ValueError(f"Invalid evidence URL or claim: {key}")
         seen.add(key)
+    relationship_paths(data)
     return data
+
+
+def relationship_paths(data: dict, focus: str | None = None) -> list[tuple[dict, list[dict]]]:
+    """Resolve recorded connections into verified paths through their intermediates.
+
+    :param data: Validated shared dataset.
+    :param focus: Restrict to incident build/component connections when supplied.
+    :returns: Original relationships paired with their directly evidenced steps.
+    :raises ValueError: If an indirect relationship has no valid recorded path.
+
+    A focus -> provider -> tool path replaces a misleading direct indirect-use arrow.
+    """
+    result = []
+    for edge in data['relationships']:
+        if focus is not None and (focus not in (edge['from'], edge['to']) or edge['kind'] in AUTOMATION):
+            continue
+        if edge['kind'] != 'uses indirectly':
+            result.append((edge, [edge]))
+            continue
+        via = edge.get('via')
+        if not isinstance(via, list) or not via:
+            raise ValueError(f"Indirect connection needs a recorded via path: {edge['from']} -> {edge['to']}")
+        route = [edge['from'], *via, edge['to']]
+        if len(set(route)) != len(route):
+            raise ValueError('Indirect path contains a cycle')
+        steps = []
+        for source, target in zip(route, route[1:]):
+            candidates = [e for e in data['relationships'] if e['from'] == source and e['to'] == target
+                          and e['kind'] not in AUTOMATION | {'uses indirectly'}]
+            if not candidates:
+                raise ValueError(f'Missing recorded path step: {source} -> {target}')
+            steps.append(sorted(candidates, key=lambda e: (e['kind'] != 'depends on', e['kind']))[0])
+        result.append((edge, steps))
+    return result
 
 
 def diagram(nodes: list[dict], edges: list[dict], focus: str | None = None) -> str:
@@ -97,7 +138,7 @@ def diagram(nodes: list[dict], edges: list[dict], focus: str | None = None) -> s
         lines.append(f'    click {identifiers[node["id"]]} href "{node["url"]}" _blank')
     seen = set()
     for edge in edges:
-        label = edge['local_summary'] if focus else edge['kind']
+        label = edge.get('local_summary') or LABELS[edge['kind']]
         # Entity escapes keep authored labels from becoming Mermaid syntax.
         label = label.replace('&', '#38;').replace('"', '#34;').replace('|', '#124;').replace('\n', ' ')
         key = (edge['from'], edge['to'], label)
@@ -109,28 +150,72 @@ def diagram(nodes: list[dict], edges: list[dict], focus: str | None = None) -> s
     return '\n'.join(lines + ['```', ''])
 
 
-def render_local_view(data: dict, focus: str, digest: str, revision: str) -> str:
-    """Export only direct user-relevant dependencies in a nearby Mermaid block.
+def validate_local_view(data: dict, focus: str, markdown: str) -> None:
+    """Reject omitted component connections, broken indirect paths, or invented arrows.
 
-    Each included relationship needs a concise local_summary. Transitive
-    dependencies, CI automation, and incoming users stay in the full map.
+    :param data: The authoritative relationship dataset.
+    :param focus: Repository whose complete component neighbourhood is checked.
+    :param markdown: Generated or edited README map block.
+    :raises ValueError: If a node, connection, label, or indirect step is missing.
     """
+    urls = {node['id']: node['url'] for node in data['repositories']}
+    arrows, shown = set(), set()
+    for graph in re.findall(r'```mermaid\n(.*?)\n```', markdown, re.S):
+        links = dict(re.findall(r'click (r\d+) href "([^"]+)"', graph))
+        identifiers = set(re.findall(r'^    (r\d+)\[', graph, re.M))
+        if identifiers != set(links):
+            raise ValueError('Every repository node must have a link')
+        shown.update(links.values())
+        for source, label, target in re.findall(r'^    (r\d+) -->\|"([^"]+)"\| (r\d+)$', graph, re.M):
+            arrows.add((links[source], label, links[target]))
+    allowed = set()
+    for edge in data['relationships']:
+        if edge['kind'] in AUTOMATION | {'uses indirectly'}:
+            continue
+        label = edge.get('local_summary') or LABELS[edge['kind']]
+        label = label.replace('&', '#38;').replace('"', '#34;').replace('|', '#124;').replace('\n', ' ')
+        allowed.add((urls[edge['from']], label, urls[edge['to']]))
+        if focus in (edge['from'], edge['to']) and (urls[edge['from']], label, urls[edge['to']]) not in arrows:
+            raise ValueError(f"Missing component connection: {edge['from']} -> {edge['to']}")
+    if urls[focus] not in shown or not arrows <= allowed:
+        raise ValueError('Missing current repository or unrecorded map connection')
+    for edge in data['relationships']:
+        if edge['kind'] != 'uses indirectly' or focus not in (edge['from'], edge['to']):
+            continue
+        route = [edge['from'], *edge['via'], edge['to']]
+        for source, target in zip(route, route[1:]):
+            if not any(a == urls[source] and b == urls[target] for a, _, b in arrows):
+                raise ValueError(f'Missing indirect path step: {source} -> {target}')
+
+
+def render_local_view(data: dict, focus: str, digest: str, revision: str) -> str:
+    """Export every incident build/component connection with its verified path."""
     nodes = {node['id']: node for node in data['repositories']}
     if focus not in nodes:
         raise KeyError(focus)
-    order = {'depends on': 0, 'integrates with': 1, 'fetches source from': 2}
-    edges = [edge for edge in data['relationships'] if edge['from'] == focus
-             and edge['kind'] not in {'uses indirectly', 'uses automation from', 'runs workflow from'}]
-    edges.sort(key=lambda edge: (order.get(edge['kind'], 4), edge['to']))
-    for edge in edges:
-        if not isinstance(edge.get('local_summary'), str) or not edge['local_summary'].strip():
-            raise ValueError(f"Add a concise local_summary for {edge['from']} -> {edge['to']}")
-    selected = [nodes[identifier] for identifier in dict.fromkeys([focus, *(e['to'] for e in edges)])]
-    result = '## Repository map\n\n' + diagram(selected, edges, focus)
-    if not edges:
-        result += '\nBuild dependencies have not been reviewed for this repository.\n'
+    paths = relationship_paths(data, focus)
+    parts, edges, selected = [], [], {focus}
+    for _, path in paths:
+        identifiers = {e[end] for e in path for end in ('from', 'to')} | {focus}
+        if len(identifiers) > MAX_MAP_NODES:
+            raise ValueError('A recorded path exceeds the map size limit; revise its presentation')
+        if edges and len(selected | identifiers) > MAX_MAP_NODES:
+            parts.append((selected, edges))
+            edges, selected = [], {focus}
+        edges.extend(path)
+        selected.update(identifiers)
+    parts.append((selected, edges))
+    result = '## Repository map\n\n'
+    for index, (identifiers, connections) in enumerate(parts, 1):
+        if len(parts) > 1:
+            result += f'### Connections ({index}/{len(parts)})\n\n'
+        selected_nodes = [nodes[focus], *(nodes[key] for key in sorted(identifiers - {focus}))]
+        result += diagram(selected_nodes, connections, focus)
+    if not paths:
+        result += '\nBuild/component connections have not been reviewed for this repository.\n'
     result += f'\n[Full Qualcomm repository map]({CENTRAL}).\n'
     result += f'\n<!-- Generated from {CENTRAL} at {revision}; dataset SHA-256: {digest}. -->\n'
+    validate_local_view(data, focus, result)
     return result
 
 
@@ -168,17 +253,17 @@ def cluster_maps(data: dict) -> list[tuple[str, list[dict], list[dict]]]:
     :param data: Validated repository and relationship dataset.
     :returns: Named maps, each containing its repository nodes and relationships.
 
-    Kernel automation stays with kernel integration. Other automation is grouped
-    by the caller's repository area. Large groups split at source boundaries where
-    possible; shared providers can appear in multiple maps, but each edge appears
-    once. For example, package automation splits into several manageable diagrams.
+    Kernel automation stays with kernel integration. Standalone automation groups
+    are omitted. Large component groups split at source boundaries where possible.
     """
     nodes = {node['id']: node for node in data['repositories']}
     titles = ['Yocto builds and releases', 'Kernel integration', 'Source packaging',
               'Layer automation', 'Build and validation automation',
               'Package automation', 'Other automation']
     groups = {title: [] for title in titles}
-    for edge in data['relationships']:
+    connections = {(e['from'], e['to'], e['kind']): e
+                   for _, path in relationship_paths(data) for e in path}
+    for edge in connections.values():
         area = nodes[edge['from']]['group']
         if area == 'Kernel integration':
             title = 'Kernel integration'
@@ -196,6 +281,9 @@ def cluster_maps(data: dict) -> list[tuple[str, list[dict], list[dict]]]:
 
     maps = []
     for title, edges in groups.items():
+        # Omit standalone automation diagrams, preserving mixed component maps.
+        if not edges or all(edge['kind'] in AUTOMATION for edge in edges):
+            continue
         parts, current, selected = [], [], set()
         for source in sorted({edge['from'] for edge in edges}):
             outgoing = sorted((edge for edge in edges if edge['from'] == source),
@@ -221,18 +309,21 @@ def cluster_maps(data: dict) -> list[tuple[str, list[dict], list[dict]]]:
 
 
 def build(data: dict, digest: str) -> None:
-    """Generate the README cluster maps, retaining all inventory and evidence.
+    """Generate component maps and their evidence, retaining the complete inventory.
 
-    Every distinct directed relationship appears in one diagram.
-    Expandable details preserve conditions, source links, and inventory metadata.
+    Indirect records follow existing paths. Standalone automation diagrams and
+    their relationship text are omitted; mixed component diagrams retain context.
     """
     nodes = sorted(data['repositories'], key=lambda node: node['id'])
-    edges = sorted(data['relationships'], key=lambda edge: (edge['from'], edge['to'], edge['kind']))
-    connected = {edge[end] for edge in edges for end in ('from', 'to')}
-    overview = '# Qualcomm repository map\n\n' + data['scope'] + '\n\n'
-    overview += f"**Coverage:** {len(nodes)} repositories, {len(connected)} with reviewed connections, {len(edges)} evidenced relationships.\n\n{data['coverage']}\n\n"
-    overview += 'Click a repository node to open it. Shared repositories appear in each relevant map; every relationship is shown once.\n\n'
     maps = cluster_maps(data)
+    displayed = {(e['from'], e['to'], e['kind']) for _, _, edges in maps for e in edges}
+    edges = sorted((edge for edge in data['relationships'] if edge['kind'] not in AUTOMATION
+                    or (edge['from'], edge['to'], edge['kind']) in displayed),
+                   key=lambda edge: (edge['from'], edge['to'], edge['kind']))
+    components = sum(edge['kind'] not in AUTOMATION for edge in edges)
+    overview = '# Qualcomm repository map\n\n' + data['scope'] + '\n\n'
+    overview += f"**Coverage:** {len(nodes)} repositories; {components} recorded build/component relationships.\n\n{data['coverage']}\n\n"
+    overview += 'Click a repository node to open it. Indirect connections follow the actual path through their provider.\n\n'
     for title, _, _ in maps:
         anchor = re.sub(r'[^a-z0-9 -]', '', title.lower()).replace(' ', '-')
         overview += f'- [{title}](#{anchor})\n'
@@ -255,7 +346,12 @@ def build(data: dict, digest: str) -> None:
         for edge in edges:
             if edge['from'] != focus:
                 continue
-            overview += f"- **{edge['kind']}** [{edge['to'].split('/')[-1]}](https://github.com/{edge['to']})\n  - {edge['condition']}\n"
+            target = next(node for node in nodes if node['id'] == edge['to'])
+            if edge['kind'] == 'uses indirectly':
+                relation = 'through ' + ' → '.join(f"[{identifier.split('/')[-1]}]({next(n['url'] for n in nodes if n['id'] == identifier)})" for identifier in edge['via'])
+            else:
+                relation = edge.get('local_summary') or LABELS[edge['kind']]
+            overview += f"- **{relation}** [{edge['to'].split('/')[-1]}]({target['url']})\n  - {edge['condition']}\n"
             for proof in edge['evidence']:
                 filename = Path(unquote(urlsplit(proof['url']).path)).name
                 overview += f"  - [{filename}]({proof['url']})\n"

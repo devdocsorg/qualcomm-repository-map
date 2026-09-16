@@ -1044,6 +1044,46 @@
       "group": "Images and build tooling",
       "branch": "main",
       "archived": false
+    },
+    {
+      "id": "yoctoproject/meta-virtualization",
+      "url": "https://git.yoctoproject.org/meta-virtualization",
+      "description": "Virtualization layer included in the Qualcomm Linux image configuration.",
+      "group": "Layers and releases",
+      "branch": null,
+      "archived": false
+    },
+    {
+      "id": "yoctoproject/meta-selinux",
+      "url": "https://git.yoctoproject.org/meta-selinux",
+      "description": "SELinux layer included in the Qualcomm Linux image configuration.",
+      "group": "Layers and releases",
+      "branch": null,
+      "archived": false
+    },
+    {
+      "id": "yoctoproject/meta-security",
+      "url": "https://git.yoctoproject.org/meta-security",
+      "description": "Security layer included in the Qualcomm Linux image configuration.",
+      "group": "Layers and releases",
+      "branch": null,
+      "archived": false
+    },
+    {
+      "id": "uptane/meta-updater",
+      "url": "https://github.com/uptane/meta-updater",
+      "description": "Yocto layer supporting Uptane updates via aktualizr and OSTree.",
+      "group": "Layers and releases",
+      "branch": "master",
+      "archived": false
+    },
+    {
+      "id": "siemens/kas",
+      "url": "https://github.com/siemens/kas",
+      "description": "Setup tool for BitBake-based projects.",
+      "group": "Images and build tooling",
+      "branch": "master",
+      "archived": false
     }
   ],
   "relationships": [
@@ -1367,7 +1407,8 @@
           "claim": "The distro kas fragment declares this repository.",
           "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
         }
-      ]
+      ],
+      "local_summary": "includes for Qualcomm Linux images"
     },
     {
       "from": "qualcomm-linux/meta-qcom",
@@ -1380,7 +1421,8 @@
           "claim": "The base kas configuration declares this repository.",
           "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
         }
-      ]
+      ],
+      "local_summary": "runs build tasks with"
     },
     {
       "from": "qualcomm-linux/meta-qcom",
@@ -1393,7 +1435,8 @@
           "claim": "The distro kas fragment declares this repository.",
           "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
         }
-      ]
+      ],
+      "local_summary": "includes for Qualcomm Linux images"
     },
     {
       "from": "qualcomm-linux/meta-qcom",
@@ -1406,7 +1449,8 @@
           "claim": "The base kas configuration declares this repository.",
           "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
         }
-      ]
+      ],
+      "local_summary": "uses base Linux build recipes from"
     },
     {
       "from": "qualcomm-linux/meta-qcom",
@@ -1445,7 +1489,8 @@
           "claim": "SRC_URI fetches qualcomm-linux/kernel.",
           "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
         }
-      ]
+      ],
+      "local_summary": "fetches Linux kernel sources from"
     },
     {
       "from": "qualcomm-linux/meta-qcom",
@@ -1458,7 +1503,8 @@
           "claim": "The distro kas fragment declares this repository.",
           "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
         }
-      ]
+      ],
+      "local_summary": "includes for Qualcomm Linux images"
     },
     {
       "from": "qualcomm-linux/meta-qcom",
@@ -1471,7 +1517,8 @@
           "claim": "The distro kas fragment declares this repository.",
           "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
         }
-      ]
+      ],
+      "local_summary": "includes for Qualcomm Linux images"
     },
     {
       "from": "qualcomm-linux/meta-qcom",
@@ -1484,7 +1531,8 @@
           "claim": "SRC_URI fetches qcom-ptool.",
           "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
         }
-      ]
+      ],
+      "local_summary": "gets partition tools from"
     },
     {
       "from": "qualcomm-linux/meta-qcom",
@@ -1524,7 +1572,7 @@
           "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
         }
       ],
-      "local_summary": "Required: base OpenEmbedded layer."
+      "local_summary": "uses base Linux build recipes from"
     },
     {
       "from": "qualcomm-linux/meta-qcom-3rdparty",
@@ -1577,7 +1625,7 @@
           "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
         }
       ],
-      "local_summary": "Required: Qualcomm BSP layer."
+      "local_summary": "adds third-party board support to"
     },
     {
       "from": "qualcomm-linux/meta-qcom-3rdparty",
@@ -1624,7 +1672,7 @@
           "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
         }
       ],
-      "local_summary": "Optional: Qualcomm reference distro."
+      "local_summary": "can use Qualcomm Linux settings from"
     },
     {
       "from": "qualcomm-linux/meta-qcom-3rdparty",
@@ -1643,7 +1691,10 @@
           "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
         }
       ],
-      "local_summary": "Partition tools, supplied through meta-qcom."
+      "local_summary": "Partition tools, supplied through meta-qcom.",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ]
     },
     {
       "from": "qualcomm-linux/meta-qcom-3rdparty",
@@ -1670,7 +1721,7 @@
           "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
         }
       ],
-      "local_summary": "RUBIK Pi 3 firmware, fetched by the build."
+      "local_summary": "fetches RUBIK Pi boot firmware from"
     },
     {
       "from": "qualcomm-linux/meta-qcom-arduino",
@@ -5082,6 +5133,294 @@
           "revision": "17e493f2d6f2dc9999659887da553c8a14ea6ea1",
           "claim": "The uses field calls automation from qualcomm/qcom-reusable-workflows."
         }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "yoctoproject/meta-virtualization",
+      "kind": "selects for distro",
+      "condition": "Included when the qcom-distro build configuration is selected.",
+      "local_summary": "includes for Qualcomm Linux images",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml",
+          "revision": "851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95",
+          "claim": "The Qualcomm Linux image configuration declares this layer."
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "yoctoproject/meta-selinux",
+      "kind": "selects for distro",
+      "condition": "Included when the qcom-distro build configuration is selected.",
+      "local_summary": "includes for Qualcomm Linux images",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml",
+          "revision": "851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95",
+          "claim": "The Qualcomm Linux image configuration declares this layer."
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "yoctoproject/meta-security",
+      "kind": "selects for distro",
+      "condition": "Included when the qcom-distro build configuration is selected.",
+      "local_summary": "includes for Qualcomm Linux images",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml",
+          "revision": "851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95",
+          "claim": "The Qualcomm Linux image configuration declares this layer."
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "uptane/meta-updater",
+      "kind": "selects for distro",
+      "condition": "Included when the qcom-distro build configuration is selected.",
+      "local_summary": "includes for Qualcomm Linux images",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml",
+          "revision": "851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95",
+          "claim": "The Qualcomm Linux image configuration declares this layer."
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "siemens/kas",
+      "kind": "builds with",
+      "condition": "The build workflow downloads and invokes kas-container.",
+      "local_summary": "sets up and runs builds with",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/.github/workflows/build-yocto.yml",
+          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "claim": "The workflow downloads kas-container from siemens/kas and runs the build."
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "AudioReach/meta-audioreach",
+      "kind": "uses indirectly",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ],
+      "condition": "Optional qcom-distro kas composition; not required by every BSP-only build.",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
+          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "claim": "This repository selects the parent build configuration or kernel provider."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml",
+          "claim": "The distro kas fragment declares this repository.",
+          "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "openembedded/bitbake",
+      "kind": "uses indirectly",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ],
+      "condition": "Development kas configuration on master; release locks can select other revisions.",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/base.yml",
+          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "claim": "This repository selects the parent build configuration or kernel provider."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/base.yml",
+          "claim": "The base kas configuration declares this repository.",
+          "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "openembedded/meta-openembedded",
+      "kind": "uses indirectly",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ],
+      "condition": "Optional qcom-distro kas composition; not required by every BSP-only build.",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
+          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "claim": "This repository selects the parent build configuration or kernel provider."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml",
+          "claim": "The distro kas fragment declares this repository.",
+          "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "qualcomm-linux/kernel",
+      "kind": "uses indirectly",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ],
+      "condition": "linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/conf/machine/rubikpi3.conf",
+          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "claim": "This repository selects the parent build configuration or kernel provider."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-kernel/linux/linux-qcom-next_git.bb",
+          "claim": "SRC_URI fetches qualcomm-linux/kernel.",
+          "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "qualcomm-linux/meta-ai",
+      "kind": "uses indirectly",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ],
+      "condition": "Optional qcom-distro kas composition; not required by every BSP-only build.",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
+          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "claim": "This repository selects the parent build configuration or kernel provider."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml",
+          "claim": "The distro kas fragment declares this repository.",
+          "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "yoctoproject/meta-virtualization",
+      "kind": "uses indirectly",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ],
+      "condition": "Included when the qcom-distro build configuration is selected.",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
+          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "claim": "This repository selects the parent build configuration or kernel provider."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml",
+          "revision": "851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95",
+          "claim": "The Qualcomm Linux image configuration declares this layer."
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "yoctoproject/meta-selinux",
+      "kind": "uses indirectly",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ],
+      "condition": "Included when the qcom-distro build configuration is selected.",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
+          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "claim": "This repository selects the parent build configuration or kernel provider."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml",
+          "revision": "851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95",
+          "claim": "The Qualcomm Linux image configuration declares this layer."
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "yoctoproject/meta-security",
+      "kind": "uses indirectly",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ],
+      "condition": "Included when the qcom-distro build configuration is selected.",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
+          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "claim": "This repository selects the parent build configuration or kernel provider."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml",
+          "revision": "851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95",
+          "claim": "The Qualcomm Linux image configuration declares this layer."
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "uptane/meta-updater",
+      "kind": "uses indirectly",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ],
+      "condition": "Included when the qcom-distro build configuration is selected.",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
+          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "claim": "This repository selects the parent build configuration or kernel provider."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml",
+          "revision": "851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95",
+          "claim": "The Qualcomm Linux image configuration declares this layer."
+        }
+      ]
+    }
+  ],
+  "source_audits": [
+    {
+      "repository": "qualcomm-linux/meta-qcom-3rdparty",
+      "source_repository": "devdocsorg/meta-qcom-3rdparty",
+      "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+      "paths": [
+        "ci",
+        "conf",
+        "recipes-bsp",
+        "recipes-kernel",
+        "dynamic-layers",
+        ".github/workflows/build-yocto.yml"
+      ]
+    },
+    {
+      "repository": "qualcomm-linux/meta-qcom",
+      "source_repository": "qualcomm-linux/meta-qcom",
+      "revision": "851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95",
+      "paths": [
+        "ci/base.yml",
+        "ci/qcom-distro.yml",
+        "ci/ci.yml",
+        "ci/mirror.yml",
+        "ci/ccache.yml",
+        "recipes-kernel/linux/linux-qcom-next_git.bb",
+        "recipes-bsp/partition/qcom-ptool.inc"
       ]
     }
   ]

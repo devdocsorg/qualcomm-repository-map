@@ -12,4 +12,5 @@ jobs:
           python-version: '3.12'
       - run: python tools/map_build.py
       - run: python tools/check_map.py
+      - run: python tools/check_sources.py
       - run: git diff --exit-code && test -z "$(git ls-files --others --exclude-standard)"

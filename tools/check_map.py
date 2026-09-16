@@ -1,4 +1,4 @@
-"""Check relationship preservation, nearby scope, README exports, and native docs."""
+"""Check component coverage, evidence, README exports, source discovery, and docs."""
 import ast
 import copy
 from collections import Counter
@@ -7,60 +7,92 @@ import json
 from pathlib import Path
 import pydoc
 import re
+import subprocess
 import tempfile
 from urllib.parse import unquote, urlsplit
 
+import check_sources
 import map_build
+
+
+def arrows(markdown):
+    """Read linked diagram arrows independently of the generator's selection logic."""
+    result = set()
+    for graph in re.findall(r'```mermaid\n(.*?)\n```', markdown, re.S):
+        links = dict(re.findall(r'click (r\d+) href "([^"]+)"', graph))
+        identifiers = set(re.findall(r'^    (r\d+)\[', graph, re.M))
+        assert identifiers == set(links), 'Unlinked node'
+        assert len(links) <= map_build.MAX_MAP_NODES
+        assert len(set(links.values())) == len(links)
+        for source, label, target in re.findall(r'^    (r\d+) -->\|"([^"]+)"\| (r\d+)$', graph, re.M):
+            result.add((links[source], label, links[target]))
+    return result
+
+
+def rejects(function, *args):
+    """Require a validation failure for deliberately incomplete input."""
+    try:
+        function(*args)
+    except ValueError:
+        return
+    raise AssertionError('Invalid input accepted')
+
 
 data = map_build.load_data(map_build.DATA)
 focus = 'qualcomm-linux/meta-qcom-3rdparty'
 digest = hashlib.sha256(map_build.DATA.read_bytes()).hexdigest()
 readme = (map_build.ROOT/'README.md').read_text()
-graphs = re.findall(r'```mermaid\n(.*?)\n```', readme, re.S)
-assert len(graphs) > 1, 'The overview must be split into readable maps'
-shown, connections = set(), Counter()
-for graph in graphs:
-    links = dict(re.findall(r'^    click (r\d+) href "([^"]+)" _blank$', graph, re.M))
-    identifiers = re.findall(r'^    (r\d+)\[', graph, re.M)
-    assert len(identifiers) <= map_build.MAX_MAP_NODES
-    assert set(identifiers) == set(links), 'Every node must be clickable'
-    assert len(set(links.values())) == len(links), 'Repeated repository in one diagram'
-    shown.update(links.values())
-    for source, kind, target in re.findall(r'^    (r\d+) -->\|"([^"]+)"\| (r\d+)$', graph, re.M):
-        connections[links[source], kind, links[target]] += 1
+connections = arrows(readme)
 urls = {node['id']: node['url'] for node in data['repositories']}
-expected = {(urls[e['from']], e['kind'], urls[e['to']]) for e in data['relationships']}
-assert connections == Counter({edge: 1 for edge in expected}), 'Lost or duplicated relationship'
-assert shown == {urls[e[end]] for e in data['relationships'] for end in ('from', 'to')}
-for node in data['repositories']:
-    assert f"]({node['url']})" in readme, 'Inventory must retain every repository'
-    assert node['description'] in re.sub(r'<(https?://[^>]+)>', r'\1', readme)
+assert readme.count('```mermaid') > 1
+assert 'uses indirectly' not in readme
+for title, nodes, edges in map_build.cluster_maps(data):
+    assert any(e['kind'] not in map_build.AUTOMATION for e in edges), title
+assert any(label == 'runs automation from' for _, label, _ in connections), 'Lost mixed integration context'
 for edge in data['relationships']:
-    assert edge['condition'] in readme
-# Keep every evidence link, replacing only its label with the source filename.
-evidence = [proof for edge in data['relationships'] for proof in edge['evidence']]
+    if edge['kind'] in map_build.AUTOMATION:
+        continue
+    if edge['kind'] == 'uses indirectly':
+        route = [edge['from'], *edge['via'], edge['to']]
+        for source, target in zip(route, route[1:]):
+            assert any(a == urls[source] and b == urls[target] for a, _, b in connections)
+        assert not any(a == urls[edge['from']] and b == urls[edge['to']] for a, _, b in connections)
+    else:
+        label = edge.get('local_summary') or map_build.LABELS[edge['kind']]
+        assert (urls[edge['from']], label, urls[edge['to']]) in connections
+for node in data['repositories']:
+    assert f"]({node['url']})" in readme
+    assert node['description'] in re.sub(r'<(https?://[^>]+)>', r'\1', readme)
+displayed = {(e['from'], e['to'], e['kind']) for _, _, edges in map_build.cluster_maps(data) for e in edges}
+visible_edges = [e for e in data['relationships'] if e['kind'] not in map_build.AUTOMATION or (e['from'], e['to'], e['kind']) in displayed]
+evidence = [p for edge in visible_edges for p in edge['evidence']]
 expected_links = Counter((Path(unquote(urlsplit(p['url']).path)).name, p['url']) for p in evidence)
 actual_links = Counter(re.findall(r'^  - \[([^\]]+)\]\((https://github.com/[^)]+/blob/[^)]+)\)$', readme, re.M))
-assert actual_links == expected_links, 'Evidence links or filename labels changed'
+assert actual_links == expected_links, 'Evidence or filename labels changed'
 assert 'The uses field calls automation from' not in readme
-headings = {re.sub(r'[^a-z0-9 -]', '', title.lower()).replace(' ', '-')
-            for title in re.findall(r'^## (.+)$', readme, re.M)}
-assert set(re.findall(r'\]\(#([^)]*)\)', readme)) <= headings, 'Broken map navigation'
+headings = {re.sub(r'[^a-z0-9 -]', '', title.lower()).replace(' ', '-') for title in re.findall(r'^## (.+)$', readme, re.M)}
+assert set(re.findall(r'\]\(#([^)]*)\)', readme)) <= headings
 assert not list(map_build.ROOT.glob('maps/*'))
 assert not list(map_build.ROOT.glob('*.html'))
-assert not list((map_build.ROOT/'data').glob('*.html'))
 
-local = map_build.render_local_view(data, focus, digest, 'a' * 40)
-assert local.count('["meta-qcom-3rdparty (you are here)"]') == 1
-assert local.count(' href ') == 5
-assert local.count(' -->|') == 4
-for summary in ('Required: base OpenEmbedded layer.', 'Optional: Qualcomm reference distro.',
-                'RUBIK Pi 3 firmware, fetched by the build.'):
-    assert summary in local
-for excluded in ('qcom-ptool', '(private)', 'bitbake-lint-action', 'REPOSITORY_MAP.md'):
-    assert excluded not in local
-assert 'dataset SHA-256' not in re.sub(r'<!--.*?-->', '', local, flags=re.S)
+# Exercise all neighbourhoods, including those with incoming-only connections.
+for node in data['repositories']:
+    local = map_build.render_local_view(data, node['id'], digest, 'a'*40)
+    arrows(local)
+    map_build.validate_local_view(data, node['id'], local)
+    for line in re.findall(r'^    r\d+ -->.*\n', local, re.M):
+        rejects(map_build.validate_local_view, data, node['id'], local.replace(line, ''))
+local = map_build.render_local_view(data, focus, digest, 'a'*40)
+assert local.count('(you are here)') == 1
+assert 'Required:' not in local and 'Optional:' not in local
+assert 'qcom-ptool' in local and '(private)' not in local
 assert f'[Full Qualcomm repository map]({map_build.CENTRAL})' in local
+
+# Adding a neighbour must change the export without changing generator allowlists.
+extended = copy.deepcopy(data)
+extended['repositories'].append(dict(data['repositories'][0], id='example/new-input', url='https://github.com/example/new-input'))
+extended['relationships'].append(dict(next(e for e in data['relationships'] if e['from'] == focus and e['kind'] == 'depends on'), to='example/new-input'))
+assert 'https://github.com/example/new-input' in map_build.render_local_view(extended, focus, digest, 'a'*40)
 
 with tempfile.TemporaryDirectory() as tmp:
     path = Path(tmp)/'README.md'
@@ -73,7 +105,7 @@ with tempfile.TemporaryDirectory() as tmp:
     map_build.update_readme(path, local)
     assert path.read_text() == first
     for broken in (first+'\n## Extra section\n', first+map_build.START,
-                   first.replace(map_build.END, ''), first.replace('Required:', 'Incorrect:')):
+                   first.replace(map_build.END, ''), first.replace('adds third-party board support to', 'wrong')):
         path.write_text(broken)
         try:
             map_build.update_readme(path, local, check=True)
@@ -82,7 +114,7 @@ with tempfile.TemporaryDirectory() as tmp:
         else:
             raise AssertionError('Invalid or stale README map accepted')
 
-for mutation in ('unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned', 'missing_summary'):
+for mutation in ('unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned', 'missing_path'):
     broken = copy.deepcopy(data)
     if mutation == 'unknown_endpoint':
         broken['relationships'][0]['to'] = 'absent/repository'
@@ -93,18 +125,22 @@ for mutation in ('unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned'
     elif mutation == 'unpinned':
         broken['relationships'][0]['evidence'][0]['revision'] = 'main'
     else:
-        for edge in broken['relationships']:
-            edge.pop('local_summary', None)
+        next(e for e in broken['relationships'] if e['kind'] == 'uses indirectly').pop('via')
     with tempfile.TemporaryDirectory() as tmp:
         path = Path(tmp)/'data.json'
         path.write_text(json.dumps(broken))
-        try:
-            loaded = map_build.load_data(path)
-            map_build.render_local_view(loaded, focus, digest, 'a'*40)
-        except ValueError:
-            pass
-        else:
-            raise AssertionError(f'Invalid dataset accepted: {mutation}')
+        rejects(map_build.load_data, path)
+
+# Source discovery is independent of rendered-map coverage.
+with tempfile.TemporaryDirectory() as tmp:
+    checkout = Path(tmp)
+    subprocess.run(['git', 'init', '-q', str(checkout)], check=True)
+    (checkout/'build.yml').write_text('url: https://github.com/example/missing.git\n')
+    subprocess.run(['git', 'add', '.'], cwd=checkout, check=True)
+    subprocess.run(['git', '-c', 'user.name=Map test', '-c', 'user.email=map@example.invalid', 'commit', '-qm', 'Source fixture'], cwd=checkout, check=True)
+    revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=checkout, text=True).strip()
+    rejects(check_sources.check, data, {'repository':focus, 'revision':revision, 'paths':['build.yml']}, checkout)
+assert check_sources.references('url: https://git.yoctoproject.org/meta-security\n# https://github.com/example/ignored') == {'https://git.yoctoproject.org/meta-security'}
 
 reference = pydoc.plain(pydoc.render_doc(map_build))
 count = 0
@@ -115,4 +151,4 @@ for source in sorted((map_build.ROOT/'tools').glob('*.py')):
             if source.name == 'map_build.py':
                 assert f'{node.name}(' in reference, f'Missing pydoc entry: {node.name}'
             count += 1
-print(f'Preserved {len(data["repositories"])} repositories and {len(data["relationships"])} relationships; README export and negative checks pass; {count} native docstrings verified')
+print(f'{len(data["repositories"])} repository views checked; component coverage, omission regressions, source discovery, evidence, exports, and {count} native docstrings pass')
