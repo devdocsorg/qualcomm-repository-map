@@ -6,7 +6,7 @@ A GitHub Action for managing Debian packages in JFrog Artifactory. This action s
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/apt-artifactory-action](https://github.com/qualcomm-linux/apt-artifactory-action) → **uses automation from** → [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
@@ -14,7 +14,7 @@ A GitHub Action for managing Debian packages in JFrog Artifactory. This action s
 
 ## Incoming connections
 
-**Uses automation from** (repositories using this one)
+### Uses automation from (repositories using this one)
 
 - [qualcomm-linux/qli-ci](https://github.com/qualcomm-linux/qli-ci) → **uses automation from** → [qualcomm-linux/apt-artifactory-action](https://github.com/qualcomm-linux/apt-artifactory-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

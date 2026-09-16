@@ -6,7 +6,7 @@ Debian packaging meta-data for mink-idl-compiler project.
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/pkg-mink-idl-compiler](https://github.com/qualcomm-linux/pkg-mink-idl-compiler) → **uses automation from** → [qualcomm-linux/debusine-action](https://github.com/qualcomm-linux/debusine-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

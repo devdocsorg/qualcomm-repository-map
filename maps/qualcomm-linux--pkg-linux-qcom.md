@@ -6,7 +6,7 @@ QCOM Linux Kernel Debian Package repository
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/pkg-linux-qcom](https://github.com/qualcomm-linux/pkg-linux-qcom) → **uses automation from** → [qualcomm-linux/upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

@@ -6,7 +6,7 @@ Workaround implementation - Read matrix jobs outputs
 
 ## Incoming connections
 
-**Uses automation from** (repositories using this one)
+### Uses automation from (repositories using this one)
 
 - [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **uses automation from** → [qualcomm-linux/github-action-matrix-outputs-read](https://github.com/qualcomm-linux/github-action-matrix-outputs-read)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

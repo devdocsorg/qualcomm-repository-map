@@ -6,7 +6,7 @@ Debian package meta-data to package Qualcomm vendored mink optee-client library
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/pkg-optee-client](https://github.com/qualcomm-linux/pkg-optee-client) → **uses automation from** → [qualcomm-linux/debusine-action](https://github.com/qualcomm-linux/debusine-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

@@ -6,7 +6,7 @@ Qualcomm utilities for Linux builds
 
 ## Incoming connections
 
-**Uses automation from** (repositories using this one)
+### Uses automation from (repositories using this one)
 
 - [qualcomm-linux/gbm-msm-backend](https://github.com/qualcomm-linux/gbm-msm-backend) → **uses automation from** → [qualcomm-linux/qcom-build-utils](https://github.com/qualcomm-linux/qcom-build-utils)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

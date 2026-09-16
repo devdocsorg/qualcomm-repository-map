@@ -6,7 +6,7 @@ This repo will hold build scripts and reusable workflows for pkg rpm builds.
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/qcom-rpm-utils](https://github.com/qualcomm-linux/qcom-rpm-utils) → **uses automation from** → [qualcomm-linux/upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
@@ -17,7 +17,7 @@ This repo will hold build scripts and reusable workflows for pkg rpm builds.
 
 ## Incoming connections
 
-**Uses automation from** (repositories using this one)
+### Uses automation from (repositories using this one)
 
 - [qualcomm-linux/pkg-rpm-qcom-fastcv-binaries](https://github.com/qualcomm-linux/pkg-rpm-qcom-fastcv-binaries) → **uses automation from** → [qualcomm-linux/qcom-rpm-utils](https://github.com/qualcomm-linux/qcom-rpm-utils)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

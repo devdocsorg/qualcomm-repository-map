@@ -6,7 +6,7 @@ This repository contains the source code of camera-kernel driver for the downstr
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/camera-driver](https://github.com/qualcomm-linux/camera-driver) → **uses automation from** → [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

@@ -6,7 +6,7 @@ Qualcomm reusable workflows
 
 ## Incoming connections
 
-**Uses automation from** (repositories using this one)
+### Uses automation from (repositories using this one)
 
 - [qualcomm-linux/Robotics-SDK-Ubuntu](https://github.com/qualcomm-linux/Robotics-SDK-Ubuntu) → **uses automation from** → [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

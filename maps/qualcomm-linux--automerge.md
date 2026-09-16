@@ -6,7 +6,7 @@ Tools to manage creation of qcom-next from the topic branches
 
 ## Incoming connections
 
-**Configures** (repositories using this one)
+### Configures (repositories using this one)
 
 - [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **configures** → [qualcomm-linux/automerge](https://github.com/qualcomm-linux/automerge)
   - qcom-next integration configuration.

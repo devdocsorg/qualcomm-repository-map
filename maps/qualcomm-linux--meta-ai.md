@@ -6,7 +6,7 @@ OpenEmbedded layer for AI/ML related recipes
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/meta-ai](https://github.com/qualcomm-linux/meta-ai) → **uses automation from** → [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
@@ -14,7 +14,7 @@ OpenEmbedded layer for AI/ML related recipes
 
 ## Incoming connections
 
-**Selects for distro** (repositories using this one)
+### Selects for distro (repositories using this one)
 
 - [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [qualcomm-linux/meta-ai](https://github.com/qualcomm-linux/meta-ai)
   - Optional qcom-distro kas composition; not required by every BSP-only build.

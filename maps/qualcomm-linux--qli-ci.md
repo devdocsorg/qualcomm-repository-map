@@ -6,7 +6,7 @@ Central location for pkg reusable workflows
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/qli-ci](https://github.com/qualcomm-linux/qli-ci) → **uses automation from** → [qualcomm-linux/apt-artifactory-action](https://github.com/qualcomm-linux/apt-artifactory-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
@@ -20,7 +20,7 @@ Central location for pkg reusable workflows
 
 ## Incoming connections
 
-**Uses automation from** (repositories using this one)
+### Uses automation from (repositories using this one)
 
 - [qualcomm-linux/pkg-adreno](https://github.com/qualcomm-linux/pkg-adreno) → **uses automation from** → [qualcomm-linux/qli-ci](https://github.com/qualcomm-linux/qli-ci)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

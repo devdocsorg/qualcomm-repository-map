@@ -6,7 +6,7 @@ ROS 2 driver for Xsens MTi IMU sensors
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/pkg-ros-jazzy-xsens-mti-ros2-driver](https://github.com/qualcomm-linux/pkg-ros-jazzy-xsens-mti-ros2-driver) → **uses automation from** → [qualcomm-linux/qli-ci](https://github.com/qualcomm-linux/qli-ci)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

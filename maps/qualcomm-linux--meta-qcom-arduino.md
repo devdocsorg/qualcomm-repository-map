@@ -6,7 +6,7 @@ OpenEmbedded/Yocto Project BSP layer for Qualcomm based Arduino platforms
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/meta-qcom-arduino](https://github.com/qualcomm-linux/meta-qcom-arduino) → **uses automation from** → [qualcomm-linux/bitbake-lint-action](https://github.com/qualcomm-linux/bitbake-lint-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

@@ -6,13 +6,13 @@ qcom-ptool contains various device partitioning utilities like ptool.py, gen_par
 
 ## Incoming connections
 
-**Fetches source from** (repositories using this one)
+### Fetches source from (repositories using this one)
 
 - [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **fetches source from** → [qualcomm-linux/qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
   - Partition recipe source; pinned by qcom-ptool.inc.
   - [Explore qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc)
 
-**Uses indirectly** (repositories using this one)
+### Uses indirectly (repositories using this one)
 
 - [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **uses indirectly** → [qualcomm-linux/qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
   - Partition tooling is supplied through meta-qcom; this is an indirect relationship, not an extra layer dependency.

@@ -6,7 +6,7 @@ Repository purpose needs review; open the repository for its maintained document
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/video-driver](https://github.com/qualcomm-linux/video-driver) → **uses automation from** → [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

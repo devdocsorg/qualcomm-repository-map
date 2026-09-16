@@ -6,7 +6,7 @@ This project handles Debian packaging for the URM extension project i.e https://
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/pkg-urm-ext](https://github.com/qualcomm-linux/pkg-urm-ext) → **uses automation from** → [qualcomm-linux/debusine-action](https://github.com/qualcomm-linux/debusine-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

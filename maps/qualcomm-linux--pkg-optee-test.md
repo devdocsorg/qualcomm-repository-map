@@ -6,7 +6,7 @@ Debian package meta-data to package Qualcomm vendored mink xtest for QTEE
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/pkg-optee-test](https://github.com/qualcomm-linux/pkg-optee-test) → **uses automation from** → [qualcomm-linux/debusine-action](https://github.com/qualcomm-linux/debusine-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

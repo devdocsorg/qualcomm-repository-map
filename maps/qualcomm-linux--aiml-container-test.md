@@ -6,7 +6,7 @@ Container targeted at testing AI and ML workloads for Qualcomm platforms
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/aiml-container-test](https://github.com/qualcomm-linux/aiml-container-test) → **uses automation from** → [qualcomm-linux/upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

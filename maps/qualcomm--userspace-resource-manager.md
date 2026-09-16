@@ -6,7 +6,7 @@ Upstream userspace resource manager source packaged by pkg-urm.
 
 ## Incoming connections
 
-**Packages** (repositories using this one)
+### Packages (repositories using this one)
 
 - [qualcomm-linux/pkg-urm](https://github.com/qualcomm-linux/pkg-urm) → **packages** → [qualcomm/userspace-resource-manager](https://github.com/qualcomm/userspace-resource-manager)
   - Package metadata and source ownership are separate; choose the package branch before editing packaging.

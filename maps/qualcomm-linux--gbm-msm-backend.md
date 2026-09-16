@@ -6,7 +6,7 @@ MSM Backend repository to overlay on top of upstream MESA GBM.
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/gbm-msm-backend](https://github.com/qualcomm-linux/gbm-msm-backend) → **uses automation from** → [qualcomm-linux/qcom-build-utils](https://github.com/qualcomm-linux/qcom-build-utils)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
@@ -17,7 +17,7 @@ MSM Backend repository to overlay on top of upstream MESA GBM.
 
 ## Incoming connections
 
-**Packages** (repositories using this one)
+### Packages (repositories using this one)
 
 - [qualcomm-linux/pkg-gbm-msm-backend](https://github.com/qualcomm-linux/pkg-gbm-msm-backend) → **packages** → [qualcomm-linux/gbm-msm-backend](https://github.com/qualcomm-linux/gbm-msm-backend)
   - Package metadata and source ownership are separate; choose the package branch before editing packaging.

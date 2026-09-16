@@ -6,13 +6,13 @@ This project handles Debian packaging for the URM project (https://github.com/qu
 
 ## Outgoing connections
 
-**Packages**
+### Packages
 
 - [qualcomm-linux/pkg-urm](https://github.com/qualcomm-linux/pkg-urm) → **packages** → [qualcomm/userspace-resource-manager](https://github.com/qualcomm/userspace-resource-manager)
   - Package metadata and source ownership are separate; choose the package branch before editing packaging.
   - [Explore qualcomm/userspace-resource-manager](qualcomm--userspace-resource-manager.md) · [evidence 1](https://github.com/qualcomm-linux/pkg-urm/blob/f3dd7df55fe9522d5dabd9b00729c54d7076a111/README.md)
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/pkg-urm](https://github.com/qualcomm-linux/pkg-urm) → **uses automation from** → [qualcomm-linux/debusine-action](https://github.com/qualcomm-linux/debusine-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

@@ -6,13 +6,13 @@ Packaging repo for gbm-msm-backend
 
 ## Outgoing connections
 
-**Packages**
+### Packages
 
 - [qualcomm-linux/pkg-gbm-msm-backend](https://github.com/qualcomm-linux/pkg-gbm-msm-backend) → **packages** → [qualcomm-linux/gbm-msm-backend](https://github.com/qualcomm-linux/gbm-msm-backend)
   - Package metadata and source ownership are separate; choose the package branch before editing packaging.
   - [Explore qualcomm-linux/gbm-msm-backend](qualcomm-linux--gbm-msm-backend.md) · [evidence 1](https://github.com/qualcomm-linux/pkg-gbm-msm-backend/blob/f6b4fbab5add28563a816f3c49f94c5651c04972/README.md)
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/pkg-gbm-msm-backend](https://github.com/qualcomm-linux/pkg-gbm-msm-backend) → **uses automation from** → [qualcomm-linux/debusine-action](https://github.com/qualcomm-linux/debusine-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

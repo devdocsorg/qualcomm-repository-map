@@ -6,7 +6,7 @@ Build engine used by the kas configuration.
 
 ## Incoming connections
 
-**Builds with** (repositories using this one)
+### Builds with (repositories using this one)
 
 - [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **builds with** → [openembedded/bitbake](https://github.com/openembedded/bitbake)
   - Development kas configuration on master; release locks can select other revisions.

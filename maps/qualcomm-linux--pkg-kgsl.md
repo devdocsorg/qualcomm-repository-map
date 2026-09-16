@@ -6,13 +6,13 @@ Packaging repo for kgsl
 
 ## Outgoing connections
 
-**Packages**
+### Packages
 
 - [qualcomm-linux/pkg-kgsl](https://github.com/qualcomm-linux/pkg-kgsl) → **packages** → [qualcomm-linux/kgsl](https://github.com/qualcomm-linux/kgsl)
   - Package metadata and source ownership are separate; choose the package branch before editing packaging.
   - [Explore qualcomm-linux/kgsl](qualcomm-linux--kgsl.md) · [evidence 1](https://github.com/qualcomm-linux/pkg-kgsl/blob/e86b135670ce1464db9035193492ddf08ad7f5ed/README.md)
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/pkg-kgsl](https://github.com/qualcomm-linux/pkg-kgsl) → **uses automation from** → [qualcomm-linux/debusine-action](https://github.com/qualcomm-linux/debusine-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

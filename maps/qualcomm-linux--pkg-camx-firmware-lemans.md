@@ -6,7 +6,7 @@ Repository purpose needs review; open the repository for its maintained document
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/pkg-camx-firmware-lemans](https://github.com/qualcomm-linux/pkg-camx-firmware-lemans) → **uses automation from** → [qualcomm-linux/qli-ci](https://github.com/qualcomm-linux/qli-ci)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

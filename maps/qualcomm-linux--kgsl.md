@@ -6,7 +6,7 @@ Repository purpose needs review; open the repository for its maintained document
 
 ## Incoming connections
 
-**Packages** (repositories using this one)
+### Packages (repositories using this one)
 
 - [qualcomm-linux/pkg-kgsl](https://github.com/qualcomm-linux/pkg-kgsl) → **packages** → [qualcomm-linux/kgsl](https://github.com/qualcomm-linux/kgsl)
   - Package metadata and source ownership are separate; choose the package branch before editing packaging.

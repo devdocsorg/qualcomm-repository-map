@@ -6,7 +6,7 @@ Additional OpenEmbedded layers selected by the distro configuration.
 
 ## Incoming connections
 
-**Selects for distro** (repositories using this one)
+### Selects for distro (repositories using this one)
 
 - [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [openembedded/meta-openembedded](https://github.com/openembedded/meta-openembedded)
   - Optional qcom-distro kas composition; not required by every BSP-only build.

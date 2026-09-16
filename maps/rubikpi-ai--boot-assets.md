@@ -6,7 +6,7 @@ Vendor-hosted RUBIK Pi boot firmware consumed by the board recipe.
 
 ## Incoming connections
 
-**Fetches source from** (repositories using this one)
+### Fetches source from (repositories using this one)
 
 - [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **fetches source from** → [rubikpi-ai/boot-assets](https://github.com/rubikpi-ai/boot-assets)
   - RUBIK Pi 3 boot firmware only; pinned by the recipe SRCREV.

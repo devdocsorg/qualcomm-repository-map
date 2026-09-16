@@ -6,7 +6,7 @@ Checker tests kernel patches for correctness by running a suite of tests.
 
 ## Outgoing connections
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers) → **uses automation from** → [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
@@ -14,7 +14,7 @@ Checker tests kernel patches for correctness by running a suite of tests.
 
 ## Incoming connections
 
-**Uses automation from** (repositories using this one)
+### Uses automation from (repositories using this one)
 
 - [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **uses automation from** → [qualcomm-linux/kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

@@ -6,13 +6,13 @@ Configuration data to create qcom-next from the tech topic branches
 
 ## Outgoing connections
 
-**Configures**
+### Configures
 
 - [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **configures** → [qualcomm-linux/automerge](https://github.com/qualcomm-linux/automerge)
   - qcom-next integration configuration.
   - [Explore qualcomm-linux/automerge](qualcomm-linux--automerge.md) · [evidence 1](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/README)
 
-**Selects branches from**
+### Selects branches from
 
 - [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **selects branches from** → [qualcomm-linux/kernel](https://github.com/qualcomm-linux/kernel)
   - qcom-next.conf names baseline and topic branches.
@@ -21,7 +21,7 @@ Configuration data to create qcom-next from the tech topic branches
   - qcom-next.conf names baseline and topic branches.
   - [Explore qualcomm-linux/kernel-topics](qualcomm-linux--kernel-topics.md) · [evidence 1](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/qcom-next.conf)
 
-**Uses automation from**
+### Uses automation from
 
 - [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **uses automation from** → [qualcomm-linux/kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
@@ -32,7 +32,7 @@ Configuration data to create qcom-next from the tech topic branches
 
 ## Incoming connections
 
-**Uses automation from** (repositories using this one)
+### Uses automation from (repositories using this one)
 
 - [qualcomm-linux/kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers) → **uses automation from** → [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.

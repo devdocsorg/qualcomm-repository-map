@@ -6,7 +6,7 @@ Tech Topic Branches for QLI mainline
 
 ## Incoming connections
 
-**Selects branches from** (repositories using this one)
+### Selects branches from (repositories using this one)
 
 - [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **selects branches from** → [qualcomm-linux/kernel-topics](https://github.com/qualcomm-linux/kernel-topics)
   - qcom-next.conf names baseline and topic branches.

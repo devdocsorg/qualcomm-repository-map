@@ -119,7 +119,7 @@ def connections(data: dict, focus: str, explore_prefix: str) -> str:
             continue
         result += f'## {direction} connections\n\n'
         for kind in sorted({e['kind'] for e in selected}):
-            result += f'**{kind.capitalize()}**' + (' (repositories using this one)' if direction == 'Incoming' else '') + '\n\n'
+            result += f'### {kind.capitalize()}' + (' (repositories using this one)' if direction == 'Incoming' else '') + '\n\n'
             for edge in selected:
                 if edge['kind'] != kind:
                     continue

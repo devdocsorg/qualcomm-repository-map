@@ -6,7 +6,7 @@ GitHub action for checking email addresses in PR/Push commits
 
 ## Incoming connections
 
-**Uses automation from** (repositories using this one)
+### Uses automation from (repositories using this one)
 
 - [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **uses automation from** → [qualcomm/commit-emails-check-action](https://github.com/qualcomm/commit-emails-check-action)
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
