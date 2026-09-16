@@ -1,12 +1,14 @@
 """Check relationship preservation, nearby scope, README exports, and native docs."""
 import ast
 import copy
+from collections import Counter
 import hashlib
 import json
 from pathlib import Path
 import pydoc
 import re
 import tempfile
+from urllib.parse import unquote, urlsplit
 
 import map_build
 
@@ -14,19 +16,36 @@ data = map_build.load_data(map_build.DATA)
 focus = 'qualcomm-linux/meta-qcom-3rdparty'
 digest = hashlib.sha256(map_build.DATA.read_bytes()).hexdigest()
 readme = (map_build.ROOT/'README.md').read_text()
-graph = readme.split('```mermaid\n')[1].split('```')[0]
-assert len(re.findall(r'^    r\d+\[', graph, re.M)) == len(data['repositories'])
+graphs = re.findall(r'```mermaid\n(.*?)\n```', readme, re.S)
+assert len(graphs) > 1, 'The overview must be split into readable maps'
+shown, connections = set(), Counter()
+for graph in graphs:
+    links = dict(re.findall(r'^    click (r\d+) href "([^"]+)" _blank$', graph, re.M))
+    identifiers = re.findall(r'^    (r\d+)\[', graph, re.M)
+    assert len(identifiers) <= map_build.MAX_MAP_NODES
+    assert set(identifiers) == set(links), 'Every node must be clickable'
+    assert len(set(links.values())) == len(links), 'Repeated repository in one diagram'
+    shown.update(links.values())
+    for source, kind, target in re.findall(r'^    (r\d+) -->\|"([^"]+)"\| (r\d+)$', graph, re.M):
+        connections[links[source], kind, links[target]] += 1
+urls = {node['id']: node['url'] for node in data['repositories']}
+expected = {(urls[e['from']], e['kind'], urls[e['to']]) for e in data['relationships']}
+assert connections == Counter({edge: 1 for edge in expected}), 'Lost or duplicated relationship'
+assert shown == {urls[e[end]] for e in data['relationships'] for end in ('from', 'to')}
 for node in data['repositories']:
-    assert graph.count(f'href "{node["url"]}"') == 1
+    assert f"]({node['url']})" in readme, 'Inventory must retain every repository'
     assert node['description'] in re.sub(r'<(https?://[^>]+)>', r'\1', readme)
 for edge in data['relationships']:
-    assert edge['kind'] in graph and edge['condition'] in readme
-    for proof in edge['evidence']:
-        assert proof['claim'] in readme and proof['url'] in readme
-# Verify every directed relationship, not just node presence.
-ids = {node['id']: f'r{i}' for i, node in enumerate(sorted(data['repositories'], key=lambda n: n['id']))}
-for edge in data['relationships']:
-    assert f'{ids[edge["from"]]} -->|"{edge["kind"]}"| {ids[edge["to"]]}' in graph
+    assert edge['condition'] in readme
+# Keep every evidence link, replacing only its label with the source filename.
+evidence = [proof for edge in data['relationships'] for proof in edge['evidence']]
+expected_links = Counter((Path(unquote(urlsplit(p['url']).path)).name, p['url']) for p in evidence)
+actual_links = Counter(re.findall(r'^  - \[([^\]]+)\]\((https://github.com/[^)]+/blob/[^)]+)\)$', readme, re.M))
+assert actual_links == expected_links, 'Evidence links or filename labels changed'
+assert 'The uses field calls automation from' not in readme
+headings = {re.sub(r'[^a-z0-9 -]', '', title.lower()).replace(' ', '-')
+            for title in re.findall(r'^## (.+)$', readme, re.M)}
+assert set(re.findall(r'\]\(#([^)]*)\)', readme)) <= headings, 'Broken map navigation'
 assert not list(map_build.ROOT.glob('maps/*'))
 assert not list(map_build.ROOT.glob('*.html'))
 assert not list((map_build.ROOT/'data').glob('*.html'))

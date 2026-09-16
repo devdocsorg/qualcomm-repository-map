@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 import re
 import subprocess
+from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/repositories.json"
@@ -20,6 +21,8 @@ END = "<!-- repository-map:end -->"
 KINDS = {"depends on", "integrates with", "fetches source from", "uses indirectly",
          "builds with", "selects for distro", "pins release of", "configures",
          "selects branches from", "packages", "runs workflow from", "uses automation from"}
+AUTOMATION = {'uses automation from', 'runs workflow from'}
+MAX_MAP_NODES = 24
 
 
 def slug(identifier: str) -> str:
@@ -159,22 +162,86 @@ def update_readme(readme: Path, block: str, check: bool = False) -> None:
         readme.write_text(updated)
 
 
-def build(data: dict, digest: str) -> None:
-    """Generate the full README map, with all inventory and evidence retained.
+def cluster_maps(data: dict) -> list[tuple[str, list[dict], list[dict]]]:
+    """Separate relationships by purpose and keep each diagram small.
 
-    The diagram shows every repository and distinct directed relationship.
-    Expandable details preserve conditions, source claims, and inventory metadata.
+    :param data: Validated repository and relationship dataset.
+    :returns: Named maps, each containing its repository nodes and relationships.
+
+    Kernel automation stays with kernel integration. Other automation is grouped
+    by the caller's repository area. Large groups split at source boundaries where
+    possible; shared providers can appear in multiple maps, but each edge appears
+    once. For example, package automation splits into several manageable diagrams.
+    """
+    nodes = {node['id']: node for node in data['repositories']}
+    titles = ['Yocto builds and releases', 'Kernel integration', 'Source packaging',
+              'Layer automation', 'Build and validation automation',
+              'Package automation', 'Other automation']
+    groups = {title: [] for title in titles}
+    for edge in data['relationships']:
+        area = nodes[edge['from']]['group']
+        if area == 'Kernel integration':
+            title = 'Kernel integration'
+        elif edge['kind'] in AUTOMATION:
+            title = {'Layers and releases': 'Layer automation',
+                     'Packaging': 'Package automation',
+                     'Images and build tooling': 'Build and validation automation',
+                     'Boot and firmware': 'Build and validation automation',
+                     'Validation': 'Build and validation automation',
+                     'Other repositories': 'Other automation'}.get(area, area + ' automation')
+        else:
+            title = {'Layers and releases': 'Yocto builds and releases',
+                     'Packaging': 'Source packaging'}.get(area, area + ' relationships')
+        groups.setdefault(title, []).append(edge)
+
+    maps = []
+    for title, edges in groups.items():
+        parts, current, selected = [], [], set()
+        for source in sorted({edge['from'] for edge in edges}):
+            outgoing = sorted((edge for edge in edges if edge['from'] == source),
+                              key=lambda edge: (edge['to'], edge['kind'], edge['condition']))
+            endpoints = {source, *(edge['to'] for edge in outgoing)}
+            if current and len(selected | endpoints) > MAX_MAP_NODES:
+                parts.append(current)
+                current, selected = [], set()
+            for edge in outgoing:
+                endpoints = {edge['from'], edge['to']}
+                if len(selected | endpoints) > MAX_MAP_NODES:
+                    parts.append(current)
+                    current, selected = [], set()
+                current.append(edge)
+                selected.update(endpoints)
+        if current:
+            parts.append(current)
+        for i, part in enumerate(parts, 1):
+            label = f'{title} ({i}/{len(parts)})' if len(parts) > 1 else title
+            identifiers = {edge[end] for edge in part for end in ('from', 'to')}
+            maps.append((label, [nodes[key] for key in sorted(identifiers)], part))
+    return maps
+
+
+def build(data: dict, digest: str) -> None:
+    """Generate the README cluster maps, retaining all inventory and evidence.
+
+    Every distinct directed relationship appears in one diagram.
+    Expandable details preserve conditions, source links, and inventory metadata.
     """
     nodes = sorted(data['repositories'], key=lambda node: node['id'])
     edges = sorted(data['relationships'], key=lambda edge: (edge['from'], edge['to'], edge['kind']))
     connected = {edge[end] for edge in edges for end in ('from', 'to')}
     overview = '# Qualcomm repository map\n\n' + data['scope'] + '\n\n'
     overview += f"**Coverage:** {len(nodes)} repositories, {len(connected)} with reviewed connections, {len(edges)} evidenced relationships.\n\n{data['coverage']}\n\n"
-    overview += 'Click a repository node to open it. Arrows describe how repositories relate.\n\n'
-    overview += diagram(nodes, edges)
+    overview += 'Click a repository node to open it. Shared repositories appear in each relevant map; every relationship is shown once.\n\n'
+    maps = cluster_maps(data)
+    for title, _, _ in maps:
+        anchor = re.sub(r'[^a-z0-9 -]', '', title.lower()).replace(' ', '-')
+        overview += f'- [{title}](#{anchor})\n'
+    for title, selected, connections in maps:
+        overview += f'\n## {title}\n\n' + diagram(selected, connections)
+    overview += '\n## Reference details\n'
     overview += '\n<details>\n<summary>Repository inventory</summary>\n\n'
     for group in sorted({node['group'] for node in nodes}):
-        overview += f'## {group}\n\n'
+        overview += f'### {group}\n\n'
         for node in nodes:
             if node['group'] == group:
                 status = '; archived' if node['archived'] else ''
@@ -184,13 +251,14 @@ def build(data: dict, digest: str) -> None:
         overview += '\n'
     overview += '</details>\n\n<details>\n<summary>Relationship applicability and sources</summary>\n\n'
     for focus in sorted({edge['from'] for edge in edges}):
-        overview += f'## {focus}\n\n'
+        overview += f'### {focus}\n\n'
         for edge in edges:
             if edge['from'] != focus:
                 continue
             overview += f"- **{edge['kind']}** [{edge['to'].split('/')[-1]}](https://github.com/{edge['to']})\n  - {edge['condition']}\n"
             for proof in edge['evidence']:
-                overview += f"  - [{proof['claim']}]({proof['url']})\n"
+                filename = Path(unquote(urlsplit(proof['url']).path)).name
+                overview += f"  - [{filename}]({proof['url']})\n"
         overview += '\n'
     overview += '</details>\n\n[Map data and updates](data/README.md).\n'
     overview += f'\n<!-- Dataset SHA-256: {digest}. -->\n'

@@ -42,9 +42,13 @@ python3 tools/check_map.py
 ```
 
 Edit the dataset and regenerate; commit the dataset and README together. The root
-README contains the full Mermaid map with clickable repository nodes. Expandable
-sections preserve inventory, applicability, and source evidence. No separate map
-pages or HTML copies are generated.
+README contains smaller Mermaid maps grouped by relationship purpose and repository
+area, with clickable repository nodes. Large clusters split into numbered parts
+with at most 24 nodes each. Shared providers can appear in several maps, while
+each relationship appears once. Repositories without recorded relationships stay
+in the inventory. Expandable sections preserve inventory, applicability, and
+source evidence. Evidence links use source filenames as their labels; claim text
+remains in the dataset. No separate map pages or HTML copies are generated.
 
 To update a nearby map at the bottom of a recipient root README from a committed
 dataset and generator:
