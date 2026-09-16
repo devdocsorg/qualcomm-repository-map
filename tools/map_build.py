@@ -150,13 +150,12 @@ def render_local_view(data: dict, focus: str, digest: str, revision: str) -> str
     """Export a short dependency table; keep full evidence in the central map.
 
     Each included relationship needs a local_summary in the shared dataset.
-    CI automation and incoming users remain available through the details link.
+    Transitive dependencies, CI automation, and incoming users stay in the full map.
     """
     nodes = {node['id']: node for node in data['repositories']}
-    order = {'depends on': 0, 'integrates with': 1, 'fetches source from': 2,
-             'uses indirectly': 3}
+    order = {'depends on': 0, 'integrates with': 1, 'fetches source from': 2}
     edges = [edge for edge in data['relationships'] if edge['from'] == focus
-             and edge['kind'] not in {'uses automation from', 'runs workflow from'}]
+             and edge['kind'] not in {'uses indirectly', 'uses automation from', 'runs workflow from'}]
     edges.sort(key=lambda edge: (order.get(edge['kind'], 4), edge['to']))
     result = f"# Repository map\n\nYou are here: **[{focus.split('/')[-1]}]({nodes[focus]['url']})**.\n\n"
     if edges:
@@ -173,7 +172,7 @@ def render_local_view(data: dict, focus: str, digest: str, revision: str) -> str
             label = node['id']
         summary = summary.replace('|', '\\|').replace('\n', ' ')
         result += f"| [{label}]({node['url']}) | {summary} |\n"
-    result += f'\n[Full map and relationship details]({CENTRAL}/blob/{revision}/maps/{slug(focus)}.md) (private).\n'
+    result += f'\n[Full map and relationship details]({CENTRAL}/blob/{revision}/maps/{slug(focus)}.md).\n'
     result += f'\n<!-- Generated from {CENTRAL} at {revision}; dataset SHA-256: {digest}. -->\n'
     return result
 

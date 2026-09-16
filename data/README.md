@@ -60,8 +60,8 @@ To export a nearby view from a committed dataset and generator:
 The export writes a compact REPOSITORY_MAP.md: the current repository once,
 a linked table of build dependencies and inputs, and one link to the full details.
 Set `local_summary` on each exported relationship to explain its role briefly,
-including required, optional, board-specific, or indirect applicability. CI
-automation and incoming users stay in the full map. The source revision and dataset
+including required, optional, or board-specific applicability. Transitive
+dependencies, CI automation, and incoming users stay in the full map. The source revision and dataset
 digest are recorded in an HTML comment rather than reader-facing prose. Rebuild the recipient's
 documentation site after replacing the snapshot. Access to this private repository
 is required to update the map; exported public repository links work independently.

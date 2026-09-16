@@ -40,11 +40,12 @@ for node in data['repositories']:
 # Local readers see only build relationships and one occurrence of the current name.
 local = map_build.render_local_view(data, focus, 'test-digest', 'a' * 40)
 assert local.count('[meta-qcom-3rdparty]') == 1
-assert local.count('| [') == 5
+assert local.count('| [') == 4
 assert 'Required: base OpenEmbedded layer.' in local
 assert 'Optional: Qualcomm reference distro.' in local
 assert 'RUBIK Pi 3 firmware, fetched by the build.' in local
-assert 'Partition tools, supplied through meta-qcom.' in local
+assert 'qcom-ptool' not in local
+assert '(private)' not in local
 assert 'bitbake-lint-action' not in local and 'evidence 1' not in local
 assert 'dataset SHA-256' not in re.sub(r'<!--.*?-->', '', local, flags=re.S)
 assert 'Full map and relationship details' in local
