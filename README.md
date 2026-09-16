@@ -623,86 +623,86 @@ flowchart LR
 ## qualcomm-linux/Robotics-SDK-Ubuntu
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/Robotics-SDK-Ubuntu/blob/adb07ba557a9ea72e631f2093ada213a037b5707/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/abctl
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/abctl/blob/af979ae0650494f556ba873768915ed9ba8132a3/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/aiml-container-test
 
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/aiml-container-test/blob/2dfbb557da0a296ed3d4546c13bbfb5caa6c5490/.github/workflows/docker_build.yml)
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/aiml-container-test/blob/2dfbb557da0a296ed3d4546c13bbfb5caa6c5490/.github/workflows/docker_build.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/aiml-container-test/blob/2dfbb557da0a296ed3d4546c13bbfb5caa6c5490/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/apt-artifactory-action
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/apt-artifactory-action/blob/a75d47e9e3780fd5d643a4511586bf85ea4bf07d/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/awstest-meta-qcom
 
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/awstest-meta-qcom/blob/5135d214d1712ee4b857120fe3bebb0d62a58c45/.github/workflows/build-yocto.yml)
 
 ## qualcomm-linux/bitbake-lint-action
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/bitbake-lint-action/blob/f547834091c805556133db1b1dc0869dc8d3490c/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/camera-driver
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/camera-driver/blob/82ac3a671a5b0a4e3b3ac4519208af1d37a93eb6/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/clk-debug-tools-for-qualcomm-linux
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/clk-debug-tools-for-qualcomm-linux/blob/3e1bd36ead0fcff776b938a8886639d126b4e169/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/debusine-action
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/debusine-action/blob/69bf7bacca357ef0aa8c8a30bfa40bbe1cba4602/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/display-driver
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/display-driver/blob/8326898a73e0acdad43ab46ed0d56e4c8e9bcf54/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/eva-driver
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/eva-driver/blob/afe001b8a90edcb1e5c360f0a0e2e291b99f9545/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/gbm-msm-backend
 
 - **uses automation from** [qcom-build-utils](https://github.com/qualcomm-linux/qcom-build-utils)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qcom-build-utils.](https://github.com/qualcomm-linux/gbm-msm-backend/blob/8c5776e3ef62cfb4a4cfb5763cb84f4b58640379/.github/workflows/pkg-build-pr-check.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/gbm-msm-backend/blob/8c5776e3ef62cfb4a4cfb5763cb84f4b58640379/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/kernel-checkers
 
 - **uses automation from** [kernel-config](https://github.com/qualcomm-linux/kernel-config)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/kernel-config.](https://github.com/qualcomm-linux/kernel-checkers/blob/23c35b0e159903b2f69ec5d11f5b6e5dcd493319/.github/workflows/checker.yml)
 
 ## qualcomm-linux/kernel-config
@@ -714,31 +714,31 @@ flowchart LR
   - qcom-next.conf names baseline and topic branches.
   - [The file lists URLs and branch names for integration.](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/qcom-next.conf)
 - **uses automation from** [kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/kernel-checkers.](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/.github/workflows/kernel_checker.yml)
 - **selects branches from** [kernel-topics](https://github.com/qualcomm-linux/kernel-topics)
   - qcom-next.conf names baseline and topic branches.
   - [The file lists URLs and branch names for integration.](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/qcom-next.conf)
 - **uses automation from** [commit-emails-check-action](https://github.com/qualcomm/commit-emails-check-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/commit-emails-check-action.](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/.github/workflows/email_checker.yml)
 
 ## qualcomm-linux/location-apis-qcom
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/location-apis-qcom/blob/e5627ee5a0e39ad95bc17e6348e09664ac5371d1/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/location-hal-qcom
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/location-hal-qcom/blob/96b21c90da387747155debb9f482fa11eed9bf74/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/meta-ai
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/meta-ai/blob/21e7b36b0d259a9cf5d2226160b227962f762585/.github/workflows/pr.yml)
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/meta-ai/blob/21e7b36b0d259a9cf5d2226160b227962f762585/.github/workflows/qcom-preflight-checks.yml)
 
@@ -757,10 +757,10 @@ flowchart LR
   - Development kas configuration on master; release locks can select other revisions.
   - [The base kas configuration declares this repository.](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/base.yml)
 - **uses automation from** [github-action-matrix-outputs-read](https://github.com/qualcomm-linux/github-action-matrix-outputs-read)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/github-action-matrix-outputs-read.](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/.github/workflows/test-distro.yml)
 - **uses automation from** [github-action-matrix-outputs-write](https://github.com/qualcomm-linux/github-action-matrix-outputs-write)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/github-action-matrix-outputs-write.](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/.github/workflows/test-distro.yml)
 - **fetches source from** [kernel](https://github.com/qualcomm-linux/kernel)
   - linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.
@@ -775,10 +775,10 @@ flowchart LR
   - Partition recipe source; pinned by qcom-ptool.inc.
   - [SRC_URI fetches qcom-ptool.](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc)
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/.github/workflows/compile.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/.github/workflows/pr.yml)
 
 ## qualcomm-linux/meta-qcom-3rdparty
@@ -787,19 +787,19 @@ flowchart LR
   - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
   - [LAYERDEPENDS_qcom-3rdparty declares core and qcom.](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
 - **uses automation from** [bitbake-lint-action](https://github.com/qualcomm-linux/bitbake-lint-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/bitbake-lint-action.](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/bitbake-lint.yml)
 - **uses automation from** [github-action-matrix-outputs-read](https://github.com/qualcomm-linux/github-action-matrix-outputs-read)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/github-action-matrix-outputs-read.](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml)
 - **uses automation from** [github-action-matrix-outputs-write](https://github.com/qualcomm-linux/github-action-matrix-outputs-write)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/github-action-matrix-outputs-write.](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml)
 - **depends on** [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
   - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
   - [LAYERDEPENDS_qcom-3rdparty declares core and qcom.](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
 - **uses automation from** [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml)
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml)
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml)
@@ -813,7 +813,7 @@ flowchart LR
   - [The partition recipes fetch qcom-ptool.](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc)
   - [The board selects partition assets through QCOM_PARTITION_FILES_SUBDIR.](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/qcom-preflight-checks.yml)
 - **fetches source from** [boot-assets](https://github.com/rubikpi-ai/boot-assets)
   - RUBIK Pi 3 boot firmware only; pinned by the recipe SRCREV.
@@ -822,50 +822,50 @@ flowchart LR
 ## qualcomm-linux/meta-qcom-arduino
 
 - **uses automation from** [bitbake-lint-action](https://github.com/qualcomm-linux/bitbake-lint-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/bitbake-lint-action.](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/bitbake-lint.yml)
 - **uses automation from** [github-action-matrix-outputs-read](https://github.com/qualcomm-linux/github-action-matrix-outputs-read)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/github-action-matrix-outputs-read.](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/test-distro.yml)
 - **uses automation from** [github-action-matrix-outputs-write](https://github.com/qualcomm-linux/github-action-matrix-outputs-write)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/github-action-matrix-outputs-write.](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/test-distro.yml)
 - **uses automation from** [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/build-yocto.yml)
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/build-yocto.yml)
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/test-distro.yml)
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/test-distro.yml)
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/test-distro.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/35f3dfdd4dca56d0df60b621ff8fd70a8043bcfd/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/meta-qcom-distro
 
 - **uses automation from** [github-action-matrix-outputs-read](https://github.com/qualcomm-linux/github-action-matrix-outputs-read)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/github-action-matrix-outputs-read.](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/test-distro.yml)
 - **uses automation from** [github-action-matrix-outputs-write](https://github.com/qualcomm-linux/github-action-matrix-outputs-write)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/github-action-matrix-outputs-write.](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/test-distro.yml)
 - **uses automation from** [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/build-yocto.yml)
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/test-distro.yml)
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/test-distro.yml)
   - [The uses field calls automation from qualcomm-linux/meta-qcom.](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/test-distro.yml)
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/actions/compile/action.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/meta-qcom-distro/blob/805634470ec74ae15ca04b4f164a608f06b362fa/.github/workflows/pr.yml)
 
 ## qualcomm-linux/meta-qcom-extras-releases
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/meta-qcom-extras-releases/blob/a9408f7fa7982dd0e8fda6f9add1f61c6ad3b5f0/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/meta-qcom-releases
@@ -874,33 +874,33 @@ flowchart LR
   - Milestone tags and kas lock files; select the desired release tag.
   - [The repository supplies kas locks used with meta-qcom configurations.](https://github.com/qualcomm-linux/meta-qcom-releases/blob/4129a6850c070bb57da122b2ebceff3de9951a1a/README.md)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/meta-qcom-releases/blob/4129a6850c070bb57da122b2ebceff3de9951a1a/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/meta-qcom-robotics-releases
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/meta-qcom-robotics-releases/blob/229a9de1d5cb2317d7ee90fb0350b058f9689287/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/meta-qcom-robotics-sdk
 
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/meta-qcom-robotics-sdk/blob/7b47d3855b440d28626128c0f207d8561d64f718/.github/actions/compile/action.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/meta-qcom-robotics-sdk/blob/7b47d3855b440d28626128c0f207d8561d64f718/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/pkg-adreno
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-adreno/blob/f9be5b5fcffc2d92dc3e322998d0d945671f8c5d/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-adreno/blob/f9be5b5fcffc2d92dc3e322998d0d945671f8c5d/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-adreno/blob/f9be5b5fcffc2d92dc3e322998d0d945671f8c5d/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-adreno/blob/f9be5b5fcffc2d92dc3e322998d0d945671f8c5d/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-adreno/blob/f9be5b5fcffc2d92dc3e322998d0d945671f8c5d/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-adreno/blob/f9be5b5fcffc2d92dc3e322998d0d945671f8c5d/.github/workflows/pkg-promote-prebuilt.yml)
@@ -910,12 +910,12 @@ flowchart LR
 ## qualcomm-linux/pkg-alsa-ucm-conf
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-alsa-ucm-conf/blob/c7e24476c6a2108b477bb9c0875d0f5ac7c1548a/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-alsa-ucm-conf/blob/c7e24476c6a2108b477bb9c0875d0f5ac7c1548a/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-alsa-ucm-conf/blob/c7e24476c6a2108b477bb9c0875d0f5ac7c1548a/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-alsa-ucm-conf/blob/c7e24476c6a2108b477bb9c0875d0f5ac7c1548a/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-alsa-ucm-conf/blob/c7e24476c6a2108b477bb9c0875d0f5ac7c1548a/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-alsa-ucm-conf/blob/c7e24476c6a2108b477bb9c0875d0f5ac7c1548a/.github/workflows/pkg-promote-prebuilt.yml)
@@ -925,12 +925,12 @@ flowchart LR
 ## qualcomm-linux/pkg-android-platform-tools
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-android-platform-tools/blob/45c4e8b0f51c4b6a42e25fe46500a1accd2991a5/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-android-platform-tools/blob/45c4e8b0f51c4b6a42e25fe46500a1accd2991a5/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-android-platform-tools/blob/45c4e8b0f51c4b6a42e25fe46500a1accd2991a5/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-android-platform-tools/blob/45c4e8b0f51c4b6a42e25fe46500a1accd2991a5/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-android-platform-tools/blob/45c4e8b0f51c4b6a42e25fe46500a1accd2991a5/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-android-platform-tools/blob/45c4e8b0f51c4b6a42e25fe46500a1accd2991a5/.github/workflows/pkg-promote-prebuilt.yml)
@@ -940,12 +940,12 @@ flowchart LR
 ## qualcomm-linux/pkg-audioreach-audio-utils
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-audio-utils/blob/ccbe8390d27942843039732b47ed4dbc2fd34e57/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-audio-utils/blob/ccbe8390d27942843039732b47ed4dbc2fd34e57/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-audio-utils/blob/ccbe8390d27942843039732b47ed4dbc2fd34e57/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-audio-utils/blob/ccbe8390d27942843039732b47ed4dbc2fd34e57/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-audio-utils/blob/ccbe8390d27942843039732b47ed4dbc2fd34e57/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-audio-utils/blob/ccbe8390d27942843039732b47ed4dbc2fd34e57/.github/workflows/pkg-promote-prebuilt.yml)
@@ -955,12 +955,12 @@ flowchart LR
 ## qualcomm-linux/pkg-audioreach-conf
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-conf/blob/84fb468ab2030755d8ee2c030751a52ca336b9d3/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-conf/blob/84fb468ab2030755d8ee2c030751a52ca336b9d3/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-conf/blob/84fb468ab2030755d8ee2c030751a52ca336b9d3/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-conf/blob/84fb468ab2030755d8ee2c030751a52ca336b9d3/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-conf/blob/84fb468ab2030755d8ee2c030751a52ca336b9d3/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-conf/blob/84fb468ab2030755d8ee2c030751a52ca336b9d3/.github/workflows/pkg-promote-prebuilt.yml)
@@ -970,12 +970,12 @@ flowchart LR
 ## qualcomm-linux/pkg-audioreach-dkms
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-dkms/blob/2f99252ccdea0bb0b1159117dfc1614bf909def9/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-dkms/blob/2f99252ccdea0bb0b1159117dfc1614bf909def9/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-dkms/blob/2f99252ccdea0bb0b1159117dfc1614bf909def9/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-dkms/blob/2f99252ccdea0bb0b1159117dfc1614bf909def9/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-dkms/blob/2f99252ccdea0bb0b1159117dfc1614bf909def9/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-dkms/blob/2f99252ccdea0bb0b1159117dfc1614bf909def9/.github/workflows/pkg-promote-prebuilt.yml)
@@ -985,12 +985,12 @@ flowchart LR
 ## qualcomm-linux/pkg-audioreach-graphmgr
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-graphmgr/blob/b52b104434d0da75bb56e93331e6ec0309c7b736/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-graphmgr/blob/b52b104434d0da75bb56e93331e6ec0309c7b736/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-graphmgr/blob/b52b104434d0da75bb56e93331e6ec0309c7b736/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-graphmgr/blob/b52b104434d0da75bb56e93331e6ec0309c7b736/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-graphmgr/blob/b52b104434d0da75bb56e93331e6ec0309c7b736/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-graphmgr/blob/b52b104434d0da75bb56e93331e6ec0309c7b736/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1000,12 +1000,12 @@ flowchart LR
 ## qualcomm-linux/pkg-audioreach-graphservices
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-graphservices/blob/a9a8879557e0b8e13e30f43bc0f7d1aa5a5b8de8/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-graphservices/blob/a9a8879557e0b8e13e30f43bc0f7d1aa5a5b8de8/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-graphservices/blob/a9a8879557e0b8e13e30f43bc0f7d1aa5a5b8de8/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-graphservices/blob/a9a8879557e0b8e13e30f43bc0f7d1aa5a5b8de8/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-graphservices/blob/a9a8879557e0b8e13e30f43bc0f7d1aa5a5b8de8/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-graphservices/blob/a9a8879557e0b8e13e30f43bc0f7d1aa5a5b8de8/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1015,12 +1015,12 @@ flowchart LR
 ## qualcomm-linux/pkg-audioreach-pal
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-pal/blob/6d54a9d57eff689c12059f94d439576553abb770/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-pal/blob/6d54a9d57eff689c12059f94d439576553abb770/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-pal/blob/6d54a9d57eff689c12059f94d439576553abb770/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-pal/blob/6d54a9d57eff689c12059f94d439576553abb770/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-pal/blob/6d54a9d57eff689c12059f94d439576553abb770/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-pal/blob/6d54a9d57eff689c12059f94d439576553abb770/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1030,12 +1030,12 @@ flowchart LR
 ## qualcomm-linux/pkg-audioreach-pipewire-plugin
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-pipewire-plugin/blob/48b1b95d0e8fa489bd812a4e1a0e26927e06ae41/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-pipewire-plugin/blob/48b1b95d0e8fa489bd812a4e1a0e26927e06ae41/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-audioreach-pipewire-plugin/blob/48b1b95d0e8fa489bd812a4e1a0e26927e06ae41/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-pipewire-plugin/blob/48b1b95d0e8fa489bd812a4e1a0e26927e06ae41/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-pipewire-plugin/blob/48b1b95d0e8fa489bd812a4e1a0e26927e06ae41/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-audioreach-pipewire-plugin/blob/48b1b95d0e8fa489bd812a4e1a0e26927e06ae41/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1045,7 +1045,7 @@ flowchart LR
 ## qualcomm-linux/pkg-btftm
 
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-btftm/blob/658e384b7edd260e850154768cb9745494cb36e3/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-btftm/blob/658e384b7edd260e850154768cb9745494cb36e3/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-btftm/blob/658e384b7edd260e850154768cb9745494cb36e3/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1055,30 +1055,30 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-dev
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-dev/blob/9f6b00f40a5499f2f4113002faee2839992c7823/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-dev/blob/9f6b00f40a5499f2f4113002faee2839992c7823/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-dev/blob/9f6b00f40a5499f2f4113002faee2839992c7823/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-dev/blob/9f6b00f40a5499f2f4113002faee2839992c7823/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-dev/blob/9f6b00f40a5499f2f4113002faee2839992c7823/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-dev/blob/9f6b00f40a5499f2f4113002faee2839992c7823/.github/workflows/pkg-promote-prebuilt.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-dev/blob/9f6b00f40a5499f2f4113002faee2839992c7823/.github/workflows/pkg-promote.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-dev/blob/9f6b00f40a5499f2f4113002faee2839992c7823/.github/workflows/pkg-release.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/pkg-camx-dev/blob/9f6b00f40a5499f2f4113002faee2839992c7823/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/pkg-camx-dkms
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-dkms/blob/def75ba549525c8c23db534cfb5dffbdedae110d/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-dkms/blob/def75ba549525c8c23db534cfb5dffbdedae110d/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-dkms/blob/def75ba549525c8c23db534cfb5dffbdedae110d/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-dkms/blob/def75ba549525c8c23db534cfb5dffbdedae110d/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-dkms/blob/def75ba549525c8c23db534cfb5dffbdedae110d/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-dkms/blob/def75ba549525c8c23db534cfb5dffbdedae110d/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1088,12 +1088,12 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-firmware-glymur
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-firmware-glymur/blob/222860c460bed9c1789c5c602d2edad68e124f0f/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-firmware-glymur/blob/222860c460bed9c1789c5c602d2edad68e124f0f/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-firmware-glymur/blob/222860c460bed9c1789c5c602d2edad68e124f0f/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-glymur/blob/222860c460bed9c1789c5c602d2edad68e124f0f/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-glymur/blob/222860c460bed9c1789c5c602d2edad68e124f0f/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-glymur/blob/222860c460bed9c1789c5c602d2edad68e124f0f/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1103,12 +1103,12 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-firmware-hamoa
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-firmware-hamoa/blob/42668b53c70803760c170220ffb662eb16cdf4f4/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-firmware-hamoa/blob/42668b53c70803760c170220ffb662eb16cdf4f4/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-firmware-hamoa/blob/42668b53c70803760c170220ffb662eb16cdf4f4/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-hamoa/blob/42668b53c70803760c170220ffb662eb16cdf4f4/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-hamoa/blob/42668b53c70803760c170220ffb662eb16cdf4f4/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-hamoa/blob/42668b53c70803760c170220ffb662eb16cdf4f4/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1118,7 +1118,7 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-firmware-kodiak
 
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-kodiak/blob/b6e554500418fe736c93dd8fd08ea87f90cc1ce2/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-kodiak/blob/b6e554500418fe736c93dd8fd08ea87f90cc1ce2/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-kodiak/blob/b6e554500418fe736c93dd8fd08ea87f90cc1ce2/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1128,7 +1128,7 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-firmware-lemans
 
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-lemans/blob/df865fd42215bd29c85d9c919352448d61c10c89/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-lemans/blob/df865fd42215bd29c85d9c919352448d61c10c89/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-lemans/blob/df865fd42215bd29c85d9c919352448d61c10c89/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1138,7 +1138,7 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-firmware-talos
 
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-talos/blob/d0e187f6d495632832fd05e23593ba710790cfac/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-talos/blob/d0e187f6d495632832fd05e23593ba710790cfac/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-firmware-talos/blob/d0e187f6d495632832fd05e23593ba710790cfac/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1148,12 +1148,12 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-glymur
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-glymur/blob/3f29e8610eda358a4888bd3f9b430de29831e705/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-glymur/blob/3f29e8610eda358a4888bd3f9b430de29831e705/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-glymur/blob/3f29e8610eda358a4888bd3f9b430de29831e705/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-glymur/blob/3f29e8610eda358a4888bd3f9b430de29831e705/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-glymur/blob/3f29e8610eda358a4888bd3f9b430de29831e705/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-glymur/blob/3f29e8610eda358a4888bd3f9b430de29831e705/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1163,12 +1163,12 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-hamoa
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-hamoa/blob/50a6d285cad3fe4518a3bb9272e5a2b4def22d45/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-hamoa/blob/50a6d285cad3fe4518a3bb9272e5a2b4def22d45/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-hamoa/blob/50a6d285cad3fe4518a3bb9272e5a2b4def22d45/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-hamoa/blob/50a6d285cad3fe4518a3bb9272e5a2b4def22d45/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-hamoa/blob/50a6d285cad3fe4518a3bb9272e5a2b4def22d45/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-hamoa/blob/50a6d285cad3fe4518a3bb9272e5a2b4def22d45/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1178,7 +1178,7 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-kodiak
 
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-kodiak/blob/bd72761d774149019112facb54da5b3f22fa7c70/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-kodiak/blob/bd72761d774149019112facb54da5b3f22fa7c70/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-kodiak/blob/bd72761d774149019112facb54da5b3f22fa7c70/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1188,7 +1188,7 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-lemans
 
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-lemans/blob/b56fda00f209f2d69fb20112f5e482a20fd6c134/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-lemans/blob/b56fda00f209f2d69fb20112f5e482a20fd6c134/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-lemans/blob/b56fda00f209f2d69fb20112f5e482a20fd6c134/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1198,12 +1198,12 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-nhx
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-nhx/blob/486742c680b46474366f014c288f38c1683751d8/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-nhx/blob/486742c680b46474366f014c288f38c1683751d8/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-camx-nhx/blob/486742c680b46474366f014c288f38c1683751d8/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-nhx/blob/486742c680b46474366f014c288f38c1683751d8/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-nhx/blob/486742c680b46474366f014c288f38c1683751d8/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-nhx/blob/486742c680b46474366f014c288f38c1683751d8/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1213,7 +1213,7 @@ flowchart LR
 ## qualcomm-linux/pkg-camx-talos
 
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-talos/blob/e535c6fd5859d850de6419805f96ae7654f1be9b/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-talos/blob/e535c6fd5859d850de6419805f96ae7654f1be9b/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-camx-talos/blob/e535c6fd5859d850de6419805f96ae7654f1be9b/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1223,12 +1223,12 @@ flowchart LR
 ## qualcomm-linux/pkg-diag-router
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-diag-router/blob/de552caf71bb44dece247de711604f61d6747f90/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-diag-router/blob/de552caf71bb44dece247de711604f61d6747f90/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-diag-router/blob/de552caf71bb44dece247de711604f61d6747f90/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-diag-router/blob/de552caf71bb44dece247de711604f61d6747f90/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-diag-router/blob/de552caf71bb44dece247de711604f61d6747f90/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-diag-router/blob/de552caf71bb44dece247de711604f61d6747f90/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1238,30 +1238,30 @@ flowchart LR
 ## qualcomm-linux/pkg-eva-dkms
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-eva-dkms/blob/5538823ba78a9ea904e7fe205cca223283246cf4/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-eva-dkms/blob/5538823ba78a9ea904e7fe205cca223283246cf4/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-eva-dkms/blob/5538823ba78a9ea904e7fe205cca223283246cf4/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-eva-dkms/blob/5538823ba78a9ea904e7fe205cca223283246cf4/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-eva-dkms/blob/5538823ba78a9ea904e7fe205cca223283246cf4/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-eva-dkms/blob/5538823ba78a9ea904e7fe205cca223283246cf4/.github/workflows/pkg-promote-prebuilt.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-eva-dkms/blob/5538823ba78a9ea904e7fe205cca223283246cf4/.github/workflows/pkg-promote.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-eva-dkms/blob/5538823ba78a9ea904e7fe205cca223283246cf4/.github/workflows/pkg-release.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/pkg-eva-dkms/blob/5538823ba78a9ea904e7fe205cca223283246cf4/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/pkg-fastrpc
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-fastrpc/blob/9b1a916be3d29fa184feb16995a4db403d91aa59/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-fastrpc/blob/9b1a916be3d29fa184feb16995a4db403d91aa59/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-fastrpc/blob/9b1a916be3d29fa184feb16995a4db403d91aa59/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-fastrpc/blob/9b1a916be3d29fa184feb16995a4db403d91aa59/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-fastrpc/blob/9b1a916be3d29fa184feb16995a4db403d91aa59/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-fastrpc/blob/9b1a916be3d29fa184feb16995a4db403d91aa59/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1271,7 +1271,7 @@ flowchart LR
 ## qualcomm-linux/pkg-gbm-msm-backend
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-gbm-msm-backend/blob/f6b4fbab5add28563a816f3c49f94c5651c04972/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-gbm-msm-backend/blob/f6b4fbab5add28563a816f3c49f94c5651c04972/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-gbm-msm-backend/blob/f6b4fbab5add28563a816f3c49f94c5651c04972/.github/workflows/debusine-release.yml)
@@ -1279,7 +1279,7 @@ flowchart LR
   - Package metadata and source ownership are separate; choose the package branch before editing packaging.
   - [The README identifies the upstream source project.](https://github.com/qualcomm-linux/pkg-gbm-msm-backend/blob/f6b4fbab5add28563a816f3c49f94c5651c04972/README.md)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-gbm-msm-backend/blob/f6b4fbab5add28563a816f3c49f94c5651c04972/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-gbm-msm-backend/blob/f6b4fbab5add28563a816f3c49f94c5651c04972/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-gbm-msm-backend/blob/f6b4fbab5add28563a816f3c49f94c5651c04972/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1289,7 +1289,7 @@ flowchart LR
 ## qualcomm-linux/pkg-gst-plugins-imsdk
 
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-gst-plugins-imsdk/blob/cd7208e6078bfa710e0b7f8b7098525611d698ca/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-gst-plugins-imsdk/blob/cd7208e6078bfa710e0b7f8b7098525611d698ca/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-gst-plugins-imsdk/blob/cd7208e6078bfa710e0b7f8b7098525611d698ca/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1299,7 +1299,7 @@ flowchart LR
 ## qualcomm-linux/pkg-kgsl
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-kgsl/blob/e86b135670ce1464db9035193492ddf08ad7f5ed/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-kgsl/blob/e86b135670ce1464db9035193492ddf08ad7f5ed/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-kgsl/blob/e86b135670ce1464db9035193492ddf08ad7f5ed/.github/workflows/debusine-release.yml)
@@ -1307,7 +1307,7 @@ flowchart LR
   - Package metadata and source ownership are separate; choose the package branch before editing packaging.
   - [The README identifies the upstream source project.](https://github.com/qualcomm-linux/pkg-kgsl/blob/e86b135670ce1464db9035193492ddf08ad7f5ed/README.md)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-kgsl/blob/e86b135670ce1464db9035193492ddf08ad7f5ed/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-kgsl/blob/e86b135670ce1464db9035193492ddf08ad7f5ed/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-kgsl/blob/e86b135670ce1464db9035193492ddf08ad7f5ed/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1317,12 +1317,12 @@ flowchart LR
 ## qualcomm-linux/pkg-libdiag
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-libdiag/blob/2e3d889a5411aae0715fbdafb95c97df05fc13cd/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-libdiag/blob/2e3d889a5411aae0715fbdafb95c97df05fc13cd/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-libdiag/blob/2e3d889a5411aae0715fbdafb95c97df05fc13cd/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-libdiag/blob/2e3d889a5411aae0715fbdafb95c97df05fc13cd/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-libdiag/blob/2e3d889a5411aae0715fbdafb95c97df05fc13cd/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-libdiag/blob/2e3d889a5411aae0715fbdafb95c97df05fc13cd/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1332,22 +1332,22 @@ flowchart LR
 ## qualcomm-linux/pkg-linux-qcom
 
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/pkg-linux-qcom/blob/28c5a3a221a74c2023672c0f425b6ba28cad95b7/.github/workflows/build-kernel-debusine.yml)
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/pkg-linux-qcom/blob/28c5a3a221a74c2023672c0f425b6ba28cad95b7/.github/workflows/build-kernel-ubuntu.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/pkg-linux-qcom/blob/28c5a3a221a74c2023672c0f425b6ba28cad95b7/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/pkg-mink-idl-compiler
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-mink-idl-compiler/blob/d8a16f4fdd896b9598302d009f2499cfe0f03f13/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-mink-idl-compiler/blob/d8a16f4fdd896b9598302d009f2499cfe0f03f13/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-mink-idl-compiler/blob/d8a16f4fdd896b9598302d009f2499cfe0f03f13/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-mink-idl-compiler/blob/d8a16f4fdd896b9598302d009f2499cfe0f03f13/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-mink-idl-compiler/blob/d8a16f4fdd896b9598302d009f2499cfe0f03f13/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-mink-idl-compiler/blob/d8a16f4fdd896b9598302d009f2499cfe0f03f13/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1357,12 +1357,12 @@ flowchart LR
 ## qualcomm-linux/pkg-minkipc
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-minkipc/blob/6f91bbf486bb53beadf04c8bdd6c65e258280b93/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-minkipc/blob/6f91bbf486bb53beadf04c8bdd6c65e258280b93/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-minkipc/blob/6f91bbf486bb53beadf04c8bdd6c65e258280b93/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-minkipc/blob/6f91bbf486bb53beadf04c8bdd6c65e258280b93/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-minkipc/blob/6f91bbf486bb53beadf04c8bdd6c65e258280b93/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-minkipc/blob/6f91bbf486bb53beadf04c8bdd6c65e258280b93/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1372,12 +1372,12 @@ flowchart LR
 ## qualcomm-linux/pkg-optee-client
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-optee-client/blob/59db4a2a40b88386d7e81643ddf729902ad1052e/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-optee-client/blob/59db4a2a40b88386d7e81643ddf729902ad1052e/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-optee-client/blob/59db4a2a40b88386d7e81643ddf729902ad1052e/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-optee-client/blob/59db4a2a40b88386d7e81643ddf729902ad1052e/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-optee-client/blob/59db4a2a40b88386d7e81643ddf729902ad1052e/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-optee-client/blob/59db4a2a40b88386d7e81643ddf729902ad1052e/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1387,12 +1387,12 @@ flowchart LR
 ## qualcomm-linux/pkg-optee-test
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-optee-test/blob/877f5a9781f1d79487142109b2aca3c50d455dfd/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-optee-test/blob/877f5a9781f1d79487142109b2aca3c50d455dfd/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-optee-test/blob/877f5a9781f1d79487142109b2aca3c50d455dfd/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-optee-test/blob/877f5a9781f1d79487142109b2aca3c50d455dfd/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-optee-test/blob/877f5a9781f1d79487142109b2aca3c50d455dfd/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-optee-test/blob/877f5a9781f1d79487142109b2aca3c50d455dfd/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1402,30 +1402,30 @@ flowchart LR
 ## qualcomm-linux/pkg-qcom-fastcv-binaries
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qcom-fastcv-binaries/blob/390d20fee2e0e30d05b72204b3ecec3db3b498fe/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qcom-fastcv-binaries/blob/390d20fee2e0e30d05b72204b3ecec3db3b498fe/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qcom-fastcv-binaries/blob/390d20fee2e0e30d05b72204b3ecec3db3b498fe/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-fastcv-binaries/blob/390d20fee2e0e30d05b72204b3ecec3db3b498fe/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-fastcv-binaries/blob/390d20fee2e0e30d05b72204b3ecec3db3b498fe/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-fastcv-binaries/blob/390d20fee2e0e30d05b72204b3ecec3db3b498fe/.github/workflows/pkg-promote-prebuilt.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-fastcv-binaries/blob/390d20fee2e0e30d05b72204b3ecec3db3b498fe/.github/workflows/pkg-promote.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-fastcv-binaries/blob/390d20fee2e0e30d05b72204b3ecec3db3b498fe/.github/workflows/pkg-release.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/pkg-qcom-fastcv-binaries/blob/390d20fee2e0e30d05b72204b3ecec3db3b498fe/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/pkg-qcom-sensors
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qcom-sensors/blob/9cc79a9824b2131590178b173c44bc7d7f3aa01a/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qcom-sensors/blob/9cc79a9824b2131590178b173c44bc7d7f3aa01a/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qcom-sensors/blob/9cc79a9824b2131590178b173c44bc7d7f3aa01a/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-sensors/blob/9cc79a9824b2131590178b173c44bc7d7f3aa01a/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-sensors/blob/9cc79a9824b2131590178b173c44bc7d7f3aa01a/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-sensors/blob/9cc79a9824b2131590178b173c44bc7d7f3aa01a/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1435,30 +1435,30 @@ flowchart LR
 ## qualcomm-linux/pkg-qcom-sv-binaries
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qcom-sv-binaries/blob/3a474d81c028575eff78a4b05ee1a19ecdf64feb/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qcom-sv-binaries/blob/3a474d81c028575eff78a4b05ee1a19ecdf64feb/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qcom-sv-binaries/blob/3a474d81c028575eff78a4b05ee1a19ecdf64feb/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-sv-binaries/blob/3a474d81c028575eff78a4b05ee1a19ecdf64feb/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-sv-binaries/blob/3a474d81c028575eff78a4b05ee1a19ecdf64feb/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-sv-binaries/blob/3a474d81c028575eff78a4b05ee1a19ecdf64feb/.github/workflows/pkg-promote-prebuilt.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-sv-binaries/blob/3a474d81c028575eff78a4b05ee1a19ecdf64feb/.github/workflows/pkg-promote.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qcom-sv-binaries/blob/3a474d81c028575eff78a4b05ee1a19ecdf64feb/.github/workflows/pkg-release.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/pkg-qcom-sv-binaries/blob/3a474d81c028575eff78a4b05ee1a19ecdf64feb/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/pkg-qimsdk-smartvenc
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qimsdk-smartvenc/blob/1f5400157d331d3f82fd066b1b91f123abf936aa/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qimsdk-smartvenc/blob/1f5400157d331d3f82fd066b1b91f123abf936aa/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qimsdk-smartvenc/blob/1f5400157d331d3f82fd066b1b91f123abf936aa/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qimsdk-smartvenc/blob/1f5400157d331d3f82fd066b1b91f123abf936aa/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qimsdk-smartvenc/blob/1f5400157d331d3f82fd066b1b91f123abf936aa/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qimsdk-smartvenc/blob/1f5400157d331d3f82fd066b1b91f123abf936aa/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1468,12 +1468,12 @@ flowchart LR
 ## qualcomm-linux/pkg-qmi-framework
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qmi-framework/blob/6f22fcbd301210a78fc1d18b0168fc1220d09803/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qmi-framework/blob/6f22fcbd301210a78fc1d18b0168fc1220d09803/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qmi-framework/blob/6f22fcbd301210a78fc1d18b0168fc1220d09803/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qmi-framework/blob/6f22fcbd301210a78fc1d18b0168fc1220d09803/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qmi-framework/blob/6f22fcbd301210a78fc1d18b0168fc1220d09803/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qmi-framework/blob/6f22fcbd301210a78fc1d18b0168fc1220d09803/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1483,12 +1483,12 @@ flowchart LR
 ## qualcomm-linux/pkg-qti-camera-service
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qti-camera-service/blob/5de0d6397a481e0e47f51f2330d8dbbcf2e7db05/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qti-camera-service/blob/5de0d6397a481e0e47f51f2330d8dbbcf2e7db05/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-qti-camera-service/blob/5de0d6397a481e0e47f51f2330d8dbbcf2e7db05/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qti-camera-service/blob/5de0d6397a481e0e47f51f2330d8dbbcf2e7db05/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qti-camera-service/blob/5de0d6397a481e0e47f51f2330d8dbbcf2e7db05/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-qti-camera-service/blob/5de0d6397a481e0e47f51f2330d8dbbcf2e7db05/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1498,12 +1498,12 @@ flowchart LR
 ## qualcomm-linux/pkg-quic-teec
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-quic-teec/blob/35a9a5ef09a5fbd270e8c35bafdca50540d8d311/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-quic-teec/blob/35a9a5ef09a5fbd270e8c35bafdca50540d8d311/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-quic-teec/blob/35a9a5ef09a5fbd270e8c35bafdca50540d8d311/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-quic-teec/blob/35a9a5ef09a5fbd270e8c35bafdca50540d8d311/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-quic-teec/blob/35a9a5ef09a5fbd270e8c35bafdca50540d8d311/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-quic-teec/blob/35a9a5ef09a5fbd270e8c35bafdca50540d8d311/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1513,7 +1513,7 @@ flowchart LR
 ## qualcomm-linux/pkg-ros-jazzy-xsens-mti-ros2-driver
 
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-ros-jazzy-xsens-mti-ros2-driver/blob/dd7b555174d13bfa0c02946e35060fdfa3ea949d/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-ros-jazzy-xsens-mti-ros2-driver/blob/dd7b555174d13bfa0c02946e35060fdfa3ea949d/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-ros-jazzy-xsens-mti-ros2-driver/blob/dd7b555174d13bfa0c02946e35060fdfa3ea949d/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1523,29 +1523,29 @@ flowchart LR
 ## qualcomm-linux/pkg-rpm-qcom-fastcv-binaries
 
 - **uses automation from** [qcom-rpm-utils](https://github.com/qualcomm-linux/qcom-rpm-utils)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qcom-rpm-utils.](https://github.com/qualcomm-linux/pkg-rpm-qcom-fastcv-binaries/blob/d13ab7f38f921e2c2efd092cba22dce952ef8e02/.github/workflows/build-on-pr.yml)
   - [The uses field calls automation from qualcomm-linux/qcom-rpm-utils.](https://github.com/qualcomm-linux/pkg-rpm-qcom-fastcv-binaries/blob/d13ab7f38f921e2c2efd092cba22dce952ef8e02/.github/workflows/pkg-release.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/pkg-rpm-qcom-fastcv-binaries/blob/d13ab7f38f921e2c2efd092cba22dce952ef8e02/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/pkg-rpm-video-driver
 
 - **uses automation from** [qcom-rpm-utils](https://github.com/qualcomm-linux/qcom-rpm-utils)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qcom-rpm-utils.](https://github.com/qualcomm-linux/pkg-rpm-video-driver/blob/4d308c055e09b144800a773a60cfd02da57110be/.github/workflows/build-on-pr.yml)
   - [The uses field calls automation from qualcomm-linux/qcom-rpm-utils.](https://github.com/qualcomm-linux/pkg-rpm-video-driver/blob/4d308c055e09b144800a773a60cfd02da57110be/.github/workflows/pkg-release.yml)
 
 ## qualcomm-linux/pkg-sensinghub
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-sensinghub/blob/ed38224e2291b41dffdda7b331291752f2e94d00/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-sensinghub/blob/ed38224e2291b41dffdda7b331291752f2e94d00/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-sensinghub/blob/ed38224e2291b41dffdda7b331291752f2e94d00/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-sensinghub/blob/ed38224e2291b41dffdda7b331291752f2e94d00/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-sensinghub/blob/ed38224e2291b41dffdda7b331291752f2e94d00/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-sensinghub/blob/ed38224e2291b41dffdda7b331291752f2e94d00/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1555,12 +1555,12 @@ flowchart LR
 ## qualcomm-linux/pkg-thermald
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-thermald/blob/c3389df0694674d2e53034bd463f57bf1fce46b9/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-thermald/blob/c3389df0694674d2e53034bd463f57bf1fce46b9/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-thermald/blob/c3389df0694674d2e53034bd463f57bf1fce46b9/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-thermald/blob/c3389df0694674d2e53034bd463f57bf1fce46b9/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-thermald/blob/c3389df0694674d2e53034bd463f57bf1fce46b9/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-thermald/blob/c3389df0694674d2e53034bd463f57bf1fce46b9/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1570,12 +1570,12 @@ flowchart LR
 ## qualcomm-linux/pkg-time-services
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1585,30 +1585,30 @@ flowchart LR
 ## qualcomm-linux/pkg-tinyalsa
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-tinyalsa/blob/dd91db749a85c7fbc64cd13fb35b62f6a63ac016/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-tinyalsa/blob/dd91db749a85c7fbc64cd13fb35b62f6a63ac016/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-tinyalsa/blob/dd91db749a85c7fbc64cd13fb35b62f6a63ac016/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-tinyalsa/blob/dd91db749a85c7fbc64cd13fb35b62f6a63ac016/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-tinyalsa/blob/dd91db749a85c7fbc64cd13fb35b62f6a63ac016/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-tinyalsa/blob/dd91db749a85c7fbc64cd13fb35b62f6a63ac016/.github/workflows/pkg-promote-prebuilt.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-tinyalsa/blob/dd91db749a85c7fbc64cd13fb35b62f6a63ac016/.github/workflows/pkg-promote.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-tinyalsa/blob/dd91db749a85c7fbc64cd13fb35b62f6a63ac016/.github/workflows/pkg-release.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/pkg-tinyalsa/blob/dd91db749a85c7fbc64cd13fb35b62f6a63ac016/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/pkg-tinycompress
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-tinycompress/blob/4ff224b20bc0c9ac3c6dd4db61742e5e327ee7d9/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-tinycompress/blob/4ff224b20bc0c9ac3c6dd4db61742e5e327ee7d9/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-tinycompress/blob/4ff224b20bc0c9ac3c6dd4db61742e5e327ee7d9/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-tinycompress/blob/4ff224b20bc0c9ac3c6dd4db61742e5e327ee7d9/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-tinycompress/blob/4ff224b20bc0c9ac3c6dd4db61742e5e327ee7d9/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-tinycompress/blob/4ff224b20bc0c9ac3c6dd4db61742e5e327ee7d9/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1618,12 +1618,12 @@ flowchart LR
 ## qualcomm-linux/pkg-urm
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-urm/blob/f3dd7df55fe9522d5dabd9b00729c54d7076a111/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-urm/blob/f3dd7df55fe9522d5dabd9b00729c54d7076a111/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-urm/blob/f3dd7df55fe9522d5dabd9b00729c54d7076a111/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-urm/blob/f3dd7df55fe9522d5dabd9b00729c54d7076a111/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-urm/blob/f3dd7df55fe9522d5dabd9b00729c54d7076a111/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-urm/blob/f3dd7df55fe9522d5dabd9b00729c54d7076a111/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1636,12 +1636,12 @@ flowchart LR
 ## qualcomm-linux/pkg-urm-ext
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-urm-ext/blob/84ab1dee3b11dbcb39bc937370a8741d59af8510/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-urm-ext/blob/84ab1dee3b11dbcb39bc937370a8741d59af8510/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-urm-ext/blob/84ab1dee3b11dbcb39bc937370a8741d59af8510/.github/workflows/debusine-release.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-urm-ext/blob/84ab1dee3b11dbcb39bc937370a8741d59af8510/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-urm-ext/blob/84ab1dee3b11dbcb39bc937370a8741d59af8510/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-urm-ext/blob/84ab1dee3b11dbcb39bc937370a8741d59af8510/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1651,15 +1651,15 @@ flowchart LR
 ## qualcomm-linux/pkg-video-driver
 
 - **uses automation from** [debusine-action](https://github.com/qualcomm-linux/debusine-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-video-driver/blob/ad6153f020edaa7ae5f7621b34601ed63ad68adc/.github/workflows/debusine-daily.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-video-driver/blob/ad6153f020edaa7ae5f7621b34601ed63ad68adc/.github/workflows/debusine-pr-check.yml)
   - [The uses field calls automation from qualcomm-linux/debusine-action.](https://github.com/qualcomm-linux/pkg-video-driver/blob/ad6153f020edaa7ae5f7621b34601ed63ad68adc/.github/workflows/debusine-release.yml)
 - **uses automation from** [qcom-build-utils](https://github.com/qualcomm-linux/qcom-build-utils)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qcom-build-utils.](https://github.com/qualcomm-linux/pkg-video-driver/blob/ad6153f020edaa7ae5f7621b34601ed63ad68adc/.github/workflows/promote-upstream-suites.yml)
 - **uses automation from** [qli-ci](https://github.com/qualcomm-linux/qli-ci)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-video-driver/blob/ad6153f020edaa7ae5f7621b34601ed63ad68adc/.github/workflows/pkg-build.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-video-driver/blob/ad6153f020edaa7ae5f7621b34601ed63ad68adc/.github/workflows/pkg-pr-hook.yml)
   - [The uses field calls automation from qualcomm-linux/qli-ci.](https://github.com/qualcomm-linux/pkg-video-driver/blob/ad6153f020edaa7ae5f7621b34601ed63ad68adc/.github/workflows/pkg-promote-prebuilt.yml)
@@ -1669,123 +1669,123 @@ flowchart LR
 ## qualcomm-linux/qcom-deb-images
 
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/build-overlay-deb.yml)
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/debos.yml)
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/debos.yml)
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/linux.yml)
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/u-boot.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/qcom-deb-images/blob/04ee6f3866e029a811577dd4a8a2a8c09487485e/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/qcom-dtb-metadata
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/qcom-dtb-metadata/blob/30e452bbdcd93285a43c9fde6ea7a1fdfc286d2c/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/qcom-linux-skills
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/qcom-linux-skills/blob/950b88d7e72dd6f721fc5d3f532559988260f4a5/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/qcom-linux-testkit
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/qcom-linux-testkit/blob/3071238942d63ea2c3cef8d50771a988c323f262/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/qcom-rpm-utils
 
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/qcom-rpm-utils/blob/2ce52035e30d194fc7402fe49fed45582236604d/.github/workflows/pkg-build-reusable-workflow.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/qcom-rpm-utils/blob/2ce52035e30d194fc7402fe49fed45582236604d/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/qcom-sec-tools-wrapper
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/qcom-sec-tools-wrapper/blob/1b18320b6a7075b1abdc6a7d1f2482ccba14c398/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/qli-ci
 
 - **uses automation from** [apt-artifactory-action](https://github.com/qualcomm-linux/apt-artifactory-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/apt-artifactory-action.](https://github.com/qualcomm-linux/qli-ci/blob/a9eb55efa7405bea5b8b9a251f87bfcce570be80/.github/workflows/pkg-release-reusable-workflow.yml)
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/qli-ci/blob/a9eb55efa7405bea5b8b9a251f87bfcce570be80/.github/workflows/pkg-build-reusable-workflow.yml)
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/qli-ci/blob/a9eb55efa7405bea5b8b9a251f87bfcce570be80/.github/workflows/pkg-release-reusable-workflow.yml)
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/qli-ci/blob/a9eb55efa7405bea5b8b9a251f87bfcce570be80/.github/workflows/pkg-release-reusable-workflow.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/qli-ci/blob/a9eb55efa7405bea5b8b9a251f87bfcce570be80/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/qualcomm-CDI-generator
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/qualcomm-CDI-generator/blob/977c12b25e1f796954912d9de217bda5bdec3417/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/rpm-images
 
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/rpm-images/blob/466cb78e65f99e4bd75382fd7ed74093088cd70e/.github/workflows/build-rpm.yml)
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/rpm-images/blob/466cb78e65f99e4bd75382fd7ed74093088cd70e/.github/workflows/build-rpm.yml)
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/rpm-images/blob/466cb78e65f99e4bd75382fd7ed74093088cd70e/.github/workflows/build-rpm.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/rpm-images/blob/466cb78e65f99e4bd75382fd7ed74093088cd70e/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/rtss-mailbox-kmd
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/rtss-mailbox-kmd/blob/9ce7c2f1ad860beb86e922e62b14fdcd178e129f/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/rtss-mailbox-umd
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/rtss-mailbox-umd/blob/667fbda29be9e4d09ff5dd1b35e8dfda17a6ed63/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/ubuntu-qcom-kernel
 
 - **uses automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/upload-private-artifact-action.](https://github.com/qualcomm-linux/ubuntu-qcom-kernel/blob/a26c66f4e02e0009a19c49368d5557de21c26747/.github/workflows/build-kernel.yml)
 
 ## qualcomm-linux/upload-private-artifact-action
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/upload-private-artifact-action/blob/35784966733744f890eca16b3670da4f22df1e76/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/video-driver
 
 - **uses automation from** [kernel-config](https://github.com/qualcomm-linux/kernel-config)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm-linux/kernel-config.](https://github.com/qualcomm-linux/video-driver/blob/269addefac0f3378a152cd2cfca18b83103e9300/.github/workflows/owl_build.yml)
   - [The uses field calls automation from qualcomm-linux/kernel-config.](https://github.com/qualcomm-linux/video-driver/blob/269addefac0f3378a152cd2cfca18b83103e9300/.github/workflows/sync-and-build.yml)
   - [The uses field calls automation from qualcomm-linux/kernel-config.](https://github.com/qualcomm-linux/video-driver/blob/269addefac0f3378a152cd2cfca18b83103e9300/.github/workflows/test.yml)
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/video-driver/blob/269addefac0f3378a152cd2cfca18b83103e9300/.github/workflows/qcom-preflight-checks.yml)
 
 ## qualcomm-linux/weston-sdm-backend
 
 - **uses automation from** [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - GitHub Actions integration
   - [The uses field calls automation from qualcomm/qcom-reusable-workflows.](https://github.com/qualcomm-linux/weston-sdm-backend/blob/17e493f2d6f2dc9999659887da553c8a14ea6ea1/.github/workflows/qcom-preflight-checks.yml)
 
 </details>
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a. -->
+<!-- Dataset SHA-256: 3f891cc17d8d55065895c8ef77d404614f3a01d4a9e86644aecff5753a329dfe. -->
