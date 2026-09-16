@@ -1,23 +1,22 @@
-"""Generate the Qualcomm ecosystem overview and nearby repository views.
+"""Generate the full Qualcomm README map and export nearby README blocks.
 
-The JSON dataset owns repository facts. Linked Markdown, HTML, and exported nearby views
-are derived outputs. The generator runs without network access.
+The JSON dataset owns repository facts. Mermaid README blocks are derived output.
+Map generation is independent of Sphinx and produces no website pages.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
-import html
 import json
+from pathlib import Path
 import re
 import subprocess
-from markdown_it import MarkdownIt
-from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/repositories.json"
-OUTPUT = ROOT / "maps"
 CENTRAL = "https://github.com/devdocsorg/qualcomm-repository-map"
+START = "<!-- repository-map:start -->"
+END = "<!-- repository-map:end -->"
 KINDS = {"depends on", "integrates with", "fetches source from", "uses indirectly",
          "builds with", "selects for distro", "pins release of", "configures",
          "selects branches from", "packages", "runs workflow from", "uses automation from"}
@@ -76,187 +75,150 @@ def load_data(path: Path) -> dict:
     return data
 
 
-def nearby(data: dict, focus: str) -> tuple[list[dict], list[dict]]:
-    """Select the focus repository and all recorded incoming/outgoing neighbours.
+def diagram(nodes: list[dict], edges: list[dict], focus: str | None = None) -> str:
+    """Render linked Mermaid nodes and directed, labelled relationships.
 
-    :param data: Validated dataset.
-    :param focus: Exact owner/repository identifier.
-    :returns: Selected repositories and incident relationships, in stable order.
-    :raises KeyError: If the focus repository is absent.
-
-    Example: ``nearby(load_data(DATA), 'qualcomm-linux/meta-qcom-3rdparty')`` selects its local view.
+    :param nodes: Repositories to show, each with a canonical URL.
+    :param edges: Reviewed relationships between the selected nodes.
+    :param focus: Current repository to highlight, or None for the full map.
+    :returns: A fenced Mermaid flowchart with a clickable link on every node.
     """
-    nodes = {node["id"]: node for node in data["repositories"]}
-    if focus not in nodes:
-        raise KeyError(focus)
-    edges = [e for e in data["relationships"] if focus in (e["from"], e["to"])]
-    selected = {focus}
+    identifiers = {node['id']: f'r{i}' for i, node in enumerate(nodes)}
+    lines = ['```mermaid', 'flowchart LR']
+    for node in nodes:
+        short = node['id'].split('/')[-1]
+        label = short if sum(n['id'].split('/')[-1] == short for n in nodes) == 1 else node['id']
+        if node['id'] == focus:
+            label += ' (you are here)'
+        lines.append(f'    {identifiers[node["id"]]}["{label}"]')
+        lines.append(f'    click {identifiers[node["id"]]} href "{node["url"]}" _blank')
+    seen = set()
     for edge in edges:
-        selected.update((edge["from"], edge["to"]))
-    return [nodes[key] for key in sorted(selected)], sorted(edges, key=str)
-
-
-
-def repo_link(node: dict, short: bool = False) -> str:
-    """Link a canonical repository, optionally omitting its owner from the label."""
-    label = node['id'].split('/')[-1] if short else node['id']
-    return f"[{label}]({node['url']})"
-
-
-def connections(data: dict, focus: str, explore_prefix: str) -> str:
-    """Group neighbours by direction and role, with evidence available on demand."""
-    selected_nodes, edges = nearby(data, focus)
-    nodes = {node['id']: node for node in selected_nodes}
-    if not edges:
-        return 'Connections have not been reviewed for this repository.\n'
-    result, details = '', ''
-    for direction, title in (('from', 'Uses'), ('to', 'Used by')):
-        selected = [edge for edge in edges if edge[direction] == focus]
-        if not selected:
-            continue
-        result += f'## {title}\n\n'
-        for kind in sorted({edge['kind'] for edge in selected}):
-            result += f'### {kind.capitalize()}\n\n'
-            for edge in selected:
-                if edge['kind'] != kind:
-                    continue
-                other = edge['to' if direction == 'from' else 'from']
-                node = nodes[other]
-                short = sum(n['id'].split('/')[-1] == other.split('/')[-1] for n in selected_nodes) == 1
-                link = repo_link(node, short=short)
-                result += f'- {link} · [Explore]({explore_prefix}{slug(other)}.md)\n'
-                urls = dict.fromkeys(proof['url'] for proof in edge['evidence'])
-                proofs = ' · '.join(f'[source {i+1}]({url})' for i, url in enumerate(urls))
-                details += f'- {title}: {link} — **{kind}**\n  - {edge["condition"]}\n  - {proofs}\n'
-            result += '\n'
-    result += '<details>\n<summary>Applicability and sources</summary>\n\n' + details + '\n</details>\n'
-    return result
-
-
-def render_view(data: dict, focus: str, digest: str, revision: str | None = None) -> str:
-    """Render the current repository once, its neighbours, and expandable evidence."""
-    node = next(node for node in data['repositories'] if node['id'] == focus)
-    prefix = f'{CENTRAL}/blob/{revision}/maps/' if revision else ''
-    result = f'# {repo_link(node, short=True)}\n\n' + node['description'] + '\n\n'
-    result += connections(data, focus, prefix)
-    overview = CENTRAL if revision else '../README.md'
-    result += f'\n[Back to the ecosystem map]({overview}).\n'
-    result += f'\n<!-- Dataset SHA-256: {digest}; revision: {revision or "this checkout"}. -->\n'
-    return result
-
+        label = edge['local_summary'] if focus else edge['kind']
+        # Entity escapes keep authored labels from becoming Mermaid syntax.
+        label = label.replace('&', '#38;').replace('"', '#34;').replace('|', '#124;').replace('\n', ' ')
+        key = (edge['from'], edge['to'], label)
+        if key not in seen:
+            lines.append(f'    {identifiers[edge["from"]]} -->|"{label}"| {identifiers[edge["to"]]}')
+            seen.add(key)
+    if focus:
+        lines.append(f'    style {identifiers[focus]} fill:#e6f3ff,stroke:#0969da,stroke-width:3px,color:#182c43')
+    return '\n'.join(lines + ['```', ''])
 
 
 def render_local_view(data: dict, focus: str, digest: str, revision: str) -> str:
-    """Export a short dependency table; keep full evidence in the central map.
+    """Export only direct user-relevant dependencies in a nearby Mermaid block.
 
-    Each included relationship needs a local_summary in the shared dataset.
-    Transitive dependencies, CI automation, and incoming users stay in the full map.
+    Each included relationship needs a concise local_summary. Transitive
+    dependencies, CI automation, and incoming users stay in the full map.
     """
     nodes = {node['id']: node for node in data['repositories']}
+    if focus not in nodes:
+        raise KeyError(focus)
     order = {'depends on': 0, 'integrates with': 1, 'fetches source from': 2}
     edges = [edge for edge in data['relationships'] if edge['from'] == focus
              and edge['kind'] not in {'uses indirectly', 'uses automation from', 'runs workflow from'}]
     edges.sort(key=lambda edge: (order.get(edge['kind'], 4), edge['to']))
-    result = f"# Repository map\n\nYou are here: **[{focus.split('/')[-1]}]({nodes[focus]['url']})**.\n\n"
-    if edges:
-        result += '| Repository | Used for |\n| --- | --- |\n'
-    else:
-        result += 'Build dependencies have not been reviewed for this repository.\n'
     for edge in edges:
-        summary = edge.get('local_summary')
-        if not isinstance(summary, str) or not summary.strip():
+        if not isinstance(edge.get('local_summary'), str) or not edge['local_summary'].strip():
             raise ValueError(f"Add a concise local_summary for {edge['from']} -> {edge['to']}")
-        node = nodes[edge['to']]
-        label = node['id'].split('/')[-1]
-        if sum(other['to'].split('/')[-1] == label for other in edges) > 1:
-            label = node['id']
-        summary = summary.replace('|', '\\|').replace('\n', ' ')
-        result += f"| [{label}]({node['url']}) | {summary} |\n"
-    result += f'\n[Full map and relationship details]({CENTRAL}/blob/{revision}/maps/{slug(focus)}.md).\n'
+    selected = [nodes[identifier] for identifier in dict.fromkeys([focus, *(e['to'] for e in edges)])]
+    result = '## Repository map\n\n' + diagram(selected, edges, focus)
+    if not edges:
+        result += '\nBuild dependencies have not been reviewed for this repository.\n'
+    result += f'\n[Full Qualcomm repository map]({CENTRAL}).\n'
     result += f'\n<!-- Generated from {CENTRAL} at {revision}; dataset SHA-256: {digest}. -->\n'
     return result
 
 
-def html_page(markdown: str, title: str) -> str:
-    """Render the same linked map as standalone HTML for direct file browsing."""
-    body = MarkdownIt('commonmark').render(markdown)
-    body = re.sub(r'href="(?!https?://)([^"#]+)\.md"',
-                  lambda match: 'href="' + ('../index' if match[1] == '../README' else match[1]) + '.html"', body)
-    return ('<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
-            '<meta name="viewport" content="width=device-width,initial-scale=1">'
-            f'<title>{html.escape(title)}</title><style>'
-            'body{font:17px/1.6 system-ui,sans-serif;max-width:1000px;margin:2rem auto;padding:0 1.5rem;color:#182c43;background:#fff}'
-            'a{color:#0752a0;text-underline-offset:.18em}a:hover{color:#733cab}a:focus-visible{outline:3px solid #b87b00}'
-            'h1{font-size:1.8rem;overflow-wrap:anywhere}h2{margin-top:2.5rem;border-bottom:1px solid #cbd5e1}'
-            'li{margin:.5rem 0}li li{font-size:.9rem;color:#43546a}code{overflow-wrap:anywhere}'
-            '</style></head><body><main>' + body + '</main></body></html>\n')
+def update_readme(readme: Path, block: str, check: bool = False) -> None:
+    """Replace only the final marked README block; fail on ambiguous boundaries.
+
+    :param readme: Existing root README to update.
+    :param block: Generated nearby map Markdown.
+    :param check: Compare without writing, raising ValueError if stale.
+    :raises ValueError: For malformed markers, non-final maps, or stale output.
+    """
+    original = readme.read_text()
+    if START not in original and END not in original:
+        before = original.rstrip() + '\n\n'
+    else:
+        if original.count(START) != 1 or original.count(END) != 1:
+            raise ValueError('README must contain exactly one map marker pair')
+        before, rest = original.split(START)
+        if END not in rest:
+            raise ValueError('Map end marker must follow start marker')
+        _, after = rest.split(END)
+        if after.strip():
+            raise ValueError('Repository map must be at the bottom of the README')
+    updated = before + START + '\n\n' + block.rstrip() + '\n\n' + END + '\n'
+    if check:
+        if updated != original:
+            raise ValueError('README map differs from the recorded dataset and generator')
+    else:
+        readme.write_text(updated)
 
 
 def build(data: dict, digest: str) -> None:
-    """Generate the root map and linked nearby pages from the sole dataset."""
-    OUTPUT.mkdir(exist_ok=True)
-    for old in OUTPUT.iterdir():
-        if old.suffix in {'.md', '.html'}:
-            old.unlink()
+    """Generate the full README map, with all inventory and evidence retained.
+
+    The diagram shows every repository and distinct directed relationship.
+    Expandable details preserve conditions, source claims, and inventory metadata.
+    """
     nodes = sorted(data['repositories'], key=lambda node: node['id'])
-    connected = {edge[end] for edge in data['relationships'] for end in ('from', 'to')}
+    edges = sorted(data['relationships'], key=lambda edge: (edge['from'], edge['to'], edge['kind']))
+    connected = {edge[end] for edge in edges for end in ('from', 'to')}
     overview = '# Qualcomm repository map\n\n' + data['scope'] + '\n\n'
-    overview += f"**Coverage:** {len(nodes)} repositories, {len(connected)} with reviewed connections, {len(data['relationships'])} evidenced relationships.\n\n{data['coverage']}\n\n"
-    overview += 'Repository names open the repository. **Explore** links move through its neighbourhood. Open `index.html` for local browsing without a server; external repository and evidence links need network access.\n\n'
-    overview += '## Connected repositories\n\n'
-    for focus in ('qualcomm-linux/meta-qcom', 'qualcomm-linux/meta-qcom-3rdparty', 'qualcomm-linux/kernel-config', 'qualcomm-linux/pkg-kgsl'):
-        overview += f'### [{focus}](https://github.com/{focus})\n\n'
-        _, edges = nearby(data, focus)
-        edges = [edge for edge in edges if edge['from'] == focus
-                 and edge['kind'] not in {'uses automation from', 'runs workflow from'}]
-        for kind in sorted({edge['kind'] for edge in edges}):
-            targets = sorted({edge['to'] for edge in edges if edge['kind'] == kind})
-            links = [f"[{target.split('/')[-1]}](https://github.com/{target})" for target in targets]
-            overview += f"- **{kind.capitalize()}:** " + ' · '.join(links) + '\n'
-        overview += f'\n[Explore connections](maps/{slug(focus)}.md).\n\n'
-    overview += '## All repositories\n\nGroups organise browsing; they do not assert dependencies.\n\n'
+    overview += f"**Coverage:** {len(nodes)} repositories, {len(connected)} with reviewed connections, {len(edges)} evidenced relationships.\n\n{data['coverage']}\n\n"
+    overview += 'Click a repository node to open it. Arrows describe how repositories relate.\n\n'
+    overview += diagram(nodes, edges)
+    overview += '\n<details>\n<summary>Repository inventory</summary>\n\n'
     for group in sorted({node['group'] for node in nodes}):
-        overview += f'### {group}\n\n'
+        overview += f'## {group}\n\n'
         for node in nodes:
-            if node['group'] != group:
-                continue
-            state = '' if node['id'] in connected else ' · connections not yet reviewed'
-            if node['archived']:
-                state += ' · archived'
-            overview += f"- {repo_link(node)} · [Explore](maps/{slug(node['id'])}.md){state}\n"
+            if node['group'] == group:
+                status = '; archived' if node['archived'] else ''
+                branch = node['branch'] or 'not inventoried'
+                description = re.sub(r'https?://[^\s)]+', r'<\g<0>>', node['description'])
+                overview += f"- [{node['id']}]({node['url']}) — {description} (default branch: `{branch}`{status}).\n"
         overview += '\n'
-    overview += '[Map data and updates](data/README.md) · [Licence](LICENSE)\n'
+    overview += '</details>\n\n<details>\n<summary>Relationship applicability and sources</summary>\n\n'
+    for focus in sorted({edge['from'] for edge in edges}):
+        overview += f'## {focus}\n\n'
+        for edge in edges:
+            if edge['from'] != focus:
+                continue
+            overview += f"- **{edge['kind']}** [{edge['to'].split('/')[-1]}](https://github.com/{edge['to']})\n  - {edge['condition']}\n"
+            for proof in edge['evidence']:
+                overview += f"  - [{proof['claim']}]({proof['url']})\n"
+        overview += '\n'
+    overview += '</details>\n\n[Map data and updates](data/README.md).\n'
+    overview += f'\n<!-- Dataset SHA-256: {digest}. -->\n'
     (ROOT/'README.md').write_text(overview)
-    (ROOT/'index.html').write_text(html_page(overview, 'Qualcomm repository map'))
-    # Include the small maintenance note in the offline copy so every local link resolves.
-    (ROOT/'data/README.html').write_text(html_page((ROOT/'data/README.md').read_text(), 'Map data and updates'))
-    for node in nodes:
-        name = slug(node['id'])
-        page = render_view(data, node['id'], digest)
-        (OUTPUT/f'{name}.md').write_text(page)
-        (OUTPUT/f'{name}.html').write_text(html_page(page, node['id']))
 
 
 def main() -> None:
-    """Build the map or export a nearby Markdown snapshot at a recorded commit."""
+    """Build the full map or update/check a recipient README at a pinned revision."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--export', help='Exact repository identifier to export')
-    parser.add_argument('--destination', type=Path, help='Directory receiving REPOSITORY_MAP.md')
+    parser.add_argument('--readme', type=Path, help='Existing recipient root README')
     parser.add_argument('--revision', help='Central map commit identifying the export source')
+    parser.add_argument('--check', action='store_true', help='Verify the README block without writing')
     args = parser.parse_args()
     data = load_data(DATA)
     digest = hashlib.sha256(DATA.read_bytes()).hexdigest()
     if args.export:
-        if args.destination is None or not args.revision or not re.fullmatch('[0-9a-f]{40}', args.revision):
-            parser.error('Export requires --destination and --revision with a full commit SHA')
+        if args.readme is None or not args.revision or not re.fullmatch('[0-9a-f]{40}', args.revision):
+            parser.error('Export requires --readme and --revision with a full commit SHA')
         subprocess.run(['git', 'cat-file', '-e', args.revision + '^{commit}'], cwd=ROOT, check=True)
         subprocess.run(['git', 'diff', '--exit-code', args.revision, '--', 'data', 'tools'], cwd=ROOT, check=True)
-        args.destination.mkdir(parents=True, exist_ok=True)
-        (args.destination/'REPOSITORY_MAP.md').write_text(render_local_view(data, args.export, digest, args.revision))
-        print(f'Exported linked nearby map for {args.export}')
+        update_readme(args.readme, render_local_view(data, args.export, digest, args.revision), args.check)
+        print(f'{"Verified" if args.check else "Updated"} README map for {args.export}')
     else:
+        if args.check or args.readme or args.revision:
+            parser.error('--check, --readme, and --revision require --export')
         build(data, digest)
-        print(f"Generated {len(data['repositories'])} linked nearby maps")
+        print(f"Generated full README map: {len(data['repositories'])} repositories")
 
 
 if __name__ == '__main__':

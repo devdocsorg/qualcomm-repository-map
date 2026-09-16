@@ -1,4 +1,4 @@
-name: Linked repository map
+name: Mermaid repository map
 on: [push, pull_request]
 permissions:
   contents: read
@@ -10,7 +10,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install -r tools/requirements.txt
       - run: python tools/map_build.py
       - run: python tools/check_map.py
       - run: git diff --exit-code && test -z "$(git ls-files --others --exclude-standard)"

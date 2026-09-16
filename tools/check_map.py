@@ -1,69 +1,69 @@
-"""Check map invariants and Python docstring coverage without network access."""
+"""Check relationship preservation, nearby scope, README exports, and native docs."""
 import ast
 import copy
+import hashlib
 import json
-import tempfile
+from pathlib import Path
 import pydoc
 import re
-from urllib.parse import unquote, urlsplit
-from pathlib import Path
+import tempfile
 
 import map_build
 
 data = map_build.load_data(map_build.DATA)
 focus = 'qualcomm-linux/meta-qcom-3rdparty'
-nodes, edges = map_build.nearby(data, focus)
-expected_neighbours = {'qualcomm-linux/meta-qcom', 'openembedded/openembedded-core',
-                       'qualcomm-linux/meta-qcom-distro', 'qualcomm-linux/qcom-ptool',
-                       'rubikpi-ai/boot-assets'}
-assert expected_neighbours <= {node['id'] for node in nodes}
-assert len(edges) >= 5
-assert all(focus in (edge['from'], edge['to']) for edge in edges)
-view = map_build.render_view(data, focus, 'test-digest')
-assert view.count(f'](https://github.com/{focus})') == 1
-assert '![' not in view and '<svg' not in view
-assert '<details>' in view and '<summary>Applicability and sources</summary>' in view
-for edge in edges:
-    other = edge['to'] if edge['from'] == focus else edge['from']
-    assert f'](https://github.com/{other})' in view
-    assert edge['kind'] in view and edge['condition'] in view
-    for proof in edge['evidence']:
-        assert proof['url'] in view
-# The focus repository is not repeated on any connection in any shared view.
+digest = hashlib.sha256(map_build.DATA.read_bytes()).hexdigest()
+readme = (map_build.ROOT/'README.md').read_text()
+graph = readme.split('```mermaid\n')[1].split('```')[0]
+assert len(re.findall(r'^    r\d+\[', graph, re.M)) == len(data['repositories'])
 for node in data['repositories']:
-    rendered = map_build.render_view(data, node['id'], 'test-digest')
-    assert rendered.count(f"]({node['url']})") == 1
-    _, incident = map_build.nearby(data, node['id'])
-    for edge in incident:
-        assert edge['condition'] in rendered and edge['kind'] in rendered
-        assert all(proof['url'] in rendered for proof in edge['evidence'])
-# Local readers see only build relationships and one occurrence of the current name.
-local = map_build.render_local_view(data, focus, 'test-digest', 'a' * 40)
-assert local.count('[meta-qcom-3rdparty]') == 1
-assert local.count('| [') == 4
-assert 'Required: base OpenEmbedded layer.' in local
-assert 'Optional: Qualcomm reference distro.' in local
-assert 'RUBIK Pi 3 firmware, fetched by the build.' in local
-assert 'qcom-ptool' not in local
-assert '(private)' not in local
-assert 'bitbake-lint-action' not in local and 'evidence 1' not in local
+    assert graph.count(f'href "{node["url"]}"') == 1
+    assert node['description'] in re.sub(r'<(https?://[^>]+)>', r'\1', readme)
+for edge in data['relationships']:
+    assert edge['kind'] in graph and edge['condition'] in readme
+    for proof in edge['evidence']:
+        assert proof['claim'] in readme and proof['url'] in readme
+# Verify every directed relationship, not just node presence.
+ids = {node['id']: f'r{i}' for i, node in enumerate(sorted(data['repositories'], key=lambda n: n['id']))}
+for edge in data['relationships']:
+    assert f'{ids[edge["from"]]} -->|"{edge["kind"]}"| {ids[edge["to"]]}' in graph
+assert not list(map_build.ROOT.glob('maps/*'))
+assert not list(map_build.ROOT.glob('*.html'))
+assert not list((map_build.ROOT/'data').glob('*.html'))
+
+local = map_build.render_local_view(data, focus, digest, 'a' * 40)
+assert local.count('["meta-qcom-3rdparty (you are here)"]') == 1
+assert local.count(' href ') == 5
+assert local.count(' -->|') == 4
+for summary in ('Required: base OpenEmbedded layer.', 'Optional: Qualcomm reference distro.',
+                'RUBIK Pi 3 firmware, fetched by the build.'):
+    assert summary in local
+for excluded in ('qcom-ptool', '(private)', 'bitbake-lint-action', 'REPOSITORY_MAP.md'):
+    assert excluded not in local
 assert 'dataset SHA-256' not in re.sub(r'<!--.*?-->', '', local, flags=re.S)
-assert 'Full map and relationship details' in local
-missing_summary = copy.deepcopy(data)
-for edge in missing_summary['relationships']:
-    edge.pop('local_summary', None)
-try:
-    map_build.render_local_view(missing_summary, focus, 'test-digest', 'a' * 40)
-except ValueError:
-    pass
-else:
-    raise AssertionError('Local export accepted missing summaries')
+assert f'[Full Qualcomm repository map]({map_build.CENTRAL})' in local
 
-# Incoming edges must also appear when the user starts at a provider repository.
-provider_nodes, provider_edges = map_build.nearby(data, 'rubikpi-ai/boot-assets')
-assert len(provider_nodes) == 2 and provider_edges[0]['from'] == focus
+with tempfile.TemporaryDirectory() as tmp:
+    path = Path(tmp)/'README.md'
+    authored = '# Layer\n\n[Contributing](CONTRIBUTING.md).\n\n## Files\n\n- [README](README.md)\n'
+    path.write_text(authored)
+    map_build.update_readme(path, local)
+    first = path.read_text()
+    assert first.startswith(authored) and first.rstrip().endswith(map_build.END)
+    map_build.update_readme(path, local, check=True)
+    map_build.update_readme(path, local)
+    assert path.read_text() == first
+    for broken in (first+'\n## Extra section\n', first+map_build.START,
+                   first.replace(map_build.END, ''), first.replace('Required:', 'Incorrect:')):
+        path.write_text(broken)
+        try:
+            map_build.update_readme(path, local, check=True)
+        except ValueError:
+            assert path.read_text() == broken
+        else:
+            raise AssertionError('Invalid or stale README map accepted')
 
-for mutation in ('unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned'):
+for mutation in ('unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned', 'missing_summary'):
     broken = copy.deepcopy(data)
     if mutation == 'unknown_endpoint':
         broken['relationships'][0]['to'] = 'absent/repository'
@@ -71,17 +71,21 @@ for mutation in ('unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned'
         broken['relationships'][0]['evidence'] = []
     elif mutation == 'duplicate':
         broken['relationships'].append(copy.deepcopy(broken['relationships'][0]))
-    else:
+    elif mutation == 'unpinned':
         broken['relationships'][0]['evidence'][0]['revision'] = 'main'
-    with tempfile.TemporaryDirectory() as temp:
-        path = Path(temp)/'invalid.json'
+    else:
+        for edge in broken['relationships']:
+            edge.pop('local_summary', None)
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp)/'data.json'
         path.write_text(json.dumps(broken))
         try:
-            map_build.load_data(path)
+            loaded = map_build.load_data(path)
+            map_build.render_local_view(loaded, focus, digest, 'a'*40)
         except ValueError:
             pass
         else:
-            raise AssertionError(f'Invalid data accepted: {mutation}')
+            raise AssertionError(f'Invalid dataset accepted: {mutation}')
 
 reference = pydoc.plain(pydoc.render_doc(map_build))
 count = 0
@@ -90,16 +94,6 @@ for source in sorted((map_build.ROOT/'tools').glob('*.py')):
         if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
             assert ast.get_docstring(node), f'Missing native docstring: {source.name}:{node.name}'
             if source.name == 'map_build.py':
-                assert f'{node.name}(' in reference, f'Missing native pydoc entry: {node.name}'
+                assert f'{node.name}(' in reference, f'Missing pydoc entry: {node.name}'
             count += 1
-print(f'Map invariants and negative tests passed; {count} functions have native documentation')
-
-# Every generated local link must survive a checkout opened with file://.
-for page in [map_build.ROOT/'index.html', map_build.ROOT/'data/README.html', *map_build.OUTPUT.glob('*.html')]:
-    content = page.read_text()
-    assert not re.search(r'<(?:img|svg|script|iframe)\b', content), f'Unexpected picture or runtime: {page}'
-    for href in re.findall(r'href="([^"]+)"', content):
-        target = urlsplit(href)
-        if not target.scheme and target.path:
-            assert (page.parent/unquote(target.path)).is_file(), f'Broken local link: {page}: {href}'
-print('All map names are linked; local navigation and evidence preservation passed')
+print(f'Preserved {len(data["repositories"])} repositories and {len(data["relationships"])} relationships; README export and negative checks pass; {count} native docstrings verified')

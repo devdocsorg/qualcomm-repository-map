@@ -34,42 +34,48 @@ into descriptions or infer edges from names.
 
 ## Update the map
 
-Use Python 3.12 or newer and uv. From the repository root:
+Use Python 3.12 or newer. The generator uses only the standard library. From the repository root:
 
 ```sh
-uv venv .venv
-uv pip install --python .venv/bin/python -r tools/requirements.txt
-.venv/bin/python tools/map_build.py
-.venv/bin/python tools/check_map.py
+python3 tools/map_build.py
+python3 tools/check_map.py
 ```
 
-Edit the dataset and regenerate; commit the dataset and generated views together.
-Repository names link directly to their repositories. Explore links navigate the
-map. Each view names its current repository once; neighbouring repositories are
-grouped by role. Full applicability and sources remain available in an expandable
-section. All evidence and branch conditions belong in this dataset.
+Edit the dataset and regenerate; commit the dataset and README together. The root
+README contains the full Mermaid map with clickable repository nodes. Expandable
+sections preserve inventory, applicability, and source evidence. No separate map
+pages or HTML copies are generated.
 
-To export a nearby view from a committed dataset and generator:
+To update a nearby map at the bottom of a recipient root README from a committed
+dataset and generator:
 
 ```sh
-.venv/bin/python tools/map_build.py --export qualcomm-linux/meta-qcom-3rdparty \
-  --destination ../meta-qcom-3rdparty/docs/source/user \
+python3 tools/map_build.py --export qualcomm-linux/meta-qcom-3rdparty \
+  --readme ../meta-qcom-3rdparty/README.md \
   --revision "$(git rev-parse HEAD)"
 ```
 
-The export writes a compact REPOSITORY_MAP.md: the current repository once,
-a linked table of build dependencies and inputs, and one link to the full details.
-Set `local_summary` on each exported relationship to explain its role briefly,
-including required, optional, or board-specific applicability. Transitive
-dependencies, CI automation, and incoming users stay in the full map. The source revision and dataset
-digest are recorded in an HTML comment rather than reader-facing prose. Rebuild the recipient's
-documentation site after replacing the snapshot. Access to this private repository
-is required to update the map; exported public repository links work independently.
+The exporter replaces only the final `repository-map:start` / `repository-map:end`
+block, or appends one when no markers exist. It preserves all other README content
+and refuses an ambiguous marker pair or content after the map. Add `--check` to
+verify an existing export without modifying it. Reproduce the export by checking
+out the revision recorded in the block and running the same command.
+
+The nearby Mermaid map shows the current repository once, its direct dependencies
+and build inputs, and one link to the full map. Set `local_summary` on each exported
+relationship to label its purpose and required, optional, or board-specific use.
+Transitive dependencies, CI automation, and incoming users stay in the full map.
+The source revision and dataset digest stay in a source comment.
+
+The nearby map lives only in the recipient README. Sphinx neither reads nor writes
+it; no map source page, generated website copy, or intermediate snapshot is needed.
+Access to this private repository is required to update the map; exported public
+repository links work independently.
 
 Python's native `pydoc` reads the generator's function documentation:
 
 ```sh
-.venv/bin/python -m pydoc tools.map_build
+python3 -m pydoc tools.map_build
 ```
 
 The validator checks that every named function has a native docstring and appears
