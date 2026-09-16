@@ -12,42 +12,33 @@ Repository names open the repository. **Explore** links move through its neighbo
 
 ### [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
 
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [AudioReach/meta-audioreach](https://github.com/AudioReach/meta-audioreach)
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **builds with** → [openembedded/bitbake](https://github.com/openembedded/bitbake)
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [openembedded/meta-openembedded](https://github.com/openembedded/meta-openembedded)
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **builds with** → [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core)
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **fetches source from** → [qualcomm-linux/kernel](https://github.com/qualcomm-linux/kernel)
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [qualcomm-linux/meta-ai](https://github.com/qualcomm-linux/meta-ai)
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **fetches source from** → [qualcomm-linux/qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **depends on** → [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
-- [qualcomm-linux/meta-qcom-releases](https://github.com/qualcomm-linux/meta-qcom-releases) → **pins release of** → [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
+- **Builds with:** [bitbake](https://github.com/openembedded/bitbake) · [openembedded-core](https://github.com/openembedded/openembedded-core)
+- **Fetches source from:** [kernel](https://github.com/qualcomm-linux/kernel) · [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+- **Selects for distro:** [meta-audioreach](https://github.com/AudioReach/meta-audioreach) · [meta-openembedded](https://github.com/openembedded/meta-openembedded) · [meta-ai](https://github.com/qualcomm-linux/meta-ai) · [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
 
-[Explore all connections, applicability, and evidence](maps/qualcomm-linux--meta-qcom.md).
+[Explore connections](maps/qualcomm-linux--meta-qcom.md).
 
 ### [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty)
 
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **depends on** → [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **depends on** → [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **integrates with** → [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **uses indirectly** → [qualcomm-linux/qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **fetches source from** → [rubikpi-ai/boot-assets](https://github.com/rubikpi-ai/boot-assets)
+- **Depends on:** [openembedded-core](https://github.com/openembedded/openembedded-core) · [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
+- **Fetches source from:** [boot-assets](https://github.com/rubikpi-ai/boot-assets)
+- **Integrates with:** [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
+- **Uses indirectly:** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
 
-[Explore all connections, applicability, and evidence](maps/qualcomm-linux--meta-qcom-3rdparty.md).
+[Explore connections](maps/qualcomm-linux--meta-qcom-3rdparty.md).
 
 ### [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config)
 
-- [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **configures** → [qualcomm-linux/automerge](https://github.com/qualcomm-linux/automerge)
-- [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **selects branches from** → [qualcomm-linux/kernel](https://github.com/qualcomm-linux/kernel)
-- [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **selects branches from** → [qualcomm-linux/kernel-topics](https://github.com/qualcomm-linux/kernel-topics)
+- **Configures:** [automerge](https://github.com/qualcomm-linux/automerge)
+- **Selects branches from:** [kernel](https://github.com/qualcomm-linux/kernel) · [kernel-topics](https://github.com/qualcomm-linux/kernel-topics)
 
-[Explore all connections, applicability, and evidence](maps/qualcomm-linux--kernel-config.md).
+[Explore connections](maps/qualcomm-linux--kernel-config.md).
 
 ### [qualcomm-linux/pkg-kgsl](https://github.com/qualcomm-linux/pkg-kgsl)
 
-- [qualcomm-linux/pkg-kgsl](https://github.com/qualcomm-linux/pkg-kgsl) → **packages** → [qualcomm-linux/kgsl](https://github.com/qualcomm-linux/kgsl)
+- **Packages:** [kgsl](https://github.com/qualcomm-linux/kgsl)
 
-[Explore all connections, applicability, and evidence](maps/qualcomm-linux--pkg-kgsl.md).
+[Explore connections](maps/qualcomm-linux--pkg-kgsl.md).
 
 ## All repositories
 

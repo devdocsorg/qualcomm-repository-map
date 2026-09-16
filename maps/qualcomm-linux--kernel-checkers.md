@@ -1,29 +1,31 @@
-# Repository map: qualcomm-linux/kernel-checkers
-
-**You are here: [qualcomm-linux/kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers)**
+# [kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers)
 
 Checker tests kernel patches for correctness by running a suite of tests.
 
-## Outgoing connections
+## Uses
 
 ### Uses automation from
 
-- [qualcomm-linux/kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers) → **uses automation from** → [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config)
+- [kernel-config](https://github.com/qualcomm-linux/kernel-config) · [Explore](qualcomm-linux--kernel-config.md)
+
+## Used by
+
+### Uses automation from
+
+- [kernel-config](https://github.com/qualcomm-linux/kernel-config) · [Explore](qualcomm-linux--kernel-config.md)
+
+<details>
+<summary>Applicability and sources</summary>
+
+- Uses: [kernel-config](https://github.com/qualcomm-linux/kernel-config) — **uses automation from**
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm-linux/kernel-config](qualcomm-linux--kernel-config.md) · [evidence 1](https://github.com/qualcomm-linux/kernel-checkers/blob/23c35b0e159903b2f69ec5d11f5b6e5dcd493319/.github/workflows/checker.yml)
-
-## Incoming connections
-
-### Uses automation from (repositories using this one)
-
-- [qualcomm-linux/kernel-config](https://github.com/qualcomm-linux/kernel-config) → **uses automation from** → [qualcomm-linux/kernel-checkers](https://github.com/qualcomm-linux/kernel-checkers)
+  - [source 1](https://github.com/qualcomm-linux/kernel-checkers/blob/23c35b0e159903b2f69ec5d11f5b6e5dcd493319/.github/workflows/checker.yml)
+- Used by: [kernel-config](https://github.com/qualcomm-linux/kernel-config) — **uses automation from**
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm-linux/kernel-config](qualcomm-linux--kernel-config.md) · [evidence 1](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/.github/workflows/kernel_checker.yml)
+  - [source 1](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/.github/workflows/kernel_checker.yml)
 
-## Full ecosystem map
+</details>
 
-[Explore the Qualcomm repository map](../README.md).
+[Back to the ecosystem map](../README.md).
 
-Connections apply to the linked evidence revisions; use release-compatible revisions for a build.
-
-Dataset SHA-256: `bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a`.
+<!-- Dataset SHA-256: bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a; revision: this checkout. -->

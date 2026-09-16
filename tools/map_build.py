@@ -97,57 +97,51 @@ def nearby(data: dict, focus: str) -> tuple[list[dict], list[dict]]:
 
 
 
-def repo_link(node: dict) -> str:
-    """Return a Markdown link to the canonical repository URL."""
-    return f"[{node['id']}]({node['url']})"
+def repo_link(node: dict, short: bool = False) -> str:
+    """Link a canonical repository, optionally omitting its owner from the label."""
+    label = node['id'].split('/')[-1] if short else node['id']
+    return f"[{label}]({node['url']})"
 
 
 def connections(data: dict, focus: str, explore_prefix: str) -> str:
-    """Render incoming and outgoing connections as linked, labelled lists.
-
-    Every repository name links to its source repository. Adjacent neighbourhood
-    links let readers move through the map; evidence retains each applicability.
-    """
-    nodes = {node['id']: node for node in data['repositories']}
-    _, edges = nearby(data, focus)
+    """Group neighbours by direction and role, with evidence available on demand."""
+    selected_nodes, edges = nearby(data, focus)
+    nodes = {node['id']: node for node in selected_nodes}
     if not edges:
-        return 'No reviewed connections recorded. This does not establish independence.\n'
-    result = ''
-    for direction in ('Outgoing', 'Incoming'):
-        selected = [e for e in edges if e['from' if direction == 'Outgoing' else 'to'] == focus]
+        return 'Connections have not been reviewed for this repository.\n'
+    result, details = '', ''
+    for direction, title in (('from', 'Uses'), ('to', 'Used by')):
+        selected = [edge for edge in edges if edge[direction] == focus]
         if not selected:
             continue
-        result += f'## {direction} connections\n\n'
-        for kind in sorted({e['kind'] for e in selected}):
-            result += f'### {kind.capitalize()}' + (' (repositories using this one)' if direction == 'Incoming' else '') + '\n\n'
+        result += f'## {title}\n\n'
+        for kind in sorted({edge['kind'] for edge in selected}):
+            result += f'### {kind.capitalize()}\n\n'
             for edge in selected:
                 if edge['kind'] != kind:
                     continue
-                other = edge['to' if direction == 'Outgoing' else 'from']
-                proofs = ' · '.join(f"[evidence {i+1}]({proof['url']})" for i, proof in enumerate(edge['evidence']))
-                result += f"- {repo_link(nodes[edge['from']])} → **{kind}** → {repo_link(nodes[edge['to']])}\n"
-                result += f"  - {edge['condition']}\n"
-                result += f"  - [Explore {other}]({explore_prefix}{slug(other)}.md) · {proofs}\n"
+                other = edge['to' if direction == 'from' else 'from']
+                node = nodes[other]
+                short = sum(n['id'].split('/')[-1] == other.split('/')[-1] for n in selected_nodes) == 1
+                link = repo_link(node, short=short)
+                result += f'- {link} · [Explore]({explore_prefix}{slug(other)}.md)\n'
+                urls = dict.fromkeys(proof['url'] for proof in edge['evidence'])
+                proofs = ' · '.join(f'[source {i+1}]({url})' for i, url in enumerate(urls))
+                details += f'- {title}: {link} — **{kind}**\n  - {edge["condition"]}\n  - {proofs}\n'
             result += '\n'
+    result += '<details>\n<summary>Applicability and sources</summary>\n\n' + details + '\n</details>\n'
     return result
 
 
 def render_view(data: dict, focus: str, digest: str, revision: str | None = None) -> str:
-    """Generate a linked nearby view, with provenance for exported snapshots."""
-    nodes, _ = nearby(data, focus)
-    node = next(node for node in nodes if node['id'] == focus)
+    """Render the current repository once, its neighbours, and expandable evidence."""
+    node = next(node for node in data['repositories'] if node['id'] == focus)
     prefix = f'{CENTRAL}/blob/{revision}/maps/' if revision else ''
-    result = f'# Repository map: {focus}\n\n**You are here: {repo_link(node)}**\n\n'
-    result += node['description'] + '\n\n'
+    result = f'# {repo_link(node, short=True)}\n\n' + node['description'] + '\n\n'
     result += connections(data, focus, prefix)
     overview = CENTRAL if revision else '../README.md'
-    result += f'## Full ecosystem map\n\n[Explore the Qualcomm repository map]({overview}).\n\n'
-    if revision:
-        result += 'The shared map is private and requires repository access. The repository and evidence links above point directly to their public sources.\n\n'
-    result += 'Connections apply to the linked evidence revisions; use release-compatible revisions for a build.\n\n'
-    result += f'Dataset SHA-256: `{digest}`.\n'
-    if revision:
-        result += f'Generated from [central map revision `{revision[:12]}`]({CENTRAL}/tree/{revision}). Edit the shared dataset and regenerate to change connections.\n'
+    result += f'\n[Back to the ecosystem map]({overview}).\n'
+    result += f'\n<!-- Dataset SHA-256: {digest}; revision: {revision or "this checkout"}. -->\n'
     return result
 
 
@@ -214,11 +208,13 @@ def build(data: dict, digest: str) -> None:
     for focus in ('qualcomm-linux/meta-qcom', 'qualcomm-linux/meta-qcom-3rdparty', 'qualcomm-linux/kernel-config', 'qualcomm-linux/pkg-kgsl'):
         overview += f'### [{focus}](https://github.com/{focus})\n\n'
         _, edges = nearby(data, focus)
-        for edge in edges:
-            if edge['kind'] in {'uses automation from', 'runs workflow from'}:
-                continue
-            overview += f"- [{edge['from']}](https://github.com/{edge['from']}) → **{edge['kind']}** → [{edge['to']}](https://github.com/{edge['to']})\n"
-        overview += f'\n[Explore all connections, applicability, and evidence](maps/{slug(focus)}.md).\n\n'
+        edges = [edge for edge in edges if edge['from'] == focus
+                 and edge['kind'] not in {'uses automation from', 'runs workflow from'}]
+        for kind in sorted({edge['kind'] for edge in edges}):
+            targets = sorted({edge['to'] for edge in edges if edge['kind'] == kind})
+            links = [f"[{target.split('/')[-1]}](https://github.com/{target})" for target in targets]
+            overview += f"- **{kind.capitalize()}:** " + ' · '.join(links) + '\n'
+        overview += f'\n[Explore connections](maps/{slug(focus)}.md).\n\n'
     overview += '## All repositories\n\nGroups organise browsing; they do not assert dependencies.\n\n'
     for group in sorted({node['group'] for node in nodes}):
         overview += f'### {group}\n\n'

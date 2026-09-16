@@ -1,21 +1,22 @@
-# Repository map: AudioReach/meta-audioreach
-
-**You are here: [AudioReach/meta-audioreach](https://github.com/AudioReach/meta-audioreach)**
+# [meta-audioreach](https://github.com/AudioReach/meta-audioreach)
 
 AudioReach recipes selected by the distro configuration.
 
-## Incoming connections
+## Used by
 
-### Selects for distro (repositories using this one)
+### Selects for distro
 
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [AudioReach/meta-audioreach](https://github.com/AudioReach/meta-audioreach)
+- [meta-qcom](https://github.com/qualcomm-linux/meta-qcom) · [Explore](qualcomm-linux--meta-qcom.md)
+
+<details>
+<summary>Applicability and sources</summary>
+
+- Used by: [meta-qcom](https://github.com/qualcomm-linux/meta-qcom) — **selects for distro**
   - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [Explore qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
 
-## Full ecosystem map
+</details>
 
-[Explore the Qualcomm repository map](../README.md).
+[Back to the ecosystem map](../README.md).
 
-Connections apply to the linked evidence revisions; use release-compatible revisions for a build.
-
-Dataset SHA-256: `bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a`.
+<!-- Dataset SHA-256: bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a; revision: this checkout. -->

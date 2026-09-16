@@ -20,17 +20,23 @@ assert expected_neighbours <= {node['id'] for node in nodes}
 assert len(edges) >= 5
 assert all(focus in (edge['from'], edge['to']) for edge in edges)
 view = map_build.render_view(data, focus, 'test-digest')
-assert '**You are here: [' in view
+assert view.count(f'](https://github.com/{focus})') == 1
 assert '![' not in view and '<svg' not in view
-assert view.count(' → **') == len(edges), 'Every edge must appear once with its own type'
+assert '<details>' in view and '<summary>Applicability and sources</summary>' in view
 for edge in edges:
-    assert f"[{edge['from']}](https://github.com/{edge['from']}) → **{edge['kind']}** → [{edge['to']}](https://github.com/{edge['to']})" in view
-    for endpoint in ('from', 'to'):
-        identifier = edge[endpoint]
-        assert f'[{identifier}](https://github.com/{identifier})' in view
-    assert edge['condition'] in view
+    other = edge['to'] if edge['from'] == focus else edge['from']
+    assert f'](https://github.com/{other})' in view
+    assert edge['kind'] in view and edge['condition'] in view
     for proof in edge['evidence']:
         assert proof['url'] in view
+# The focus repository is not repeated on any connection in any shared view.
+for node in data['repositories']:
+    rendered = map_build.render_view(data, node['id'], 'test-digest')
+    assert rendered.count(f"]({node['url']})") == 1
+    _, incident = map_build.nearby(data, node['id'])
+    for edge in incident:
+        assert edge['condition'] in rendered and edge['kind'] in rendered
+        assert all(proof['url'] in rendered for proof in edge['evidence'])
 # Local readers see only build relationships and one occurrence of the current name.
 local = map_build.render_local_view(data, focus, 'test-digest', 'a' * 40)
 assert local.count('[meta-qcom-3rdparty]') == 1

@@ -1,24 +1,26 @@
-# Repository map: qualcomm-linux/aiml-container-test
-
-**You are here: [qualcomm-linux/aiml-container-test](https://github.com/qualcomm-linux/aiml-container-test)**
+# [aiml-container-test](https://github.com/qualcomm-linux/aiml-container-test)
 
 Container targeted at testing AI and ML workloads for Qualcomm platforms
 
-## Outgoing connections
+## Uses
 
 ### Uses automation from
 
-- [qualcomm-linux/aiml-container-test](https://github.com/qualcomm-linux/aiml-container-test) → **uses automation from** → [qualcomm-linux/upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
+- [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action) · [Explore](qualcomm-linux--upload-private-artifact-action.md)
+- [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) · [Explore](qualcomm--qcom-reusable-workflows.md)
+
+<details>
+<summary>Applicability and sources</summary>
+
+- Uses: [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action) — **uses automation from**
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm-linux/upload-private-artifact-action](qualcomm-linux--upload-private-artifact-action.md) · [evidence 1](https://github.com/qualcomm-linux/aiml-container-test/blob/2dfbb557da0a296ed3d4546c13bbfb5caa6c5490/.github/workflows/docker_build.yml) · [evidence 2](https://github.com/qualcomm-linux/aiml-container-test/blob/2dfbb557da0a296ed3d4546c13bbfb5caa6c5490/.github/workflows/docker_build.yml)
-- [qualcomm-linux/aiml-container-test](https://github.com/qualcomm-linux/aiml-container-test) → **uses automation from** → [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
+  - [source 1](https://github.com/qualcomm-linux/aiml-container-test/blob/2dfbb557da0a296ed3d4546c13bbfb5caa6c5490/.github/workflows/docker_build.yml)
+- Uses: [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) — **uses automation from**
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/aiml-container-test/blob/2dfbb557da0a296ed3d4546c13bbfb5caa6c5490/.github/workflows/qcom-preflight-checks.yml)
+  - [source 1](https://github.com/qualcomm-linux/aiml-container-test/blob/2dfbb557da0a296ed3d4546c13bbfb5caa6c5490/.github/workflows/qcom-preflight-checks.yml)
 
-## Full ecosystem map
+</details>
 
-[Explore the Qualcomm repository map](../README.md).
+[Back to the ecosystem map](../README.md).
 
-Connections apply to the linked evidence revisions; use release-compatible revisions for a build.
-
-Dataset SHA-256: `bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a`.
+<!-- Dataset SHA-256: bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a; revision: this checkout. -->

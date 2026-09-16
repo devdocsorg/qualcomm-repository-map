@@ -1,21 +1,22 @@
-# Repository map: rubikpi-ai/boot-assets
-
-**You are here: [rubikpi-ai/boot-assets](https://github.com/rubikpi-ai/boot-assets)**
+# [boot-assets](https://github.com/rubikpi-ai/boot-assets)
 
 Vendor-hosted RUBIK Pi boot firmware consumed by the board recipe.
 
-## Incoming connections
+## Used by
 
-### Fetches source from (repositories using this one)
+### Fetches source from
 
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **fetches source from** → [rubikpi-ai/boot-assets](https://github.com/rubikpi-ai/boot-assets)
+- [meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) · [Explore](qualcomm-linux--meta-qcom-3rdparty.md)
+
+<details>
+<summary>Applicability and sources</summary>
+
+- Used by: [meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) — **fetches source from**
   - RUBIK Pi 3 boot firmware only; pinned by the recipe SRCREV.
-  - [Explore qualcomm-linux/meta-qcom-3rdparty](qualcomm-linux--meta-qcom-3rdparty.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/firmware-boot/firmware-qcom-boot-rubikpi3_20260621.bb)
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/firmware-boot/firmware-qcom-boot-rubikpi3_20260621.bb)
 
-## Full ecosystem map
+</details>
 
-[Explore the Qualcomm repository map](../README.md).
+[Back to the ecosystem map](../README.md).
 
-Connections apply to the linked evidence revisions; use release-compatible revisions for a build.
-
-Dataset SHA-256: `bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a`.
+<!-- Dataset SHA-256: bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a; revision: this checkout. -->

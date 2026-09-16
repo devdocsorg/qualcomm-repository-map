@@ -1,21 +1,22 @@
-# Repository map: qualcomm-linux/location-hal-qcom
-
-**You are here: [qualcomm-linux/location-hal-qcom](https://github.com/qualcomm-linux/location-hal-qcom)**
+# [location-hal-qcom](https://github.com/qualcomm-linux/location-hal-qcom)
 
 Location hal layer for Qualcomm based platforms
 
-## Outgoing connections
+## Uses
 
 ### Uses automation from
 
-- [qualcomm-linux/location-hal-qcom](https://github.com/qualcomm-linux/location-hal-qcom) → **uses automation from** → [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
+- [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) · [Explore](qualcomm--qcom-reusable-workflows.md)
+
+<details>
+<summary>Applicability and sources</summary>
+
+- Uses: [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) — **uses automation from**
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/location-hal-qcom/blob/96b21c90da387747155debb9f482fa11eed9bf74/.github/workflows/qcom-preflight-checks.yml)
+  - [source 1](https://github.com/qualcomm-linux/location-hal-qcom/blob/96b21c90da387747155debb9f482fa11eed9bf74/.github/workflows/qcom-preflight-checks.yml)
 
-## Full ecosystem map
+</details>
 
-[Explore the Qualcomm repository map](../README.md).
+[Back to the ecosystem map](../README.md).
 
-Connections apply to the linked evidence revisions; use release-compatible revisions for a build.
-
-Dataset SHA-256: `bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a`.
+<!-- Dataset SHA-256: bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a; revision: this checkout. -->

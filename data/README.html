@@ -37,7 +37,9 @@ uv pip install --python .venv/bin/python -r tools/requirements.txt
 </code></pre>
 <p>Edit the dataset and regenerate; commit the dataset and generated views together.
 Repository names link directly to their repositories. Explore links navigate the
-map. All evidence and branch conditions belong in this dataset.</p>
+map. Each view names its current repository once; neighbouring repositories are
+grouped by role. Full applicability and sources remain available in an expandable
+section. All evidence and branch conditions belong in this dataset.</p>
 <p>To export a nearby view from a committed dataset and generator:</p>
 <pre><code class="language-sh">.venv/bin/python tools/map_build.py --export qualcomm-linux/meta-qcom-3rdparty \
   --destination ../meta-qcom-3rdparty/docs/source/user \

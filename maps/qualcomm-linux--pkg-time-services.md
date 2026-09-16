@@ -1,24 +1,26 @@
-# Repository map: qualcomm-linux/pkg-time-services
-
-**You are here: [qualcomm-linux/pkg-time-services](https://github.com/qualcomm-linux/pkg-time-services)**
+# [pkg-time-services](https://github.com/qualcomm-linux/pkg-time-services)
 
 Time-services package repo
 
-## Outgoing connections
+## Uses
 
 ### Uses automation from
 
-- [qualcomm-linux/pkg-time-services](https://github.com/qualcomm-linux/pkg-time-services) → **uses automation from** → [qualcomm-linux/debusine-action](https://github.com/qualcomm-linux/debusine-action)
+- [debusine-action](https://github.com/qualcomm-linux/debusine-action) · [Explore](qualcomm-linux--debusine-action.md)
+- [qli-ci](https://github.com/qualcomm-linux/qli-ci) · [Explore](qualcomm-linux--qli-ci.md)
+
+<details>
+<summary>Applicability and sources</summary>
+
+- Uses: [debusine-action](https://github.com/qualcomm-linux/debusine-action) — **uses automation from**
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm-linux/debusine-action](qualcomm-linux--debusine-action.md) · [evidence 1](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/debusine-daily.yml) · [evidence 2](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/debusine-pr-check.yml) · [evidence 3](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/debusine-release.yml)
-- [qualcomm-linux/pkg-time-services](https://github.com/qualcomm-linux/pkg-time-services) → **uses automation from** → [qualcomm-linux/qli-ci](https://github.com/qualcomm-linux/qli-ci)
+  - [source 1](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/debusine-daily.yml) · [source 2](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/debusine-pr-check.yml) · [source 3](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/debusine-release.yml)
+- Uses: [qli-ci](https://github.com/qualcomm-linux/qli-ci) — **uses automation from**
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm-linux/qli-ci](qualcomm-linux--qli-ci.md) · [evidence 1](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-build.yml) · [evidence 2](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-pr-hook.yml) · [evidence 3](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-promote-prebuilt.yml) · [evidence 4](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-promote.yml) · [evidence 5](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-release.yml)
+  - [source 1](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-build.yml) · [source 2](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-pr-hook.yml) · [source 3](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-promote-prebuilt.yml) · [source 4](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-promote.yml) · [source 5](https://github.com/qualcomm-linux/pkg-time-services/blob/8f4b8bd71f5d91433fcf43f3a934bdbf014b392b/.github/workflows/pkg-release.yml)
 
-## Full ecosystem map
+</details>
 
-[Explore the Qualcomm repository map](../README.md).
+[Back to the ecosystem map](../README.md).
 
-Connections apply to the linked evidence revisions; use release-compatible revisions for a build.
-
-Dataset SHA-256: `bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a`.
+<!-- Dataset SHA-256: bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a; revision: this checkout. -->

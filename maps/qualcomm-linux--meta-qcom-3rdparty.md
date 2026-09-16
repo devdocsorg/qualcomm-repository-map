@@ -1,60 +1,70 @@
-# Repository map: qualcomm-linux/meta-qcom-3rdparty
-
-**You are here: [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty)**
+# [meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty)
 
 OpenEmbedded/Yocto Project BSP layer for Third-Party Maintained Qualcomm based platforms
 
-## Outgoing connections
+## Uses
 
 ### Depends on
 
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **depends on** → [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core)
-  - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
-  - [Explore openembedded/openembedded-core](openembedded--openembedded-core.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **depends on** → [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
-  - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
-  - [Explore qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
+- [openembedded-core](https://github.com/openembedded/openembedded-core) · [Explore](openembedded--openembedded-core.md)
+- [meta-qcom](https://github.com/qualcomm-linux/meta-qcom) · [Explore](qualcomm-linux--meta-qcom.md)
 
 ### Fetches source from
 
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **fetches source from** → [rubikpi-ai/boot-assets](https://github.com/rubikpi-ai/boot-assets)
-  - RUBIK Pi 3 boot firmware only; pinned by the recipe SRCREV.
-  - [Explore rubikpi-ai/boot-assets](rubikpi-ai--boot-assets.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/firmware-boot/firmware-qcom-boot-rubikpi3_20260621.bb)
+- [boot-assets](https://github.com/rubikpi-ai/boot-assets) · [Explore](rubikpi-ai--boot-assets.md)
 
 ### Integrates with
 
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **integrates with** → [qualcomm-linux/meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
-  - Optional: the dynamic layer applies only when qcom-distro is present.
-  - [Explore qualcomm-linux/meta-qcom-distro](qualcomm-linux--meta-qcom-distro.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
+- [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro) · [Explore](qualcomm-linux--meta-qcom-distro.md)
 
 ### Uses automation from
 
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **uses automation from** → [qualcomm-linux/bitbake-lint-action](https://github.com/qualcomm-linux/bitbake-lint-action)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm-linux/bitbake-lint-action](qualcomm-linux--bitbake-lint-action.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/bitbake-lint.yml)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **uses automation from** → [qualcomm-linux/github-action-matrix-outputs-read](https://github.com/qualcomm-linux/github-action-matrix-outputs-read)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm-linux/github-action-matrix-outputs-read](qualcomm-linux--github-action-matrix-outputs-read.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **uses automation from** → [qualcomm-linux/github-action-matrix-outputs-write](https://github.com/qualcomm-linux/github-action-matrix-outputs-write)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm-linux/github-action-matrix-outputs-write](qualcomm-linux--github-action-matrix-outputs-write.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **uses automation from** → [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml) · [evidence 2](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml) · [evidence 3](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml) · [evidence 4](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml) · [evidence 5](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml)
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **uses automation from** → [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
-  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/qcom-preflight-checks.yml)
+- [bitbake-lint-action](https://github.com/qualcomm-linux/bitbake-lint-action) · [Explore](qualcomm-linux--bitbake-lint-action.md)
+- [github-action-matrix-outputs-read](https://github.com/qualcomm-linux/github-action-matrix-outputs-read) · [Explore](qualcomm-linux--github-action-matrix-outputs-read.md)
+- [github-action-matrix-outputs-write](https://github.com/qualcomm-linux/github-action-matrix-outputs-write) · [Explore](qualcomm-linux--github-action-matrix-outputs-write.md)
+- [meta-qcom](https://github.com/qualcomm-linux/meta-qcom) · [Explore](qualcomm-linux--meta-qcom.md)
+- [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) · [Explore](qualcomm--qcom-reusable-workflows.md)
 
 ### Uses indirectly
 
-- [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) → **uses indirectly** → [qualcomm-linux/qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+- [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool) · [Explore](qualcomm-linux--qcom-ptool.md)
+
+<details>
+<summary>Applicability and sources</summary>
+
+- Uses: [openembedded-core](https://github.com/openembedded/openembedded-core) — **depends on**
+  - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
+- Uses: [meta-qcom](https://github.com/qualcomm-linux/meta-qcom) — **depends on**
+  - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
+- Uses: [boot-assets](https://github.com/rubikpi-ai/boot-assets) — **fetches source from**
+  - RUBIK Pi 3 boot firmware only; pinned by the recipe SRCREV.
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/firmware-boot/firmware-qcom-boot-rubikpi3_20260621.bb)
+- Uses: [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro) — **integrates with**
+  - Optional: the dynamic layer applies only when qcom-distro is present.
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
+- Uses: [bitbake-lint-action](https://github.com/qualcomm-linux/bitbake-lint-action) — **uses automation from**
+  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/bitbake-lint.yml)
+- Uses: [github-action-matrix-outputs-read](https://github.com/qualcomm-linux/github-action-matrix-outputs-read) — **uses automation from**
+  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml)
+- Uses: [github-action-matrix-outputs-write](https://github.com/qualcomm-linux/github-action-matrix-outputs-write) — **uses automation from**
+  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml)
+- Uses: [meta-qcom](https://github.com/qualcomm-linux/meta-qcom) — **uses automation from**
+  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml) · [source 2](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml)
+- Uses: [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) — **uses automation from**
+  - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/qcom-preflight-checks.yml)
+- Uses: [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool) — **uses indirectly**
   - Partition tooling is supplied through meta-qcom; this is an indirect relationship, not an extra layer dependency.
-  - [Explore qualcomm-linux/qcom-ptool](qualcomm-linux--qcom-ptool.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc) · [evidence 2](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc) · [source 2](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
 
-## Full ecosystem map
+</details>
 
-[Explore the Qualcomm repository map](../README.md).
+[Back to the ecosystem map](../README.md).
 
-Connections apply to the linked evidence revisions; use release-compatible revisions for a build.
-
-Dataset SHA-256: `bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a`.
+<!-- Dataset SHA-256: bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a; revision: this checkout. -->

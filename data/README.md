@@ -45,7 +45,9 @@ uv pip install --python .venv/bin/python -r tools/requirements.txt
 
 Edit the dataset and regenerate; commit the dataset and generated views together.
 Repository names link directly to their repositories. Explore links navigate the
-map. All evidence and branch conditions belong in this dataset.
+map. Each view names its current repository once; neighbouring repositories are
+grouped by role. Full applicability and sources remain available in an expandable
+section. All evidence and branch conditions belong in this dataset.
 
 To export a nearby view from a committed dataset and generator:
 

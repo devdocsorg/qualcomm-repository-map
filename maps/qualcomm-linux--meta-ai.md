@@ -1,29 +1,31 @@
-# Repository map: qualcomm-linux/meta-ai
-
-**You are here: [qualcomm-linux/meta-ai](https://github.com/qualcomm-linux/meta-ai)**
+# [meta-ai](https://github.com/qualcomm-linux/meta-ai)
 
 OpenEmbedded layer for AI/ML related recipes
 
-## Outgoing connections
+## Uses
 
 ### Uses automation from
 
-- [qualcomm-linux/meta-ai](https://github.com/qualcomm-linux/meta-ai) → **uses automation from** → [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows)
+- [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) · [Explore](qualcomm--qcom-reusable-workflows.md)
+
+## Used by
+
+### Selects for distro
+
+- [meta-qcom](https://github.com/qualcomm-linux/meta-qcom) · [Explore](qualcomm-linux--meta-qcom.md)
+
+<details>
+<summary>Applicability and sources</summary>
+
+- Uses: [qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) — **uses automation from**
   - GitHub Actions integration at the evidence revision; workflow/action refs are specified by the calling files. This is not a runtime dependency.
-  - [Explore qualcomm/qcom-reusable-workflows](qualcomm--qcom-reusable-workflows.md) · [evidence 1](https://github.com/qualcomm-linux/meta-ai/blob/21e7b36b0d259a9cf5d2226160b227962f762585/.github/workflows/pr.yml) · [evidence 2](https://github.com/qualcomm-linux/meta-ai/blob/21e7b36b0d259a9cf5d2226160b227962f762585/.github/workflows/qcom-preflight-checks.yml)
-
-## Incoming connections
-
-### Selects for distro (repositories using this one)
-
-- [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → **selects for distro** → [qualcomm-linux/meta-ai](https://github.com/qualcomm-linux/meta-ai)
+  - [source 1](https://github.com/qualcomm-linux/meta-ai/blob/21e7b36b0d259a9cf5d2226160b227962f762585/.github/workflows/pr.yml) · [source 2](https://github.com/qualcomm-linux/meta-ai/blob/21e7b36b0d259a9cf5d2226160b227962f762585/.github/workflows/qcom-preflight-checks.yml)
+- Used by: [meta-qcom](https://github.com/qualcomm-linux/meta-qcom) — **selects for distro**
   - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [Explore qualcomm-linux/meta-qcom](qualcomm-linux--meta-qcom.md) · [evidence 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
+  - [source 1](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
 
-## Full ecosystem map
+</details>
 
-[Explore the Qualcomm repository map](../README.md).
+[Back to the ecosystem map](../README.md).
 
-Connections apply to the linked evidence revisions; use release-compatible revisions for a build.
-
-Dataset SHA-256: `bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a`.
+<!-- Dataset SHA-256: bd976587e3980bd55d7438b70404ec9c904e9867ffff16f5f02793244f602c8a; revision: this checkout. -->
