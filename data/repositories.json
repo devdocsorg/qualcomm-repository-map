@@ -5207,8 +5207,8 @@
       "local_summary": "sets up and runs builds with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/.github/workflows/build-yocto.yml",
-          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/.github/workflows/build-yocto.yml",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "The workflow downloads kas-container from siemens/kas and runs the build."
         }
       ]
@@ -5223,8 +5223,8 @@
       "condition": "Optional qcom-distro kas composition; not required by every BSP-only build.",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
-          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5244,8 +5244,8 @@
       "condition": "Development kas configuration on master; release locks can select other revisions.",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/base.yml",
-          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/base.yml",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5265,8 +5265,8 @@
       "condition": "Optional qcom-distro kas composition; not required by every BSP-only build.",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
-          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5286,8 +5286,8 @@
       "condition": "linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/conf/machine/rubikpi3.conf",
-          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/conf/machine/rubikpi3.conf",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5307,8 +5307,8 @@
       "condition": "Optional qcom-distro kas composition; not required by every BSP-only build.",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
-          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5328,8 +5328,8 @@
       "condition": "Included when the qcom-distro build configuration is selected.",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
-          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5349,8 +5349,8 @@
       "condition": "Included when the qcom-distro build configuration is selected.",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
-          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5370,8 +5370,8 @@
       "condition": "Included when the qcom-distro build configuration is selected.",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
-          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5391,8 +5391,8 @@
       "condition": "Included when the qcom-distro build configuration is selected.",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml",
-          "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5410,8 +5410,8 @@
       "local_summary": "generates shell reference with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/e83b032257bd917ddeb4b2e7e40d5b12aa98f1ca/docs/source/Makefile",
-          "revision": "e83b032257bd917ddeb4b2e7e40d5b12aa98f1ca",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/docs/source/Makefile",
+          "revision": "50763034868aee3b15e2e21c281d810c380ae733",
           "claim": "Documentation setup fetches the pinned shdoc extractor used to generate shell function reference."
         }
       ]
@@ -5421,20 +5421,20 @@
     {
       "repository": "qualcomm-linux/meta-qcom-3rdparty",
       "source_repository": "devdocsorg/meta-qcom-3rdparty",
-      "revision": "061e2ebcad0dc06a6f830286f1a651ad89fb13a2",
+      "revision": "50763034868aee3b15e2e21c281d810c380ae733",
       "paths": [
         "ci",
         "conf",
         "recipes-bsp",
         "recipes-kernel",
         "dynamic-layers",
-        ".github/workflows/build-yocto.yml"
+        ".github/workflows"
       ]
     },
     {
       "repository": "qualcomm-linux/meta-qcom",
       "source_repository": "qualcomm-linux/meta-qcom",
-      "revision": "851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95",
+      "revision": "1d8048f3a515eeef3758868566ec847b63065811",
       "paths": [
         "ci/base.yml",
         "ci/qcom-distro.yml",
@@ -5448,7 +5448,7 @@
     {
       "repository": "qualcomm-linux/meta-qcom-3rdparty",
       "source_repository": "devdocsorg/meta-qcom-3rdparty",
-      "revision": "e83b032257bd917ddeb4b2e7e40d5b12aa98f1ca",
+      "revision": "50763034868aee3b15e2e21c281d810c380ae733",
       "paths": [
         "docs/source/Makefile"
       ]

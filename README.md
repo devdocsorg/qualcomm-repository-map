@@ -357,26 +357,26 @@ flowchart LR
 
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-audioreach](https://github.com/AudioReach/meta-audioreach)
   - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml)
+  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [bitbake](https://github.com/openembedded/bitbake)
   - Development kas configuration on master; release locks can select other revisions.
-  - [base.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/base.yml)
+  - [base.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/base.yml)
   - [base.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/base.yml)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-openembedded](https://github.com/openembedded/meta-openembedded)
   - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml)
+  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
 - **uses base Linux build recipes from** [openembedded-core](https://github.com/openembedded/openembedded-core)
   - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [kernel](https://github.com/qualcomm-linux/kernel)
   - linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.
-  - [rubikpi3.conf](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/conf/machine/rubikpi3.conf)
+  - [rubikpi3.conf](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/conf/machine/rubikpi3.conf)
   - [linux-qcom-next_git.bb](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-kernel/linux/linux-qcom-next_git.bb)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-ai](https://github.com/qualcomm-linux/meta-ai)
   - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml)
+  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
 - **adds third-party board support to** [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
   - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
@@ -390,28 +390,28 @@ flowchart LR
   - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
 - **generates shell reference with** [shdoc](https://github.com/reconquest/shdoc)
   - Documentation builds using the proposed Sphinx setup.
-  - [Makefile](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/e83b032257bd917ddeb4b2e7e40d5b12aa98f1ca/docs/source/Makefile)
+  - [Makefile](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/docs/source/Makefile)
 - **fetches RUBIK Pi boot firmware from** [boot-assets](https://github.com/rubikpi-ai/boot-assets)
   - RUBIK Pi 3 boot firmware only; pinned by the recipe SRCREV.
   - [firmware-qcom-boot-rubikpi3_20260621.bb](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/firmware-boot/firmware-qcom-boot-rubikpi3_20260621.bb)
 - **sets up and runs builds with** [kas](https://github.com/siemens/kas)
   - The build workflow downloads and invokes kas-container.
-  - [build-yocto.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/.github/workflows/build-yocto.yml)
+  - [build-yocto.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/.github/workflows/build-yocto.yml)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-updater](https://github.com/uptane/meta-updater)
   - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml)
+  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-security](https://git.yoctoproject.org/meta-security)
   - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml)
+  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-selinux](https://git.yoctoproject.org/meta-selinux)
   - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml)
+  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-virtualization](https://git.yoctoproject.org/meta-virtualization)
   - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml)
+  - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/50763034868aee3b15e2e21c281d810c380ae733/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
 
 ### qualcomm-linux/meta-qcom-releases
@@ -448,4 +448,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: e982748f04280948551ebc34df82a5ace5a3a15b61c228a4f6d3c796557bdcdd. -->
+<!-- Dataset SHA-256: 9324eac3e38a07fd3bb353964fcbaf8beed8656761e2066eb51e8dad41f070a6. -->
