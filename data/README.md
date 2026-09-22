@@ -2,6 +2,8 @@
 
 `repositories.json` is the sole maintained source of repository facts and relationships.
 The generator validates it before producing any output.
+The [canonical specification](https://github.com/devdocsorg/qli2-example-repo/blob/main/SPECIFICATION.md#repository-maps)
+owns the map requirements; this page owns the dataset schema and maintenance commands.
 
 ## Schema
 
