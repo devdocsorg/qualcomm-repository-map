@@ -13,6 +13,8 @@ def references(text: str) -> set[str]:
     """Extract repository URLs from build declarations and executable download commands."""
     text = '\n'.join(line for line in text.splitlines() if not line.lstrip().startswith('#'))
     urls = set(re.findall(r'(?:https?|git)://github\.com/[\w.-]+/[\w.-]+', text))
+    urls.update('https://github.com/' + repo for repo in
+                re.findall(r'https://raw\.githubusercontent\.com/([\w.-]+/[\w.-]+)/', text))
     urls.update(re.findall(r'https?://git\.yoctoproject\.org/[\w.-]+', text))
     urls.update(re.findall(r'^\s*url:\s*[\'\"]?(https?://[^\s\'\"]+)', text, re.M))
     return {url.replace('git://', 'https://').removesuffix('.git').rstrip('/') for url in urls}

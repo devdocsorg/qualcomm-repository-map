@@ -5406,27 +5406,13 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "reconquest/shdoc",
       "kind": "builds with",
-      "condition": "Documentation builds in the test/qualcomm-upgrade-astra proposal; separate from Yocto image build composition.",
+      "condition": "Documentation builds using the proposed Sphinx setup.",
       "local_summary": "generates shell reference with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/2f73b736316a29f409a38b46ec4c60fcfeffbd85/docs/source/Makefile",
-          "revision": "2f73b736316a29f409a38b46ec4c60fcfeffbd85",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/e83b032257bd917ddeb4b2e7e40d5b12aa98f1ca/docs/source/Makefile",
+          "revision": "e83b032257bd917ddeb4b2e7e40d5b12aa98f1ca",
           "claim": "Documentation setup fetches the pinned shdoc extractor used to generate shell function reference."
-        }
-      ]
-    },
-    {
-      "from": "qualcomm-linux/meta-qcom-3rdparty",
-      "to": "openembedded/bitbake",
-      "kind": "builds with",
-      "condition": "Documentation builds in the test/qualcomm-upgrade-astra proposal; separate from Yocto image build composition.",
-      "local_summary": "parses recipe docs with",
-      "evidence": [
-        {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/2f73b736316a29f409a38b46ec4c60fcfeffbd85/docs/source/Makefile",
-          "revision": "2f73b736316a29f409a38b46ec4c60fcfeffbd85",
-          "claim": "Documentation setup fetches a pinned BitBake parser to discover recipe functions without evaluating tasks."
         }
       ]
     }
@@ -5462,7 +5448,7 @@
     {
       "repository": "qualcomm-linux/meta-qcom-3rdparty",
       "source_repository": "devdocsorg/meta-qcom-3rdparty",
-      "revision": "2f73b736316a29f409a38b46ec4c60fcfeffbd85",
+      "revision": "e83b032257bd917ddeb4b2e7e40d5b12aa98f1ca",
       "paths": [
         "docs/source/Makefile"
       ]
