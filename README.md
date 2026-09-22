@@ -2,7 +2,7 @@
 
 Qualcomm repository ecosystem. Initial inventory covers public qualcomm-linux repositories and verified neighbouring upstreams; it is not limited to a release or engagement. Other Qualcomm organisations can be added using the same schema.
 
-**Coverage:** 135 repositories; 34 recorded build/component relationships.
+**Coverage:** 136 repositories; 36 recorded build/component relationships.
 
 Repository inventory is broader than reviewed relationships. An absent edge means no relationship has been recorded, not proof of independence.
 
@@ -38,18 +38,20 @@ flowchart LR
     click r9 href "https://github.com/qualcomm-linux/meta-qcom-releases" _blank
     r10["qcom-ptool"]
     click r10 href "https://github.com/qualcomm-linux/qcom-ptool" _blank
-    r11["boot-assets"]
-    click r11 href "https://github.com/rubikpi-ai/boot-assets" _blank
-    r12["kas"]
-    click r12 href "https://github.com/siemens/kas" _blank
-    r13["meta-updater"]
-    click r13 href "https://github.com/uptane/meta-updater" _blank
-    r14["meta-security"]
-    click r14 href "https://git.yoctoproject.org/meta-security" _blank
-    r15["meta-selinux"]
-    click r15 href "https://git.yoctoproject.org/meta-selinux" _blank
-    r16["meta-virtualization"]
-    click r16 href "https://git.yoctoproject.org/meta-virtualization" _blank
+    r11["shdoc"]
+    click r11 href "https://github.com/reconquest/shdoc" _blank
+    r12["boot-assets"]
+    click r12 href "https://github.com/rubikpi-ai/boot-assets" _blank
+    r13["kas"]
+    click r13 href "https://github.com/siemens/kas" _blank
+    r14["meta-updater"]
+    click r14 href "https://github.com/uptane/meta-updater" _blank
+    r15["meta-security"]
+    click r15 href "https://git.yoctoproject.org/meta-security" _blank
+    r16["meta-selinux"]
+    click r16 href "https://git.yoctoproject.org/meta-selinux" _blank
+    r17["meta-virtualization"]
+    click r17 href "https://git.yoctoproject.org/meta-virtualization" _blank
     r6 -->|"includes for Qualcomm Linux images"| r0
     r6 -->|"runs build tasks with"| r1
     r6 -->|"includes for Qualcomm Linux images"| r2
@@ -58,15 +60,17 @@ flowchart LR
     r6 -->|"includes for Qualcomm Linux images"| r5
     r6 -->|"includes for Qualcomm Linux images"| r8
     r6 -->|"gets partition tools from"| r10
-    r6 -->|"includes for Qualcomm Linux images"| r13
     r6 -->|"includes for Qualcomm Linux images"| r14
     r6 -->|"includes for Qualcomm Linux images"| r15
     r6 -->|"includes for Qualcomm Linux images"| r16
+    r6 -->|"includes for Qualcomm Linux images"| r17
+    r7 -->|"parses recipe docs with"| r1
     r7 -->|"uses base Linux build recipes from"| r3
     r7 -->|"adds third-party board support to"| r6
     r7 -->|"can use Qualcomm Linux settings from"| r8
-    r7 -->|"fetches RUBIK Pi boot firmware from"| r11
-    r7 -->|"sets up and runs builds with"| r12
+    r7 -->|"generates shell reference with"| r11
+    r7 -->|"fetches RUBIK Pi boot firmware from"| r12
+    r7 -->|"sets up and runs builds with"| r13
     r9 -->|"pins a release of"| r6
 ```
 
@@ -149,6 +153,7 @@ flowchart LR
 - [qualcomm-linux/rpm-images](https://github.com/qualcomm-linux/rpm-images) — Repository purpose needs review; open the repository for its maintained documentation. (default branch: `main`).
 - [qualcomm/commit-emails-check-action](https://github.com/qualcomm/commit-emails-check-action) — GitHub action for checking email addresses in PR/Push commits (default branch: `main`).
 - [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) — Qualcomm reusable workflows (default branch: `main`).
+- [reconquest/shdoc](https://github.com/reconquest/shdoc) — Generates function reference from shell documentation comments. (default branch: `master`).
 - [siemens/kas](https://github.com/siemens/kas) — Setup tool for BitBake-based projects. (default branch: `master`).
 
 ### Kernel integration
@@ -355,6 +360,9 @@ flowchart LR
   - Optional qcom-distro kas composition; not required by every BSP-only build.
   - [qcom-distro.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
+- **parses recipe docs with** [bitbake](https://github.com/openembedded/bitbake)
+  - Documentation builds in the test/qualcomm-upgrade-astra proposal; separate from Yocto image build composition.
+  - [Makefile](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/2f73b736316a29f409a38b46ec4c60fcfeffbd85/docs/source/Makefile)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [bitbake](https://github.com/openembedded/bitbake)
   - Development kas configuration on master; release locks can select other revisions.
   - [base.yml](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/061e2ebcad0dc06a6f830286f1a651ad89fb13a2/ci/base.yml)
@@ -384,6 +392,9 @@ flowchart LR
   - Partition tooling is supplied through meta-qcom; this is an indirect relationship, not an extra layer dependency.
   - [qcom-ptool.inc](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc)
   - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
+- **generates shell reference with** [shdoc](https://github.com/reconquest/shdoc)
+  - Documentation builds in the test/qualcomm-upgrade-astra proposal; separate from Yocto image build composition.
+  - [Makefile](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/2f73b736316a29f409a38b46ec4c60fcfeffbd85/docs/source/Makefile)
 - **fetches RUBIK Pi boot firmware from** [boot-assets](https://github.com/rubikpi-ai/boot-assets)
   - RUBIK Pi 3 boot firmware only; pinned by the recipe SRCREV.
   - [firmware-qcom-boot-rubikpi3_20260621.bb](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/firmware-boot/firmware-qcom-boot-rubikpi3_20260621.bb)
@@ -441,4 +452,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: cb5079d4a57391600aa45ccbfb03b7d6c7124c4528a2d3976604cb11b8bdf015. -->
+<!-- Dataset SHA-256: 9e7b00dbb0a9c9cae08e0d6bc4489934121f2612db992c071011dcabe3c793b3. -->

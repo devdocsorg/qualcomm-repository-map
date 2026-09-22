@@ -1084,6 +1084,14 @@
       "group": "Images and build tooling",
       "branch": "master",
       "archived": false
+    },
+    {
+      "id": "reconquest/shdoc",
+      "url": "https://github.com/reconquest/shdoc",
+      "description": "Generates function reference from shell documentation comments.",
+      "group": "Images and build tooling",
+      "branch": "master",
+      "archived": false
     }
   ],
   "relationships": [
@@ -5393,6 +5401,34 @@
           "claim": "The Qualcomm Linux image configuration declares this layer."
         }
       ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "reconquest/shdoc",
+      "kind": "builds with",
+      "condition": "Documentation builds in the test/qualcomm-upgrade-astra proposal; separate from Yocto image build composition.",
+      "local_summary": "generates shell reference with",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/2f73b736316a29f409a38b46ec4c60fcfeffbd85/docs/source/Makefile",
+          "revision": "2f73b736316a29f409a38b46ec4c60fcfeffbd85",
+          "claim": "Documentation setup fetches the pinned shdoc extractor used to generate shell function reference."
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "openembedded/bitbake",
+      "kind": "builds with",
+      "condition": "Documentation builds in the test/qualcomm-upgrade-astra proposal; separate from Yocto image build composition.",
+      "local_summary": "parses recipe docs with",
+      "evidence": [
+        {
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/2f73b736316a29f409a38b46ec4c60fcfeffbd85/docs/source/Makefile",
+          "revision": "2f73b736316a29f409a38b46ec4c60fcfeffbd85",
+          "claim": "Documentation setup fetches a pinned BitBake parser to discover recipe functions without evaluating tasks."
+        }
+      ]
     }
   ],
   "source_audits": [
@@ -5421,6 +5457,14 @@
         "ci/ccache.yml",
         "recipes-kernel/linux/linux-qcom-next_git.bb",
         "recipes-bsp/partition/qcom-ptool.inc"
+      ]
+    },
+    {
+      "repository": "qualcomm-linux/meta-qcom-3rdparty",
+      "source_repository": "devdocsorg/meta-qcom-3rdparty",
+      "revision": "2f73b736316a29f409a38b46ec4c60fcfeffbd85",
+      "paths": [
+        "docs/source/Makefile"
       ]
     }
   ]

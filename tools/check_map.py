@@ -56,7 +56,15 @@ for edge in data['relationships']:
         route = [edge['from'], *edge['via'], edge['to']]
         for source, target in zip(route, route[1:]):
             assert any(a == urls[source] and b == urls[target] for a, _, b in connections)
-        assert not any(a == urls[edge['from']] and b == urls[edge['to']] for a, _, b in connections)
+        # A separate evidenced direct use may coexist with the inherited path.
+        direct = {
+            (urls[candidate['from']], candidate.get('local_summary') or map_build.LABELS[candidate['kind']], urls[candidate['to']])
+            for candidate in data['relationships']
+            if candidate['kind'] != 'uses indirectly'
+            and candidate['from'] == edge['from'] and candidate['to'] == edge['to']
+        }
+        assert {connection for connection in connections
+                if connection[0] == urls[edge['from']] and connection[2] == urls[edge['to']]} <= direct
     else:
         label = edge.get('local_summary') or map_build.LABELS[edge['kind']]
         assert (urls[edge['from']], label, urls[edge['to']]) in connections
@@ -87,6 +95,14 @@ assert local.count('(you are here)') == 1
 assert 'Required:' not in local and 'Optional:' not in local
 assert 'qcom-ptool' in local and '(private)' not in local
 assert f'[Full Qualcomm repository map]({map_build.CENTRAL})' in local
+
+# An inherited connection alone never permits a made-up direct shortcut.
+links = dict(re.findall(r'click (r\d+) href "([^"]+)"', local))
+current_id = next(node for node, url in links.items() if url == urls[focus])
+tool_id = next(node for node, url in links.items() if url == urls['qualcomm-linux/qcom-ptool'])
+shortcut = f'    {current_id} -->|"uses indirectly"| {tool_id}\n'
+invented = local.replace('    style ', shortcut + '    style ', 1)
+rejects(map_build.validate_local_view, data, focus, invented)
 
 # Adding a neighbour must change the export without changing generator allowlists.
 extended = copy.deepcopy(data)
