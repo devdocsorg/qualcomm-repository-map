@@ -123,11 +123,15 @@ for connection in arrows(repeated):
     rejects(map_build.validate_local_view, data, focus, without_connection(repeated, connection))
 
 # An inherited connection alone never permits a made-up direct shortcut.
-links = dict(re.findall(r'click (r\d+) href "([^"]+)"', local))
+# Node IDs are local to each diagram, so inject it into the diagram showing the tool.
+block = next(block for block in re.findall(r'```mermaid\n.*?\n```', local, re.S)
+             if f'href "{urls["qualcomm-linux/qcom-ptool"]}"' in block)
+links = dict(re.findall(r'click (r\d+) href "([^"]+)"', block))
 current_id = next(node for node, url in links.items() if url == urls[focus])
 tool_id = next(node for node, url in links.items() if url == urls['qualcomm-linux/qcom-ptool'])
 shortcut = f'    {current_id} -->|"uses indirectly"| {tool_id}\n'
-invented = local.replace('    style ', shortcut + '    style ', 1)
+invented = local.replace(block, block.replace('    style ', shortcut + '    style ', 1), 1)
+assert invented != local
 rejects(map_build.validate_local_view, data, focus, invented)
 
 # Adding a neighbour must change the export without changing generator allowlists.
@@ -136,6 +140,14 @@ extended['repositories'].append(dict(data['repositories'][0], id='example/new-in
 extended['relationships'].append(dict(next(e for e in data['relationships'] if e['from'] == focus and e['kind'] == 'depends on'), to='example/new-input'))
 expanded = map_build.render_local_view(extended, focus, digest, 'a'*40)
 assert 'https://github.com/example/new-input' in expanded
+# Enough neighbours to exceed the node limit must split the view, not drop connections.
+template = next(e for e in data['relationships'] if e['from'] == focus and e['kind'] == 'depends on')
+for number in range(map_build.MAX_MAP_NODES):
+    extended['repositories'].append(dict(data['repositories'][0], id=f'example/input-{number}',
+                                         url=f'https://github.com/example/input-{number}'))
+    extended['relationships'].append(dict(template, to=f'example/input-{number}'))
+expanded = map_build.render_local_view(extended, focus, digest, 'a'*40)
+assert all(f'https://github.com/example/input-{number}' in expanded for number in range(map_build.MAX_MAP_NODES))
 blocks = re.findall(r'```mermaid\n(.*?)```', expanded, re.S)
 assert len(blocks) > 1
 assert all(block.count('(you are here)') == 1 for block in blocks)

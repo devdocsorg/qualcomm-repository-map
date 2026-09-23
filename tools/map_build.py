@@ -257,7 +257,7 @@ def cluster_maps(data: dict) -> list[tuple[str, list[dict], list[dict]]]:
     are omitted. Large component groups split at source boundaries where possible.
     """
     nodes = {node['id']: node for node in data['repositories']}
-    titles = ['Yocto builds and releases', 'Documentation tooling', 'Kernel integration', 'Source packaging',
+    titles = ['Yocto builds and releases', 'Kernel integration', 'Source packaging',
               'Layer automation', 'Build and validation automation',
               'Package automation', 'Other automation']
     groups = {title: [] for title in titles}
@@ -267,8 +267,6 @@ def cluster_maps(data: dict) -> list[tuple[str, list[dict], list[dict]]]:
         area = nodes[edge['from']]['group']
         if area == 'Kernel integration':
             title = 'Kernel integration'
-        elif edge['kind'] not in AUTOMATION and nodes[edge['to']]['group'] == 'Documentation tooling':
-            title = 'Documentation tooling'
         elif edge['kind'] in AUTOMATION:
             title = {'Layers and releases': 'Layer automation',
                      'Packaging': 'Package automation',
