@@ -1487,6 +1487,24 @@
     },
     {
       "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "qualcomm-linux/meta-qcom-hwe",
+      "kind": "depends on",
+      "condition": "scarthgap and kirkstone branches only (Qualcomm Linux 1.x); required layer collection. main and wrynose do not depend on it.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/b411da79d08b3726eeba85df834627008b31fd7c/conf/layer.conf",
+          "claim": "On scarthgap, LAYERDEPENDS_qcom-3rdparty declares core, qcom, and qcom-hwe.",
+          "revision": "b411da79d08b3726eeba85df834627008b31fd7c"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/d2f48af6ee98870294be24c16673dde7fa941543/conf/layer.conf",
+          "claim": "On kirkstone, LAYERDEPENDS_qcom-3rdparty declares core, qcom, and qcom-hwe.",
+          "revision": "d2f48af6ee98870294be24c16673dde7fa941543"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "qualcomm-linux/meta-qcom",
       "kind": "uses automation from",
       "condition": "GitHub Actions integration",
@@ -5078,6 +5096,24 @@
         "recipes-kernel",
         "dynamic-layers",
         ".github/workflows"
+      ]
+    },
+    {
+      "repository": "qualcomm-linux/meta-qcom-3rdparty",
+      "source_repository": "qualcomm-linux/meta-qcom-3rdparty",
+      "revision": "b411da79d08b3726eeba85df834627008b31fd7c",
+      "paths": [
+        "conf",
+        ".github"
+      ]
+    },
+    {
+      "repository": "qualcomm-linux/meta-qcom-3rdparty",
+      "source_repository": "qualcomm-linux/meta-qcom-3rdparty",
+      "revision": "d2f48af6ee98870294be24c16673dde7fa941543",
+      "paths": [
+        "conf",
+        ".github"
       ]
     },
     {

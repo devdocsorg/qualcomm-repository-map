@@ -2,7 +2,7 @@
 
 Qualcomm repositories: public repositories in Qualcomm's GitHub organisations (qualcomm-linux and qualcomm). Upstream projects, board vendors, and tools are not recorded. The map is not limited to a release or engagement.
 
-**Coverage:** 126 repositories; 18 recorded build/component relationships.
+**Coverage:** 126 repositories; 19 recorded build/component relationships.
 
 Repository inventory is broader than reviewed relationships. An absent edge means no relationship has been recorded, not proof of independence.
 
@@ -26,20 +26,23 @@ flowchart LR
     click r3 href "https://github.com/qualcomm-linux/meta-qcom-3rdparty" _blank
     r4["meta-qcom-distro"]
     click r4 href "https://github.com/qualcomm-linux/meta-qcom-distro" _blank
-    r5["meta-qcom-releases"]
-    click r5 href "https://github.com/qualcomm-linux/meta-qcom-releases" _blank
-    r6["qcom-ptool"]
-    click r6 href "https://github.com/qualcomm-linux/qcom-ptool" _blank
-    r7["fastrpc"]
-    click r7 href "https://github.com/qualcomm/fastrpc" _blank
+    r5["meta-qcom-hwe"]
+    click r5 href "https://github.com/qualcomm-linux/meta-qcom-hwe" _blank
+    r6["meta-qcom-releases"]
+    click r6 href "https://github.com/qualcomm-linux/meta-qcom-releases" _blank
+    r7["qcom-ptool"]
+    click r7 href "https://github.com/qualcomm-linux/qcom-ptool" _blank
+    r8["fastrpc"]
+    click r8 href "https://github.com/qualcomm/fastrpc" _blank
     r2 -->|"fetches Linux kernel sources from"| r0
     r2 -->|"includes for Qualcomm Linux images"| r1
     r2 -->|"includes for Qualcomm Linux images"| r4
-    r2 -->|"gets partition tools from"| r6
-    r2 -->|"fetches sources from"| r7
+    r2 -->|"gets partition tools from"| r7
+    r2 -->|"fetches sources from"| r8
     r3 -->|"adds third-party board support to"| r2
     r3 -->|"can use Qualcomm Linux settings from"| r4
-    r5 -->|"pins a release of"| r2
+    r3 -->|"builds on"| r5
+    r6 -->|"pins a release of"| r2
 ```
 
 ## Kernel integration
@@ -307,6 +310,10 @@ flowchart LR
 - **can use Qualcomm Linux settings from** [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
   - Optional: the dynamic layer applies only when qcom-distro is present.
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
+- **builds on** [meta-qcom-hwe](https://github.com/qualcomm-linux/meta-qcom-hwe)
+  - scarthgap and kirkstone branches only (Qualcomm Linux 1.x); required layer collection. main and wrynose do not depend on it.
+  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/b411da79d08b3726eeba85df834627008b31fd7c/conf/layer.conf)
+  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/d2f48af6ee98870294be24c16673dde7fa941543/conf/layer.conf)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
   - Partition tooling is supplied through meta-qcom; this is an indirect relationship, not an extra layer dependency.
   - [qcom-ptool.inc](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc)
@@ -352,4 +359,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: 0cdcb7beb5952ac336442f9700cf6ad7d3763fcc6cea289e3df9f15b3533d81c. -->
+<!-- Dataset SHA-256: ceb8a26f713b66254d1739b35ad5d7cfdd436cbde221543448cf746a26bb1a4e. -->
