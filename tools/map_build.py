@@ -208,7 +208,7 @@ def render_local_view(data: dict, focus: str, digest: str, revision: str) -> str
     result = '## Repository map\n\n'
     for index, (identifiers, connections) in enumerate(parts, 1):
         if len(parts) > 1:
-            result += f'### Connections ({index}/{len(parts)})\n\n'
+            result += ('\n' if index > 1 else '') + f'### Connections ({index}/{len(parts)})\n\n'
         selected_nodes = [nodes[focus], *(nodes[key] for key in sorted(identifiers - {focus}))]
         result += diagram(selected_nodes, connections, focus)
     if not paths:

@@ -88,10 +88,13 @@ for node in data['repositories']:
     local = map_build.render_local_view(data, node['id'], digest, 'a'*40)
     arrows(local)
     map_build.validate_local_view(data, node['id'], local)
+    for block in re.findall(r'```mermaid\n(.*?)```', local, re.S):
+        assert block.count('(you are here)') == 1
+        assert block.count(f'href "{urls[node["id"]]}"') == 1
+    assert '```\n###' not in local, 'Split diagrams need a blank line before headings'
     for line in re.findall(r'^    r\d+ -->.*\n', local, re.M):
         rejects(map_build.validate_local_view, data, node['id'], local.replace(line, ''))
 local = map_build.render_local_view(data, focus, digest, 'a'*40)
-assert local.count('(you are here)') == 1
 assert 'Required:' not in local and 'Optional:' not in local
 assert 'qcom-ptool' in local and '(private)' not in local
 assert f'[Full Qualcomm repository map]({map_build.CENTRAL})' in local
@@ -108,7 +111,12 @@ rejects(map_build.validate_local_view, data, focus, invented)
 extended = copy.deepcopy(data)
 extended['repositories'].append(dict(data['repositories'][0], id='example/new-input', url='https://github.com/example/new-input'))
 extended['relationships'].append(dict(next(e for e in data['relationships'] if e['from'] == focus and e['kind'] == 'depends on'), to='example/new-input'))
-assert 'https://github.com/example/new-input' in map_build.render_local_view(extended, focus, digest, 'a'*40)
+expanded = map_build.render_local_view(extended, focus, digest, 'a'*40)
+assert 'https://github.com/example/new-input' in expanded
+blocks = re.findall(r'```mermaid\n(.*?)```', expanded, re.S)
+assert len(blocks) > 1
+assert all(block.count('(you are here)') == 1 for block in blocks)
+assert '```\n###' not in expanded
 
 with tempfile.TemporaryDirectory() as tmp:
     path = Path(tmp)/'README.md'
