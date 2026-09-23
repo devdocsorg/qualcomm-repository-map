@@ -123,11 +123,15 @@ for connection in arrows(repeated):
     rejects(map_build.validate_local_view, data, focus, without_connection(repeated, connection))
 
 # An inherited connection alone never permits a made-up direct shortcut.
-links = dict(re.findall(r'click (r\d+) href "([^"]+)"', local))
+# Node IDs are local to each diagram, so inject it into the diagram showing the tool.
+block = next(block for block in re.findall(r'```mermaid\n.*?\n```', local, re.S)
+             if f'href "{urls["qualcomm-linux/qcom-ptool"]}"' in block)
+links = dict(re.findall(r'click (r\d+) href "([^"]+)"', block))
 current_id = next(node for node, url in links.items() if url == urls[focus])
 tool_id = next(node for node, url in links.items() if url == urls['qualcomm-linux/qcom-ptool'])
 shortcut = f'    {current_id} -->|"uses indirectly"| {tool_id}\n'
-invented = local.replace('    style ', shortcut + '    style ', 1)
+invented = local.replace(block, block.replace('    style ', shortcut + '    style ', 1), 1)
+assert invented != local
 rejects(map_build.validate_local_view, data, focus, invented)
 
 # Adding a neighbour must change the export without changing generator allowlists.
