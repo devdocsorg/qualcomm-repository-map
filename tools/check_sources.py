@@ -5,6 +5,7 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
+from urllib.parse import urlsplit
 
 import map_build
 
@@ -38,6 +39,9 @@ def check(data: dict, audit: dict, checkout: Path) -> None:
             continue
         text = subprocess.check_output(['git', 'show', f'{revision}:{file}'], cwd=checkout, text=True)
         for url in references(text):
+            parts = urlsplit(url)
+            if parts.netloc != 'github.com' or parts.path.strip('/').split('/')[0] not in map_build.QUALCOMM_ORGS:
+                continue  # Only Qualcomm repositories belong in the map.
             if urls.get(url) == audit['repository'] or url == f"https://github.com/{audit.get('source_repository', audit['repository'])}":
                 continue
             if url not in urls or urls[url] not in neighbours:

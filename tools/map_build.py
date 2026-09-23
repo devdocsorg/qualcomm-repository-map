@@ -23,6 +23,8 @@ KINDS = {"depends on", "integrates with", "fetches source from", "uses indirectl
          "selects branches from", "packages", "runs workflow from", "uses automation from"}
 AUTOMATION = {'uses automation from', 'runs workflow from'}
 MAX_MAP_NODES = 24
+# The map records repositories owned by Qualcomm's GitHub organisations only.
+QUALCOMM_ORGS = {'qualcomm-linux', 'qualcomm'}
 LABELS = {'depends on': 'builds on', 'integrates with': 'can combine with',
           'fetches source from': 'fetches sources from', 'builds with': 'builds with',
           'selects for distro': 'includes in Linux images', 'pins release of': 'pins a release of',
@@ -63,6 +65,8 @@ def load_data(path: Path) -> dict:
         slug(node["id"])
         if node["id"] in ids or not node["url"].startswith("https://"):
             raise ValueError(f"Duplicate repository or invalid URL: {node['id']}")
+        if node["id"].split("/")[0] not in QUALCOMM_ORGS:
+            raise ValueError(f"Only Qualcomm repositories belong in the map: {node['id']}")
         if not node["description"] or not node["group"]:
             raise ValueError(f"Missing repository description/group: {node['id']}")
         ids.add(node["id"])

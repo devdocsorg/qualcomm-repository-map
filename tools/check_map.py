@@ -136,18 +136,18 @@ rejects(map_build.validate_local_view, data, focus, invented)
 
 # Adding a neighbour must change the export without changing generator allowlists.
 extended = copy.deepcopy(data)
-extended['repositories'].append(dict(data['repositories'][0], id='example/new-input', url='https://github.com/example/new-input'))
-extended['relationships'].append(dict(next(e for e in data['relationships'] if e['from'] == focus and e['kind'] == 'depends on'), to='example/new-input'))
+extended['repositories'].append(dict(data['repositories'][0], id='qualcomm-linux/example-new-input', url='https://github.com/qualcomm-linux/example-new-input'))
+extended['relationships'].append(dict(next(e for e in data['relationships'] if e['from'] == focus and e['kind'] == 'depends on'), to='qualcomm-linux/example-new-input'))
 expanded = map_build.render_local_view(extended, focus, digest, 'a'*40)
-assert 'https://github.com/example/new-input' in expanded
+assert 'https://github.com/qualcomm-linux/example-new-input' in expanded
 # Enough neighbours to exceed the node limit must split the view, not drop connections.
 template = next(e for e in data['relationships'] if e['from'] == focus and e['kind'] == 'depends on')
 for number in range(map_build.MAX_MAP_NODES):
-    extended['repositories'].append(dict(data['repositories'][0], id=f'example/input-{number}',
-                                         url=f'https://github.com/example/input-{number}'))
-    extended['relationships'].append(dict(template, to=f'example/input-{number}'))
+    extended['repositories'].append(dict(data['repositories'][0], id=f'qualcomm-linux/example-input-{number}',
+                                         url=f'https://github.com/qualcomm-linux/example-input-{number}'))
+    extended['relationships'].append(dict(template, to=f'qualcomm-linux/example-input-{number}'))
 expanded = map_build.render_local_view(extended, focus, digest, 'a'*40)
-assert all(f'https://github.com/example/input-{number}' in expanded for number in range(map_build.MAX_MAP_NODES))
+assert all(f'https://github.com/qualcomm-linux/example-input-{number}' in expanded for number in range(map_build.MAX_MAP_NODES))
 blocks = re.findall(r'```mermaid\n(.*?)```', expanded, re.S)
 assert len(blocks) > 1
 assert all(block.count('(you are here)') == 1 for block in blocks)
@@ -173,9 +173,11 @@ with tempfile.TemporaryDirectory() as tmp:
         else:
             raise AssertionError('Invalid or stale README map accepted')
 
-for mutation in ('unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned', 'missing_path'):
+for mutation in ('outside_qualcomm', 'unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned', 'missing_path'):
     broken = copy.deepcopy(data)
-    if mutation == 'unknown_endpoint':
+    if mutation == 'outside_qualcomm':
+        broken['repositories'].append(dict(broken['repositories'][0], id='example/upstream', url='https://github.com/example/upstream'))
+    elif mutation == 'unknown_endpoint':
         broken['relationships'][0]['to'] = 'absent/repository'
     elif mutation == 'missing_evidence':
         broken['relationships'][0]['evidence'] = []
@@ -194,16 +196,16 @@ for mutation in ('unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned'
 with tempfile.TemporaryDirectory() as tmp:
     checkout = Path(tmp)
     subprocess.run(['git', 'init', '-q', str(checkout)], check=True)
-    (checkout/'build.yml').write_text('url: https://github.com/example/missing.git\n')
+    (checkout/'build.yml').write_text('url: https://github.com/qualcomm-linux/example-missing.git\nurl: https://github.com/example/upstream.git\n')
     subprocess.run(['git', 'add', '.'], cwd=checkout, check=True)
     subprocess.run(['git', '-c', 'user.name=Map test', '-c', 'user.email=map@example.invalid', 'commit', '-qm', 'Source fixture'], cwd=checkout, check=True)
     revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=checkout, text=True).strip()
     rejects(check_sources.check, data, {'repository':focus, 'revision':revision, 'paths':['build.yml']}, checkout)
     # The audited fork's own source links do not make it a separate dependency.
-    fork_audit = {'repository':focus, 'source_repository':'example/missing', 'revision':revision, 'paths':['build.yml']}
+    fork_audit = {'repository':focus, 'source_repository':'qualcomm-linux/example-missing', 'revision':revision, 'paths':['build.yml']}
     check_sources.check(data, fork_audit, checkout)
     rejects(check_sources.check, data, {**fork_audit, 'paths':['build.yml', 'absent.yml']}, checkout)
-    rejects(check_sources.check, data, {**fork_audit, 'source_repository':'example/another'}, checkout)
+    rejects(check_sources.check, data, {**fork_audit, 'source_repository':'qualcomm-linux/example-another'}, checkout)
 assert check_sources.references('url: https://git.yoctoproject.org/meta-security\n# https://github.com/example/ignored') == {'https://git.yoctoproject.org/meta-security'}
 
 reference = pydoc.plain(pydoc.render_doc(map_build))
