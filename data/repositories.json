@@ -1148,6 +1148,62 @@
       "group": "Documentation tooling",
       "branch": "master",
       "archived": false
+    },
+    {
+      "id": "linux-msm/qrtr",
+      "url": "https://github.com/linux-msm/qrtr",
+      "description": "Qualcomm IPC router tools and library.",
+      "group": "External upstreams",
+      "branch": "master",
+      "archived": false
+    },
+    {
+      "id": "linux-msm/rmtfs",
+      "url": "https://github.com/linux-msm/rmtfs",
+      "description": "Qualcomm remote filesystem service.",
+      "group": "External upstreams",
+      "branch": "master",
+      "archived": false
+    },
+    {
+      "id": "linux-msm/tqftpserv",
+      "url": "https://github.com/linux-msm/tqftpserv",
+      "description": "Qualcomm firmware transfer service.",
+      "group": "External upstreams",
+      "branch": "master",
+      "archived": false
+    },
+    {
+      "id": "qualcomm/fastrpc",
+      "url": "https://github.com/qualcomm/fastrpc",
+      "description": "Qualcomm FastRPC userspace library and applications.",
+      "group": "External upstreams",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "linux-msm/dsp-binaries",
+      "url": "https://github.com/linux-msm/dsp-binaries",
+      "description": "Hexagon DSP executables, libraries, and board configuration.",
+      "group": "External upstreams",
+      "branch": "trunk",
+      "archived": false
+    },
+    {
+      "id": "systemd/systemd",
+      "url": "https://github.com/systemd/systemd",
+      "description": "System and service manager with the EFI bootloader and UKI tools.",
+      "group": "External upstreams",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "kernel-firmware/linux-firmware",
+      "url": "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git",
+      "description": "Firmware releases for Linux-supported hardware.",
+      "group": "External upstreams",
+      "branch": "main",
+      "archived": false
     }
   ],
   "relationships": [
@@ -1742,17 +1798,27 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "qualcomm-linux/qcom-ptool",
       "kind": "uses indirectly",
-      "condition": "Partition tooling is supplied through meta-qcom; this is an indirect relationship, not an extra layer dependency.",
+      "condition": "RUBIK Pi selects partition assets through qcom-partition-conf; Radxa explicitly clears QCOM_PARTITION_CONF and partition subdirectories.",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc",
-          "claim": "The partition recipes fetch qcom-ptool.",
-          "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects QCS6490 SoC defaults and board boot/kernel assets."
         },
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf",
-          "claim": "The board selects partition assets through QCOM_PARTITION_FILES_SUBDIR.",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/radxa-dragon-q6a.conf",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects QCS6490 SoC defaults, EFI disk image, firmware, DSP binaries, and QAIRT."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/partition/qcom-partition-conf_git.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Requires qcom-ptool.inc and deploys partition binaries."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/partition/qcom-ptool.inc",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Fetches the partition source and tools from qcom-ptool."
         }
       ],
       "local_summary": "Partition tools, supplied through meta-qcom.",
@@ -5462,12 +5528,12 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "reconquest/shdoc",
       "kind": "builds with",
-      "condition": "Documentation builds using the proposed Sphinx setup.",
+      "condition": "Documentation build on docs/offline-guides-and-layer-map.",
       "local_summary": "generates shell reference with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/de24ad3c0dfbae0a07e3cd3cd84cc70baa546644/docs/source/Makefile",
+          "revision": "de24ad3c0dfbae0a07e3cd3cd84cc70baa546644",
           "claim": "Documentation setup fetches the pinned shdoc extractor used to generate shell function reference."
         }
       ]
@@ -5476,12 +5542,12 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "sphinx-doc/sphinx",
       "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
+      "condition": "Documentation build on docs/offline-guides-and-layer-map.",
       "local_summary": "builds documentation with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/de24ad3c0dfbae0a07e3cd3cd84cc70baa546644/docs/source/requirements.txt",
+          "revision": "de24ad3c0dfbae0a07e3cd3cd84cc70baa546644",
           "claim": "Sphinx==9.1.0 is a direct pinned documentation dependency."
         }
       ]
@@ -5490,12 +5556,12 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "executablebooks/MyST-Parser",
       "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
+      "condition": "Documentation build on docs/offline-guides-and-layer-map.",
       "local_summary": "parses Markdown with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/de24ad3c0dfbae0a07e3cd3cd84cc70baa546644/docs/source/requirements.txt",
+          "revision": "de24ad3c0dfbae0a07e3cd3cd84cc70baa546644",
           "claim": "myst-parser==5.1.0 is a direct pinned documentation dependency."
         }
       ]
@@ -5504,12 +5570,12 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "microsoft/playwright-python",
       "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
+      "condition": "Documentation build on docs/offline-guides-and-layer-map.",
       "local_summary": "checks offline browsing with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/de24ad3c0dfbae0a07e3cd3cd84cc70baa546644/docs/source/requirements.txt",
+          "revision": "de24ad3c0dfbae0a07e3cd3cd84cc70baa546644",
           "claim": "playwright==1.62.0 is the direct pinned browser-test dependency."
         }
       ]
@@ -5518,12 +5584,12 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "idank/bashlex",
       "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
+      "condition": "Documentation build on docs/offline-guides-and-layer-map.",
       "local_summary": "checks shell coverage with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/de24ad3c0dfbae0a07e3cd3cd84cc70baa546644/docs/source/requirements.txt",
+          "revision": "de24ad3c0dfbae0a07e3cd3cd84cc70baa546644",
           "claim": "bashlex==0.18 is a direct pinned reference-coverage dependency."
         }
       ]
@@ -5532,12 +5598,12 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "astral-sh/uv",
       "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
+      "condition": "Documentation build on docs/offline-guides-and-layer-map.",
       "local_summary": "sets up documentation with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/de24ad3c0dfbae0a07e3cd3cd84cc70baa546644/docs/source/Makefile",
+          "revision": "de24ad3c0dfbae0a07e3cd3cd84cc70baa546644",
           "claim": "The setup target invokes uv to provision Python and install the locked dependencies."
         }
       ]
@@ -5546,12 +5612,12 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "python/cpython",
       "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
+      "condition": "Documentation build on docs/offline-guides-and-layer-map.",
       "local_summary": "runs documentation tools with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/de24ad3c0dfbae0a07e3cd3cd84cc70baa546644/docs/source/Makefile",
+          "revision": "de24ad3c0dfbae0a07e3cd3cd84cc70baa546644",
           "claim": "The setup target selects Python 3.12.13 for documentation tools."
         }
       ]
@@ -5560,14 +5626,339 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "gnu/gawk",
       "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
+      "condition": "Documentation build on docs/offline-guides-and-layer-map.",
       "local_summary": "runs shell extraction with",
       "evidence": [
         {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
+          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/de24ad3c0dfbae0a07e3cd3cd84cc70baa546644/docs/source/Makefile",
+          "revision": "de24ad3c0dfbae0a07e3cd3cd84cc70baa546644",
           "claim": "The setup target requires gawk; native_reference.py invokes gawk -f on pinned shdoc."
         }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "linux-msm/qrtr",
+      "kind": "fetches source from",
+      "condition": "Both QCS6490 boards select qrtr through packagegroup-qcom-boot-essential.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/qrtr/qrtr_1.2.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Provider SRC_URI fetches this source repository using HTTPS Git."
+        }
+      ],
+      "local_summary": "packages sources from"
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "linux-msm/qrtr",
+      "kind": "uses indirectly",
+      "condition": "Both QCS6490 boards select qrtr through packagegroup-qcom-boot-essential.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects QCS6490 SoC defaults and board boot/kernel assets."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/conf/machine/include/qcom-qcs6490.inc",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Selects boot-essential and QCS6490 kernel-module groups, plus boot-additional recommendations."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/packagegroups/packagegroup-qcom.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Boot essentials select qrtr, rmtfs, and tqftpserv; the additional group selects fastrpc on aarch64."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/qrtr/qrtr_1.2.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Provider SRC_URI fetches this source repository using HTTPS Git."
+        }
+      ],
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "linux-msm/rmtfs",
+      "kind": "fetches source from",
+      "condition": "Both QCS6490 boards select rmtfs through packagegroup-qcom-boot-essential.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/rmtfs/rmtfs_1.3.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Provider SRC_URI fetches this source repository using HTTPS Git."
+        }
+      ],
+      "local_summary": "packages sources from"
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "linux-msm/rmtfs",
+      "kind": "uses indirectly",
+      "condition": "Both QCS6490 boards select rmtfs through packagegroup-qcom-boot-essential.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects QCS6490 SoC defaults and board boot/kernel assets."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/conf/machine/include/qcom-qcs6490.inc",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Selects boot-essential and QCS6490 kernel-module groups, plus boot-additional recommendations."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/packagegroups/packagegroup-qcom.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Boot essentials select qrtr, rmtfs, and tqftpserv; the additional group selects fastrpc on aarch64."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/rmtfs/rmtfs_1.3.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Provider SRC_URI fetches this source repository using HTTPS Git."
+        }
+      ],
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "linux-msm/tqftpserv",
+      "kind": "fetches source from",
+      "condition": "Both QCS6490 boards select tqftpserv through packagegroup-qcom-boot-essential.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/tqftpserv/tqftpserv_1.2.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Provider SRC_URI fetches this source repository using HTTPS Git."
+        }
+      ],
+      "local_summary": "packages sources from"
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "linux-msm/tqftpserv",
+      "kind": "uses indirectly",
+      "condition": "Both QCS6490 boards select tqftpserv through packagegroup-qcom-boot-essential.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects QCS6490 SoC defaults and board boot/kernel assets."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/conf/machine/include/qcom-qcs6490.inc",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Selects boot-essential and QCS6490 kernel-module groups, plus boot-additional recommendations."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/packagegroups/packagegroup-qcom.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Boot essentials select qrtr, rmtfs, and tqftpserv; the additional group selects fastrpc on aarch64."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/tqftpserv/tqftpserv_1.2.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Provider SRC_URI fetches this source repository using HTTPS Git."
+        }
+      ],
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/fastrpc",
+      "kind": "fetches source from",
+      "condition": "QCS6490 inherits boot-additional; its aarch64 override selects fastrpc.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/fastrpc/fastrpc_1.0.7.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Provider SRC_URI fetches this source repository using HTTPS Git."
+        }
+      ],
+      "local_summary": "packages sources from"
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "qualcomm/fastrpc",
+      "kind": "uses indirectly",
+      "condition": "QCS6490 inherits boot-additional; its aarch64 override selects fastrpc.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects QCS6490 SoC defaults and board boot/kernel assets."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/conf/machine/include/qcom-qcs6490.inc",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Selects boot-essential and QCS6490 kernel-module groups, plus boot-additional recommendations."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/packagegroups/packagegroup-qcom.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Boot essentials select qrtr, rmtfs, and tqftpserv; the additional group selects fastrpc on aarch64."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/fastrpc/fastrpc_1.0.7.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Provider SRC_URI fetches this source repository using HTTPS Git."
+        }
+      ],
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "linux-msm/dsp-binaries",
+      "kind": "fetches source from",
+      "condition": "Radxa selects its ADSP and CDSP packages through packagegroup-radxa-dragon-q6a-hexagon-dsp-binaries; RUBIK Pi does not select this group.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/hexagon-dsp-binaries/hexagon-dsp-binaries.inc",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Provider SRC_URI fetches this source repository using HTTPS Git."
+        }
+      ],
+      "local_summary": "packages sources from"
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "linux-msm/dsp-binaries",
+      "kind": "uses indirectly",
+      "condition": "Radxa selects its ADSP and CDSP packages through packagegroup-radxa-dragon-q6a-hexagon-dsp-binaries; RUBIK Pi does not select this group.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/radxa-dragon-q6a.conf",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects QCS6490 SoC defaults, EFI disk image, firmware, DSP binaries, and QAIRT."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/packagegroups/packagegroup-radxa-dragon-q6a.bb",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "The board DSP group depends on Radxa ADSP and CDSP packages."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/hexagon-dsp-binaries/hexagon-dsp-binaries.inc",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "Provider SRC_URI fetches this source repository using HTTPS Git."
+        }
+      ],
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ]
+    },
+    {
+      "from": "openembedded/openembedded-core",
+      "to": "systemd/systemd",
+      "kind": "fetches source from",
+      "condition": "systemd-boot and its native variant require systemd.inc.",
+      "evidence": [
+        {
+          "url": "https://github.com/openembedded/openembedded-core/blob/09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd/meta/recipes-core/systemd/systemd.inc",
+          "revision": "09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd",
+          "claim": "Shared systemd source definition fetches the pinned upstream Git release used by systemd-boot."
+        }
+      ],
+      "local_summary": "builds EFI boot tools from"
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "systemd/systemd",
+      "kind": "uses indirectly",
+      "condition": "Both machines add efi; RUBIK Pi selects esp-qcom-image and Radxa selects efi-uki-bootdisk.wks.in. Inherited EFI_PROVIDER is systemd-boot.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects QCS6490 SoC defaults and board boot/kernel assets."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/radxa-dragon-q6a.conf",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects QCS6490 SoC defaults, EFI disk image, firmware, DSP binaries, and QAIRT."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/conf/machine/include/qcom-common.inc",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "EFI_PROVIDER defaults to systemd-boot."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/classes-recipe/image_types_qcom.bbclass",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "efi selects esp-qcom-image unless QCOM_ESP_IMAGE is explicitly empty."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-kernel/images/esp-qcom-image.bb",
+          "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+          "claim": "ESP image installs systemd-boot."
+        },
+        {
+          "url": "https://github.com/openembedded/openembedded-core/blob/09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd/meta/files/wic/efi-uki-bootdisk.wks.in",
+          "revision": "09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd",
+          "claim": "The WIC EFI partition uses the selected EFI_PROVIDER."
+        },
+        {
+          "url": "https://github.com/openembedded/openembedded-core/blob/09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd/meta/recipes-core/systemd/systemd-boot_261.2.bb",
+          "revision": "09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd",
+          "claim": "Requires systemd.inc."
+        },
+        {
+          "url": "https://github.com/openembedded/openembedded-core/blob/09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd/meta/recipes-core/systemd/systemd.inc",
+          "revision": "09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd",
+          "claim": "Shared systemd source definition fetches the pinned upstream Git release used by systemd-boot."
+        }
+      ],
+      "via": [
+        "openembedded/openembedded-core"
+      ]
+    },
+    {
+      "from": "openembedded/openembedded-core",
+      "to": "kernel-firmware/linux-firmware",
+      "kind": "pins release of",
+      "condition": "Default recipe uses linux-firmware-20260810.tar.xz with checksum; only the optional devupstream variant fetches Git.",
+      "evidence": [
+        {
+          "url": "https://github.com/openembedded/openembedded-core/blob/09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd/meta/recipes-kernel/linux-firmware/linux-firmware_20260810.bb",
+          "revision": "09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd",
+          "claim": "Default SRC_URI downloads the versioned kernel.org release archive; class-devupstream instead selects the upstream Git repository."
+        }
+      ],
+      "local_summary": "packages firmware releases from"
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "kernel-firmware/linux-firmware",
+      "kind": "uses indirectly",
+      "condition": "Both board firmware groups select linux-firmware packages; GPU pairs depend on opencl/opengl/vulkan features. The default OE recipe uses a release archive, not a Git checkout; devupstream is an optional alternative.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/packagegroups/packagegroup-rubikpi3.bb",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects board runtime firmware with conditional GPU packages."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/packagegroups/packagegroup-radxa-dragon-q6a.bb",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "Selects Radxa firmware, HDMI firmware, and conditional GPU packages."
+        },
+        {
+          "url": "https://github.com/openembedded/openembedded-core/blob/09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd/meta/recipes-kernel/linux-firmware/linux-firmware_20260810.bb",
+          "revision": "09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd",
+          "claim": "Default SRC_URI downloads the versioned kernel.org release archive; class-devupstream instead selects the upstream Git repository."
+        }
+      ],
+      "via": [
+        "openembedded/openembedded-core"
       ]
     }
   ],
@@ -5591,23 +5982,79 @@
       "revision": "1d8048f3a515eeef3758868566ec847b63065811",
       "paths": [
         "ci/base.yml",
-        "ci/qcom-distro.yml",
+        "ci/ccache.yml",
         "ci/ci.yml",
         "ci/mirror.yml",
-        "ci/ccache.yml",
+        "ci/qcom-distro.yml",
+        "classes-recipe/image_types_qcom.bbclass",
+        "classes/linux-qcom-dtbbin.bbclass",
+        "conf/machine/include/qcom-base.inc",
+        "conf/machine/include/qcom-common-binary.inc",
+        "conf/machine/include/qcom-common.inc",
+        "conf/machine/include/qcom-qcs6490.inc",
+        "conf/machine/include/qcom-u-boot-common.inc",
+        "recipes-bsp/firmware/camxfirmware-kodiak_1.0.7.bb",
+        "recipes-bsp/firmware/firmware-qcom.inc",
+        "recipes-bsp/hexagon-dsp-binaries/hexagon-dsp-binaries.inc",
+        "recipes-bsp/hexagon-dsp-binaries/hexagon-dsp-binaries_20260810.bb",
+        "recipes-bsp/packagegroups/packagegroup-machine-essential.bb",
+        "recipes-bsp/packagegroups/packagegroup-qcom.bb",
+        "recipes-bsp/partition/qcom-partition-conf_git.bb",
+        "recipes-bsp/partition/qcom-ptool-native.bb",
+        "recipes-bsp/partition/qcom-ptool.inc",
+        "recipes-kernel/images/esp-qcom-common.inc",
+        "recipes-kernel/images/esp-qcom-image.bb",
+        "recipes-kernel/linux-firmware/linux-firmware_%.bbappend",
         "recipes-kernel/linux/linux-qcom-next_git.bb",
-        "recipes-bsp/partition/qcom-ptool.inc"
+        "recipes-ml/qairt/qairt-sdk_2.50.0.260828.bb",
+        "recipes-support/fastrpc/fastrpc_1.0.7.bb",
+        "recipes-support/qrtr/qrtr_1.2.bb",
+        "recipes-support/rmtfs/rmtfs_1.3.bb",
+        "recipes-support/tqftpserv/tqftpserv_1.2.bb",
+        "classes/uki-esp-image.bbclass"
       ]
     },
     {
       "repository": "qualcomm-linux/meta-qcom-3rdparty",
       "source_repository": "devdocsorg/meta-qcom-3rdparty",
-      "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
+      "revision": "de24ad3c0dfbae0a07e3cd3cd84cc70baa546644",
       "paths": [
         "docs/source/Makefile",
         "docs/source/requirements.txt",
         "docs/source/conf.py",
         ".github/native_reference.py"
+      ]
+    },
+    {
+      "repository": "openembedded/openembedded-core",
+      "source_repository": "openembedded/openembedded-core",
+      "revision": "09c74d7c6a7a5d37f1dbb5d56f4fe231da8f31fd",
+      "paths": [
+        "meta/classes-recipe/uki.bbclass",
+        "meta/conf/image-uefi.conf",
+        "meta/conf/machine/include/arm/arch-arm.inc",
+        "meta/conf/machine/include/arm/arch-arm64.inc",
+        "meta/conf/machine/include/arm/arch-armv4.inc",
+        "meta/conf/machine/include/arm/arch-armv5-dsp.inc",
+        "meta/conf/machine/include/arm/arch-armv5.inc",
+        "meta/conf/machine/include/arm/arch-armv6.inc",
+        "meta/conf/machine/include/arm/arch-armv7a.inc",
+        "meta/conf/machine/include/arm/arch-armv7ve.inc",
+        "meta/conf/machine/include/arm/arch-armv8-2a.inc",
+        "meta/conf/machine/include/arm/arch-armv8a.inc",
+        "meta/conf/machine/include/arm/feature-arm-crc.inc",
+        "meta/conf/machine/include/arm/feature-arm-crypto.inc",
+        "meta/conf/machine/include/arm/feature-arm-neon.inc",
+        "meta/conf/machine/include/arm/feature-arm-simd.inc",
+        "meta/conf/machine/include/arm/feature-arm-sve.inc",
+        "meta/conf/machine/include/arm/feature-arm-thumb.inc",
+        "meta/conf/machine/include/arm/feature-arm-vfp.inc",
+        "meta/conf/machine/include/soc-family.inc",
+        "meta/files/wic/efi-uki-bootdisk.wks.in",
+        "meta/recipes-core/systemd/systemd-boot-native_261.2.bb",
+        "meta/recipes-core/systemd/systemd-boot_261.2.bb",
+        "meta/recipes-core/systemd/systemd.inc",
+        "meta/recipes-kernel/linux-firmware/linux-firmware_20260810.bb"
       ]
     }
   ]
