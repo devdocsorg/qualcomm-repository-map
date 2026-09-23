@@ -30,10 +30,11 @@ No implicit environment settings, URL rewrites, or network requests change the d
 at build time. Update inventory metadata when refreshing the organisation listing;
 review relationship evidence independently. Do not copy upstream documentation
 into descriptions or infer edges from names.
-Record repositories that make up or connect to a repository's product: layers,
-sources, build systems, and consumers. Tools used only to build or check its own
-documentation, lint its files, or set up a development environment are not map
-repositories or relationships.
+Record only repositories owned by Qualcomm's GitHub organisations (`qualcomm-linux`
+and `qualcomm`, listed in `QUALCOMM_ORGS`), and relationships between them. Upstream
+projects, board vendors, and tools are not map repositories, even when a Qualcomm
+repository builds with them; the generator rejects them and the source audit skips
+their references.
 
 ## Files
 

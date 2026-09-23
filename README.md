@@ -1,8 +1,8 @@
 # Qualcomm repository map
 
-Qualcomm repository ecosystem. Initial inventory covers public qualcomm-linux repositories and verified neighbouring upstreams; it is not limited to a release or engagement. Other Qualcomm organisations can be added using the same schema.
+Qualcomm repositories: public repositories in Qualcomm's GitHub organisations (qualcomm-linux and qualcomm). Upstream projects, board vendors, and tools are not recorded. The map is not limited to a release or engagement.
 
-**Coverage:** 142 repositories; 48 recorded build/component relationships.
+**Coverage:** 126 repositories; 18 recorded build/component relationships.
 
 Repository inventory is broader than reviewed relationships. An absent edge means no relationship has been recorded, not proof of independence.
 
@@ -16,79 +16,30 @@ Click a repository node to open it. Indirect connections follow the actual path 
 
 ```mermaid
 flowchart LR
-    r0["meta-audioreach"]
-    click r0 href "https://github.com/AudioReach/meta-audioreach" _blank
-    r1["linux-firmware"]
-    click r1 href "https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git" _blank
-    r2["dsp-binaries"]
-    click r2 href "https://github.com/linux-msm/dsp-binaries" _blank
-    r3["qrtr"]
-    click r3 href "https://github.com/linux-msm/qrtr" _blank
-    r4["rmtfs"]
-    click r4 href "https://github.com/linux-msm/rmtfs" _blank
-    r5["tqftpserv"]
-    click r5 href "https://github.com/linux-msm/tqftpserv" _blank
-    r6["bitbake"]
-    click r6 href "https://github.com/openembedded/bitbake" _blank
-    r7["meta-openembedded"]
-    click r7 href "https://github.com/openembedded/meta-openembedded" _blank
-    r8["openembedded-core"]
-    click r8 href "https://github.com/openembedded/openembedded-core" _blank
-    r9["kernel"]
-    click r9 href "https://github.com/qualcomm-linux/kernel" _blank
-    r10["meta-ai"]
-    click r10 href "https://github.com/qualcomm-linux/meta-ai" _blank
-    r11["meta-qcom"]
-    click r11 href "https://github.com/qualcomm-linux/meta-qcom" _blank
-    r12["meta-qcom-3rdparty"]
-    click r12 href "https://github.com/qualcomm-linux/meta-qcom-3rdparty" _blank
-    r13["meta-qcom-distro"]
-    click r13 href "https://github.com/qualcomm-linux/meta-qcom-distro" _blank
-    r14["meta-qcom-releases"]
-    click r14 href "https://github.com/qualcomm-linux/meta-qcom-releases" _blank
-    r15["qcom-ptool"]
-    click r15 href "https://github.com/qualcomm-linux/qcom-ptool" _blank
-    r16["fastrpc"]
-    click r16 href "https://github.com/qualcomm/fastrpc" _blank
-    r17["boot-assets"]
-    click r17 href "https://github.com/rubikpi-ai/boot-assets" _blank
-    r18["kas"]
-    click r18 href "https://github.com/siemens/kas" _blank
-    r19["systemd"]
-    click r19 href "https://github.com/systemd/systemd" _blank
-    r20["meta-updater"]
-    click r20 href "https://github.com/uptane/meta-updater" _blank
-    r21["meta-security"]
-    click r21 href "https://git.yoctoproject.org/meta-security" _blank
-    r22["meta-selinux"]
-    click r22 href "https://git.yoctoproject.org/meta-selinux" _blank
-    r23["meta-virtualization"]
-    click r23 href "https://git.yoctoproject.org/meta-virtualization" _blank
-    r8 -->|"fetches sources from"| r1
-    r8 -->|"fetches sources from"| r19
-    r11 -->|"includes for Qualcomm Linux images"| r0
-    r11 -->|"fetches sources from"| r2
-    r11 -->|"fetches sources from"| r3
-    r11 -->|"fetches sources from"| r4
-    r11 -->|"fetches sources from"| r5
-    r11 -->|"runs build tasks with"| r6
-    r11 -->|"includes for Qualcomm Linux images"| r7
-    r11 -->|"uses base Linux build recipes from"| r8
-    r11 -->|"fetches Linux kernel sources from"| r9
-    r11 -->|"includes for Qualcomm Linux images"| r10
-    r11 -->|"includes for Qualcomm Linux images"| r13
-    r11 -->|"gets partition tools from"| r15
-    r11 -->|"fetches sources from"| r16
-    r11 -->|"includes for Qualcomm Linux images"| r20
-    r11 -->|"includes for Qualcomm Linux images"| r21
-    r11 -->|"includes for Qualcomm Linux images"| r22
-    r11 -->|"includes for Qualcomm Linux images"| r23
-    r12 -->|"uses base Linux build recipes from"| r8
-    r12 -->|"adds third-party board support to"| r11
-    r12 -->|"can use Qualcomm Linux settings from"| r13
-    r12 -->|"fetches RUBIK Pi boot firmware from"| r17
-    r12 -->|"sets up and runs builds with"| r18
-    r14 -->|"pins a release of"| r11
+    r0["kernel"]
+    click r0 href "https://github.com/qualcomm-linux/kernel" _blank
+    r1["meta-ai"]
+    click r1 href "https://github.com/qualcomm-linux/meta-ai" _blank
+    r2["meta-qcom"]
+    click r2 href "https://github.com/qualcomm-linux/meta-qcom" _blank
+    r3["meta-qcom-3rdparty"]
+    click r3 href "https://github.com/qualcomm-linux/meta-qcom-3rdparty" _blank
+    r4["meta-qcom-distro"]
+    click r4 href "https://github.com/qualcomm-linux/meta-qcom-distro" _blank
+    r5["meta-qcom-releases"]
+    click r5 href "https://github.com/qualcomm-linux/meta-qcom-releases" _blank
+    r6["qcom-ptool"]
+    click r6 href "https://github.com/qualcomm-linux/qcom-ptool" _blank
+    r7["fastrpc"]
+    click r7 href "https://github.com/qualcomm/fastrpc" _blank
+    r2 -->|"fetches Linux kernel sources from"| r0
+    r2 -->|"includes for Qualcomm Linux images"| r1
+    r2 -->|"includes for Qualcomm Linux images"| r4
+    r2 -->|"gets partition tools from"| r6
+    r2 -->|"fetches sources from"| r7
+    r3 -->|"adds third-party board support to"| r2
+    r3 -->|"can use Qualcomm Linux settings from"| r4
+    r5 -->|"pins a release of"| r2
 ```
 
 ## Kernel integration
@@ -148,8 +99,6 @@ flowchart LR
 
 ### Boot and firmware
 
-- [kernel/linux-firmware](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git) — Firmware files for Linux drivers, including Qualcomm GPU, DSP, and peripheral firmware. (default branch: `not inventoried`).
-- [linux-msm/dsp-binaries](https://github.com/linux-msm/dsp-binaries) — Signed Hexagon DSP firmware and libraries for Qualcomm boards; GitHub redirects this name to linux-msm/hexagon-dsp-binaries. (default branch: `not inventoried`).
 - [qualcomm-linux/boot-firmware-ci](https://github.com/qualcomm-linux/boot-firmware-ci) — Boot Firmware CI/CD repo providing build artifacts for reuse across distros (default branch: `main`).
 - [qualcomm-linux/edk2](https://github.com/qualcomm-linux/edk2) — Qualcomm upstream staging repo for edk2 (default branch: `qcom-next`).
 - [qualcomm-linux/edk2-platforms](https://github.com/qualcomm-linux/edk2-platforms) — Qualcomm upstream staging repo for edk2-platforms (default branch: `qcom-next`).
@@ -159,12 +108,9 @@ flowchart LR
 - [qualcomm-linux/snagboot](https://github.com/qualcomm-linux/snagboot) — Generic recovery and reflashing tool for embedded platforms (default branch: `main`).
 - [qualcomm-linux/trusted-firmware-a](https://github.com/qualcomm-linux/trusted-firmware-a) — Qualcomm upstream staging repo for Trusted Firmware-A (default branch: `qcom-next`).
 - [qualcomm-linux/u-boot](https://github.com/qualcomm-linux/u-boot) — "Das U-Boot" Source Tree (default branch: `master`).
-- [rubikpi-ai/boot-assets](https://github.com/rubikpi-ai/boot-assets) — Vendor-hosted RUBIK Pi boot firmware consumed by the board recipe. (default branch: `not inventoried`).
-- [systemd/systemd](https://github.com/systemd/systemd) — System and service manager; its sources build the systemd-boot EFI boot manager. (default branch: `not inventoried`).
 
 ### Images and build tooling
 
-- [openembedded/bitbake](https://github.com/openembedded/bitbake) — Build engine used by the kas configuration. (default branch: `not inventoried`).
 - [qualcomm-linux/docker-pkg-build](https://github.com/qualcomm-linux/docker-pkg-build) — Debian packages build tool for native (arm64-arm64) or cross (amd64-arm64) build (default branch: `main`).
 - [qualcomm-linux/qcom-build-utils](https://github.com/qualcomm-linux/qcom-build-utils) — Qualcomm utilities for Linux builds (default branch: `main`).
 - [qualcomm-linux/qcom-deb-images](https://github.com/qualcomm-linux/qcom-deb-images) — Qualcomm Linux Debian build scripts (default branch: `main`).
@@ -173,7 +119,6 @@ flowchart LR
 - [qualcomm-linux/rpm-images](https://github.com/qualcomm-linux/rpm-images) — Repository purpose needs review; open the repository for its maintained documentation. (default branch: `main`).
 - [qualcomm/commit-emails-check-action](https://github.com/qualcomm/commit-emails-check-action) — GitHub action for checking email addresses in PR/Push commits (default branch: `main`).
 - [qualcomm/qcom-reusable-workflows](https://github.com/qualcomm/qcom-reusable-workflows) — Qualcomm reusable workflows (default branch: `main`).
-- [siemens/kas](https://github.com/siemens/kas) — Setup tool for BitBake-based projects. (default branch: `master`).
 
 ### Kernel integration
 
@@ -187,9 +132,6 @@ flowchart LR
 
 ### Layers and releases
 
-- [AudioReach/meta-audioreach](https://github.com/AudioReach/meta-audioreach) — AudioReach recipes selected by the distro configuration. (default branch: `not inventoried`).
-- [openembedded/meta-openembedded](https://github.com/openembedded/meta-openembedded) — Additional OpenEmbedded layers selected by the distro configuration. (default branch: `not inventoried`).
-- [openembedded/openembedded-core](https://github.com/openembedded/openembedded-core) — Base OpenEmbedded recipes and classes. (default branch: `not inventoried`).
 - [qualcomm-linux/meta-ai](https://github.com/qualcomm-linux/meta-ai) — OpenEmbedded layer for AI/ML related recipes (default branch: `main`).
 - [qualcomm-linux/meta-qcom](https://github.com/qualcomm-linux/meta-qcom) — OpenEmbedded/Yocto Project BSP layer for Qualcomm based platforms (default branch: `master`).
 - [qualcomm-linux/meta-qcom-3rdparty](https://github.com/qualcomm-linux/meta-qcom-3rdparty) — OpenEmbedded/Yocto Project BSP layer for Third-Party Maintained Qualcomm based platforms (default branch: `main`).
@@ -205,16 +147,9 @@ flowchart LR
 - [qualcomm-linux/meta-qcom-robotics-releases](https://github.com/qualcomm-linux/meta-qcom-robotics-releases) — This repo will be used to store kas-lock files for milestone releases of meta-qcom-robotics-sdk (default branch: `main`).
 - [qualcomm-linux/meta-qcom-robotics-sdk](https://github.com/qualcomm-linux/meta-qcom-robotics-sdk) — Repository purpose needs review; open the repository for its maintained documentation. (default branch: `main`).
 - [qualcomm-linux/qcom-manifest](https://github.com/qualcomm-linux/qcom-manifest) — Repository purpose needs review; open the repository for its maintained documentation. (default branch: `qcom-linux-scarthgap`).
-- [uptane/meta-updater](https://github.com/uptane/meta-updater) — Yocto layer supporting Uptane updates via aktualizr and OSTree. (default branch: `master`).
-- [yoctoproject/meta-security](https://git.yoctoproject.org/meta-security) — Security layer included in the Qualcomm Linux image configuration. (default branch: `not inventoried`).
-- [yoctoproject/meta-selinux](https://git.yoctoproject.org/meta-selinux) — SELinux layer included in the Qualcomm Linux image configuration. (default branch: `not inventoried`).
-- [yoctoproject/meta-virtualization](https://git.yoctoproject.org/meta-virtualization) — Virtualization layer included in the Qualcomm Linux image configuration. (default branch: `not inventoried`).
 
 ### Other repositories
 
-- [linux-msm/qrtr](https://github.com/linux-msm/qrtr) — Qualcomm IPC Router (QRTR) userspace tools and name service. (default branch: `not inventoried`).
-- [linux-msm/rmtfs](https://github.com/linux-msm/rmtfs) — Remote filesystem service that serves modem storage requests. (default branch: `not inventoried`).
-- [linux-msm/tqftpserv](https://github.com/linux-msm/tqftpserv) — TFTP server over QRTR that serves firmware files to remote processors. (default branch: `not inventoried`).
 - [qualcomm-linux/.github](https://github.com/qualcomm-linux/.github) — Qualcomm Linux GitHub organization action templates and configs (default branch: `main`).
 - [qualcomm-linux/Robotics-SDK-Ubuntu](https://github.com/qualcomm-linux/Robotics-SDK-Ubuntu) —  Qualcomm Intelligent Robotics SDK (QIR SDK) for ubuntu (default branch: `main`).
 - [qualcomm-linux/TC9564_Host_Driver](https://github.com/qualcomm-linux/TC9564_Host_Driver) — TC9564 PCIe-Ethernet Bridge Linux Host Driver (default branch: `qcom`).
@@ -314,16 +249,6 @@ flowchart LR
 <details>
 <summary>Relationship applicability and sources</summary>
 
-### openembedded/openembedded-core
-
-- **fetches sources from** [linux-firmware](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git)
-  - linux-firmware recipe; the default build downloads the release archive from kernel.org, and only the devupstream variant fetches the Git repository.
-  - [linux-firmware_20260910.bb](https://github.com/openembedded/openembedded-core/blob/d931446dac36811ff08d610f5e5ab87b785840ef/meta/recipes-kernel/linux-firmware/linux-firmware_20260910.bb)
-- **fetches sources from** [systemd](https://github.com/systemd/systemd)
-  - systemd and systemd-boot recipes; the stable release tag is pinned by SRCREV.
-  - [systemd.inc](https://github.com/openembedded/openembedded-core/blob/d931446dac36811ff08d610f5e5ab87b785840ef/meta/recipes-core/systemd/systemd.inc)
-  - [systemd-boot_261.3.bb](https://github.com/openembedded/openembedded-core/blob/d931446dac36811ff08d610f5e5ab87b785840ef/meta/recipes-core/systemd/systemd-boot_261.3.bb)
-
 ### qualcomm-linux/kernel-checkers
 
 - **runs automation from** [kernel-config](https://github.com/qualcomm-linux/kernel-config)
@@ -350,31 +275,6 @@ flowchart LR
 
 ### qualcomm-linux/meta-qcom
 
-- **includes for Qualcomm Linux images** [meta-audioreach](https://github.com/AudioReach/meta-audioreach)
-  - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
-- **fetches sources from** [dsp-binaries](https://github.com/linux-msm/dsp-binaries)
-  - hexagon-dsp-binaries recipe; the tagged snapshot is pinned by SRCREV.
-  - [hexagon-dsp-binaries.inc](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/hexagon-dsp-binaries/hexagon-dsp-binaries.inc)
-  - [hexagon-dsp-binaries_20260810.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/hexagon-dsp-binaries/hexagon-dsp-binaries_20260810.bb)
-- **fetches sources from** [qrtr](https://github.com/linux-msm/qrtr)
-  - qrtr recipe; the tagged release is pinned by SRCREV.
-  - [qrtr_1.2.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/qrtr/qrtr_1.2.bb)
-- **fetches sources from** [rmtfs](https://github.com/linux-msm/rmtfs)
-  - rmtfs recipe; the tagged release is pinned by SRCREV.
-  - [rmtfs_1.3.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/rmtfs/rmtfs_1.3.bb)
-- **fetches sources from** [tqftpserv](https://github.com/linux-msm/tqftpserv)
-  - tqftpserv recipe; the tagged release is pinned by SRCREV.
-  - [tqftpserv_1.2.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/tqftpserv/tqftpserv_1.2.bb)
-- **runs build tasks with** [bitbake](https://github.com/openembedded/bitbake)
-  - Development kas configuration on master; release locks can select other revisions.
-  - [base.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/base.yml)
-- **includes for Qualcomm Linux images** [meta-openembedded](https://github.com/openembedded/meta-openembedded)
-  - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
-- **uses base Linux build recipes from** [openembedded-core](https://github.com/openembedded/openembedded-core)
-  - Development kas configuration on master; release locks can select other revisions.
-  - [base.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/base.yml)
 - **fetches Linux kernel sources from** [kernel](https://github.com/qualcomm-linux/kernel)
   - linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.
   - [linux-qcom-next_git.bb](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-kernel/linux/linux-qcom-next_git.bb)
@@ -390,64 +290,9 @@ flowchart LR
 - **fetches sources from** [fastrpc](https://github.com/qualcomm/fastrpc)
   - fastrpc recipe; the tagged release is pinned by SRCREV.
   - [fastrpc_1.0.7.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/fastrpc/fastrpc_1.0.7.bb)
-- **includes for Qualcomm Linux images** [meta-updater](https://github.com/uptane/meta-updater)
-  - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
-- **includes for Qualcomm Linux images** [meta-security](https://git.yoctoproject.org/meta-security)
-  - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
-- **includes for Qualcomm Linux images** [meta-selinux](https://git.yoctoproject.org/meta-selinux)
-  - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
-- **includes for Qualcomm Linux images** [meta-virtualization](https://git.yoctoproject.org/meta-virtualization)
-  - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
 
 ### qualcomm-linux/meta-qcom-3rdparty
 
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-audioreach](https://github.com/AudioReach/meta-audioreach)
-  - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml)
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
-- **through [openembedded-core](https://github.com/openembedded/openembedded-core)** [linux-firmware](https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git)
-  - Both machines: the board firmware packagegroups recommend linux-firmware packages from the release archive.
-  - [packagegroup-rubikpi3.bb](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/packagegroups/packagegroup-rubikpi3.bb)
-  - [packagegroup-radxa-dragon-q6a.bb](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/packagegroups/packagegroup-radxa-dragon-q6a.bb)
-  - [linux-firmware_20260910.bb](https://github.com/openembedded/openembedded-core/blob/d931446dac36811ff08d610f5e5ab87b785840ef/meta/recipes-kernel/linux-firmware/linux-firmware_20260910.bb)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [dsp-binaries](https://github.com/linux-msm/dsp-binaries)
-  - radxa-dragon-q6a only: its hexagon-dsp-binaries packagegroup depends on the board DSP packages from meta-qcom.
-  - [radxa-dragon-q6a.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/radxa-dragon-q6a.conf)
-  - [packagegroup-radxa-dragon-q6a.bb](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/packagegroups/packagegroup-radxa-dragon-q6a.bb)
-  - [hexagon-dsp-binaries.inc](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/hexagon-dsp-binaries/hexagon-dsp-binaries.inc)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [qrtr](https://github.com/linux-msm/qrtr)
-  - Both machines: packagegroup-qcom-boot-essential, selected by each machine file and the QCS6490 SoC include, runs qrtr on the target.
-  - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
-  - [radxa-dragon-q6a.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/radxa-dragon-q6a.conf)
-  - [packagegroup-qcom.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/packagegroups/packagegroup-qcom.bb)
-  - [qrtr_1.2.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/qrtr/qrtr_1.2.bb)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [rmtfs](https://github.com/linux-msm/rmtfs)
-  - Both machines: packagegroup-qcom-boot-essential, selected by each machine file and the QCS6490 SoC include, runs rmtfs on the target.
-  - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
-  - [radxa-dragon-q6a.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/radxa-dragon-q6a.conf)
-  - [packagegroup-qcom.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/packagegroups/packagegroup-qcom.bb)
-  - [rmtfs_1.3.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/rmtfs/rmtfs_1.3.bb)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [tqftpserv](https://github.com/linux-msm/tqftpserv)
-  - Both machines: packagegroup-qcom-boot-essential, selected by each machine file and the QCS6490 SoC include, runs tqftpserv on the target.
-  - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
-  - [radxa-dragon-q6a.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/radxa-dragon-q6a.conf)
-  - [packagegroup-qcom.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/packagegroups/packagegroup-qcom.bb)
-  - [tqftpserv_1.2.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/tqftpserv/tqftpserv_1.2.bb)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [bitbake](https://github.com/openembedded/bitbake)
-  - Development kas configuration on master; release locks can select other revisions.
-  - [base.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/base.yml)
-  - [base.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/base.yml)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-openembedded](https://github.com/openembedded/meta-openembedded)
-  - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml)
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
-- **uses base Linux build recipes from** [openembedded-core](https://github.com/openembedded/openembedded-core)
-  - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
-  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [kernel](https://github.com/qualcomm-linux/kernel)
   - linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.
   - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
@@ -472,36 +317,6 @@ flowchart LR
   - [qcom-qcs6490.inc](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/conf/machine/include/qcom-qcs6490.inc)
   - [packagegroup-qcom.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/packagegroups/packagegroup-qcom.bb)
   - [fastrpc_1.0.7.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/fastrpc/fastrpc_1.0.7.bb)
-- **fetches RUBIK Pi boot firmware from** [boot-assets](https://github.com/rubikpi-ai/boot-assets)
-  - RUBIK Pi 3 boot firmware only; pinned by the recipe SRCREV.
-  - [firmware-qcom-boot-rubikpi3_20260621.bb](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/firmware-boot/firmware-qcom-boot-rubikpi3_20260621.bb)
-- **sets up and runs builds with** [kas](https://github.com/siemens/kas)
-  - The build workflow downloads and invokes kas-container.
-  - [build-yocto.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom) → [openembedded-core](https://github.com/openembedded/openembedded-core)** [systemd](https://github.com/systemd/systemd)
-  - Both machines set the efi machine feature; meta-qcom makes systemd-boot the EFI boot manager in the ESP, built from OE-Core's systemd sources.
-  - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
-  - [radxa-dragon-q6a.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/radxa-dragon-q6a.conf)
-  - [qcom-common.inc](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/conf/machine/include/qcom-common.inc)
-  - [esp-qcom-image.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-kernel/images/esp-qcom-image.bb)
-  - [efi-uki-bootdisk.wks.in](https://github.com/openembedded/openembedded-core/blob/d931446dac36811ff08d610f5e5ab87b785840ef/meta/files/wic/efi-uki-bootdisk.wks.in)
-  - [systemd-boot_261.3.bb](https://github.com/openembedded/openembedded-core/blob/d931446dac36811ff08d610f5e5ab87b785840ef/meta/recipes-core/systemd/systemd-boot_261.3.bb)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-updater](https://github.com/uptane/meta-updater)
-  - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml)
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-security](https://git.yoctoproject.org/meta-security)
-  - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml)
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-selinux](https://git.yoctoproject.org/meta-selinux)
-  - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml)
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
-- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-virtualization](https://git.yoctoproject.org/meta-virtualization)
-  - Included when the qcom-distro build configuration is selected.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml)
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/851fb9b4b5cf9f2a5d2d3b15ced00c49ae807a95/ci/qcom-distro.yml)
 
 ### qualcomm-linux/meta-qcom-releases
 
@@ -537,4 +352,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: faeaa003512a56069acce7f99fbd2c42eb6d67bc29591a2f449a5e399f0b5028. -->
+<!-- Dataset SHA-256: 0cdcb7beb5952ac336442f9700cf6ad7d3763fcc6cea289e3df9f15b3533d81c. -->
