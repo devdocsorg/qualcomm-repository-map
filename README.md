@@ -2,14 +2,13 @@
 
 Qualcomm repository ecosystem. Initial inventory covers public qualcomm-linux repositories and verified neighbouring upstreams; it is not limited to a release or engagement. Other Qualcomm organisations can be added using the same schema.
 
-**Coverage:** 143 repositories; 42 recorded build/component relationships.
+**Coverage:** 135 repositories; 34 recorded build/component relationships.
 
 Repository inventory is broader than reviewed relationships. An absent edge means no relationship has been recorded, not proof of independence.
 
 Click a repository node to open it. Indirect connections follow the actual path through their provider.
 
 - [Yocto builds and releases](#yocto-builds-and-releases)
-- [Documentation tooling](#documentation-tooling)
 - [Kernel integration](#kernel-integration)
 - [Source packaging](#source-packaging)
 
@@ -69,38 +68,6 @@ flowchart LR
     r7 -->|"fetches RUBIK Pi boot firmware from"| r11
     r7 -->|"sets up and runs builds with"| r12
     r9 -->|"pins a release of"| r6
-```
-
-## Documentation tooling
-
-```mermaid
-flowchart LR
-    r0["uv"]
-    click r0 href "https://github.com/astral-sh/uv" _blank
-    r1["MyST-Parser"]
-    click r1 href "https://github.com/executablebooks/MyST-Parser" _blank
-    r2["gawk"]
-    click r2 href "https://git.savannah.gnu.org/cgit/gawk.git/" _blank
-    r3["bashlex"]
-    click r3 href "https://github.com/idank/bashlex" _blank
-    r4["playwright-python"]
-    click r4 href "https://github.com/microsoft/playwright-python" _blank
-    r5["cpython"]
-    click r5 href "https://github.com/python/cpython" _blank
-    r6["meta-qcom-3rdparty"]
-    click r6 href "https://github.com/qualcomm-linux/meta-qcom-3rdparty" _blank
-    r7["shdoc"]
-    click r7 href "https://github.com/reconquest/shdoc" _blank
-    r8["sphinx"]
-    click r8 href "https://github.com/sphinx-doc/sphinx" _blank
-    r6 -->|"sets up documentation with"| r0
-    r6 -->|"parses Markdown with"| r1
-    r6 -->|"runs shell extraction with"| r2
-    r6 -->|"checks shell coverage with"| r3
-    r6 -->|"checks offline browsing with"| r4
-    r6 -->|"runs documentation tools with"| r5
-    r6 -->|"generates shell reference with"| r7
-    r6 -->|"builds documentation with"| r8
 ```
 
 ## Kernel integration
@@ -170,17 +137,6 @@ flowchart LR
 - [qualcomm-linux/trusted-firmware-a](https://github.com/qualcomm-linux/trusted-firmware-a) — Qualcomm upstream staging repo for Trusted Firmware-A (default branch: `qcom-next`).
 - [qualcomm-linux/u-boot](https://github.com/qualcomm-linux/u-boot) — "Das U-Boot" Source Tree (default branch: `master`).
 - [rubikpi-ai/boot-assets](https://github.com/rubikpi-ai/boot-assets) — Vendor-hosted RUBIK Pi boot firmware consumed by the board recipe. (default branch: `not inventoried`).
-
-### Documentation tooling
-
-- [astral-sh/uv](https://github.com/astral-sh/uv) — Installs the locked documentation environment and Python runtime. (default branch: `main`).
-- [executablebooks/MyST-Parser](https://github.com/executablebooks/MyST-Parser) — Parses Markdown sources for Sphinx. (default branch: `master`).
-- [gnu/gawk](https://git.savannah.gnu.org/cgit/gawk.git/) — Runs the shdoc native shell documentation extractor. (default branch: `master`).
-- [idank/bashlex](https://github.com/idank/bashlex) — Parses shell definitions independently for reference coverage. (default branch: `master`).
-- [microsoft/playwright-python](https://github.com/microsoft/playwright-python) — Provides Python browser automation for offline-site checks. (default branch: `main`).
-- [python/cpython](https://github.com/python/cpython) — Runs Sphinx, reference tooling, and browser validation. (default branch: `main`).
-- [reconquest/shdoc](https://github.com/reconquest/shdoc) — Generates function reference from shell documentation comments. (default branch: `master`).
-- [sphinx-doc/sphinx](https://github.com/sphinx-doc/sphinx) — Builds the local documentation website and Python native reference. (default branch: `master`).
 
 ### Images and build tooling
 
@@ -399,21 +355,6 @@ flowchart LR
   - Optional qcom-distro kas composition; not required by every BSP-only build.
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
-- **sets up documentation with** [uv](https://github.com/astral-sh/uv)
-  - Documentation proposal on docs/contributor-reference.
-  - [Makefile](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile)
-- **parses Markdown with** [MyST-Parser](https://github.com/executablebooks/MyST-Parser)
-  - Documentation proposal on docs/contributor-reference.
-  - [requirements.txt](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt)
-- **runs shell extraction with** [gawk](https://git.savannah.gnu.org/cgit/gawk.git/)
-  - Documentation proposal on docs/contributor-reference.
-  - [Makefile](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile)
-- **checks shell coverage with** [bashlex](https://github.com/idank/bashlex)
-  - Documentation proposal on docs/contributor-reference.
-  - [requirements.txt](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt)
-- **checks offline browsing with** [playwright-python](https://github.com/microsoft/playwright-python)
-  - Documentation proposal on docs/contributor-reference.
-  - [requirements.txt](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [bitbake](https://github.com/openembedded/bitbake)
   - Development kas configuration on master; release locks can select other revisions.
   - [base.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/base.yml)
@@ -425,9 +366,6 @@ flowchart LR
 - **uses base Linux build recipes from** [openembedded-core](https://github.com/openembedded/openembedded-core)
   - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
-- **runs documentation tools with** [cpython](https://github.com/python/cpython)
-  - Documentation proposal on docs/contributor-reference.
-  - [Makefile](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [kernel](https://github.com/qualcomm-linux/kernel)
   - linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.
   - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
@@ -446,18 +384,12 @@ flowchart LR
   - Partition tooling is supplied through meta-qcom; this is an indirect relationship, not an extra layer dependency.
   - [qcom-ptool.inc](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc)
   - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
-- **generates shell reference with** [shdoc](https://github.com/reconquest/shdoc)
-  - Documentation builds using the proposed Sphinx setup.
-  - [Makefile](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile)
 - **fetches RUBIK Pi boot firmware from** [boot-assets](https://github.com/rubikpi-ai/boot-assets)
   - RUBIK Pi 3 boot firmware only; pinned by the recipe SRCREV.
   - [firmware-qcom-boot-rubikpi3_20260621.bb](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/recipes-bsp/firmware-boot/firmware-qcom-boot-rubikpi3_20260621.bb)
 - **sets up and runs builds with** [kas](https://github.com/siemens/kas)
   - The build workflow downloads and invokes kas-container.
   - [build-yocto.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml)
-- **builds documentation with** [sphinx](https://github.com/sphinx-doc/sphinx)
-  - Documentation proposal on docs/contributor-reference.
-  - [requirements.txt](https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-updater](https://github.com/uptane/meta-updater)
   - Included when the qcom-distro build configuration is selected.
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml)
@@ -509,4 +441,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: e9edd3db51efccb03c67457eb648e4b66097a83dda9cc341da4efa418e10a97d. -->
+<!-- Dataset SHA-256: 17c70331b4c9a6bc637d3d77e21856689ee3cb90cbf7acdb412c5603d3f2a674. -->

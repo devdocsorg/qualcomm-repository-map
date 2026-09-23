@@ -1084,70 +1084,6 @@
       "group": "Images and build tooling",
       "branch": "master",
       "archived": false
-    },
-    {
-      "id": "reconquest/shdoc",
-      "url": "https://github.com/reconquest/shdoc",
-      "description": "Generates function reference from shell documentation comments.",
-      "group": "Documentation tooling",
-      "branch": "master",
-      "archived": false
-    },
-    {
-      "id": "sphinx-doc/sphinx",
-      "url": "https://github.com/sphinx-doc/sphinx",
-      "description": "Builds the local documentation website and Python native reference.",
-      "group": "Documentation tooling",
-      "branch": "master",
-      "archived": false
-    },
-    {
-      "id": "executablebooks/MyST-Parser",
-      "url": "https://github.com/executablebooks/MyST-Parser",
-      "description": "Parses Markdown sources for Sphinx.",
-      "group": "Documentation tooling",
-      "branch": "master",
-      "archived": false
-    },
-    {
-      "id": "microsoft/playwright-python",
-      "url": "https://github.com/microsoft/playwright-python",
-      "description": "Provides Python browser automation for offline-site checks.",
-      "group": "Documentation tooling",
-      "branch": "main",
-      "archived": false
-    },
-    {
-      "id": "idank/bashlex",
-      "url": "https://github.com/idank/bashlex",
-      "description": "Parses shell definitions independently for reference coverage.",
-      "group": "Documentation tooling",
-      "branch": "master",
-      "archived": false
-    },
-    {
-      "id": "astral-sh/uv",
-      "url": "https://github.com/astral-sh/uv",
-      "description": "Installs the locked documentation environment and Python runtime.",
-      "group": "Documentation tooling",
-      "branch": "main",
-      "archived": false
-    },
-    {
-      "id": "python/cpython",
-      "url": "https://github.com/python/cpython",
-      "description": "Runs Sphinx, reference tooling, and browser validation.",
-      "group": "Documentation tooling",
-      "branch": "main",
-      "archived": false
-    },
-    {
-      "id": "gnu/gawk",
-      "url": "https://git.savannah.gnu.org/cgit/gawk.git/",
-      "description": "Runs the shdoc native shell documentation extractor.",
-      "group": "Documentation tooling",
-      "branch": "master",
-      "archived": false
     }
   ],
   "relationships": [
@@ -5457,118 +5393,6 @@
           "claim": "The Qualcomm Linux image configuration declares this layer."
         }
       ]
-    },
-    {
-      "from": "qualcomm-linux/meta-qcom-3rdparty",
-      "to": "reconquest/shdoc",
-      "kind": "builds with",
-      "condition": "Documentation builds using the proposed Sphinx setup.",
-      "local_summary": "generates shell reference with",
-      "evidence": [
-        {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
-          "claim": "Documentation setup fetches the pinned shdoc extractor used to generate shell function reference."
-        }
-      ]
-    },
-    {
-      "from": "qualcomm-linux/meta-qcom-3rdparty",
-      "to": "sphinx-doc/sphinx",
-      "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
-      "local_summary": "builds documentation with",
-      "evidence": [
-        {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
-          "claim": "Sphinx==9.1.0 is a direct pinned documentation dependency."
-        }
-      ]
-    },
-    {
-      "from": "qualcomm-linux/meta-qcom-3rdparty",
-      "to": "executablebooks/MyST-Parser",
-      "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
-      "local_summary": "parses Markdown with",
-      "evidence": [
-        {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
-          "claim": "myst-parser==5.1.0 is a direct pinned documentation dependency."
-        }
-      ]
-    },
-    {
-      "from": "qualcomm-linux/meta-qcom-3rdparty",
-      "to": "microsoft/playwright-python",
-      "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
-      "local_summary": "checks offline browsing with",
-      "evidence": [
-        {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
-          "claim": "playwright==1.62.0 is the direct pinned browser-test dependency."
-        }
-      ]
-    },
-    {
-      "from": "qualcomm-linux/meta-qcom-3rdparty",
-      "to": "idank/bashlex",
-      "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
-      "local_summary": "checks shell coverage with",
-      "evidence": [
-        {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/requirements.txt",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
-          "claim": "bashlex==0.18 is a direct pinned reference-coverage dependency."
-        }
-      ]
-    },
-    {
-      "from": "qualcomm-linux/meta-qcom-3rdparty",
-      "to": "astral-sh/uv",
-      "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
-      "local_summary": "sets up documentation with",
-      "evidence": [
-        {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
-          "claim": "The setup target invokes uv to provision Python and install the locked dependencies."
-        }
-      ]
-    },
-    {
-      "from": "qualcomm-linux/meta-qcom-3rdparty",
-      "to": "python/cpython",
-      "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
-      "local_summary": "runs documentation tools with",
-      "evidence": [
-        {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
-          "claim": "The setup target selects Python 3.12.13 for documentation tools."
-        }
-      ]
-    },
-    {
-      "from": "qualcomm-linux/meta-qcom-3rdparty",
-      "to": "gnu/gawk",
-      "kind": "builds with",
-      "condition": "Documentation proposal on docs/contributor-reference.",
-      "local_summary": "runs shell extraction with",
-      "evidence": [
-        {
-          "url": "https://github.com/devdocsorg/meta-qcom-3rdparty/blob/0a68dddcb702259248748eb136785f96b2b57dc5/docs/source/Makefile",
-          "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
-          "claim": "The setup target requires gawk; native_reference.py invokes gawk -f on pinned shdoc."
-        }
-      ]
     }
   ],
   "source_audits": [
@@ -5597,17 +5421,6 @@
         "ci/ccache.yml",
         "recipes-kernel/linux/linux-qcom-next_git.bb",
         "recipes-bsp/partition/qcom-ptool.inc"
-      ]
-    },
-    {
-      "repository": "qualcomm-linux/meta-qcom-3rdparty",
-      "source_repository": "devdocsorg/meta-qcom-3rdparty",
-      "revision": "0a68dddcb702259248748eb136785f96b2b57dc5",
-      "paths": [
-        "docs/source/Makefile",
-        "docs/source/requirements.txt",
-        "docs/source/conf.py",
-        ".github/native_reference.py"
       ]
     }
   ]
