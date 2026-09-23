@@ -156,6 +156,10 @@ with tempfile.TemporaryDirectory() as tmp:
     subprocess.run(['git', '-c', 'user.name=Map test', '-c', 'user.email=map@example.invalid', 'commit', '-qm', 'Source fixture'], cwd=checkout, check=True)
     revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=checkout, text=True).strip()
     rejects(check_sources.check, data, {'repository':focus, 'revision':revision, 'paths':['build.yml']}, checkout)
+    # The audited fork's own source links do not make it a separate dependency.
+    fork_audit = {'repository':focus, 'source_repository':'example/missing', 'revision':revision, 'paths':['build.yml']}
+    check_sources.check(data, fork_audit, checkout)
+    rejects(check_sources.check, data, {**fork_audit, 'source_repository':'example/another'}, checkout)
 assert check_sources.references('url: https://git.yoctoproject.org/meta-security\n# https://github.com/example/ignored') == {'https://git.yoctoproject.org/meta-security'}
 
 reference = pydoc.plain(pydoc.render_doc(map_build))

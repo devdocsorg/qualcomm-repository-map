@@ -34,7 +34,7 @@ def check(data: dict, audit: dict, checkout: Path) -> None:
             continue
         text = subprocess.check_output(['git', 'show', f'{revision}:{file}'], cwd=checkout, text=True)
         for url in references(text):
-            if urls.get(url) == audit['repository']:
+            if urls.get(url) == audit['repository'] or url == f"https://github.com/{audit.get('source_repository', audit['repository'])}":
                 continue
             if url not in urls or urls[url] not in neighbours:
                 raise ValueError(f"Unmapped repository reference in {audit['repository']}:{file}: {url}")
