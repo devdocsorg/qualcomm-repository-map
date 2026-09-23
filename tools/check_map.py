@@ -29,6 +29,23 @@ def arrows(markdown):
     return result
 
 
+def without_connection(markdown, connection):
+    """Remove every occurrence of a connection across diagrams with local node IDs."""
+    blocks = re.split(r'(```mermaid\n.*?\n```)', markdown, flags=re.S)
+    for index, block in enumerate(blocks):
+        if not block.startswith('```mermaid'):
+            continue
+        links = dict(re.findall(r'click (r\d+) href "([^"]+)"', block))
+        lines = []
+        for line in block.splitlines(keepends=True):
+            arrow = re.fullmatch(r'    (r\d+) -->\|"([^"]+)"\| (r\d+)\n', line)
+            if arrow and (links[arrow[1]], arrow[2], links[arrow[3]]) == connection:
+                continue
+            lines.append(line)
+        blocks[index] = ''.join(lines)
+    return ''.join(blocks)
+
+
 def rejects(function, *args):
     """Require a validation failure for deliberately incomplete input."""
     try:
@@ -92,12 +109,18 @@ for node in data['repositories']:
         assert block.count('(you are here)') == 1
         assert block.count(f'href "{urls[node["id"]]}"') == 1
     assert '```\n###' not in local, 'Split diagrams need a blank line before headings'
-    for line in re.findall(r'^    r\d+ -->.*\n', local, re.M):
-        rejects(map_build.validate_local_view, data, node['id'], local.replace(line, ''))
+    for connection in arrows(local):
+        rejects(map_build.validate_local_view, data, node['id'], without_connection(local, connection))
 local = map_build.render_local_view(data, focus, digest, 'a'*40)
 assert 'Required:' not in local and 'Optional:' not in local
 assert 'qcom-ptool' in local and '(private)' not in local
 assert f'[Full Qualcomm repository map]({map_build.CENTRAL})' in local
+
+# The same connection can occur in several diagrams with different local IDs.
+repeated = local + re.sub(r'\br(\d+)\b', lambda match: f'r{int(match[1]) + 100}', local)
+map_build.validate_local_view(data, focus, repeated)
+for connection in arrows(repeated):
+    rejects(map_build.validate_local_view, data, focus, without_connection(repeated, connection))
 
 # An inherited connection alone never permits a made-up direct shortcut.
 links = dict(re.findall(r'click (r\d+) href "([^"]+)"', local))
@@ -167,6 +190,7 @@ with tempfile.TemporaryDirectory() as tmp:
     # The audited fork's own source links do not make it a separate dependency.
     fork_audit = {'repository':focus, 'source_repository':'example/missing', 'revision':revision, 'paths':['build.yml']}
     check_sources.check(data, fork_audit, checkout)
+    rejects(check_sources.check, data, {**fork_audit, 'paths':['build.yml', 'absent.yml']}, checkout)
     rejects(check_sources.check, data, {**fork_audit, 'source_repository':'example/another'}, checkout)
 assert check_sources.references('url: https://git.yoctoproject.org/meta-security\n# https://github.com/example/ignored') == {'https://git.yoctoproject.org/meta-security'}
 

@@ -23,6 +23,10 @@ def references(text: str) -> set[str]:
 def check(data: dict, audit: dict, checkout: Path) -> None:
     """Fail when a repository referenced by the reviewed source is absent from its map."""
     revision = audit['revision']
+    for path in audit['paths']:
+        present = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', revision, '--', path], cwd=checkout, text=True)
+        if not present.strip():
+            raise ValueError(f"Missing audited source path in {audit['repository']} at {revision}: {path}")
     files = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', revision, '--', *audit['paths']], cwd=checkout, text=True).splitlines()
     if not files:
         raise ValueError(f"No source files found for {audit['repository']}")
