@@ -41,7 +41,7 @@ flowchart LR
     r2 -->|"fetches sources from"| r8
     r3 -->|"adds third-party board support to"| r2
     r3 -->|"can use Qualcomm Linux settings from"| r4
-    r3 -->|"builds on"| r5
+    r3 -->|"builds on (scarthgap, kirkstone)"| r5
     r6 -->|"pins a release of"| r2
 ```
 
@@ -310,7 +310,7 @@ flowchart LR
 - **can use Qualcomm Linux settings from** [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
   - Optional: the dynamic layer applies only when qcom-distro is present.
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
-- **builds on** [meta-qcom-hwe](https://github.com/qualcomm-linux/meta-qcom-hwe)
+- **builds on (scarthgap, kirkstone)** [meta-qcom-hwe](https://github.com/qualcomm-linux/meta-qcom-hwe)
   - scarthgap and kirkstone branches only (Qualcomm Linux 1.x); required layer collection. main and wrynose do not depend on it.
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/b411da79d08b3726eeba85df834627008b31fd7c/conf/layer.conf)
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/d2f48af6ee98870294be24c16673dde7fa941543/conf/layer.conf)
@@ -359,4 +359,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: ceb8a26f713b66254d1739b35ad5d7cfdd436cbde221543448cf746a26bb1a4e. -->
+<!-- Dataset SHA-256: e31bc2e3c37c6daebc112fc3f6c5c0b013d6f10727403fa360cb7b15678ee329. -->

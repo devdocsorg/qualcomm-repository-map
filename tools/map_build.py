@@ -33,6 +33,21 @@ LABELS = {'depends on': 'builds on', 'integrates with': 'can combine with',
           'uses automation from': 'runs automation from'}
 
 
+def connection_label(edge: dict) -> str:
+    """Return a relationship's connection verb, naming the branches it is limited to.
+
+    :param edge: Relationship record, with an optional ``local_summary`` and ``branches``.
+    :returns: Short label such as ``builds on (scarthgap, kirkstone)``.
+
+    Example: a ``depends on`` edge with ``branches: ['kirkstone']`` reads
+    ``builds on (kirkstone)``.
+    """
+    label = edge.get('local_summary') or LABELS[edge['kind']]
+    if edge.get('branches'):
+        label += f" ({', '.join(edge['branches'])})"
+    return label
+
+
 def slug(identifier: str) -> str:
     """Return a filesystem-safe name for an owner/repository identifier.
 
@@ -77,6 +92,10 @@ def load_data(path: Path) -> dict:
             raise ValueError(f"Unknown repository or self-edge: {key}")
         if key in seen or edge["kind"] not in KINDS or not edge["condition"]:
             raise ValueError(f"Duplicate or invalid relationship: {key}")
+        branches = edge.get("branches")
+        if branches is not None and (not isinstance(branches, list) or not branches
+                                     or not all(isinstance(b, str) and b for b in branches)):
+            raise ValueError(f"Relationship branches must be a non-empty list of names: {key}")
         if not edge["evidence"]:
             raise ValueError(f"Missing relationship evidence: {key}")
         for proof in edge["evidence"]:
@@ -142,7 +161,7 @@ def diagram(nodes: list[dict], edges: list[dict], focus: str | None = None) -> s
         lines.append(f'    click {identifiers[node["id"]]} href "{node["url"]}" _blank')
     seen = set()
     for edge in edges:
-        label = edge.get('local_summary') or LABELS[edge['kind']]
+        label = connection_label(edge)
         # Entity escapes keep authored labels from becoming Mermaid syntax.
         label = label.replace('&', '#38;').replace('"', '#34;').replace('|', '#124;').replace('\n', ' ')
         key = (edge['from'], edge['to'], label)
@@ -176,7 +195,7 @@ def validate_local_view(data: dict, focus: str, markdown: str) -> None:
     for edge in data['relationships']:
         if edge['kind'] in AUTOMATION | {'uses indirectly'}:
             continue
-        label = edge.get('local_summary') or LABELS[edge['kind']]
+        label = connection_label(edge)
         label = label.replace('&', '#38;').replace('"', '#34;').replace('|', '#124;').replace('\n', ' ')
         allowed.add((urls[edge['from']], label, urls[edge['to']]))
         if focus in (edge['from'], edge['to']) and (urls[edge['from']], label, urls[edge['to']]) not in arrows:
@@ -354,7 +373,7 @@ def build(data: dict, digest: str) -> None:
             if edge['kind'] == 'uses indirectly':
                 relation = 'through ' + ' → '.join(f"[{identifier.split('/')[-1]}]({next(n['url'] for n in nodes if n['id'] == identifier)})" for identifier in edge['via'])
             else:
-                relation = edge.get('local_summary') or LABELS[edge['kind']]
+                relation = connection_label(edge)
             overview += f"- **{relation}** [{edge['to'].split('/')[-1]}]({target['url']})\n  - {edge['condition']}\n"
             for proof in edge['evidence']:
                 filename = Path(unquote(urlsplit(proof['url']).path)).name

@@ -21,6 +21,7 @@ owns the map requirements; this page owns the dataset schema and maintenance com
 | `relationships` | Required list of directed relationships. |
 | Relationship `from`, `to`, `kind` | Required repository IDs and a supported type declared in the generator. Both endpoints must exist. |
 | Relationship `local_summary` | Optional short connection verb; overrides the default verb for its relationship type. |
+| Relationship `branches` | Optional non-empty list of branch names. Set it when the relationship holds only on those branches of the `from` repository; every diagram adds them to the connection label. |
 | Relationship `condition` | Required string describing branch/release applicability, optionality, and indirect paths where relevant. |
 | Relationship `via` | Required ordered intermediate repository IDs for an indirect connection; each step must have a recorded direct relationship. |
 | `source_audits` | Reviewed repository, source repository, pinned revision, and paths checked for missing build references. |
