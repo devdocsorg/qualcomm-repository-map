@@ -75,7 +75,7 @@ for edge in data['relationships']:
             assert any(a == urls[source] and b == urls[target] for a, _, b in connections)
         # A separate evidenced direct use may coexist with the inherited path.
         direct = {
-            (urls[candidate['from']], candidate.get('local_summary') or map_build.LABELS[candidate['kind']], urls[candidate['to']])
+            (urls[candidate['from']], map_build.connection_label(candidate), urls[candidate['to']])
             for candidate in data['relationships']
             if candidate['kind'] != 'uses indirectly'
             and candidate['from'] == edge['from'] and candidate['to'] == edge['to']
@@ -83,7 +83,7 @@ for edge in data['relationships']:
         assert {connection for connection in connections
                 if connection[0] == urls[edge['from']] and connection[2] == urls[edge['to']]} <= direct
     else:
-        label = edge.get('local_summary') or map_build.LABELS[edge['kind']]
+        label = map_build.connection_label(edge)
         assert (urls[edge['from']], label, urls[edge['to']]) in connections
 for node in data['repositories']:
     assert f"]({node['url']})" in readme
@@ -173,10 +173,12 @@ with tempfile.TemporaryDirectory() as tmp:
         else:
             raise AssertionError('Invalid or stale README map accepted')
 
-for mutation in ('outside_qualcomm', 'unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned', 'missing_path'):
+for mutation in ('outside_qualcomm', 'empty_branches', 'unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned', 'missing_path'):
     broken = copy.deepcopy(data)
     if mutation == 'outside_qualcomm':
         broken['repositories'].append(dict(broken['repositories'][0], id='example/upstream', url='https://github.com/example/upstream'))
+    elif mutation == 'empty_branches':
+        broken['relationships'][0]['branches'] = []
     elif mutation == 'unknown_endpoint':
         broken['relationships'][0]['to'] = 'absent/repository'
     elif mutation == 'missing_evidence':

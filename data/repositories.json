@@ -1501,6 +1501,10 @@
           "claim": "On kirkstone, LAYERDEPENDS_qcom-3rdparty declares core, qcom, and qcom-hwe.",
           "revision": "d2f48af6ee98870294be24c16673dde7fa941543"
         }
+      ],
+      "branches": [
+        "scarthgap",
+        "kirkstone"
       ]
     },
     {
