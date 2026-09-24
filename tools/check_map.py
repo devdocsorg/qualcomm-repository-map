@@ -173,12 +173,15 @@ with tempfile.TemporaryDirectory() as tmp:
         else:
             raise AssertionError('Invalid or stale README map accepted')
 
-for mutation in ('outside_qualcomm', 'empty_branches', 'unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned', 'missing_path'):
+for mutation in ('outside_qualcomm', 'empty_branches', 'default_branch_label', 'unknown_endpoint', 'missing_evidence', 'duplicate', 'unpinned', 'missing_path'):
     broken = copy.deepcopy(data)
     if mutation == 'outside_qualcomm':
         broken['repositories'].append(dict(broken['repositories'][0], id='example/upstream', url='https://github.com/example/upstream'))
     elif mutation == 'empty_branches':
         broken['relationships'][0]['branches'] = []
+    elif mutation == 'default_branch_label':
+        edge = next(e for e in broken['relationships'] if e['from'] == focus)
+        edge['branches'] = [next(r['branch'] for r in broken['repositories'] if r['id'] == focus), 'other']
     elif mutation == 'unknown_endpoint':
         broken['relationships'][0]['to'] = 'absent/repository'
     elif mutation == 'missing_evidence':

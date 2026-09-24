@@ -75,7 +75,7 @@ def load_data(path: Path) -> dict:
     data = json.loads(path.read_text())
     if data.get("schema_version") != 1:
         raise ValueError("Unsupported dataset schema version")
-    ids = set()
+    ids, default_branch = set(), {}
     for node in data["repositories"]:
         slug(node["id"])
         if node["id"] in ids or not node["url"].startswith("https://"):
@@ -85,6 +85,7 @@ def load_data(path: Path) -> dict:
         if not node["description"] or not node["group"]:
             raise ValueError(f"Missing repository description/group: {node['id']}")
         ids.add(node["id"])
+        default_branch[node["id"]] = node.get("branch")
     seen = set()
     for edge in data["relationships"]:
         key = (edge["from"], edge["to"], edge["kind"], edge["condition"])
@@ -96,6 +97,8 @@ def load_data(path: Path) -> dict:
         if branches is not None and (not isinstance(branches, list) or not branches
                                      or not all(isinstance(b, str) and b for b in branches)):
             raise ValueError(f"Relationship branches must be a non-empty list of names: {key}")
+        if branches and default_branch.get(edge["from"]) in branches:
+            raise ValueError(f"A relationship on the default branch takes no branches label: {key}")
         if not edge["evidence"]:
             raise ValueError(f"Missing relationship evidence: {key}")
         for proof in edge["evidence"]:
