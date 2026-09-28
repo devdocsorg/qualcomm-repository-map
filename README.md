@@ -2,7 +2,7 @@
 
 Qualcomm repositories: public repositories in Qualcomm's GitHub organisations (qualcomm-linux and qualcomm). Upstream projects, board vendors, and tools are not recorded. The map is not limited to a release or engagement.
 
-**Coverage:** 126 repositories; 19 recorded build/component relationships.
+**Coverage:** 127 repositories; 24 recorded build/component relationships.
 
 Repository inventory is broader than reviewed relationships. An absent edge means no relationship has been recorded, not proof of independence.
 
@@ -11,6 +11,8 @@ Click a repository node to open it. Indirect connections follow the actual path 
 - [Yocto builds and releases](#yocto-builds-and-releases)
 - [Kernel integration](#kernel-integration)
 - [Source packaging](#source-packaging)
+- [Images and build tooling relationships](#images-and-build-tooling-relationships)
+- [Boot and firmware relationships](#boot-and-firmware-relationships)
 
 ## Yocto builds and releases
 
@@ -59,19 +61,22 @@ flowchart LR
     click r3 href "https://github.com/qualcomm-linux/kernel-config" _blank
     r4["kernel-topics"]
     click r4 href "https://github.com/qualcomm-linux/kernel-topics" _blank
-    r5["ubuntu-qcom-kernel"]
-    click r5 href "https://github.com/qualcomm-linux/ubuntu-qcom-kernel" _blank
-    r6["upload-private-artifact-action"]
-    click r6 href "https://github.com/qualcomm-linux/upload-private-artifact-action" _blank
-    r7["commit-emails-check-action"]
-    click r7 href "https://github.com/qualcomm/commit-emails-check-action" _blank
+    r5["qcom-ptool"]
+    click r5 href "https://github.com/qualcomm-linux/qcom-ptool" _blank
+    r6["ubuntu-qcom-kernel"]
+    click r6 href "https://github.com/qualcomm-linux/ubuntu-qcom-kernel" _blank
+    r7["upload-private-artifact-action"]
+    click r7 href "https://github.com/qualcomm-linux/upload-private-artifact-action" _blank
+    r8["commit-emails-check-action"]
+    click r8 href "https://github.com/qualcomm/commit-emails-check-action" _blank
     r2 -->|"runs automation from"| r3
     r3 -->|"configures"| r0
     r3 -->|"selects branches from"| r1
     r3 -->|"runs automation from"| r2
     r3 -->|"selects branches from"| r4
-    r3 -->|"runs automation from"| r7
-    r5 -->|"runs automation from"| r6
+    r3 -->|"gets partition tools from"| r5
+    r3 -->|"runs automation from"| r8
+    r6 -->|"runs automation from"| r7
 ```
 
 ## Source packaging
@@ -95,6 +100,34 @@ flowchart LR
     r4 -->|"packages sources from"| r5
 ```
 
+## Images and build tooling relationships
+
+```mermaid
+flowchart LR
+    r0["qcom-build-utils"]
+    click r0 href "https://github.com/qualcomm-linux/qcom-build-utils" _blank
+    r1["qcom-deb-images"]
+    click r1 href "https://github.com/qualcomm-linux/qcom-deb-images" _blank
+    r2["qcom-ptool"]
+    click r2 href "https://github.com/qualcomm-linux/qcom-ptool" _blank
+    r3["rpm-images"]
+    click r3 href "https://github.com/qualcomm-linux/rpm-images" _blank
+    r0 -->|"runs partition tools from"| r2
+    r1 -->|"gets partition tools from"| r2
+    r3 -->|"gets partition tools from"| r2
+```
+
+## Boot and firmware relationships
+
+```mermaid
+flowchart LR
+    r0["qcom-ptool"]
+    click r0 href "https://github.com/qualcomm-linux/qcom-ptool" _blank
+    r1["cbsp-boot-utilities"]
+    click r1 href "https://github.com/qualcomm/cbsp-boot-utilities" _blank
+    r1 -->|"gets partition layouts from"| r0
+```
+
 ## Reference details
 
 <details>
@@ -111,6 +144,7 @@ flowchart LR
 - [qualcomm-linux/snagboot](https://github.com/qualcomm-linux/snagboot) — Generic recovery and reflashing tool for embedded platforms (default branch: `main`).
 - [qualcomm-linux/trusted-firmware-a](https://github.com/qualcomm-linux/trusted-firmware-a) — Qualcomm upstream staging repo for Trusted Firmware-A (default branch: `qcom-next`).
 - [qualcomm-linux/u-boot](https://github.com/qualcomm-linux/u-boot) — "Das U-Boot" Source Tree (default branch: `master`).
+- [qualcomm/cbsp-boot-utilities](https://github.com/qualcomm/cbsp-boot-utilities) — Utilities and applications for Qualcomm boot firmware, including UEFI capsule generation. (default branch: `main`).
 
 ### Images and build tooling
 
@@ -272,6 +306,9 @@ flowchart LR
 - **selects branches from** [kernel-topics](https://github.com/qualcomm-linux/kernel-topics)
   - qcom-next.conf names baseline and topic branches.
   - [qcom-next.conf](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/qcom-next.conf)
+- **gets partition tools from** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+  - Ubuntu build action; clones qcom-ptool and runs ptool to generate flat_meta.
+  - [action.yml](https://github.com/qualcomm-linux/kernel-config/blob/daa2c34f29daa7cb50d0eb3084b70bf552133d2a/.github/actions/build_ubuntu/action.yml)
 - **runs automation from** [commit-emails-check-action](https://github.com/qualcomm/commit-emails-check-action)
   - GitHub Actions integration
   - [email_checker.yml](https://github.com/qualcomm-linux/kernel-config/blob/ca3a00b71520dd58ede87f9c2921b48f95ac0b32/.github/workflows/email_checker.yml)
@@ -349,14 +386,39 @@ flowchart LR
   - Package metadata and source ownership are separate; choose the package branch before editing packaging.
   - [README.md](https://github.com/qualcomm-linux/pkg-urm/blob/f3dd7df55fe9522d5dabd9b00729c54d7076a111/README.md)
 
+### qualcomm-linux/qcom-build-utils
+
+- **runs partition tools from** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+  - Flash directories; gen-flash-dirs.sh runs ptool from a qcom-ptool checkout passed with --ptool-dir.
+  - [gen-flash-dirs.sh](https://github.com/qualcomm-linux/qcom-build-utils/blob/08747f3a77250e9e1c98ea0de5b53dd828f67a80/flash/gen-flash-dirs.sh)
+
+### qualcomm-linux/qcom-deb-images
+
+- **gets partition tools from** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+  - Debian flash images; the flash recipe downloads a pinned qcom-ptool archive and runs its partition generators.
+  - [qualcomm-linux-debian-flash.yaml](https://github.com/qualcomm-linux/qcom-deb-images/blob/80a7ae2689d817ae0cdb20e8e1299150cfee097a/debos-recipes/qualcomm-linux-debian-flash.yaml)
+  - [gen-ptool.sh](https://github.com/qualcomm-linux/qcom-deb-images/blob/80a7ae2689d817ae0cdb20e8e1299150cfee097a/scripts/gen-ptool.sh)
+
+### qualcomm-linux/rpm-images
+
+- **gets partition tools from** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+  - Flash packages; generate_flat_build.sh downloads a pinned qcom-ptool archive and generates each board's partition files.
+  - [generate_flat_build.sh](https://github.com/qualcomm-linux/rpm-images/blob/b316daa734d42828748387acd93af96bed85dfca/scripts/generate_flat_build.sh)
+
 ### qualcomm-linux/ubuntu-qcom-kernel
 
 - **runs automation from** [upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action)
   - GitHub Actions integration
   - [build-kernel.yml](https://github.com/qualcomm-linux/ubuntu-qcom-kernel/blob/a26c66f4e02e0009a19c49368d5557de21c26747/.github/workflows/build-kernel.yml)
 
+### qualcomm/cbsp-boot-utilities
+
+- **gets partition layouts from** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+  - UEFI capsule generation; clones qcom-ptool to read a board's partitions.conf unless --ptool-path names a checkout.
+  - [UpdateFvXml.py](https://github.com/qualcomm/cbsp-boot-utilities/blob/8a0f1deef97beae600910506bfba488976465828/uefi_capsule_generation/src/qcom_capsule_tool/UpdateFvXml.py)
+
 </details>
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: e31bc2e3c37c6daebc112fc3f6c5c0b013d6f10727403fa360cb7b15678ee329. -->
+<!-- Dataset SHA-256: 3bbed606d885d380c3818cdf10372d8f364f871be1f25453e7743c08e09ac059. -->

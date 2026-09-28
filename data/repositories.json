@@ -1012,6 +1012,14 @@
       "group": "Other repositories",
       "branch": null,
       "archived": false
+    },
+    {
+      "id": "qualcomm/cbsp-boot-utilities",
+      "url": "https://github.com/qualcomm/cbsp-boot-utilities",
+      "description": "Utilities and applications for Qualcomm boot firmware, including UEFI capsule generation.",
+      "group": "Boot and firmware",
+      "branch": "main",
+      "archived": false
     }
   ],
   "relationships": [
@@ -1575,6 +1583,81 @@
       "via": [
         "qualcomm-linux/meta-qcom"
       ]
+    },
+    {
+      "from": "qualcomm-linux/qcom-deb-images",
+      "to": "qualcomm-linux/qcom-ptool",
+      "kind": "fetches source from",
+      "condition": "Debian flash images; the flash recipe downloads a pinned qcom-ptool archive and runs its partition generators.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/qcom-deb-images/blob/80a7ae2689d817ae0cdb20e8e1299150cfee097a/debos-recipes/qualcomm-linux-debian-flash.yaml",
+          "claim": "The flash recipe downloads a pinned qcom-ptool archive.",
+          "revision": "80a7ae2689d817ae0cdb20e8e1299150cfee097a"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/qcom-deb-images/blob/80a7ae2689d817ae0cdb20e8e1299150cfee097a/scripts/gen-ptool.sh",
+          "claim": "gen-ptool.sh runs qcom_ptool.gen_partition and qcom_ptool.gen_contents from that tree.",
+          "revision": "80a7ae2689d817ae0cdb20e8e1299150cfee097a"
+        }
+      ],
+      "local_summary": "gets partition tools from"
+    },
+    {
+      "from": "qualcomm-linux/rpm-images",
+      "to": "qualcomm-linux/qcom-ptool",
+      "kind": "fetches source from",
+      "condition": "Flash packages; generate_flat_build.sh downloads a pinned qcom-ptool archive and generates each board's partition files.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/rpm-images/blob/b316daa734d42828748387acd93af96bed85dfca/scripts/generate_flat_build.sh",
+          "claim": "The flat-build script downloads a pinned qcom-ptool archive and runs its partition generator.",
+          "revision": "b316daa734d42828748387acd93af96bed85dfca"
+        }
+      ],
+      "local_summary": "gets partition tools from"
+    },
+    {
+      "from": "qualcomm-linux/kernel-config",
+      "to": "qualcomm-linux/qcom-ptool",
+      "kind": "fetches source from",
+      "condition": "Ubuntu build action; clones qcom-ptool and runs ptool to generate flat_meta.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/kernel-config/blob/daa2c34f29daa7cb50d0eb3084b70bf552133d2a/.github/actions/build_ubuntu/action.yml",
+          "claim": "The build action clones qcom-ptool and runs its ptool subcommand.",
+          "revision": "daa2c34f29daa7cb50d0eb3084b70bf552133d2a"
+        }
+      ],
+      "local_summary": "gets partition tools from"
+    },
+    {
+      "from": "qualcomm-linux/qcom-build-utils",
+      "to": "qualcomm-linux/qcom-ptool",
+      "kind": "builds with",
+      "condition": "Flash directories; gen-flash-dirs.sh runs ptool from a qcom-ptool checkout passed with --ptool-dir.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/qcom-build-utils/blob/08747f3a77250e9e1c98ea0de5b53dd828f67a80/flash/gen-flash-dirs.sh",
+          "claim": "gen-flash-dirs.sh runs ptool from the qcom-ptool checkout given by --ptool-dir.",
+          "revision": "08747f3a77250e9e1c98ea0de5b53dd828f67a80"
+        }
+      ],
+      "local_summary": "runs partition tools from"
+    },
+    {
+      "from": "qualcomm/cbsp-boot-utilities",
+      "to": "qualcomm-linux/qcom-ptool",
+      "kind": "fetches source from",
+      "condition": "UEFI capsule generation; clones qcom-ptool to read a board's partitions.conf unless --ptool-path names a checkout.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm/cbsp-boot-utilities/blob/8a0f1deef97beae600910506bfba488976465828/uefi_capsule_generation/src/qcom_capsule_tool/UpdateFvXml.py",
+          "claim": "UpdateFvXml.py clones qcom-ptool and reads partitions.conf from it.",
+          "revision": "8a0f1deef97beae600910506bfba488976465828"
+        }
+      ],
+      "local_summary": "gets partition layouts from"
     },
     {
       "from": "qualcomm-linux/meta-qcom-3rdparty",
@@ -5153,6 +5236,20 @@
         "recipes-kernel/images/esp-qcom-common.inc",
         "classes/uki-esp-image.bbclass",
         "recipes-bsp/partition/qcom-partition-conf_git.bb"
+      ]
+    },
+    {
+      "repository": "qualcomm-linux/qcom-ptool",
+      "source_repository": "qualcomm-linux/qcom-ptool",
+      "revision": "3388d0096c52aaf30a0c589db880baefc1824017",
+      "paths": [
+        "Makefile",
+        "pyproject.toml",
+        ".github/workflows/build.yml",
+        ".github/workflows/quic-organization-repolinter.yml",
+        "degpt/Cargo.toml",
+        "degpt/Cargo.lock",
+        "README.md"
       ]
     }
   ]
