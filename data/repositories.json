@@ -1068,6 +1068,38 @@
       "group": "Other repositories",
       "branch": "master",
       "archived": false
+    },
+    {
+      "id": "qualcomm/mink-idl-compiler",
+      "url": "https://github.com/qualcomm/mink-idl-compiler",
+      "description": "Compiler for Mink interface definition language (IDL) files.",
+      "group": "Other repositories",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "qualcomm/qmi-framework",
+      "url": "https://github.com/qualcomm/qmi-framework",
+      "description": "QMI Framework messaging library for communication between Linux clients and Qualcomm subsystems.",
+      "group": "Other repositories",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "qualcomm/quic-teec",
+      "url": "https://github.com/qualcomm/quic-teec",
+      "description": "Qualcomm clients for the Linux TEE subsystem.",
+      "group": "Other repositories",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "qualcomm/qca-swiss-army-knife",
+      "url": "https://github.com/qualcomm/qca-swiss-army-knife",
+      "description": "Utilities that help Qualcomm Atheros (QCA) driver development.",
+      "group": "Other repositories",
+      "branch": "master",
+      "archived": false
     }
   ],
   "relationships": [
@@ -5543,6 +5575,93 @@
         {
           "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/.github/actions/lava-test-plans/action.yml",
           "claim": "The action sets this repository as the LAVA test definitions repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/cbsp-boot-utilities",
+      "kind": "fetches source from",
+      "condition": "cbsp-boot-utilities-native recipe in the meta-arm dynamic layer; the recipe pins SRCREV.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/meta-arm/recipes-devtools/cbsp-boot-utilities/cbsp-boot-utilities-native_1.0.bb",
+          "claim": "SRC_URI fetches github.com/quic/cbsp-boot-utilities, which redirects to qualcomm/cbsp-boot-utilities.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/mink-idl-compiler",
+      "kind": "fetches source from",
+      "condition": "mink-idl-compiler recipe in the openembedded-layer dynamic layer; a tagged release is pinned by SRCREV.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-devtools/mink-idl-compiler/mink-idl-compiler_0.2.3.bb",
+          "claim": "SRC_URI fetches github.com/quic/mink-idl-compiler, which redirects to qualcomm/mink-idl-compiler.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/quic-teec",
+      "kind": "fetches source from",
+      "condition": "qcomtee recipe in the openembedded-layer dynamic layer; a tagged release is pinned by SRCREV.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-security/qcomtee/qcomtee_1.0.2.bb",
+          "claim": "SRC_URI fetches github.com/quic/quic-teec, which redirects to qualcomm/quic-teec.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/qmi-framework",
+      "kind": "fetches source from",
+      "condition": "qmi-framework recipe; a tagged release is pinned by SRCREV.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-support/qmi-framework/qmi-framework_0.1.4.bb",
+          "claim": "SRC_URI fetches github.com/quic/qmi-framework, which redirects to qualcomm/qmi-framework.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "qualcomm-linux/qcom-manifest",
+      "kind": "uses automation from",
+      "branches": [
+        "scarthgap",
+        "kirkstone"
+      ],
+      "condition": "scarthgap and kirkstone branches only; the build workflow sets up its CI build from the Qualcomm Linux manifest.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/b411da79d08b3726eeba85df834627008b31fd7c/.github/workflows/build.yml",
+          "claim": "On scarthgap, MANIFEST_URL names github.com/quic-yocto/qcom-manifest, which redirects to qualcomm-linux/qcom-manifest.",
+          "revision": "b411da79d08b3726eeba85df834627008b31fd7c"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/d2f48af6ee98870294be24c16673dde7fa941543/.github/workflows/build.yml",
+          "claim": "On kirkstone, MANIFEST_URL names github.com/quic-yocto/qcom-manifest, which redirects to qualcomm-linux/qcom-manifest.",
+          "revision": "d2f48af6ee98870294be24c16673dde7fa941543"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/qca-swiss-army-knife",
+      "kind": "fetches source from",
+      "condition": "qca-swiss-army-knife recipe; the recipe pins SRCREV.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-devtools/qca-swiss-army-knife/qca-swiss-army-knife_git.bb",
+          "claim": "SRC_URI fetches github.com/qca/qca-swiss-army-knife, which redirects to qualcomm/qca-swiss-army-knife.",
           "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
         }
       ]
