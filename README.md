@@ -2,47 +2,118 @@
 
 Qualcomm repositories: public repositories in Qualcomm's GitHub organisations (qualcomm-linux and qualcomm). Upstream projects, board vendors, and tools are not recorded. The map is not limited to a release or engagement.
 
-**Coverage:** 126 repositories; 19 recorded build/component relationships.
+**Coverage:** 132 repositories; 41 recorded build/component relationships.
 
 Repository inventory is broader than reviewed relationships. An absent edge means no relationship has been recorded, not proof of independence.
 
 Click a repository node to open it. Indirect connections follow the actual path through their provider.
 
-- [Yocto builds and releases](#yocto-builds-and-releases)
+- [Yocto builds and releases (1/2)](#yocto-builds-and-releases-12)
+- [Yocto builds and releases (2/2)](#yocto-builds-and-releases-22)
 - [Kernel integration](#kernel-integration)
 - [Source packaging](#source-packaging)
 
-## Yocto builds and releases
+## Yocto builds and releases (1/2)
 
 ```mermaid
 flowchart LR
-    r0["kernel"]
-    click r0 href "https://github.com/qualcomm-linux/kernel" _blank
-    r1["meta-ai"]
-    click r1 href "https://github.com/qualcomm-linux/meta-ai" _blank
-    r2["meta-qcom"]
-    click r2 href "https://github.com/qualcomm-linux/meta-qcom" _blank
-    r3["meta-qcom-3rdparty"]
-    click r3 href "https://github.com/qualcomm-linux/meta-qcom-3rdparty" _blank
-    r4["meta-qcom-distro"]
-    click r4 href "https://github.com/qualcomm-linux/meta-qcom-distro" _blank
-    r5["meta-qcom-hwe"]
-    click r5 href "https://github.com/qualcomm-linux/meta-qcom-hwe" _blank
-    r6["meta-qcom-releases"]
-    click r6 href "https://github.com/qualcomm-linux/meta-qcom-releases" _blank
-    r7["qcom-ptool"]
-    click r7 href "https://github.com/qualcomm-linux/qcom-ptool" _blank
-    r8["fastrpc"]
-    click r8 href "https://github.com/qualcomm/fastrpc" _blank
-    r2 -->|"fetches Linux kernel sources from"| r0
-    r2 -->|"includes for Qualcomm Linux images"| r1
-    r2 -->|"includes for Qualcomm Linux images"| r4
-    r2 -->|"gets partition tools from"| r7
-    r2 -->|"fetches sources from"| r8
-    r3 -->|"adds third-party board support to"| r2
-    r3 -->|"can use Qualcomm Linux settings from"| r4
-    r3 -->|"builds on (scarthgap, kirkstone)"| r5
-    r6 -->|"pins a release of"| r2
+    r0["TC9564_Host_Driver"]
+    click r0 href "https://github.com/qualcomm-linux/TC9564_Host_Driver" _blank
+    r1["boot-firmware-ci"]
+    click r1 href "https://github.com/qualcomm-linux/boot-firmware-ci" _blank
+    r2["camera-driver"]
+    click r2 href "https://github.com/qualcomm-linux/camera-driver" _blank
+    r3["gbm-msm-backend"]
+    click r3 href "https://github.com/qualcomm-linux/gbm-msm-backend" _blank
+    r4["kernel"]
+    click r4 href "https://github.com/qualcomm-linux/kernel" _blank
+    r5["kgsl"]
+    click r5 href "https://github.com/qualcomm-linux/kgsl" _blank
+    r6["location-hal-qcom"]
+    click r6 href "https://github.com/qualcomm-linux/location-hal-qcom" _blank
+    r7["meta-ai"]
+    click r7 href "https://github.com/qualcomm-linux/meta-ai" _blank
+    r8["meta-qcom"]
+    click r8 href "https://github.com/qualcomm-linux/meta-qcom" _blank
+    r9["meta-qcom-distro"]
+    click r9 href "https://github.com/qualcomm-linux/meta-qcom-distro" _blank
+    r10["optee_os"]
+    click r10 href "https://github.com/qualcomm-linux/optee_os" _blank
+    r11["qcom-dtb-metadata"]
+    click r11 href "https://github.com/qualcomm-linux/qcom-dtb-metadata" _blank
+    r12["qcom-ptool"]
+    click r12 href "https://github.com/qualcomm-linux/qcom-ptool" _blank
+    r13["trusted-firmware-a"]
+    click r13 href "https://github.com/qualcomm-linux/trusted-firmware-a" _blank
+    r14["u-boot"]
+    click r14 href "https://github.com/qualcomm-linux/u-boot" _blank
+    r15["video-driver"]
+    click r15 href "https://github.com/qualcomm-linux/video-driver" _blank
+    r16["abl2esp"]
+    click r16 href "https://github.com/qualcomm/abl2esp" _blank
+    r17["camera-service"]
+    click r17 href "https://github.com/qualcomm/camera-service" _blank
+    r18["fastrpc"]
+    click r18 href "https://github.com/qualcomm/fastrpc" _blank
+    r19["minkipc"]
+    click r19 href "https://github.com/qualcomm/minkipc" _blank
+    r20["qimsdk"]
+    click r20 href "https://github.com/qualcomm/qimsdk" _blank
+    r21["sensinghub"]
+    click r21 href "https://github.com/qualcomm/sensinghub" _blank
+    r22["sigma-dut"]
+    click r22 href "https://github.com/qualcomm/sigma-dut" _blank
+    r23["userspace-resource-manager"]
+    click r23 href "https://github.com/qualcomm/userspace-resource-manager" _blank
+    r8 -->|"fetches sources from"| r0
+    r8 -->|"fetches sources from"| r1
+    r8 -->|"fetches sources from"| r2
+    r8 -->|"fetches sources from"| r3
+    r8 -->|"fetches Linux kernel sources from"| r4
+    r8 -->|"fetches sources from"| r5
+    r8 -->|"fetches sources from"| r6
+    r8 -->|"adds recipes when combined with"| r7
+    r8 -->|"includes for Qualcomm Linux images"| r7
+    r8 -->|"adds recipes when combined with"| r9
+    r8 -->|"includes for Qualcomm Linux images"| r9
+    r8 -->|"fetches sources from"| r10
+    r8 -->|"fetches sources from"| r11
+    r8 -->|"gets partition tools from"| r12
+    r8 -->|"fetches sources from"| r13
+    r8 -->|"fetches sources from"| r14
+    r8 -->|"fetches sources from"| r15
+    r8 -->|"fetches sources from"| r16
+    r8 -->|"fetches sources from"| r17
+    r8 -->|"fetches sources from"| r18
+    r8 -->|"fetches sources from"| r19
+    r8 -->|"fetches sources from"| r20
+    r8 -->|"fetches sources from"| r21
+    r8 -->|"fetches sources from"| r22
+    r8 -->|"fetches sources from"| r23
+```
+
+## Yocto builds and releases (2/2)
+
+```mermaid
+flowchart LR
+    r0["meta-qcom"]
+    click r0 href "https://github.com/qualcomm-linux/meta-qcom" _blank
+    r1["meta-qcom-3rdparty"]
+    click r1 href "https://github.com/qualcomm-linux/meta-qcom-3rdparty" _blank
+    r2["meta-qcom-arduino"]
+    click r2 href "https://github.com/qualcomm-linux/meta-qcom-arduino" _blank
+    r3["meta-qcom-distro"]
+    click r3 href "https://github.com/qualcomm-linux/meta-qcom-distro" _blank
+    r4["meta-qcom-hwe"]
+    click r4 href "https://github.com/qualcomm-linux/meta-qcom-hwe" _blank
+    r5["meta-qcom-releases"]
+    click r5 href "https://github.com/qualcomm-linux/meta-qcom-releases" _blank
+    r1 -->|"adds third-party board support to"| r0
+    r1 -->|"can use Qualcomm Linux settings from"| r3
+    r1 -->|"builds on (scarthgap, kirkstone)"| r4
+    r2 -->|"builds on"| r0
+    r3 -->|"builds on"| r0
+    r5 -->|"pins a release of"| r0
 ```
 
 ## Kernel integration
@@ -111,6 +182,7 @@ flowchart LR
 - [qualcomm-linux/snagboot](https://github.com/qualcomm-linux/snagboot) — Generic recovery and reflashing tool for embedded platforms (default branch: `main`).
 - [qualcomm-linux/trusted-firmware-a](https://github.com/qualcomm-linux/trusted-firmware-a) — Qualcomm upstream staging repo for Trusted Firmware-A (default branch: `qcom-next`).
 - [qualcomm-linux/u-boot](https://github.com/qualcomm-linux/u-boot) — "Das U-Boot" Source Tree (default branch: `master`).
+- [qualcomm/abl2esp](https://github.com/qualcomm/abl2esp) — Minimal Android Bootloader replacement that chainloads bootaa64.efi from the EFI System Partition. (default branch: `main`).
 
 ### Images and build tooling
 
@@ -178,7 +250,12 @@ flowchart LR
 - [qualcomm-linux/upload-private-artifact-action](https://github.com/qualcomm-linux/upload-private-artifact-action) — An action for use in qualcomm-linux projects that need to publish CI artifacts that aren't cleared for public distribution. (default branch: `aws`).
 - [qualcomm-linux/video-driver](https://github.com/qualcomm-linux/video-driver) — Repository purpose needs review; open the repository for its maintained documentation. (default branch: `video.qclinux.main`).
 - [qualcomm-linux/weston-sdm-backend](https://github.com/qualcomm-linux/weston-sdm-backend) — Repository purpose needs review; open the repository for its maintained documentation. (default branch: `main`).
+- [qualcomm/camera-service](https://github.com/qualcomm/camera-service) — Camera service that loads the CamX libraries and offers client APIs to applications. (default branch: `main`).
 - [qualcomm/fastrpc](https://github.com/qualcomm/fastrpc) — FastRPC library and daemons for offloading work to Hexagon DSPs. (default branch: `not inventoried`).
+- [qualcomm/minkipc](https://github.com/qualcomm/minkipc) — Libraries and clients for the Mink-IPC interface. (default branch: `main`).
+- [qualcomm/qimsdk](https://github.com/qualcomm/qimsdk) — Qualcomm IMSDK GStreamer plugins and their base libraries. (default branch: `main`).
+- [qualcomm/sensinghub](https://github.com/qualcomm/sensinghub) — Qualcomm sensing hub library. (default branch: `main`).
+- [qualcomm/sigma-dut](https://github.com/qualcomm/sigma-dut) — Wi-Fi Alliance Sigma DUT and control agent. (default branch: `master`).
 - [qualcomm/userspace-resource-manager](https://github.com/qualcomm/userspace-resource-manager) — Upstream userspace resource manager source packaged by pkg-urm. (default branch: `not inventoried`).
 
 ### Packaging
@@ -278,21 +355,84 @@ flowchart LR
 
 ### qualcomm-linux/meta-qcom
 
+- **fetches sources from** [TC9564_Host_Driver](https://github.com/qualcomm-linux/TC9564_Host_Driver)
+  - qps615-dlkm recipe; recommended by the rb3gen2-core-kit, iq-615-evk, iq-8275-evk, iq-9075-evk, and qcom-armv8a machines.
+  - [qps615-dlkm_git.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-kernel/qps615-module/qps615-dlkm_git.bb)
+- **fetches sources from** [boot-firmware-ci](https://github.com/qualcomm-linux/boot-firmware-ci)
+  - swiv-build-utility recipe, which prepares the U-Boot SPL for signing.
+  - [swiv-build-utility_git.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-devtools/swiv-build-utility/swiv-build-utility_git.bb)
+- **fetches sources from** [camera-driver](https://github.com/qualcomm-linux/camera-driver)
+  - camx-dlkm camera kernel module recipe.
+  - [camx-dlkm_1.0.6.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-multimedia/camx/camx-dlkm_1.0.6.bb)
+- **fetches sources from** [gbm-msm-backend](https://github.com/qualcomm-linux/gbm-msm-backend)
+  - msm-gbm-backend recipe.
+  - [msm-gbm-backend.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-graphics/msm-gbm-backend/msm-gbm-backend.bb)
 - **fetches Linux kernel sources from** [kernel](https://github.com/qualcomm-linux/kernel)
-  - linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.
+  - linux-qcom-next and linux-qcom 6.18 recipes; kernel provider and source revision are configuration-dependent.
   - [linux-qcom-next_git.bb](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-kernel/linux/linux-qcom-next_git.bb)
+  - [linux-qcom_6.18.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-kernel/linux/linux-qcom_6.18.bb)
+- **fetches sources from** [kgsl](https://github.com/qualcomm-linux/kgsl)
+  - kgsl-dlkm kernel graphics module recipe.
+  - [kgsl-dlkm_1.0.14.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-graphics/kgsl-dlkm/kgsl-dlkm_1.0.14.bb)
+- **fetches sources from** [location-hal-qcom](https://github.com/qualcomm-linux/location-hal-qcom)
+  - location-hal recipe; applies only when meta-oe is in the build.
+  - [location-hal_1.0.2.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-navigation/location-client-api/location-hal_1.0.2.bb)
+- **adds recipes when combined with** [meta-ai](https://github.com/qualcomm-linux/meta-ai)
+  - Optional: dynamic-layers/ai recipes apply only when the ai layer collection is present.
+  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/conf/layer.conf)
+  - [layer.conf](https://github.com/qualcomm-linux/meta-ai/blob/1bb956f0cf342857c8aa34486ba23ecdc8c8a968/conf/layer.conf)
 - **includes for Qualcomm Linux images** [meta-ai](https://github.com/qualcomm-linux/meta-ai)
   - Optional qcom-distro kas composition; not required by every BSP-only build.
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
+- **adds recipes when combined with** [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
+  - Optional: dynamic-layers/qcom-distro recipes apply only when the qcom-distro layer collection is present.
+  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/conf/layer.conf)
+  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-distro/blob/270fab495f0fe6175016ca75bcbc98e69314e2ca/conf/layer.conf)
 - **includes for Qualcomm Linux images** [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
   - Optional qcom-distro kas composition; not required by every BSP-only build.
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
+- **fetches sources from** [optee_os](https://github.com/qualcomm-linux/optee_os)
+  - optee-os-qcom recipes; apply only when meta-arm is in the build.
+  - [optee-os-qcom.inc](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/meta-arm/recipes-security/optee/optee-os-qcom.inc)
+- **fetches sources from** [qcom-dtb-metadata](https://github.com/qualcomm-linux/qcom-dtb-metadata)
+  - qcom-dtb-metadata recipe, which dtb-fit-image.bbclass uses for multi-DTB FIT images.
+  - [qcom-dtb-metadata_1.1.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-kernel/linux/qcom-dtb-metadata_1.1.bb)
 - **gets partition tools from** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
   - Partition recipe source; pinned by qcom-ptool.inc.
   - [qcom-ptool.inc](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc)
+- **fetches sources from** [trusted-firmware-a](https://github.com/qualcomm-linux/trusted-firmware-a)
+  - trusted-firmware-a-qcom recipes; apply only when meta-arm is in the build.
+  - [trusted-firmware-a-qcom.inc](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/meta-arm/recipes-bsp/trusted-firmware-a/trusted-firmware-a-qcom.inc)
+- **fetches sources from** [u-boot](https://github.com/qualcomm-linux/u-boot)
+  - u-boot-qcom recipe; used where a machine or kas fragment selects it as the boot loader.
+  - [u-boot-qcom_git.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-bsp/u-boot/u-boot-qcom_git.bb)
+- **fetches sources from** [video-driver](https://github.com/qualcomm-linux/video-driver)
+  - iris-video-dlkm video kernel module recipe.
+  - [iris-video-dlkm_1.0.28.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-kernel/iris-video-module/iris-video-dlkm_1.0.28.bb)
+- **fetches sources from** [abl2esp](https://github.com/qualcomm/abl2esp)
+  - abl2esp recipe; image_types_qcom.bbclass adds it when ABL_SIGNATURE_VERSION is set.
+  - [abl2esp_1.0.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-support/abl2esp/abl2esp_1.0.bb)
+- **fetches sources from** [camera-service](https://github.com/qualcomm/camera-service)
+  - camera-service recipe; applies only when meta-oe is in the build.
+  - [camera-service_1.0.6.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-multimedia/camera-service/camera-service_1.0.6.bb)
 - **fetches sources from** [fastrpc](https://github.com/qualcomm/fastrpc)
   - fastrpc recipe; the tagged release is pinned by SRCREV.
   - [fastrpc_1.0.7.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/fastrpc/fastrpc_1.0.7.bb)
+- **fetches sources from** [minkipc](https://github.com/qualcomm/minkipc)
+  - minkipc recipe; applies only when meta-oe is in the build.
+  - [minkipc_1.2.10.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-security/minkipc/minkipc_1.2.10.bb)
+- **fetches sources from** [qimsdk](https://github.com/qualcomm/qimsdk)
+  - gst-plugins-imsdk recipes; the shared include pins the tag.
+  - [gst-plugins-imsdk-common.inc](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-multimedia/imsdk/gst-plugins-imsdk-common.inc)
+- **fetches sources from** [sensinghub](https://github.com/qualcomm/sensinghub)
+  - sensinghub recipe; applies only when meta-oe is in the build.
+  - [sensinghub_1.0.6.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-support/sensors/sensinghub_1.0.6.bb)
+- **fetches sources from** [sigma-dut](https://github.com/qualcomm/sigma-dut)
+  - sigma-dut recipe.
+  - [sigma-dut_git.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-connectivity/sigma-dut/sigma-dut_git.bb)
+- **fetches sources from** [userspace-resource-manager](https://github.com/qualcomm/userspace-resource-manager)
+  - userspace-resource-manager recipe.
+  - [userspace-resource-manager_0.4.9.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-support/userspace-resource-manager/userspace-resource-manager_0.4.9.bb)
 
 ### qualcomm-linux/meta-qcom-3rdparty
 
@@ -324,6 +464,18 @@ flowchart LR
   - [qcom-qcs6490.inc](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/conf/machine/include/qcom-qcs6490.inc)
   - [packagegroup-qcom.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/packagegroups/packagegroup-qcom.bb)
   - [fastrpc_1.0.7.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/fastrpc/fastrpc_1.0.7.bb)
+
+### qualcomm-linux/meta-qcom-arduino
+
+- **builds on** [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
+  - Required layer collection: LAYERDEPENDS_qcom-arduino includes qcom.
+  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/4e5b0fde276990dfb282fe5efe8b779c9643e4ae/conf/layer.conf)
+
+### qualcomm-linux/meta-qcom-distro
+
+- **builds on** [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
+  - Required layer collection: LAYERDEPENDS_qcom-distro includes qcom.
+  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-distro/blob/270fab495f0fe6175016ca75bcbc98e69314e2ca/conf/layer.conf)
 
 ### qualcomm-linux/meta-qcom-releases
 
@@ -359,4 +511,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: e31bc2e3c37c6daebc112fc3f6c5c0b013d6f10727403fa360cb7b15678ee329. -->
+<!-- Dataset SHA-256: 7d3dfab698b6ee92cd91d184225edb3d5b14ddb75e213d1d2ab26ae09719a6b3. -->
