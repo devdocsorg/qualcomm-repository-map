@@ -1020,6 +1020,54 @@
       "group": "Boot and firmware",
       "branch": "main",
       "archived": false
+    },
+    {
+      "id": "qualcomm/abl2esp",
+      "url": "https://github.com/qualcomm/abl2esp",
+      "description": "Minimal Android Bootloader replacement that chainloads bootaa64.efi from the EFI System Partition.",
+      "group": "Boot and firmware",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "qualcomm/camera-service",
+      "url": "https://github.com/qualcomm/camera-service",
+      "description": "Camera service that loads the CamX libraries and offers client APIs to applications.",
+      "group": "Other repositories",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "qualcomm/minkipc",
+      "url": "https://github.com/qualcomm/minkipc",
+      "description": "Libraries and clients for the Mink-IPC interface.",
+      "group": "Other repositories",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "qualcomm/qimsdk",
+      "url": "https://github.com/qualcomm/qimsdk",
+      "description": "Qualcomm IMSDK GStreamer plugins and their base libraries.",
+      "group": "Other repositories",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "qualcomm/sensinghub",
+      "url": "https://github.com/qualcomm/sensinghub",
+      "description": "Qualcomm sensing hub library.",
+      "group": "Other repositories",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "qualcomm/sigma-dut",
+      "url": "https://github.com/qualcomm/sigma-dut",
+      "description": "Wi-Fi Alliance Sigma DUT and control agent.",
+      "group": "Other repositories",
+      "branch": "master",
+      "archived": false
     }
   ],
   "relationships": [
@@ -1362,12 +1410,17 @@
       "from": "qualcomm-linux/meta-qcom",
       "to": "qualcomm-linux/kernel",
       "kind": "fetches source from",
-      "condition": "linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.",
+      "condition": "linux-qcom-next and linux-qcom 6.18 recipes; kernel provider and source revision are configuration-dependent.",
       "evidence": [
         {
           "url": "https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-kernel/linux/linux-qcom-next_git.bb",
           "claim": "SRC_URI fetches qualcomm-linux/kernel.",
           "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-kernel/linux/linux-qcom_6.18.bb",
+          "claim": "The linux-qcom 6.18 recipe fetches the kernel from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
         }
       ],
       "local_summary": "fetches Linux kernel sources from"
@@ -5169,6 +5222,330 @@
           "revision": "1d8048f3a515eeef3758868566ec847b63065811"
         }
       ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/trusted-firmware-a",
+      "kind": "fetches source from",
+      "condition": "trusted-firmware-a-qcom recipes; apply only when meta-arm is in the build.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/meta-arm/recipes-bsp/trusted-firmware-a/trusted-firmware-a-qcom.inc",
+          "claim": "The include fetches Trusted Firmware-A from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/optee_os",
+      "kind": "fetches source from",
+      "condition": "optee-os-qcom recipes; apply only when meta-arm is in the build.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/meta-arm/recipes-security/optee/optee-os-qcom.inc",
+          "claim": "The include fetches OP-TEE OS from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/camera-service",
+      "kind": "fetches source from",
+      "condition": "camera-service recipe; applies only when meta-oe is in the build.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-multimedia/camera-service/camera-service_1.0.6.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/location-hal-qcom",
+      "kind": "fetches source from",
+      "condition": "location-hal recipe; applies only when meta-oe is in the build.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-navigation/location-client-api/location-hal_1.0.2.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/minkipc",
+      "kind": "fetches source from",
+      "condition": "minkipc recipe; applies only when meta-oe is in the build.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-security/minkipc/minkipc_1.2.10.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/sensinghub",
+      "kind": "fetches source from",
+      "condition": "sensinghub recipe; applies only when meta-oe is in the build.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-support/sensors/sensinghub_1.0.6.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/u-boot",
+      "kind": "fetches source from",
+      "condition": "u-boot-qcom recipe; used where a machine or kas fragment selects it as the boot loader.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-bsp/u-boot/u-boot-qcom_git.bb",
+          "claim": "The recipe fetches U-Boot from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/sigma-dut",
+      "kind": "fetches source from",
+      "condition": "sigma-dut recipe.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-connectivity/sigma-dut/sigma-dut_git.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/boot-firmware-ci",
+      "kind": "fetches source from",
+      "condition": "swiv-build-utility recipe, which prepares the U-Boot SPL for signing.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-devtools/swiv-build-utility/swiv-build-utility_git.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/kgsl",
+      "kind": "fetches source from",
+      "condition": "kgsl-dlkm kernel graphics module recipe.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-graphics/kgsl-dlkm/kgsl-dlkm_1.0.14.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/gbm-msm-backend",
+      "kind": "fetches source from",
+      "condition": "msm-gbm-backend recipe.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-graphics/msm-gbm-backend/msm-gbm-backend.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/video-driver",
+      "kind": "fetches source from",
+      "condition": "iris-video-dlkm video kernel module recipe.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-kernel/iris-video-module/iris-video-dlkm_1.0.28.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/qcom-dtb-metadata",
+      "kind": "fetches source from",
+      "condition": "qcom-dtb-metadata recipe, which dtb-fit-image.bbclass uses for multi-DTB FIT images.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-kernel/linux/qcom-dtb-metadata_1.1.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/TC9564_Host_Driver",
+      "kind": "fetches source from",
+      "condition": "qps615-dlkm recipe; recommended by the rb3gen2-core-kit, iq-615-evk, iq-8275-evk, iq-9075-evk, and qcom-armv8a machines.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-kernel/qps615-module/qps615-dlkm_git.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/camera-driver",
+      "kind": "fetches source from",
+      "condition": "camx-dlkm camera kernel module recipe.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-multimedia/camx/camx-dlkm_1.0.6.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/qimsdk",
+      "kind": "fetches source from",
+      "condition": "gst-plugins-imsdk recipes; the shared include pins the tag.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-multimedia/imsdk/gst-plugins-imsdk-common.inc",
+          "claim": "The include fetches the IMSDK source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/abl2esp",
+      "kind": "fetches source from",
+      "condition": "abl2esp recipe; image_types_qcom.bbclass adds it when ABL_SIGNATURE_VERSION is set.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-support/abl2esp/abl2esp_1.0.bb",
+          "claim": "The recipe fetches its source and prebuilt releases from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm/userspace-resource-manager",
+      "kind": "fetches source from",
+      "condition": "userspace-resource-manager recipe.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-support/userspace-resource-manager/userspace-resource-manager_0.4.9.bb",
+          "claim": "The recipe fetches its source from this repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/meta-ai",
+      "kind": "integrates with",
+      "condition": "Optional: dynamic-layers/ai recipes apply only when the ai layer collection is present.",
+      "local_summary": "adds recipes when combined with",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/conf/layer.conf",
+          "claim": "BBFILES_DYNAMIC adds dynamic-layers/ai recipes for the ai collection.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-ai/blob/1bb956f0cf342857c8aa34486ba23ecdc8c8a968/conf/layer.conf",
+          "claim": "The layer declares the ai collection.",
+          "revision": "1bb956f0cf342857c8aa34486ba23ecdc8c8a968"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/meta-qcom-distro",
+      "kind": "integrates with",
+      "condition": "Optional: dynamic-layers/qcom-distro recipes apply only when the qcom-distro layer collection is present.",
+      "local_summary": "adds recipes when combined with",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/conf/layer.conf",
+          "claim": "BBFILES_DYNAMIC adds dynamic-layers/qcom-distro recipes for the qcom-distro collection.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-distro/blob/270fab495f0fe6175016ca75bcbc98e69314e2ca/conf/layer.conf",
+          "claim": "The layer declares the qcom-distro collection.",
+          "revision": "270fab495f0fe6175016ca75bcbc98e69314e2ca"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-distro",
+      "to": "qualcomm-linux/meta-qcom",
+      "kind": "depends on",
+      "condition": "Required layer collection: LAYERDEPENDS_qcom-distro includes qcom.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-distro/blob/270fab495f0fe6175016ca75bcbc98e69314e2ca/conf/layer.conf",
+          "claim": "LAYERDEPENDS_qcom-distro lists the qcom collection.",
+          "revision": "270fab495f0fe6175016ca75bcbc98e69314e2ca"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-arduino",
+      "to": "qualcomm-linux/meta-qcom",
+      "kind": "depends on",
+      "condition": "Required layer collection: LAYERDEPENDS_qcom-arduino includes qcom.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-arduino/blob/4e5b0fde276990dfb282fe5efe8b779c9643e4ae/conf/layer.conf",
+          "claim": "LAYERDEPENDS_qcom-arduino lists the qcom collection.",
+          "revision": "4e5b0fde276990dfb282fe5efe8b779c9643e4ae"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/lava-test-plans",
+      "kind": "uses automation from",
+      "condition": "GitHub Actions integration",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/.github/actions/lava-test-plans/action.yml",
+          "claim": "The action checks out this repository to generate LAVA test jobs.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom",
+      "to": "qualcomm-linux/qcom-linux-testkit",
+      "kind": "uses automation from",
+      "condition": "GitHub Actions integration",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/.github/actions/lava-test-plans/action.yml",
+          "claim": "The action sets this repository as the LAVA test definitions repository.",
+          "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31"
+        }
+      ]
     }
   ],
   "source_audits": [
@@ -5206,36 +5583,82 @@
     {
       "repository": "qualcomm-linux/meta-qcom",
       "source_repository": "qualcomm-linux/meta-qcom",
-      "revision": "1d8048f3a515eeef3758868566ec847b63065811",
+      "revision": "441a8e00957fd0e550ed62b0fbf2090b3dc24d31",
       "paths": [
+        "ci/base.lock.yml",
         "ci/base.yml",
-        "ci/qcom-distro.yml",
-        "ci/ci.yml",
-        "ci/mirror.yml",
+        "ci/capsule-test-keys.yml",
+        "ci/capsule.yml",
         "ci/ccache.yml",
-        "recipes-kernel/linux/linux-qcom-next_git.bb",
-        "recipes-bsp/partition/qcom-ptool.inc",
-        "conf/machine/include/qcom-qcs6490.inc",
-        "conf/machine/include/qcom-base.inc",
-        "conf/machine/include/qcom-common.inc",
-        "conf/machine/include/qcom-common-binary.inc",
-        "conf/machine/include/qcom-u-boot-common.inc",
-        "recipes-bsp/packagegroups/packagegroup-qcom.bb",
-        "recipes-bsp/packagegroups/packagegroup-machine-essential.bb",
-        "recipes-support/qrtr/qrtr_1.2.bb",
-        "recipes-support/rmtfs/rmtfs_1.3.bb",
-        "recipes-support/tqftpserv/tqftpserv_1.2.bb",
-        "recipes-support/fastrpc/fastrpc_1.0.7.bb",
-        "recipes-bsp/hexagon-dsp-binaries",
-        "recipes-ml/qairt/qairt-sdk_2.50.0.260828.bb",
-        "recipes-bsp/firmware/camxfirmware-kodiak_1.0.7.bb",
-        "recipes-bsp/firmware/firmware-qcom.inc",
-        "recipes-kernel/linux-firmware/linux-firmware_%.bbappend",
-        "classes-recipe/image_types_qcom.bbclass",
-        "recipes-kernel/images/esp-qcom-image.bb",
-        "recipes-kernel/images/esp-qcom-common.inc",
-        "classes/uki-esp-image.bbclass",
-        "recipes-bsp/partition/qcom-partition-conf_git.bb"
+        "ci/ci.yml",
+        "ci/debug.yml",
+        "ci/dpdk.yml",
+        "ci/glymur-crd.yml",
+        "ci/iq-615-evk.yml",
+        "ci/iq-8275-evk.yml",
+        "ci/iq-9075-evk-open-fw-spl.yml",
+        "ci/iq-9075-evk-open-fw.yml",
+        "ci/iq-9075-evk.yml",
+        "ci/iq-x5121-evk.yml",
+        "ci/iq-x7181-evk.yml",
+        "ci/kaanapali-mtp.yml",
+        "ci/kas-container-shell-helper.sh",
+        "ci/kas-shell-helper.sh",
+        "ci/kernel-fit-image.yml",
+        "ci/linux-qcom-6.18.yml",
+        "ci/linux-qcom-next-rt.yml",
+        "ci/linux-qcom-next.yml",
+        "ci/linux-qcom-rt-6.18.yml",
+        "ci/linux-yocto-dev.yml",
+        "ci/meta-arm.yml",
+        "ci/mirror-download-disable.yml",
+        "ci/mirror-download-test.yml",
+        "ci/mirror-tarballs.yml",
+        "ci/mirror.yml",
+        "ci/nospdx.yml",
+        "ci/oe-selftest.sh",
+        "ci/performance.yml",
+        "ci/qcm6490-idp.yml",
+        "ci/qcom-armv7a.yml",
+        "ci/qcom-armv8a.yml",
+        "ci/qcom-distro-catchall.yml",
+        "ci/qcom-distro-kvm.yml",
+        "ci/qcom-distro-multimedia-image.yml",
+        "ci/qcom-distro-selinux.yml",
+        "ci/qcom-distro-sota.yml",
+        "ci/qcom-distro.yml",
+        "ci/qcs615-ride.yml",
+        "ci/qcs6490-rb3gen2-core-kit.yml",
+        "ci/qcs8300-ride-sx.yml",
+        "ci/qcs9100-ride-sx.yml",
+        "ci/qrb2210-rb1-core-kit.yml",
+        "ci/rb1-core-kit.yml",
+        "ci/rb3gen2-core-kit-open-fw.yml",
+        "ci/rb3gen2-core-kit.yml",
+        "ci/schemacheck.py",
+        "ci/sdx75-idp.yml",
+        "ci/shikra-evk.yml",
+        "ci/sm8750-mtp.yml",
+        "ci/test-oe-nogl.yml",
+        "ci/u-boot-qcom.yml",
+        "ci/world.yml",
+        "ci/yocto-buildstats.sh",
+        "ci/yocto-check-layer.sh",
+        "ci/yocto-patchreview.sh",
+        "conf",
+        "classes",
+        "classes-recipe",
+        "dynamic-layers",
+        "recipes-bsp",
+        "recipes-connectivity",
+        "recipes-core",
+        "recipes-devtools",
+        "recipes-graphics",
+        "recipes-kernel",
+        "recipes-ml",
+        "recipes-multimedia",
+        "recipes-support",
+        "recipes-test"
       ]
     },
     {
