@@ -5,6 +5,9 @@ from pathlib import Path
 import re
 import subprocess
 import tempfile
+import urllib.error
+import urllib.request
+from functools import cache
 from urllib.parse import urlsplit
 
 import map_build
@@ -19,6 +22,20 @@ def references(text: str) -> set[str]:
     urls.update(re.findall(r'https?://git\.yoctoproject\.org/[\w.-]+', text))
     urls.update(re.findall(r'^\s*url:\s*[\'\"]?(https?://[^\s\'\"]+)', text, re.M))
     return {url.replace('git://', 'https://').removesuffix('.git').rstrip('/') for url in urls}
+
+
+@cache
+def canonical(url: str) -> str:
+    """Follow a GitHub repository's redirects, so a transferred repository resolves to its current owner."""
+    request = urllib.request.Request(url, method='HEAD', headers={'User-Agent': 'qualcomm-repository-map'})
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            final = response.url
+    except urllib.error.HTTPError as error:
+        if error.code == 404:
+            return url  # Private or deleted repositories cannot be resolved.
+        raise
+    return 'https://github.com/' + '/'.join(urlsplit(final).path.strip('/').split('/')[:2])
 
 
 def check(data: dict, audit: dict, checkout: Path) -> None:
@@ -46,6 +63,8 @@ def check(data: dict, audit: dict, checkout: Path) -> None:
         text = data_bytes.decode(errors='replace')
         allowed = workflow_neighbours if file.startswith('.github/') else neighbours
         for url in references(text):
+            if urlsplit(url).netloc == 'github.com' and urlsplit(url).path.strip('/').split('/')[0] not in map_build.QUALCOMM_ORGS:
+                url = canonical(url)  # A repository transferred into a Qualcomm organisation still counts.
             parts = urlsplit(url)
             if parts.netloc != 'github.com' or parts.path.strip('/').split('/')[0] not in map_build.QUALCOMM_ORGS:
                 continue  # Only Qualcomm repositories belong in the map.

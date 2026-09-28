@@ -2,7 +2,7 @@
 
 Qualcomm repositories: public repositories in Qualcomm's GitHub organisations (qualcomm-linux and qualcomm). Upstream projects, board vendors, and tools are not recorded. The map is not limited to a release or engagement.
 
-**Coverage:** 133 repositories; 46 recorded build/component relationships.
+**Coverage:** 137 repositories; 51 recorded build/component relationships.
 
 Repository inventory is broader than reviewed relationships. An absent edge means no relationship has been recorded, not proof of independence.
 
@@ -55,18 +55,18 @@ flowchart LR
     click r16 href "https://github.com/qualcomm/abl2esp" _blank
     r17["camera-service"]
     click r17 href "https://github.com/qualcomm/camera-service" _blank
-    r18["fastrpc"]
-    click r18 href "https://github.com/qualcomm/fastrpc" _blank
-    r19["minkipc"]
-    click r19 href "https://github.com/qualcomm/minkipc" _blank
-    r20["qimsdk"]
-    click r20 href "https://github.com/qualcomm/qimsdk" _blank
-    r21["sensinghub"]
-    click r21 href "https://github.com/qualcomm/sensinghub" _blank
-    r22["sigma-dut"]
-    click r22 href "https://github.com/qualcomm/sigma-dut" _blank
-    r23["userspace-resource-manager"]
-    click r23 href "https://github.com/qualcomm/userspace-resource-manager" _blank
+    r18["cbsp-boot-utilities"]
+    click r18 href "https://github.com/qualcomm/cbsp-boot-utilities" _blank
+    r19["fastrpc"]
+    click r19 href "https://github.com/qualcomm/fastrpc" _blank
+    r20["mink-idl-compiler"]
+    click r20 href "https://github.com/qualcomm/mink-idl-compiler" _blank
+    r21["minkipc"]
+    click r21 href "https://github.com/qualcomm/minkipc" _blank
+    r22["qca-swiss-army-knife"]
+    click r22 href "https://github.com/qualcomm/qca-swiss-army-knife" _blank
+    r23["qimsdk"]
+    click r23 href "https://github.com/qualcomm/qimsdk" _blank
     r8 -->|"fetches sources from"| r0
     r8 -->|"fetches sources from"| r1
     r8 -->|"fetches sources from"| r2
@@ -110,6 +110,21 @@ flowchart LR
     click r4 href "https://github.com/qualcomm-linux/meta-qcom-hwe" _blank
     r5["meta-qcom-releases"]
     click r5 href "https://github.com/qualcomm-linux/meta-qcom-releases" _blank
+    r6["qmi-framework"]
+    click r6 href "https://github.com/qualcomm/qmi-framework" _blank
+    r7["quic-teec"]
+    click r7 href "https://github.com/qualcomm/quic-teec" _blank
+    r8["sensinghub"]
+    click r8 href "https://github.com/qualcomm/sensinghub" _blank
+    r9["sigma-dut"]
+    click r9 href "https://github.com/qualcomm/sigma-dut" _blank
+    r10["userspace-resource-manager"]
+    click r10 href "https://github.com/qualcomm/userspace-resource-manager" _blank
+    r0 -->|"fetches sources from"| r6
+    r0 -->|"fetches sources from"| r7
+    r0 -->|"fetches sources from"| r8
+    r0 -->|"fetches sources from"| r9
+    r0 -->|"fetches sources from"| r10
     r1 -->|"adds third-party board support to"| r0
     r1 -->|"can use Qualcomm Linux settings from"| r3
     r1 -->|"builds on (scarthgap, kirkstone)"| r4
@@ -286,8 +301,12 @@ flowchart LR
 - [qualcomm-linux/weston-sdm-backend](https://github.com/qualcomm-linux/weston-sdm-backend) — Repository purpose needs review; open the repository for its maintained documentation. (default branch: `main`).
 - [qualcomm/camera-service](https://github.com/qualcomm/camera-service) — Camera service that loads the CamX libraries and offers client APIs to applications. (default branch: `main`).
 - [qualcomm/fastrpc](https://github.com/qualcomm/fastrpc) — FastRPC library and daemons for offloading work to Hexagon DSPs. (default branch: `not inventoried`).
+- [qualcomm/mink-idl-compiler](https://github.com/qualcomm/mink-idl-compiler) — Compiler for Mink interface definition language (IDL) files. (default branch: `main`).
 - [qualcomm/minkipc](https://github.com/qualcomm/minkipc) — Libraries and clients for the Mink-IPC interface. (default branch: `main`).
+- [qualcomm/qca-swiss-army-knife](https://github.com/qualcomm/qca-swiss-army-knife) — Utilities that help Qualcomm Atheros (QCA) driver development. (default branch: `master`).
 - [qualcomm/qimsdk](https://github.com/qualcomm/qimsdk) — Qualcomm IMSDK GStreamer plugins and their base libraries. (default branch: `main`).
+- [qualcomm/qmi-framework](https://github.com/qualcomm/qmi-framework) — QMI Framework messaging library for communication between Linux clients and Qualcomm subsystems. (default branch: `main`).
+- [qualcomm/quic-teec](https://github.com/qualcomm/quic-teec) — Qualcomm clients for the Linux TEE subsystem. (default branch: `main`).
 - [qualcomm/sensinghub](https://github.com/qualcomm/sensinghub) — Qualcomm sensing hub library. (default branch: `main`).
 - [qualcomm/sigma-dut](https://github.com/qualcomm/sigma-dut) — Wi-Fi Alliance Sigma DUT and control agent. (default branch: `master`).
 - [qualcomm/userspace-resource-manager](https://github.com/qualcomm/userspace-resource-manager) — Upstream userspace resource manager source packaged by pkg-urm. (default branch: `not inventoried`).
@@ -452,15 +471,30 @@ flowchart LR
 - **fetches sources from** [camera-service](https://github.com/qualcomm/camera-service)
   - camera-service recipe; applies only when meta-oe is in the build.
   - [camera-service_1.0.6.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-multimedia/camera-service/camera-service_1.0.6.bb)
+- **fetches sources from** [cbsp-boot-utilities](https://github.com/qualcomm/cbsp-boot-utilities)
+  - cbsp-boot-utilities-native recipe in the meta-arm dynamic layer; the recipe pins SRCREV.
+  - [cbsp-boot-utilities-native_1.0.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/meta-arm/recipes-devtools/cbsp-boot-utilities/cbsp-boot-utilities-native_1.0.bb)
 - **fetches sources from** [fastrpc](https://github.com/qualcomm/fastrpc)
   - fastrpc recipe; the tagged release is pinned by SRCREV.
   - [fastrpc_1.0.7.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/fastrpc/fastrpc_1.0.7.bb)
+- **fetches sources from** [mink-idl-compiler](https://github.com/qualcomm/mink-idl-compiler)
+  - mink-idl-compiler recipe in the openembedded-layer dynamic layer; a tagged release is pinned by SRCREV.
+  - [mink-idl-compiler_0.2.3.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-devtools/mink-idl-compiler/mink-idl-compiler_0.2.3.bb)
 - **fetches sources from** [minkipc](https://github.com/qualcomm/minkipc)
   - minkipc recipe; applies only when meta-oe is in the build.
   - [minkipc_1.2.10.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-security/minkipc/minkipc_1.2.10.bb)
+- **fetches sources from** [qca-swiss-army-knife](https://github.com/qualcomm/qca-swiss-army-knife)
+  - qca-swiss-army-knife recipe; the recipe pins SRCREV.
+  - [qca-swiss-army-knife_git.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-devtools/qca-swiss-army-knife/qca-swiss-army-knife_git.bb)
 - **fetches sources from** [qimsdk](https://github.com/qualcomm/qimsdk)
   - gst-plugins-imsdk recipes; the shared include pins the tag.
   - [gst-plugins-imsdk-common.inc](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-multimedia/imsdk/gst-plugins-imsdk-common.inc)
+- **fetches sources from** [qmi-framework](https://github.com/qualcomm/qmi-framework)
+  - qmi-framework recipe; a tagged release is pinned by SRCREV.
+  - [qmi-framework_0.1.4.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/recipes-support/qmi-framework/qmi-framework_0.1.4.bb)
+- **fetches sources from** [quic-teec](https://github.com/qualcomm/quic-teec)
+  - qcomtee recipe in the openembedded-layer dynamic layer; a tagged release is pinned by SRCREV.
+  - [qcomtee_1.0.2.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-security/qcomtee/qcomtee_1.0.2.bb)
 - **fetches sources from** [sensinghub](https://github.com/qualcomm/sensinghub)
   - sensinghub recipe; applies only when meta-oe is in the build.
   - [sensinghub_1.0.6.bb](https://github.com/qualcomm-linux/meta-qcom/blob/441a8e00957fd0e550ed62b0fbf2090b3dc24d31/dynamic-layers/openembedded-layer/recipes-support/sensors/sensinghub_1.0.6.bb)
@@ -573,4 +607,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: 8ede901df27fe323677ab06635982ec55aaa3878b4b230f12173c36569b1e038. -->
+<!-- Dataset SHA-256: c6bebcc3f9e117db9c1425ed67420aebfe28b464ff55d8b95558454228a87a2a. -->
