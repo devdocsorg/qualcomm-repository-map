@@ -32,19 +32,26 @@ def check(data: dict, audit: dict, checkout: Path) -> None:
     if not files:
         raise ValueError(f"No source files found for {audit['repository']}")
     urls = {node['url'].rstrip('/'): node['id'] for node in data['repositories']}
-    neighbours = {edge['to'] for edge in data['relationships'] if edge['from'] == audit['repository'] and edge['kind'] not in map_build.AUTOMATION}
+    outgoing = [edge for edge in data['relationships'] if edge['from'] == audit['repository']]
+    neighbours = {edge['to'] for edge in outgoing if edge['kind'] not in map_build.AUTOMATION}
+    # Workflows may also reference the automation they run.
+    workflow_neighbours = neighbours | {edge['to'] for edge in outgoing}
     found = set()
     for file in files:
         if file.endswith(('.md', '.patch')):
             continue
-        text = subprocess.check_output(['git', 'show', f'{revision}:{file}'], cwd=checkout, text=True)
+        data_bytes = subprocess.check_output(['git', 'show', f'{revision}:{file}'], cwd=checkout)
+        if b'\0' in data_bytes:
+            continue  # Binary files hold no build declarations.
+        text = data_bytes.decode(errors='replace')
+        allowed = workflow_neighbours if file.startswith('.github/') else neighbours
         for url in references(text):
             parts = urlsplit(url)
             if parts.netloc != 'github.com' or parts.path.strip('/').split('/')[0] not in map_build.QUALCOMM_ORGS:
                 continue  # Only Qualcomm repositories belong in the map.
             if urls.get(url) == audit['repository'] or url == f"https://github.com/{audit.get('source_repository', audit['repository'])}":
                 continue
-            if url not in urls or urls[url] not in neighbours:
+            if url not in urls or urls[url] not in allowed:
                 raise ValueError(f"Unmapped repository reference in {audit['repository']}:{file}: {url}")
             found.add(urls[url])
     print(f"Source audit: {audit['repository']}: {len(files)} files, {len(found)} mapped repository references")
