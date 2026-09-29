@@ -5777,7 +5777,10 @@
         "recipes-ml",
         "recipes-multimedia",
         "recipes-support",
-        "recipes-test"
+        "recipes-test",
+        ".github",
+        "lib",
+        "patches"
       ]
     },
     {
