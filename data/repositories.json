@@ -5684,6 +5684,19 @@
     {
       "repository": "qualcomm-linux/meta-qcom-3rdparty",
       "source_repository": "qualcomm-linux/meta-qcom-3rdparty",
+      "revision": "a06d0c7ca08f701093e4373760ea913e61ae59ee",
+      "paths": [
+        "ci",
+        "conf",
+        "recipes-bsp",
+        "recipes-kernel",
+        "dynamic-layers",
+        ".github/workflows"
+      ]
+    },
+    {
+      "repository": "qualcomm-linux/meta-qcom-3rdparty",
+      "source_repository": "qualcomm-linux/meta-qcom-3rdparty",
       "revision": "b411da79d08b3726eeba85df834627008b31fd7c",
       "paths": [
         "conf",
