@@ -127,7 +127,7 @@ flowchart LR
     r0 -->|"fetches sources from"| r10
     r1 -->|"adds third-party board support to"| r0
     r1 -->|"can use Qualcomm Linux settings from"| r3
-    r1 -->|"builds on (scarthgap, kirkstone)"| r4
+    r1 -->|"builds on (scarthgap)"| r4
     r2 -->|"builds on"| r0
     r3 -->|"builds on"| r0
     r5 -->|"pins a release of"| r0
@@ -521,10 +521,9 @@ flowchart LR
 - **can use Qualcomm Linux settings from** [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
   - Optional: the dynamic layer applies only when qcom-distro is present.
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
-- **builds on (scarthgap, kirkstone)** [meta-qcom-hwe](https://github.com/qualcomm-linux/meta-qcom-hwe)
-  - scarthgap and kirkstone branches only (Qualcomm Linux 1.x); required layer collection. main and wrynose do not depend on it.
+- **builds on (scarthgap)** [meta-qcom-hwe](https://github.com/qualcomm-linux/meta-qcom-hwe)
+  - scarthgap branch only (Qualcomm Linux 1.x); required layer collection. main and wrynose do not depend on it. kirkstone also declares it but is not mapped: SECURITY.md accepts patches only for current LTS releases, and Yocto Project 4.0 is end of life.
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/b411da79d08b3726eeba85df834627008b31fd7c/conf/layer.conf)
-  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/d2f48af6ee98870294be24c16673dde7fa941543/conf/layer.conf)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
   - Partition tooling is supplied through meta-qcom; this is an indirect relationship, not an extra layer dependency.
   - [qcom-ptool.inc](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc)
@@ -607,4 +606,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: 3e08766dec124c3a72f891d688eeee291dffe4c160aba66c6c4f7c0f401f8aca. -->
+<!-- Dataset SHA-256: b944028a6ad3556e25636b54bc8580dd041926b861bb698eac4f20261052572d. -->
