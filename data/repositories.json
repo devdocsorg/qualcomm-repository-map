@@ -1670,6 +1670,65 @@
       ]
     },
     {
+      "from": "qualcomm-linux/meta-qcom-distro",
+      "to": "qualcomm-linux/qcom-ptool",
+      "kind": "uses indirectly",
+      "condition": "Distro images; qcom-minimal-image installs the raw-partition udev rules that meta-qcom generates with qcom-ptool.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-distro/blob/bb5ad4ba4143d71bd76326771d533c1361be1279/recipes-products/images/qcom-minimal-image.bb",
+          "claim": "The minimal image installs qcom-raw-partitions-udev-rules.",
+          "revision": "bb5ad4ba4143d71bd76326771d533c1361be1279"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317/recipes-bsp/partition/qcom-raw-partitions-udev-rules_git.bb",
+          "claim": "The udev rules recipe requires qcom-ptool.inc and runs qcom-ptool gen_udev_rules.",
+          "revision": "933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317/recipes-bsp/partition/qcom-ptool.inc",
+          "claim": "SRC_URI fetches qcom-ptool.",
+          "revision": "933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317"
+        }
+      ],
+      "local_summary": "Raw-partition udev rules, supplied through meta-qcom.",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ]
+    },
+    {
+      "from": "qualcomm-linux/meta-qcom-arduino",
+      "to": "qualcomm-linux/qcom-ptool",
+      "kind": "uses indirectly",
+      "condition": "Arduino boards select qcom-ptool partition layouts through meta-qcom's partition recipes.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-arduino/blob/4e5b0fde276990dfb282fe5efe8b779c9643e4ae/conf/machine/uno-q.conf",
+          "claim": "The UNO Q machine selects the qrb2210-unoq/emmc-16GB partition files through QCOM_PARTITION_FILES_SUBDIR.",
+          "revision": "4e5b0fde276990dfb282fe5efe8b779c9643e4ae"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-arduino/blob/4e5b0fde276990dfb282fe5efe8b779c9643e4ae/conf/machine/ventuno-q.conf",
+          "claim": "The VENTUNO Q machine selects the qcs8275-monza/emmc partition files through QCOM_PARTITION_FILES_SUBDIR.",
+          "revision": "4e5b0fde276990dfb282fe5efe8b779c9643e4ae"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317/classes-recipe/image_types_qcom.bbclass",
+          "claim": "The image class deploys the partition files named by QCOM_PARTITION_FILES_SUBDIR from qcom-partition-conf.",
+          "revision": "933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317/recipes-bsp/partition/qcom-ptool.inc",
+          "claim": "SRC_URI fetches qcom-ptool.",
+          "revision": "933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317"
+        }
+      ],
+      "local_summary": "Partition layouts, supplied through meta-qcom.",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ]
+    },
+    {
       "from": "qualcomm-linux/qcom-deb-images",
       "to": "qualcomm-linux/qcom-ptool",
       "kind": "fetches source from",
@@ -5808,6 +5867,34 @@
         "degpt/Cargo.toml",
         "degpt/Cargo.lock",
         "README.md"
+      ]
+    },
+    {
+      "repository": "qualcomm-linux/meta-qcom-distro",
+      "source_repository": "qualcomm-linux/meta-qcom-distro",
+      "revision": "bb5ad4ba4143d71bd76326771d533c1361be1279",
+      "paths": [
+        "recipes-products/images/qcom-minimal-image.bb"
+      ]
+    },
+    {
+      "repository": "qualcomm-linux/meta-qcom",
+      "source_repository": "qualcomm-linux/meta-qcom",
+      "revision": "933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317",
+      "paths": [
+        "classes-recipe/image_types_qcom.bbclass",
+        "recipes-bsp/partition/qcom-partition-conf_git.bb",
+        "recipes-bsp/partition/qcom-ptool.inc",
+        "recipes-bsp/partition/qcom-raw-partitions-udev-rules_git.bb"
+      ]
+    },
+    {
+      "repository": "qualcomm-linux/meta-qcom-arduino",
+      "source_repository": "qualcomm-linux/meta-qcom-arduino",
+      "revision": "4e5b0fde276990dfb282fe5efe8b779c9643e4ae",
+      "paths": [
+        "conf/machine/uno-q.conf",
+        "conf/machine/ventuno-q.conf"
       ]
     }
   ]

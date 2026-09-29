@@ -2,7 +2,7 @@
 
 Qualcomm repositories: public repositories in Qualcomm's GitHub organisations (qualcomm-linux and qualcomm). Upstream projects, board vendors, and tools are not recorded. The map is not limited to a release or engagement.
 
-**Coverage:** 137 repositories; 51 recorded build/component relationships.
+**Coverage:** 137 repositories; 53 recorded build/component relationships.
 
 Repository inventory is broader than reviewed relationships. An absent edge means no relationship has been recorded, not proof of independence.
 
@@ -541,12 +541,23 @@ flowchart LR
 - **builds on** [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
   - Required layer collection: LAYERDEPENDS_qcom-arduino includes qcom.
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/4e5b0fde276990dfb282fe5efe8b779c9643e4ae/conf/layer.conf)
+- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+  - Arduino boards select qcom-ptool partition layouts through meta-qcom's partition recipes.
+  - [uno-q.conf](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/4e5b0fde276990dfb282fe5efe8b779c9643e4ae/conf/machine/uno-q.conf)
+  - [ventuno-q.conf](https://github.com/qualcomm-linux/meta-qcom-arduino/blob/4e5b0fde276990dfb282fe5efe8b779c9643e4ae/conf/machine/ventuno-q.conf)
+  - [image_types_qcom.bbclass](https://github.com/qualcomm-linux/meta-qcom/blob/933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317/classes-recipe/image_types_qcom.bbclass)
+  - [qcom-ptool.inc](https://github.com/qualcomm-linux/meta-qcom/blob/933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317/recipes-bsp/partition/qcom-ptool.inc)
 
 ### qualcomm-linux/meta-qcom-distro
 
 - **builds on** [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
   - Required layer collection: LAYERDEPENDS_qcom-distro includes qcom.
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-distro/blob/270fab495f0fe6175016ca75bcbc98e69314e2ca/conf/layer.conf)
+- **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
+  - Distro images; qcom-minimal-image installs the raw-partition udev rules that meta-qcom generates with qcom-ptool.
+  - [qcom-minimal-image.bb](https://github.com/qualcomm-linux/meta-qcom-distro/blob/bb5ad4ba4143d71bd76326771d533c1361be1279/recipes-products/images/qcom-minimal-image.bb)
+  - [qcom-raw-partitions-udev-rules_git.bb](https://github.com/qualcomm-linux/meta-qcom/blob/933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317/recipes-bsp/partition/qcom-raw-partitions-udev-rules_git.bb)
+  - [qcom-ptool.inc](https://github.com/qualcomm-linux/meta-qcom/blob/933e22351bc5c7a5f1c2b3d7c5d46454c3fc6317/recipes-bsp/partition/qcom-ptool.inc)
 
 ### qualcomm-linux/meta-qcom-releases
 
@@ -607,4 +618,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: 3e08766dec124c3a72f891d688eeee291dffe4c160aba66c6c4f7c0f401f8aca. -->
+<!-- Dataset SHA-256: 6d96a5ee2fb28d45b5bba80c8518f8efb7e5bfe19ab8e3bd6902c43243d5fa91. -->
