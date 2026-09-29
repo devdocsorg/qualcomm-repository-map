@@ -5265,6 +5265,27 @@
       ]
     },
     {
+      "from": "qualcomm-linux/meta-qcom-3rdparty",
+      "to": "qualcomm-linux/meta-qcom-distro",
+      "kind": "uses indirectly",
+      "via": [
+        "qualcomm-linux/meta-qcom"
+      ],
+      "condition": "Optional qcom-distro kas composition: this layer's ci/qcom-distro.yml includes the meta-qcom fragment that adds meta-qcom-distro; not part of BSP-only builds.",
+      "evidence": [
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml",
+          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "claim": "The kas fragment includes ci/qcom-distro.yml from meta-qcom."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/87cec8c808e319afe843ca146c3ec0b90fb0baa8/ci/qcom-distro.yml",
+          "revision": "87cec8c808e319afe843ca146c3ec0b90fb0baa8",
+          "claim": "The distro kas fragment declares qualcomm-linux/meta-qcom-distro."
+        }
+      ]
+    },
+    {
       "from": "qualcomm-linux/meta-qcom",
       "to": "qualcomm/fastrpc",
       "kind": "fetches source from",
@@ -5748,6 +5769,37 @@
       "paths": [
         "conf",
         ".github"
+      ]
+    },
+    {
+      "repository": "qualcomm-linux/meta-qcom-3rdparty",
+      "source_repository": "qualcomm-linux/meta-qcom",
+      "revision": "87cec8c808e319afe843ca146c3ec0b90fb0baa8",
+      "paths": [
+        "ci/base.yml",
+        "ci/ci.yml",
+        "ci/mirror.yml",
+        "ci/qcom-distro.yml",
+        "conf/machine/include/qcom-qcs6490.inc",
+        "conf/machine/include/qcom-base.inc",
+        "conf/machine/include/qcom-common.inc",
+        "conf/machine/include/qcom-common-binary.inc",
+        "conf/machine/include/qcom-u-boot-common.inc",
+        "classes/linux-qcom-dtbbin.bbclass",
+        "classes-recipe/image_types_qcom.bbclass",
+        "recipes-bsp/packagegroups/packagegroup-qcom.bb",
+        "recipes-bsp/packagegroups/packagegroup-machine-essential.bb",
+        "recipes-kernel/linux/linux-qcom-next_git.bb",
+        "recipes-kernel/images/esp-qcom-image.bb",
+        "recipes-bsp/partition/qcom-partition-conf_git.bb",
+        "recipes-bsp/partition/qcom-ptool.inc",
+        "recipes-support/fastrpc/fastrpc_1.0.7.bb",
+        "recipes-support/qrtr/qrtr_1.2.bb",
+        "recipes-support/rmtfs/rmtfs_1.3.bb",
+        "recipes-support/tqftpserv/tqftpserv_1.2.bb",
+        "recipes-bsp/hexagon-dsp-binaries/hexagon-dsp-binaries.inc",
+        "recipes-bsp/firmware/camxfirmware-kodiak_1.0.7.bb",
+        "recipes-ml/qairt/qairt-sdk_2.47.0.260601.bb"
       ]
     },
     {
