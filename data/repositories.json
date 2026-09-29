@@ -1582,22 +1582,16 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "qualcomm-linux/meta-qcom-hwe",
       "kind": "depends on",
-      "condition": "scarthgap and kirkstone branches only (Qualcomm Linux 1.x); required layer collection. main and wrynose do not depend on it.",
+      "condition": "scarthgap branch only (Qualcomm Linux 1.x); required layer collection. main and wrynose do not depend on it. kirkstone also declares it but is not mapped: SECURITY.md accepts patches only for current LTS releases, and Yocto Project 4.0 is end of life.",
       "evidence": [
         {
           "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/b411da79d08b3726eeba85df834627008b31fd7c/conf/layer.conf",
           "claim": "On scarthgap, LAYERDEPENDS_qcom-3rdparty declares core, qcom, and qcom-hwe.",
           "revision": "b411da79d08b3726eeba85df834627008b31fd7c"
-        },
-        {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/d2f48af6ee98870294be24c16673dde7fa941543/conf/layer.conf",
-          "claim": "On kirkstone, LAYERDEPENDS_qcom-3rdparty declares core, qcom, and qcom-hwe.",
-          "revision": "d2f48af6ee98870294be24c16673dde7fa941543"
         }
       ],
       "branches": [
-        "scarthgap",
-        "kirkstone"
+        "scarthgap"
       ]
     },
     {
@@ -5636,20 +5630,14 @@
       "to": "qualcomm-linux/qcom-manifest",
       "kind": "uses automation from",
       "branches": [
-        "scarthgap",
-        "kirkstone"
+        "scarthgap"
       ],
-      "condition": "scarthgap and kirkstone branches only; the build workflow sets up its CI build from the Qualcomm Linux manifest.",
+      "condition": "scarthgap branch only; the build workflow sets up its CI build from the Qualcomm Linux manifest. kirkstone is not mapped: it is outside the SECURITY.md patch policy for current LTS releases.",
       "evidence": [
         {
           "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/b411da79d08b3726eeba85df834627008b31fd7c/.github/workflows/build.yml",
           "claim": "On scarthgap, MANIFEST_URL names github.com/quic-yocto/qcom-manifest, which redirects to qualcomm-linux/qcom-manifest.",
           "revision": "b411da79d08b3726eeba85df834627008b31fd7c"
-        },
-        {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/d2f48af6ee98870294be24c16673dde7fa941543/.github/workflows/build.yml",
-          "claim": "On kirkstone, MANIFEST_URL names github.com/quic-yocto/qcom-manifest, which redirects to qualcomm-linux/qcom-manifest.",
-          "revision": "d2f48af6ee98870294be24c16673dde7fa941543"
         }
       ]
     },
@@ -5698,15 +5686,6 @@
       "repository": "qualcomm-linux/meta-qcom-3rdparty",
       "source_repository": "qualcomm-linux/meta-qcom-3rdparty",
       "revision": "b411da79d08b3726eeba85df834627008b31fd7c",
-      "paths": [
-        "conf",
-        ".github"
-      ]
-    },
-    {
-      "repository": "qualcomm-linux/meta-qcom-3rdparty",
-      "source_repository": "qualcomm-linux/meta-qcom-3rdparty",
-      "revision": "d2f48af6ee98870294be24c16673dde7fa941543",
       "paths": [
         "conf",
         ".github"
