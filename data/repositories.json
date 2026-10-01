@@ -1532,8 +1532,8 @@
       "condition": "GitHub Actions integration",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/bitbake-lint.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/.github/workflows/bitbake-lint.yml",
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
           "claim": "The uses field calls automation from qualcomm-linux/bitbake-lint-action."
         }
       ]
@@ -1545,8 +1545,8 @@
       "condition": "GitHub Actions integration",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/.github/workflows/test-distro.yml",
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
           "claim": "The uses field calls automation from qualcomm-linux/github-action-matrix-outputs-read."
         }
       ]
@@ -1558,8 +1558,8 @@
       "condition": "GitHub Actions integration",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/.github/workflows/test-distro.yml",
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
           "claim": "The uses field calls automation from qualcomm-linux/github-action-matrix-outputs-write."
         }
       ]
@@ -1568,12 +1568,12 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "qualcomm-linux/meta-qcom",
       "kind": "depends on",
-      "condition": "wrynose-compatible main snapshot 8927b428bcae; required layer collection.",
+      "condition": "Required layer collection: LAYERDEPENDS_qcom-3rdparty includes qcom.",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/layer.conf",
           "claim": "LAYERDEPENDS_qcom-3rdparty declares core and qcom.",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac"
         }
       ],
       "local_summary": "adds third-party board support to"
@@ -1601,28 +1601,13 @@
       "condition": "GitHub Actions integration",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/.github/workflows/build-yocto.yml",
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
           "claim": "The uses field calls automation from qualcomm-linux/meta-qcom."
         },
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/build-yocto.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
-          "claim": "The uses field calls automation from qualcomm-linux/meta-qcom."
-        },
-        {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
-          "claim": "The uses field calls automation from qualcomm-linux/meta-qcom."
-        },
-        {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
-          "claim": "The uses field calls automation from qualcomm-linux/meta-qcom."
-        },
-        {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/test-distro.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/.github/workflows/test-distro.yml",
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
           "claim": "The uses field calls automation from qualcomm-linux/meta-qcom."
         }
       ]
@@ -1634,9 +1619,9 @@
       "condition": "Optional: the dynamic layer applies only when qcom-distro is present.",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/layer.conf",
           "claim": "BBFILES_DYNAMIC selects qcom-distro-specific appends.",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac"
         }
       ],
       "local_summary": "can use Qualcomm Linux settings from"
@@ -1653,9 +1638,9 @@
           "revision": "c6729710f055e1c0337c830030ab25eef7f293a5"
         },
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/rubikpi3.conf",
           "claim": "The board selects partition assets through QCOM_PARTITION_FILES_SUBDIR.",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac"
         }
       ],
       "local_summary": "Partition tools, supplied through meta-qcom.",
@@ -1804,8 +1789,8 @@
       "condition": "GitHub Actions integration",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/.github/workflows/qcom-preflight-checks.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/.github/workflows/qcom-preflight-checks.yml",
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
           "claim": "The uses field calls automation from qualcomm/qcom-reusable-workflows."
         }
       ]
@@ -5232,8 +5217,8 @@
       "condition": "linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/rubikpi3.conf",
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5253,8 +5238,8 @@
       "condition": "Optional qcom-distro kas composition; not required by every BSP-only build.",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/ci/qcom-distro.yml",
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
           "claim": "This repository selects the parent build configuration or kernel provider."
         },
         {
@@ -5274,8 +5259,8 @@
       "condition": "Optional qcom-distro kas composition: this layer's ci/qcom-distro.yml includes the meta-qcom fragment that adds meta-qcom-distro; not part of BSP-only builds.",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/ci/qcom-distro.yml",
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
           "claim": "The kas fragment includes ci/qcom-distro.yml from meta-qcom."
         },
         {
@@ -5308,9 +5293,9 @@
       "condition": "Both machines: the QCS6490 SoC include they require recommends packagegroup-qcom-boot-additional, which adds fastrpc on aarch64.",
       "evidence": [
         {
-          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf",
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/rubikpi3.conf",
           "claim": "The machine requires conf/machine/include/qcom-qcs6490.inc.",
-          "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c"
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac"
         },
         {
           "url": "https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/conf/machine/include/qcom-qcs6490.inc",
@@ -5739,7 +5724,7 @@
     {
       "repository": "qualcomm-linux/meta-qcom-3rdparty",
       "source_repository": "qualcomm-linux/meta-qcom-3rdparty",
-      "revision": "8927b428bcaea0c47186beeb9d9446061c785e9c",
+      "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
       "paths": [
         "ci",
         "conf",
@@ -5774,10 +5759,11 @@
     {
       "repository": "qualcomm-linux/meta-qcom-3rdparty",
       "source_repository": "qualcomm-linux/meta-qcom",
-      "revision": "87cec8c808e319afe843ca146c3ec0b90fb0baa8",
+      "revision": "3d1d6bff6040fa9abb32838f188094949ad59139",
       "paths": [
         "ci/base.yml",
         "ci/ci.yml",
+        "ci/ccache.yml",
         "ci/mirror.yml",
         "ci/qcom-distro.yml",
         "conf/machine/include/qcom-qcs6490.inc",
@@ -5798,8 +5784,9 @@
         "recipes-support/rmtfs/rmtfs_1.3.bb",
         "recipes-support/tqftpserv/tqftpserv_1.2.bb",
         "recipes-bsp/hexagon-dsp-binaries/hexagon-dsp-binaries.inc",
+        "recipes-bsp/hexagon-dsp-binaries/hexagon-dsp-binaries_20260916.bb",
         "recipes-bsp/firmware/camxfirmware-kodiak_1.0.7.bb",
-        "recipes-ml/qairt/qairt-sdk_2.47.0.260601.bb"
+        "recipes-ml/qairt/qairt-sdk_2.50.0.260828.bb"
       ]
     },
     {

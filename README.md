@@ -509,21 +509,21 @@ flowchart LR
 
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [kernel](https://github.com/qualcomm-linux/kernel)
   - linux-qcom-next recipe; kernel provider and source revision are configuration-dependent.
-  - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
+  - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/rubikpi3.conf)
   - [linux-qcom-next_git.bb](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-kernel/linux/linux-qcom-next_git.bb)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-ai](https://github.com/qualcomm-linux/meta-ai)
   - Optional qcom-distro kas composition; not required by every BSP-only build.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml)
+  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/ci/qcom-distro.yml)
 - **adds third-party board support to** [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)
-  - wrynose-compatible main snapshot 8927b428bcae; required layer collection.
-  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
+  - Required layer collection: LAYERDEPENDS_qcom-3rdparty includes qcom.
+  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/layer.conf)
 - **can use Qualcomm Linux settings from** [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
   - Optional: the dynamic layer applies only when qcom-distro is present.
-  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/layer.conf)
+  - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/layer.conf)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [meta-qcom-distro](https://github.com/qualcomm-linux/meta-qcom-distro)
   - Optional qcom-distro kas composition: this layer's ci/qcom-distro.yml includes the meta-qcom fragment that adds meta-qcom-distro; not part of BSP-only builds.
-  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/ci/qcom-distro.yml)
+  - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/ci/qcom-distro.yml)
   - [qcom-distro.yml](https://github.com/qualcomm-linux/meta-qcom/blob/87cec8c808e319afe843ca146c3ec0b90fb0baa8/ci/qcom-distro.yml)
 - **builds on (scarthgap)** [meta-qcom-hwe](https://github.com/qualcomm-linux/meta-qcom-hwe)
   - scarthgap branch only (Qualcomm Linux 1.x); required layer collection. main and wrynose do not depend on it. kirkstone also declares it but is not mapped: SECURITY.md accepts patches only for current LTS releases, and Yocto Project 4.0 is end of life.
@@ -531,10 +531,10 @@ flowchart LR
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
   - Partition tooling is supplied through meta-qcom; this is an indirect relationship, not an extra layer dependency.
   - [qcom-ptool.inc](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc)
-  - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
+  - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/rubikpi3.conf)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [fastrpc](https://github.com/qualcomm/fastrpc)
   - Both machines: the QCS6490 SoC include they require recommends packagegroup-qcom-boot-additional, which adds fastrpc on aarch64.
-  - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/8927b428bcaea0c47186beeb9d9446061c785e9c/conf/machine/rubikpi3.conf)
+  - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/rubikpi3.conf)
   - [qcom-qcs6490.inc](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/conf/machine/include/qcom-qcs6490.inc)
   - [packagegroup-qcom.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-bsp/packagegroups/packagegroup-qcom.bb)
   - [fastrpc_1.0.7.bb](https://github.com/qualcomm-linux/meta-qcom/blob/1d8048f3a515eeef3758868566ec847b63065811/recipes-support/fastrpc/fastrpc_1.0.7.bb)
@@ -621,4 +621,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: aab8b6a697f8d17a248bf3c1b443e432b6a213d357325925c07ac5a2e312b88d. -->
+<!-- Dataset SHA-256: 89d115013900f5bb4764c76f3bebe5210532d8167c721fbc280043351dda086a. -->
