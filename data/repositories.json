@@ -1,5 +1,11 @@
 {
   "schema_version": 1,
+  "name": "Qualcomm",
+  "organisations": [
+    "qualcomm-linux",
+    "qualcomm"
+  ],
+  "map_repository": "devdocsorg/qualcomm-repository-map",
   "scope": "Qualcomm repositories: public repositories in Qualcomm's GitHub organisations (qualcomm-linux and qualcomm). Upstream projects, board vendors, and tools are not recorded. The map is not limited to a release or engagement.",
   "inventory_source": "https://api.github.com/orgs/qualcomm-linux/repos?per_page=100",
   "inventory_observed": "2026-09-15",
