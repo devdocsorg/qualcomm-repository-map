@@ -27,7 +27,7 @@ def references(text: str) -> set[str]:
 @cache
 def canonical(url: str) -> str:
     """Follow a GitHub repository's redirects, so a transferred repository resolves to its current owner."""
-    request = urllib.request.Request(url, method='HEAD', headers={'User-Agent': 'qualcomm-repository-map'})
+    request = urllib.request.Request(url, method='HEAD', headers={'User-Agent': 'repository-map-source-audit'})
     try:
         with urllib.request.urlopen(request, timeout=30) as response:
             final = response.url
@@ -39,7 +39,15 @@ def canonical(url: str) -> str:
 
 
 def check(data: dict, audit: dict, checkout: Path) -> None:
-    """Fail when a repository referenced by the reviewed source is absent from its map."""
+    """Fail when a repository referenced by the reviewed source is absent from its map.
+
+    Only references to repositories owned by the dataset's ``organisations`` count;
+    a reference elsewhere on GitHub is first resolved through its redirects, so a
+    repository transferred into one of those organisations still counts. Binary
+    files are skipped. Files under ``.github/`` may also reference the automation
+    the audited repository runs.
+    """
+    organisations = set(data['organisations'])
     revision = audit['revision']
     for path in audit['paths']:
         present = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', revision, '--', path], cwd=checkout, text=True)
@@ -63,11 +71,11 @@ def check(data: dict, audit: dict, checkout: Path) -> None:
         text = data_bytes.decode(errors='replace')
         allowed = workflow_neighbours if file.startswith('.github/') else neighbours
         for url in references(text):
-            if urlsplit(url).netloc == 'github.com' and urlsplit(url).path.strip('/').split('/')[0] not in map_build.QUALCOMM_ORGS:
-                url = canonical(url)  # A repository transferred into a Qualcomm organisation still counts.
+            if urlsplit(url).netloc == 'github.com' and urlsplit(url).path.strip('/').split('/')[0] not in organisations:
+                url = canonical(url)  # A repository transferred into a map organisation still counts.
             parts = urlsplit(url)
-            if parts.netloc != 'github.com' or parts.path.strip('/').split('/')[0] not in map_build.QUALCOMM_ORGS:
-                continue  # Only Qualcomm repositories belong in the map.
+            if parts.netloc != 'github.com' or parts.path.strip('/').split('/')[0] not in organisations:
+                continue  # Only the map organisations' repositories belong in the map.
             if urls.get(url) == audit['repository'] or url == f"https://github.com/{audit.get('source_repository', audit['repository'])}":
                 continue
             if url not in urls or urls[url] not in allowed:

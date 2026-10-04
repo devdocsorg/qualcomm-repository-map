@@ -1,7 +1,9 @@
-"""Generate the full Qualcomm README map and export nearby README blocks.
+"""Generate the full README map and export nearby README blocks.
 
-The JSON dataset owns repository facts. Mermaid README blocks are derived output.
-Map generation is independent of Sphinx and produces no website pages.
+The JSON dataset owns repository facts and the map's identity: its name, the
+GitHub organisations whose repositories it records, and the map repository.
+Mermaid README blocks are derived output. Map generation is independent of
+Sphinx and produces no website pages.
 """
 from __future__ import annotations
 
@@ -15,7 +17,6 @@ from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/repositories.json"
-CENTRAL = "https://github.com/devdocsorg/qualcomm-repository-map"
 START = "<!-- repository-map:start -->"
 END = "<!-- repository-map:end -->"
 KINDS = {"depends on", "integrates with", "fetches source from", "uses indirectly",
@@ -23,8 +24,8 @@ KINDS = {"depends on", "integrates with", "fetches source from", "uses indirectl
          "selects branches from", "packages", "runs workflow from", "uses automation from"}
 AUTOMATION = {'uses automation from', 'runs workflow from'}
 MAX_MAP_NODES = 24
-# The map records repositories owned by Qualcomm's GitHub organisations only.
-QUALCOMM_ORGS = {'qualcomm-linux', 'qualcomm'}
+# GitHub organisation names: alphanumeric words joined by single hyphens.
+ORGANISATION = re.compile(r'[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*')
 LABELS = {'depends on': 'builds on', 'integrates with': 'can combine with',
           'fetches source from': 'fetches sources from', 'builds with': 'builds with',
           'selects for distro': 'includes in Linux images', 'pins release of': 'pins a release of',
@@ -51,15 +52,84 @@ def connection_label(edge: dict) -> str:
 def slug(identifier: str) -> str:
     """Return a filesystem-safe name for an owner/repository identifier.
 
-    :param identifier: Repository identifier, such as ``qualcomm-linux/meta-qcom``.
+    :param identifier: Repository identifier, such as ``example-org/example-layer``.
     :returns: Identifier with the slash replaced by two hyphens.
     :raises ValueError: If the identifier contains unsupported characters.
 
-    Example: ``slug('qualcomm-linux/meta-qcom')`` returns ``'qualcomm-linux--meta-qcom'``.
+    Example: ``slug('example-org/example-layer')`` returns ``'example-org--example-layer'``.
     """
     if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", identifier):
         raise ValueError(f"Invalid repository identifier: {identifier}")
     return identifier.replace("/", "--")
+
+
+def map_url(data: dict) -> str:
+    """Return the URL of the map repository recorded in a dataset.
+
+    :param data: Dataset with a ``map_repository`` field.
+    :returns: The map repository's GitHub URL, used for central links.
+
+    Example: ``map_url({'map_repository': 'example-org/repository-map'})`` returns
+    ``'https://github.com/example-org/repository-map'``.
+    """
+    return f"https://github.com/{data['map_repository']}"
+
+
+def validate_header(data: dict) -> None:
+    """Check the dataset's identity, scope, and inventory fields.
+
+    :param data: Parsed dataset.
+    :raises ValueError: For a missing name, an invalid organisation list or map
+        repository, or inventory fields that do not cover the organisations.
+
+    ``inventory_source`` and ``inventory_observed`` are either one string each,
+    for a map inventoried from a single listing, or objects with one entry per
+    organisation.
+    """
+    if data.get("schema_version") != 1:
+        raise ValueError("Unsupported dataset schema version")
+    for field in ("name", "scope", "coverage"):
+        if not isinstance(data.get(field), str) or not data[field].strip():
+            raise ValueError(f"Missing dataset {field}")
+    organisations = data.get("organisations")
+    if (not isinstance(organisations, list) or not organisations
+            or len(set(organisations)) != len(organisations)
+            or not all(isinstance(o, str) and ORGANISATION.fullmatch(o) for o in organisations)):
+        raise ValueError("organisations must be a non-empty list of unique GitHub organisation names")
+    if not isinstance(data.get("map_repository"), str):
+        raise ValueError("Missing map_repository")
+    slug(data["map_repository"])
+    for field in ("inventory_source", "inventory_observed"):
+        value = data.get(field)
+        values = list(value.values()) if isinstance(value, dict) else [value]
+        if isinstance(value, dict) and set(value) != set(organisations):
+            raise ValueError(f"{field} needs exactly one entry per organisation")
+        if not all(isinstance(v, str) and v for v in values):
+            raise ValueError(f"Missing {field}")
+        if field == "inventory_observed" and not all(re.fullmatch(r"\d{4}-\d{2}-\d{2}", v) for v in values):
+            raise ValueError("inventory_observed dates use the YYYY-MM-DD form")
+    for field in ("repositories", "relationships", "source_audits"):
+        if not isinstance(data.get(field), list):
+            raise ValueError(f"{field} must be a list")
+
+
+def validate_source_audits(data: dict) -> None:
+    """Check that every source audit names a mapped repository and pinned paths.
+
+    :param data: Dataset whose repositories have been validated.
+    :raises ValueError: For an unmapped repository, an invalid source repository,
+        an unpinned revision, or a missing or empty path list.
+    """
+    ids = {node["id"] for node in data["repositories"]}
+    for audit in data["source_audits"]:
+        if not isinstance(audit, dict) or audit.get("repository") not in ids:
+            raise ValueError(f"Source audit for an unmapped repository: {audit}")
+        slug(audit.get("source_repository") or "")
+        if not re.fullmatch(r"[0-9a-f]{40}", str(audit.get("revision"))):
+            raise ValueError(f"Source audit must pin a commit: {audit['repository']}")
+        paths = audit.get("paths")
+        if not isinstance(paths, list) or not paths or not all(isinstance(p, str) and p for p in paths):
+            raise ValueError(f"Source audit needs a non-empty list of paths: {audit['repository']}")
 
 
 def load_data(path: Path) -> dict:
@@ -67,21 +137,22 @@ def load_data(path: Path) -> dict:
 
     :param path: JSON dataset path.
     :returns: Parsed dataset with valid unique repositories and evidenced edges.
-    :raises ValueError: For invalid IDs, duplicate edges, or missing evidence.
+    :raises ValueError: For an invalid header, IDs outside the dataset's
+        organisations, duplicate edges, missing evidence, or malformed audits.
     :raises OSError: If the dataset cannot be read.
 
     Example: ``load_data(DATA)['schema_version']`` returns ``1``.
     """
     data = json.loads(path.read_text())
-    if data.get("schema_version") != 1:
-        raise ValueError("Unsupported dataset schema version")
+    validate_header(data)
+    organisations = set(data["organisations"])
     ids, default_branch = set(), {}
     for node in data["repositories"]:
         slug(node["id"])
         if node["id"] in ids or not node["url"].startswith("https://"):
             raise ValueError(f"Duplicate repository or invalid URL: {node['id']}")
-        if node["id"].split("/")[0] not in QUALCOMM_ORGS:
-            raise ValueError(f"Only Qualcomm repositories belong in the map: {node['id']}")
+        if node["id"].split("/")[0] not in organisations:
+            raise ValueError(f"Only repositories owned by the map's organisations belong in the map: {node['id']}")
         if not node["description"] or not node["group"]:
             raise ValueError(f"Missing repository description/group: {node['id']}")
         ids.add(node["id"])
@@ -108,6 +179,7 @@ def load_data(path: Path) -> dict:
                 raise ValueError(f"Invalid evidence URL or claim: {key}")
         seen.add(key)
     relationship_paths(data)
+    validate_source_audits(data)
     return data
 
 
@@ -215,7 +287,15 @@ def validate_local_view(data: dict, focus: str, markdown: str) -> None:
 
 
 def render_local_view(data: dict, focus: str, digest: str, revision: str) -> str:
-    """Export every incident build/component connection with its verified path."""
+    """Export every incident build/component connection with its verified path.
+
+    :param data: Validated dataset.
+    :param focus: Repository whose nearby map is exported.
+    :param digest: SHA-256 of the dataset file, recorded in the provenance comment.
+    :param revision: Map repository commit the export is generated from.
+    :returns: Nearby map Markdown, linking the full map and recording its source.
+    :raises KeyError: If the focus repository is not in the dataset.
+    """
     nodes = {node['id']: node for node in data['repositories']}
     if focus not in nodes:
         raise KeyError(focus)
@@ -239,8 +319,8 @@ def render_local_view(data: dict, focus: str, digest: str, revision: str) -> str
         result += diagram(selected_nodes, connections, focus)
     if not paths:
         result += '\nBuild/component connections have not been reviewed for this repository.\n'
-    result += f'\n[Full Qualcomm repository map]({CENTRAL}).\n'
-    result += f'\n<!-- Generated from {CENTRAL} at {revision}; dataset SHA-256: {digest}. -->\n'
+    result += f"\n[Full {data['name']} repository map]({map_url(data)}).\n"
+    result += f'\n<!-- Generated from {map_url(data)} at {revision}; dataset SHA-256: {digest}. -->\n'
     validate_local_view(data, focus, result)
     return result
 
@@ -334,11 +414,16 @@ def cluster_maps(data: dict) -> list[tuple[str, list[dict], list[dict]]]:
     return maps
 
 
-def build(data: dict, digest: str) -> None:
-    """Generate component maps and their evidence, retaining the complete inventory.
+def render_overview(data: dict, digest: str) -> str:
+    """Render the full README map: component maps, inventory, and evidence.
+
+    :param data: Validated dataset; its ``name`` titles the map.
+    :param digest: SHA-256 of the dataset file, recorded in a source comment.
+    :returns: The README Markdown.
 
     Indirect records follow existing paths. Standalone automation diagrams and
     their relationship text are omitted; mixed component diagrams retain context.
+    An empty dataset renders a README that says nothing is recorded yet.
     """
     nodes = sorted(data['repositories'], key=lambda node: node['id'])
     maps = cluster_maps(data)
@@ -347,44 +432,65 @@ def build(data: dict, digest: str) -> None:
                     or (edge['from'], edge['to'], edge['kind']) in displayed),
                    key=lambda edge: (edge['from'], edge['to'], edge['kind']))
     components = sum(edge['kind'] not in AUTOMATION for edge in edges)
-    overview = '# Qualcomm repository map\n\n' + data['scope'] + '\n\n'
+    overview = f"# {data['name']} repository map\n\n" + data['scope'] + '\n\n'
     overview += f"**Coverage:** {len(nodes)} repositories; {components} recorded build/component relationships.\n\n{data['coverage']}\n\n"
-    overview += 'Click a repository node to open it. Indirect connections follow the actual path through their provider.\n\n'
+    if not data['relationships']:
+        overview += 'No relationships are recorded yet.\n'
+    elif not maps:
+        overview += 'No build/component relationships are recorded yet.\n'
+    else:
+        overview += 'Click a repository node to open it. Indirect connections follow the actual path through their provider.\n\n'
     for title, _, _ in maps:
         anchor = re.sub(r'[^a-z0-9 -]', '', title.lower()).replace(' ', '-')
         overview += f'- [{title}](#{anchor})\n'
     for title, selected, connections in maps:
         overview += f'\n## {title}\n\n' + diagram(selected, connections)
     overview += '\n## Reference details\n'
-    overview += '\n<details>\n<summary>Repository inventory</summary>\n\n'
-    for group in sorted({node['group'] for node in nodes}):
-        overview += f'### {group}\n\n'
-        for node in nodes:
-            if node['group'] == group:
-                status = '; archived' if node['archived'] else ''
-                branch = node['branch'] or 'not inventoried'
-                description = re.sub(r'https?://[^\s)]+', r'<\g<0>>', node['description'])
-                overview += f"- [{node['id']}]({node['url']}) — {description} (default branch: `{branch}`{status}).\n"
-        overview += '\n'
-    overview += '</details>\n\n<details>\n<summary>Relationship applicability and sources</summary>\n\n'
-    for focus in sorted({edge['from'] for edge in edges}):
-        overview += f'### {focus}\n\n'
-        for edge in edges:
-            if edge['from'] != focus:
-                continue
-            target = next(node for node in nodes if node['id'] == edge['to'])
-            if edge['kind'] == 'uses indirectly':
-                relation = 'through ' + ' → '.join(f"[{identifier.split('/')[-1]}]({next(n['url'] for n in nodes if n['id'] == identifier)})" for identifier in edge['via'])
-            else:
-                relation = connection_label(edge)
-            overview += f"- **{relation}** [{edge['to'].split('/')[-1]}]({target['url']})\n  - {edge['condition']}\n"
-            for proof in edge['evidence']:
-                filename = Path(unquote(urlsplit(proof['url']).path)).name
-                overview += f"  - [{filename}]({proof['url']})\n"
-        overview += '\n'
-    overview += '</details>\n\n[Map data and updates](data/README.md).\n'
+    if not nodes:
+        overview += '\nNo repositories are inventoried yet.\n'
+    else:
+        overview += '\n<details>\n<summary>Repository inventory</summary>\n\n'
+        for group in sorted({node['group'] for node in nodes}):
+            overview += f'### {group}\n\n'
+            for node in nodes:
+                if node['group'] == group:
+                    status = '; archived' if node['archived'] else ''
+                    branch = node['branch'] or 'not inventoried'
+                    description = re.sub(r'https?://[^\s)]+', r'<\g<0>>', node['description'])
+                    overview += f"- [{node['id']}]({node['url']}) — {description} (default branch: `{branch}`{status}).\n"
+            overview += '\n'
+        overview += '</details>\n'
+    if edges:
+        overview += '\n<details>\n<summary>Relationship applicability and sources</summary>\n\n'
+        for focus in sorted({edge['from'] for edge in edges}):
+            overview += f'### {focus}\n\n'
+            for edge in edges:
+                if edge['from'] != focus:
+                    continue
+                target = next(node for node in nodes if node['id'] == edge['to'])
+                if edge['kind'] == 'uses indirectly':
+                    relation = 'through ' + ' → '.join(f"[{identifier.split('/')[-1]}]({next(n['url'] for n in nodes if n['id'] == identifier)})" for identifier in edge['via'])
+                else:
+                    relation = connection_label(edge)
+                overview += f"- **{relation}** [{edge['to'].split('/')[-1]}]({target['url']})\n  - {edge['condition']}\n"
+                for proof in edge['evidence']:
+                    filename = Path(unquote(urlsplit(proof['url']).path)).name
+                    overview += f"  - [{filename}]({proof['url']})\n"
+            overview += '\n'
+        overview += '</details>\n'
+    overview += '\n[Map data and updates](data/README.md).\n'
     overview += f'\n<!-- Dataset SHA-256: {digest}. -->\n'
-    (ROOT/'README.md').write_text(overview)
+    return overview
+
+
+def build(data: dict, digest: str, readme: Path = ROOT / 'README.md') -> None:
+    """Write the full README map generated from a validated dataset.
+
+    :param data: Validated dataset.
+    :param digest: SHA-256 of the dataset file.
+    :param readme: README path to write, the map repository's root README by default.
+    """
+    readme.write_text(render_overview(data, digest))
 
 
 def main() -> None:
