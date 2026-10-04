@@ -1,0 +1,451 @@
+{
+  "schema_version": 1,
+  "name": "Fixture",
+  "organisations": [
+    "fixture-linux",
+    "fixture"
+  ],
+  "map_repository": "fixture/fixture-repository-map",
+  "scope": "Fixture repositories: fictional repositories in the GitHub organisations fixture-linux and fixture, used only by the regression suite.",
+  "inventory_source": {
+    "fixture-linux": "https://api.github.com/orgs/fixture-linux/repos?per_page=100",
+    "fixture": "https://api.github.com/orgs/fixture/repos?per_page=100"
+  },
+  "inventory_observed": {
+    "fixture-linux": "2026-01-01",
+    "fixture": "2026-01-01"
+  },
+  "coverage": "Synthetic coverage for the regression suite.",
+  "repositories": [
+    {
+      "id": "fixture-linux/meta-fixture",
+      "url": "https://github.com/fixture-linux/meta-fixture",
+      "description": "Fictional BSP layer for fixture boards",
+      "group": "Layers and releases",
+      "branch": "master",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/meta-fixture-distro",
+      "url": "https://github.com/fixture-linux/meta-fixture-distro",
+      "description": "Fictional reference distribution layer",
+      "group": "Layers and releases",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/meta-fixture-3rdparty",
+      "url": "https://github.com/fixture-linux/meta-fixture-3rdparty",
+      "description": "Fictional third-party board support layer",
+      "group": "Layers and releases",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/meta-fixture-releases",
+      "url": "https://github.com/fixture-linux/meta-fixture-releases",
+      "description": "Fictional release manifests",
+      "group": "Layers and releases",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/fixture-ptool",
+      "url": "https://github.com/fixture-linux/fixture-ptool",
+      "description": "Fictional partition table tool",
+      "group": "Images and build tooling",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/fixture-images",
+      "url": "https://github.com/fixture-linux/fixture-images",
+      "description": "Fictional image recipes",
+      "group": "Images and build tooling",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/kernel",
+      "url": "https://github.com/fixture-linux/kernel",
+      "description": "Fictional kernel tree",
+      "group": "Kernel integration",
+      "branch": "fixture-next",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/kernel-config",
+      "url": "https://github.com/fixture-linux/kernel-config",
+      "description": "Fictional kernel configuration fragments",
+      "group": "Kernel integration",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/kernel-checkers",
+      "url": "https://github.com/fixture-linux/kernel-checkers",
+      "description": "Fictional kernel patch checkers",
+      "group": "Kernel integration",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/pkg-alpha",
+      "url": "https://github.com/fixture-linux/pkg-alpha",
+      "description": "Fictional Debian packaging for alpha",
+      "group": "Packaging",
+      "branch": "debian/latest",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/pkg-beta",
+      "url": "https://github.com/fixture-linux/pkg-beta",
+      "description": "Fictional Debian packaging for beta",
+      "group": "Packaging",
+      "branch": "debian/latest",
+      "archived": false
+    },
+    {
+      "id": "fixture/fixture-firmware",
+      "url": "https://github.com/fixture/fixture-firmware",
+      "description": "Fictional boot firmware",
+      "group": "Boot and firmware",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/fixture-tests",
+      "url": "https://github.com/fixture-linux/fixture-tests",
+      "description": "Fictional board validation suite",
+      "group": "Validation",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "fixture/reusable-workflows",
+      "url": "https://github.com/fixture/reusable-workflows",
+      "description": "Fictional reusable GitHub Actions workflows",
+      "group": "Other repositories",
+      "branch": "main",
+      "archived": false
+    },
+    {
+      "id": "fixture-linux/archived-tool",
+      "url": "https://github.com/fixture-linux/archived-tool",
+      "description": "Fictional retired tool; see https://example.invalid/retired for history",
+      "group": "Other repositories",
+      "branch": null,
+      "archived": true
+    }
+  ],
+  "relationships": [
+    {
+      "from": "fixture-linux/meta-fixture-3rdparty",
+      "to": "fixture-linux/meta-fixture",
+      "kind": "depends on",
+      "condition": "Required by every machine in the layer.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture-3rdparty/blob/9dbc5b341d7ea3380d167d64803f341981c728e6/conf/layer.conf",
+          "revision": "9dbc5b341d7ea3380d167d64803f341981c728e6",
+          "claim": "LAYERDEPENDS names the BSP layer."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/meta-fixture-3rdparty",
+      "to": "fixture-linux/meta-fixture-distro",
+      "kind": "integrates with",
+      "condition": "Optional: combine with the reference distribution.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture-3rdparty/blob/5999560452876d6139b224846be1d8618b15954c/README.md",
+          "revision": "5999560452876d6139b224846be1d8618b15954c",
+          "claim": "The README documents building with the distribution layer."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/meta-fixture-3rdparty",
+      "to": "fixture-linux/fixture-ptool",
+      "kind": "uses indirectly",
+      "condition": "Images inherit the BSP layer partition step.",
+      "via": [
+        "fixture-linux/meta-fixture"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture-3rdparty/blob/b557b34648e13b32176013c093dd98ffab9ef352/conf/machine/board.conf",
+          "revision": "b557b34648e13b32176013c093dd98ffab9ef352",
+          "claim": "The machine requires the BSP layer image class."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/meta-fixture-3rdparty",
+      "to": "fixture-linux/meta-fixture-releases",
+      "kind": "depends on",
+      "condition": "Only the LTS branch pins its release manifests.",
+      "branches": [
+        "kirkstone"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture-3rdparty/blob/4f205b1fffbe22fd3ece950c950d48d97183fe62/conf/lts.conf",
+          "revision": "4f205b1fffbe22fd3ece950c950d48d97183fe62",
+          "claim": "The LTS configuration reads the release manifests."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/meta-fixture",
+      "to": "fixture-linux/fixture-ptool",
+      "kind": "builds with",
+      "condition": "Every image generates its partition table.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture/blob/07fddccc06fcf96b04ff88b3993cdf5a05fe89c6/classes/image_types_fixture.bbclass",
+          "revision": "07fddccc06fcf96b04ff88b3993cdf5a05fe89c6",
+          "claim": "The image class runs the partition tool."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/meta-fixture",
+      "to": "fixture-linux/kernel",
+      "kind": "fetches source from",
+      "condition": "The default kernel recipe.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture/blob/422cb2683aad5647b9cac847b62ffffef56a5493/recipes-kernel/linux/linux-fixture_git.bb",
+          "revision": "422cb2683aad5647b9cac847b62ffffef56a5493",
+          "claim": "SRC_URI fetches the kernel tree."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/meta-fixture",
+      "to": "fixture-linux/kernel",
+      "kind": "fetches source from",
+      "condition": "The real-time kernel recipe.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture/blob/2be2909920df11bf3c59e8a32139985c09491af2/recipes-kernel/linux/linux-fixture-rt_git.bb",
+          "revision": "2be2909920df11bf3c59e8a32139985c09491af2",
+          "claim": "SRC_URI fetches the kernel tree."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/meta-fixture-distro",
+      "to": "fixture-linux/meta-fixture",
+      "kind": "depends on",
+      "condition": "Required by the distribution.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture-distro/blob/8db7772b97cab694a91406afb4f59262eeff06a6/conf/layer.conf",
+          "revision": "8db7772b97cab694a91406afb4f59262eeff06a6",
+          "claim": "LAYERDEPENDS names the BSP layer."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/meta-fixture-distro",
+      "to": "fixture-linux/pkg-alpha",
+      "kind": "selects for distro",
+      "condition": "Included in every distribution image.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture-distro/blob/a2f427aa6f7d5da1eb98fc762a41440dd131e15a/conf/distro/fixture.conf",
+          "revision": "a2f427aa6f7d5da1eb98fc762a41440dd131e15a",
+          "claim": "The distribution installs alpha."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/meta-fixture-releases",
+      "to": "fixture-linux/meta-fixture",
+      "kind": "pins release of",
+      "condition": "Each release manifest pins the BSP layer.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture-releases/blob/a1833251556987d8042ee6f00db269f8f56a9855/releases/1.0.yml",
+          "revision": "a1833251556987d8042ee6f00db269f8f56a9855",
+          "claim": "The manifest pins a BSP layer commit."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/meta-fixture-releases",
+      "to": "fixture-linux/meta-fixture-3rdparty",
+      "kind": "selects branches from",
+      "condition": "Release manifests select the third-party layer branch.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/meta-fixture-releases/blob/a1833251556987d8042ee6f00db269f8f56a9855/releases/1.0.yml",
+          "revision": "a1833251556987d8042ee6f00db269f8f56a9855",
+          "claim": "The manifest names the third-party layer branch."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/fixture-images",
+      "to": "fixture-linux/meta-fixture",
+      "kind": "depends on",
+      "condition": "Images build on the BSP layer.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/fixture-images/blob/ff31e6a2e3ecee251651dbe39cd62d9041be5dde/kas/base.yml",
+          "revision": "ff31e6a2e3ecee251651dbe39cd62d9041be5dde",
+          "claim": "The kas file includes the BSP layer."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/fixture-images",
+      "to": "fixture-linux/kernel",
+      "kind": "uses indirectly",
+      "condition": "The BSP layer selects the kernel.",
+      "via": [
+        "fixture-linux/meta-fixture"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/fixture-images/blob/ff31e6a2e3ecee251651dbe39cd62d9041be5dde/kas/base.yml",
+          "revision": "ff31e6a2e3ecee251651dbe39cd62d9041be5dde",
+          "claim": "The kas file selects the BSP machine."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/fixture-images",
+      "to": "fixture-linux/kernel",
+      "kind": "fetches source from",
+      "condition": "The debug image fetches kernel headers directly.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/fixture-images/blob/f7cbcf2bd6f8c6a30d778e3c4a5194d411ab6728/recipes/debug-image.bb",
+          "revision": "f7cbcf2bd6f8c6a30d778e3c4a5194d411ab6728",
+          "claim": "SRC_URI fetches the kernel tree."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/fixture-images",
+      "to": "fixture/fixture-firmware",
+      "kind": "fetches source from",
+      "condition": "Every image flashes the firmware.",
+      "local_summary": "flashes firmware from",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/fixture-images/blob/c495216a28f043ac9990092c15e08522bb46454b/recipes/firmware.bb",
+          "revision": "c495216a28f043ac9990092c15e08522bb46454b",
+          "claim": "SRC_URI fetches the firmware."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/kernel-config",
+      "to": "fixture-linux/kernel",
+      "kind": "configures",
+      "condition": "Fragments apply to the default kernel.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/kernel-config/blob/b3d357053cb891d831fa42af387064ccebc651b2/README.md",
+          "revision": "b3d357053cb891d831fa42af387064ccebc651b2",
+          "claim": "The fragments target the kernel tree."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/kernel-checkers",
+      "to": "fixture/reusable-workflows",
+      "kind": "uses automation from",
+      "condition": "GitHub Actions integration",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/kernel-checkers/blob/b015e85446b05cacf95de2ee307b8a3f491e5faf/.github/workflows/check.yml",
+          "revision": "b015e85446b05cacf95de2ee307b8a3f491e5faf",
+          "claim": "The uses field calls the reusable checks."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/kernel-checkers",
+      "to": "fixture-linux/kernel",
+      "kind": "runs workflow from",
+      "condition": "Checks run against the kernel tree workflows.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/kernel-checkers/blob/c3de67b819585f75ce20917ff370d62950917bba/.github/workflows/kernel.yml",
+          "revision": "c3de67b819585f75ce20917ff370d62950917bba",
+          "claim": "The workflow calls the kernel tree workflow."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/pkg-alpha",
+      "to": "fixture/reusable-workflows",
+      "kind": "uses automation from",
+      "condition": "GitHub Actions integration",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/pkg-alpha/blob/8100955937a36ee4f3744b0bc6663933446226f2/.github/workflows/build.yml",
+          "revision": "8100955937a36ee4f3744b0bc6663933446226f2",
+          "claim": "The standalone package workflow claim stays out of the README."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/pkg-beta",
+      "to": "fixture/reusable-workflows",
+      "kind": "runs workflow from",
+      "condition": "GitHub Actions integration",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/pkg-beta/blob/616f2e9de45936d0f1527943528c6e3505a7ed23/.github/workflows/build.yml",
+          "revision": "616f2e9de45936d0f1527943528c6e3505a7ed23",
+          "claim": "The standalone package workflow claim stays out of the README."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/pkg-alpha",
+      "to": "fixture/fixture-firmware",
+      "kind": "packages",
+      "condition": "The package ships the firmware sources.",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/pkg-alpha/blob/57aeeb0b60d64247ba0a3adf3ab17af0b6f2e216/debian/watch",
+          "revision": "57aeeb0b60d64247ba0a3adf3ab17af0b6f2e216",
+          "claim": "The watch file tracks the firmware releases."
+        }
+      ]
+    },
+    {
+      "from": "fixture-linux/fixture-tests",
+      "to": "fixture-linux/fixture-ptool",
+      "kind": "builds with",
+      "condition": "The suite builds test images.",
+      "local_summary": "builds & signs \"test\" | images with",
+      "evidence": [
+        {
+          "url": "https://github.com/fixture-linux/fixture-tests/blob/ff0bdfae8a1485df4add8033d66710268f901de6/tests/build.sh",
+          "revision": "ff0bdfae8a1485df4add8033d66710268f901de6",
+          "claim": "The build script runs the partition tool."
+        }
+      ]
+    }
+  ],
+  "source_audits": [
+    {
+      "repository": "fixture-linux/meta-fixture-3rdparty",
+      "source_repository": "fixture-linux/meta-fixture-3rdparty",
+      "revision": "7876153ada8274a24c48647e87674701755f9d09",
+      "paths": [
+        "conf",
+        ".github/workflows"
+      ]
+    }
+  ]
+}
