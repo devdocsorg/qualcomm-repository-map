@@ -1636,7 +1636,7 @@
       "from": "qualcomm-linux/meta-qcom-3rdparty",
       "to": "qualcomm-linux/qcom-ptool",
       "kind": "uses indirectly",
-      "condition": "Partition tooling is supplied through meta-qcom; this is an indirect relationship, not an extra layer dependency.",
+      "condition": "rubikpi3 only; partition tooling is supplied through meta-qcom. radxa-dragon-q6a sets QCOM_PARTITION_CONF empty, so its images build no partition configuration. This is an indirect relationship, not an extra layer dependency.",
       "evidence": [
         {
           "url": "https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc",
@@ -1647,6 +1647,16 @@
           "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/rubikpi3.conf",
           "claim": "The board selects partition assets through QCOM_PARTITION_FILES_SUBDIR.",
           "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac"
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/radxa-dragon-q6a.conf",
+          "revision": "0f85b77dee0edfb66819dfea51715fd7772233ac",
+          "claim": "radxa-dragon-q6a sets QCOM_PARTITION_CONF to an empty value."
+        },
+        {
+          "url": "https://github.com/qualcomm-linux/meta-qcom/blob/b6b6e1b04ed09116936dbb5926dd830eafdc52a2/classes-recipe/image_types_qcom.bbclass",
+          "revision": "b6b6e1b04ed09116936dbb5926dd830eafdc52a2",
+          "claim": "do_image_qcomflash depends on QCOM_PARTITION_CONF:do_deploy only when QCOM_PARTITION_CONF is not empty; the default is qcom-partition-conf."
         }
       ],
       "local_summary": "Partition tools, supplied through meta-qcom.",
@@ -5765,7 +5775,7 @@
     {
       "repository": "qualcomm-linux/meta-qcom-3rdparty",
       "source_repository": "qualcomm-linux/meta-qcom",
-      "revision": "3d1d6bff6040fa9abb32838f188094949ad59139",
+      "revision": "b6b6e1b04ed09116936dbb5926dd830eafdc52a2",
       "paths": [
         "ci/base.yml",
         "ci/ci.yml",

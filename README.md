@@ -529,9 +529,11 @@ flowchart LR
   - scarthgap branch only (Qualcomm Linux 1.x); required layer collection. main and wrynose do not depend on it. kirkstone also declares it but is not mapped: SECURITY.md accepts patches only for current LTS releases, and Yocto Project 4.0 is end of life.
   - [layer.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/b411da79d08b3726eeba85df834627008b31fd7c/conf/layer.conf)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [qcom-ptool](https://github.com/qualcomm-linux/qcom-ptool)
-  - Partition tooling is supplied through meta-qcom; this is an indirect relationship, not an extra layer dependency.
+  - rubikpi3 only; partition tooling is supplied through meta-qcom. radxa-dragon-q6a sets QCOM_PARTITION_CONF empty, so its images build no partition configuration. This is an indirect relationship, not an extra layer dependency.
   - [qcom-ptool.inc](https://github.com/qualcomm-linux/meta-qcom/blob/c6729710f055e1c0337c830030ab25eef7f293a5/recipes-bsp/partition/qcom-ptool.inc)
   - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/rubikpi3.conf)
+  - [radxa-dragon-q6a.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/radxa-dragon-q6a.conf)
+  - [image_types_qcom.bbclass](https://github.com/qualcomm-linux/meta-qcom/blob/b6b6e1b04ed09116936dbb5926dd830eafdc52a2/classes-recipe/image_types_qcom.bbclass)
 - **through [meta-qcom](https://github.com/qualcomm-linux/meta-qcom)** [fastrpc](https://github.com/qualcomm/fastrpc)
   - Both machines: the QCS6490 SoC include they require recommends packagegroup-qcom-boot-additional, which adds fastrpc on aarch64.
   - [rubikpi3.conf](https://github.com/qualcomm-linux/meta-qcom-3rdparty/blob/0f85b77dee0edfb66819dfea51715fd7772233ac/conf/machine/rubikpi3.conf)
@@ -621,4 +623,4 @@ flowchart LR
 
 [Map data and updates](data/README.md).
 
-<!-- Dataset SHA-256: c7c7eecf7ffa34b0dcce1a19f6251dde20304522d0063a2b3695b5645d5ef518. -->
+<!-- Dataset SHA-256: 8e92870c8f246f499f7a96cd90969886d317f45fb8a76c553db35e306a044275. -->
